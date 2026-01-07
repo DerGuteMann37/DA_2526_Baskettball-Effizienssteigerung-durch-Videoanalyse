@@ -1,10 +1,10 @@
 # Zielsetzung
-Die Zielsetzung beschreibt das allgemeine Ziel der Diplomarbeit. Dabei sollten folgende Themen behandelt werden:
+Der aktuelle Stand im Bereich der Wurfanalyse im Basketball, insbesondere im Schul- und Amateurbereich, ist stark von subjektiven Einschätzungen abhängig. Trainer*innen beurteilen die Wurftechnik meist anhand visueller Beobachtungen, während objektive Messdaten nur selten zur Verfügung stehen. Professionelle Analyse- und Trackingsysteme existieren zwar, sind jedoch mit hohen Kosten verbunden und daher für viele Vereine, Schulen oder kleinere Mannschaften nicht praktikabel. Im Rahmen der Kooperation mit einer Basketballmannschaft zeigte sich zudem, dass Trainingsfortschritte häufig nicht langfristig dokumentiert oder vergleichbar gemacht werden können.
 
-* Was ist der aktuelle Stand in der Firma / am Projekt an dem Sie arbeiten?
-* Was ist die Motiavation hinter dieser Arbeit?
-* Was möchten Sie erreichen ?
-* Was möchten Sie nicht erreichen ? (Nicht-Ziele)
-* Was ändert sich wenn Sie diese Arbeit schreiben ?
+Die Motivation für diese Diplomarbeit entsteht aus der Verbindung von Informationstechnologie und Sport. Ziel ist es, moderne IT-Methoden einzusetzen, um sportliche Leistungen messbar zu machen und Trainingsprozesse effizienter zu gestalten. Insbesondere die Möglichkeit, mithilfe von Videoanalyse objektive Daten zu gewinnen und diese automatisiert auszuwerten, stellt einen großen Mehrwert für Spielerinnen und Trainerinnen dar.
 
-Die konkreten Ausarbeitungen sind in den n- Unterfiles (je Schüler eines) abzubilden. 
+Das übergeordnete Ziel dieser Diplomarbeit ist die Entwicklung eines softwaregestützten Systems zur Effizienzsteigerung von Basketballwürfen durch Videoanalyse. Das System soll Basketballwürfe automatisch analysieren, relevante Wurfparameter erfassen und diese in einer Datenbank speichern. Auf Basis dieser Daten sollen statistische Auswertungen erstellt werden, welche den Trainingsfortschritt einzelner Spielerinnen nachvollziehbar und vergleichbar machen. Die Ergebnisse sollen über ein Frontend visuell aufbereitet werden, sodass Spielerinnen ein direktes und verständliches Feedback zu ihrer Wurftechnik erhalten.
+
+Nicht Ziel dieser Arbeit ist die Entwicklung eines marktreifen oder kommerziellen Produkts. Ebenso soll keine hochkomplexe biomechanische Analyse des menschlichen Bewegungsapparates durchgeführt werden. Die Arbeit erhebt keinen Anspruch darauf, professionelle High-End-Systeme aus dem Leistungssport zu ersetzen, sondern fokussiert sich bewusst auf einen praktikablen, schul- und amateurgerechten Ansatz. Auch eine Echtzeitverarbeitung der Videoanalyse während des laufenden Trainings ist nicht Bestandteil dieser Diplomarbeit.
+
+Durch die Umsetzung dieser Diplomarbeit entsteht ein funktionaler Prototyp, der zeigt, wie digitale Technologien sinnvoll im Sport eingesetzt werden können. Der Trainingsprozess wird durch objektive Daten ergänzt, wodurch subjektive Einschätzungen reduziert werden. Für die beteiligte Mannschaft ergibt sich die Möglichkeit, Wurftechniken langfristig zu analysieren und Fortschritte messbar darzustellen. Darüber hinaus erwerben die beteiligten Schüler*innen praxisnahe Kenntnisse in den Bereichen Softwarearchitektur, Datenbankdesign, Backend- und Frontendentwicklung sowie statistische Auswertung, welche eine solide Grundlage für weiterführende Projekte oder berufliche Tätigkeiten im IT-Bereich bilden.
