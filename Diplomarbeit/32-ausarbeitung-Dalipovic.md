@@ -1,235 +1,252 @@
-# Teilaufgabe Dalipovic
-
-# Diplomarbeit: Basketball-Effizienzsteigerung
-
-## 1. Einleitung
-
-Die vorliegende Diplomarbeit mit dem Titel **„Basketball-Effizienzsteigerung“** beschäftigt sich mit der Analyse und Optimierung von Basketballwürfen mithilfe moderner Softwarelösungen.  
-Ziel des Projekts ist es, Wurfbewegungen mittels Videoanalyse zu erfassen, auszuwerten und die Ergebnisse übersichtlich darzustellen, um Spieler bei der Verbesserung ihrer Wurftechnik zu unterstützen.
-
-Die Diplomarbeit wird im Team umgesetzt, wobei jede Person einen klar abgegrenzten Aufgabenbereich übernimmt.  
-Diese Ausarbeitung behandelt ausschließlich den **Frontend-Teil**, welcher von **Dalipovic** umgesetzt wird und für die grafische Benutzeroberfläche sowie die Darstellung der Spieler- und Statistikdaten verantwortlich ist.
+Teilaufgabe Dalipovic  
+Frontend – Spieler- & Statistikansicht  
 
 ---
 
-## 2. Individuelle Zielsetzung und Aufgabenstellung
+## Einleitung
 
-### 2.x Aufgabenstellung und Terminplan – Dalipovic (Frontend)
+Im Rahmen der Diplomarbeit *„Basketball-Effizienzsteigerung“* wird ein Softwaresystem entwickelt, das Basketballwürfe mithilfe von Videoanalyse analysiert und die daraus gewonnenen Daten strukturiert darstellt.  
+Ziel des Gesamtsystems ist es, Spielern eine objektive Rückmeldung über ihre Wurftechnik zu geben und langfristig eine Leistungssteigerung zu ermöglichen.
 
-Meine Aufgabe im Rahmen dieser Diplomarbeit ist die Entwicklung des **Frontends**, also der grafischen Benutzeroberfläche der Anwendung.  
-Das Frontend stellt die Schnittstelle zwischen Benutzer und System dar und dient zur Anzeige der vom Backend und der Videoanalyse bereitgestellten Daten.
+Diese Ausarbeitung behandelt ausschließlich den **Frontend-Teil** des Projekts.  
+Das Frontend stellt die grafische Benutzeroberfläche dar und ist dafür verantwortlich, die vom Backend und von der Videoanalyse gelieferten Daten verständlich und übersichtlich aufzubereiten.
 
-Die Hauptziele meines Aufgabenbereichs sind:
-- Entwicklung einer übersichtlichen Spieler- und Statistikansicht  
-- Darstellung von Wurfdaten wie Winkel, Geschwindigkeit und Trefferquote  
-- Grafische Visualisierung der Flugkurve eines Basketballwurfs  
-- Vorbereitung des Frontends auf die spätere Anbindung an das Backend  
-- Gestaltung einer modernen, sportlichen Benutzeroberfläche  
-
-Der zeitliche Aufwand gliedert sich in Konzeption, Design, Implementierung sowie Tests und Optimierungen.
+Der Fokus liegt dabei auf Benutzerführung, Visualisierung, Struktur und Erweiterbarkeit – nicht auf der mathematischen oder kamerabasierten Analyse.
 
 ---
 
-## 3. Aufgabenstellung Eins – Frontend
+## Individuelle Zielsetzung und Aufgabenstellung
 
-Das Frontend wurde als **webbasierte Anwendung** konzipiert.  
-Der Fokus liegt dabei nicht auf der Berechnung der Wurfdaten, sondern ausschließlich auf deren **Darstellung und Benutzerführung**.
+Die Zielsetzung des Frontend-Teils besteht darin, eine moderne, übersichtliche und erweiterbare Benutzeroberfläche zu entwickeln, welche die komplexen Analyseergebnisse verständlich darstellt.
 
-Die eigentliche Videoanalyse sowie die Berechnung der Soll- und Ist-Flugbahnen werden von anderen Teammitgliedern umgesetzt.  
-Das Frontend dient als Visualisierungs- und Steuerungseinheit und soll die Analyseergebnisse übersichtlich darstellen.
+Dabei übernimmt das Frontend folgende Aufgaben:
+- Anzeige und Verwaltung von Spielern
+- Darstellung aktueller Wurfwerte
+- Visualisierung der Soll- und Ist-Flugbahn
+- Anzeige des Wurfverlaufs
+- Bereitstellung eines strukturierten Dashboards
 
----
-
-### 3.1 Ergebnis – Frontend
-
-Als Ergebnis wurde ein funktionsfähiger **Frontend-Prototyp** umgesetzt.  
-Dieser bildet den späteren Ablauf des Gesamtsystems realistisch ab und verwendet aktuell **Dummy-Daten**, um die Benutzerinteraktion und die Darstellung zu demonstrieren.
-
-Der Prototyp enthält:
-- eine Spielerverwaltung  
-- eine zentrale Kameraansicht (Simulation)  
-- eine Statistikübersicht  
-- eine grafische Darstellung der Flugkurve  
-- optionales akustisches Feedback  
+Die Berechnung der Werte sowie die Videoanalyse erfolgen außerhalb des Frontends und werden von anderen Teammitgliedern umgesetzt.
 
 ---
 
-## 4. Aufgabenstellung Zwei – Technische Umsetzung
+## Theoretische Grundlagen der Frontend-Entwicklung
 
-### 4.1 Verwendete Technologien
+### Webbasierte Frontends
 
-Für die Umsetzung des Frontends wurden folgende Technologien eingesetzt:
+Webbasierte Frontends bieten den Vorteil, dass sie plattformunabhängig genutzt werden können.  
+Ein moderner Webbrowser genügt, um die Anwendung auszuführen, wodurch keine zusätzliche Installation notwendig ist.
 
-- **HTML** zur Strukturierung der Benutzeroberfläche  
-- **CSS** für Layout, Design und Responsivität  
-- **JavaScript** für Interaktion und dynamische Inhalte  
-- **Chart.js** zur grafischen Darstellung der Flugkurven  
-- **Web Speech API** (optional) für akustisches Feedback  
-
-Die Entwicklung erfolgte in **Visual Studio Code**.
+Durch die Trennung von Struktur (HTML), Darstellung (CSS) und Logik (JavaScript) entsteht eine klare und wartbare Architektur.
 
 ---
 
-### 4.2 Aufbau der Benutzeroberfläche
+### Visualisierung von Daten
 
-Die Benutzeroberfläche ist in mehrere logisch getrennte Bereiche gegliedert:
-- Spielerverwaltung (linker Bereich)  
-- Wurfsteuerung (rechter Bereich)  
-- Zentrale Live-Kameraansicht  
-- Statistik- und Verlaufsanzeige  
-- Darstellung der Soll- und Ist-Flugbahn  
+Ein wesentlicher Bestandteil moderner Analyseanwendungen ist die visuelle Aufbereitung von Daten.  
+Diagramme, Verlaufsanzeigen und farbliche Hervorhebungen helfen dabei, komplexe Informationen schneller zu erfassen als reine Textdarstellungen.
 
-Das Design ist bewusst im **Dark Mode** mit **orangefarbenen Akzenten** gehalten, um einen sportlichen und modernen Eindruck zu vermitteln.
+Für dieses Projekt wurde bewusst auf eine grafische Darstellung der Flugkurven gesetzt, da diese den Wurfverlauf intuitiv nachvollziehbar macht.
 
 ---
 
-### 4.3 HTML – Struktur der Oberfläche
+## Verwendete Technologien
 
-Der folgende Codeausschnitt zeigt die HTML-Struktur für die Spielersteuerung und die Wurfsteuerung.  
-Der Spielerbereich befindet sich links, während die Wurfanalyse bewusst rechts platziert ist.
+### HTML – Strukturierung der Benutzeroberfläche
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="HTML: Spieler- und Wurfsteuerung" .html}
-<section id="player-setup">
-  <div id="player-left">
-    <input type="text" id="newPlayerName" placeholder="Neuen Spieler hinzufügen" />
-    <button id="addPlayerBtn">➕ Spieler hinzufügen</button>
+HTML bildet die Grundlage der Benutzeroberfläche.  
+Alle Elemente wie Eingabefelder, Buttons, Statistikfelder und Diagrammcontainer werden über HTML strukturiert.
 
-    <label for="playerSelect">Spieler auswählen:</label>
-    <select id="playerSelect"></select>
-  </div>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="HTML: Grundstruktur der Anwendung" .html}
+<body>
+  <header>
+    <h1>Smart Shot Analyzer – Basketball Wurftraining</h1>
+  </header>
 
-  <div id="player-right">
-    <button id="newShotBtn">🎯 Neuen Wurf analysieren</button>
-  </div>
-</section>
+  <main>
+    <section class="camera-view">
+      Live-Kamera (Simulation)
+    </section>
+
+    <section id="stats-grid">
+      <!-- Statistik Cards -->
+    </section>
+  </main>
+</body>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Diese Struktur sorgt für eine klare Trennung zwischen Kopfbereich, Hauptinhalt und Statistikbereich.
+
 ---
 
-### 4.4 CSS – Layout und Design
+### CSS – Layout, Design und Responsivität
 
-Das Layout basiert auf **Flexbox** und **CSS Grid**, um eine saubere und responsive Struktur zu gewährleisten.
+CSS wird verwendet, um das Layout der Anwendung zu gestalten.  
+Das Design wurde bewusst im Dark Mode umgesetzt, da dieser bei längerer Nutzung angenehmer für die Augen ist.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="CSS: Layout der Spielerleiste" .css}
-#player-setup {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  max-width: 1100px;
-  margin: 30px auto;
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="CSS: Grundlegendes Farbschema und Schrift" .css}
+body {
+  background: radial-gradient(circle at top, #1b1b1b, #000);
+  color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  margin: 0;
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="CSS: Statistik-Dashboard mit Cards" .css}
+---
+
+#### Dashboard-Layout
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="CSS: Statistik-Dashboard als Grid" .css}
 #stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   gap: 30px;
-  max-width: 1200px;
-  margin: 40px auto;
+  padding: 40px;
 }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Durch das Grid-Layout können die Statistik-Elemente flexibel angeordnet werden.
+
+---
+
+#### Karten-Design
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="CSS: Statistik-Card Design" .css}
 .card {
   background: #1a1a1a;
-  border-radius: 18px;
-  padding: 25px;
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid #333;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
 }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Dieses Design sorgt für eine klare visuelle Trennung der einzelnen Informationsbereiche.
+
+---
+
+### JavaScript – Interaktion und Dynamik
+
+JavaScript wird für die komplette Interaktionslogik verwendet.  
+Spieler können angelegt werden, Würfe simuliert und Diagramme aktualisiert.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="JavaScript: Initialisierung der Spieler" .javascript}
+let players = [];
+let history = [];
+
+const playerSelect = document.getElementById("playerSelect");
+const newPlayerInput = document.getElementById("newPlayerName");
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ---
 
-### 4.5 JavaScript – Interaktion und Logik
+#### Spieler hinzufügen
 
-Die dynamischen Funktionen des Frontends werden mit JavaScript umgesetzt.  
-Spieler können hinzugefügt werden und Würfe werden mithilfe von Dummy-Daten simuliert.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="JavaScript: Spieler hinzufügen" .javascript}
+addPlayerBtn.addEventListener("click", () => {
+  const name = newPlayerInput.value.trim();
+  if (!name) return;
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="JavaScript: Spielerverwaltung" .javascript}
-function renderPlayers() {
-  playerSelect.innerHTML = "";
-  players.forEach((p) => {
-    const option = document.createElement("option");
-    option.textContent = p;
-    playerSelect.appendChild(option);
-  });
-}
+  players.push(name);
+  renderPlayers();
+  playerSelect.value = name;
+  newPlayerInput.value = "";
+});
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Dieser Code erlaubt es, Spieler dynamisch hinzuzufügen, ohne die Seite neu zu laden.
+
+---
+
+#### Simulation eines Wurfs
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="JavaScript: Simulation eines Wurfs" .javascript}
 newShotBtn.addEventListener("click", () => {
   const angle = Math.floor(Math.random() * 15) + 40;
   const speed = Math.floor(Math.random() * 10) + 20;
 
-  angleSpan.textContent = angle;
-  speedSpan.textContent = speed;
+  document.getElementById("angle").textContent = angle;
+  document.getElementById("speed").textContent = speed;
 
+  history.push({ angle, speed, time: new Date().toLocaleString() });
+  updateHistory();
   updateChart();
 });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Die Wurfwerte werden aktuell zufällig generiert und dienen als Dummy-Daten.
+
 ---
 
-### 4.6 Darstellung der Flugkurve
+### Chart.js – Darstellung der Flugkurve
 
-Die grafische Darstellung der Flugkurve erfolgt mit **Chart.js**.  
-Dabei werden eine Soll- und eine Ist-Flugbahn angezeigt.
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="JavaScript: Chart.js – Soll vs. Ist Flugbahn" .javascript}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="JavaScript: Chart.js Initialisierung" .javascript}
+const ctx = document.getElementById("trajectoryChart");
 const chart = new Chart(ctx, {
   type: "line",
   data: {
-    labels: [0, 1, 2, 3, 4, 5, 6],
+    labels: [0,1,2,3,4,5,6],
     datasets: [
-      { label: "Soll-Flugbahn", data: [0, 2, 4, 5, 4, 2, 0] },
-      { label: "Ist-Flugbahn", data: [0, 1.8, 3.5, 4.9, 4.2, 1.7, 0] }
+      {
+        label: "Soll-Flugbahn",
+        data: [0,2,4,5,4,2,0],
+        borderColor: "#ff8c1a",
+        tension: 0.4
+      },
+      {
+        label: "Ist-Flugbahn",
+        data: [0,1.8,3.5,4.9,4.2,1.7,0],
+        borderColor: "#00cc88",
+        tension: 0.4
+      }
     ]
   }
 });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Diese Visualisierung macht Abweichungen zwischen Soll- und Ist-Wurf sofort sichtbar.
+
+---
+
 Die dargestellten Codeauszüge zeigen den aktuellen Prototypenstand mit Dummy-Daten.  
-Die Logik ist so aufgebaut, dass in der finalen Version statt der simulierten Werte reale Messdaten aus dem Backend übernommen und ohne Layoutänderung in dieselben UI-Komponenten eingebunden werden können.
+Die Struktur ist so aufgebaut, dass reale Daten aus dem Backend später ohne Änderungen am Layout eingebunden werden können.
 
 ---
 
-## 5. Aufgabenstellung Drei – Integration und Ausblick
+## Herausforderungen
 
-### 5.1 Backend-Anbindung (Konzept)
-
-In der finalen Version soll das Frontend mit dem Backend verbunden werden, welches von einem anderen Teammitglied umgesetzt wird.  
-Das Backend stellt die berechneten Wurfdaten sowie gespeicherte Spielerinformationen bereit.
-
-Das Frontend übernimmt dabei ausschließlich:
-- die Darstellung der Daten  
-- die grafische Aufbereitung der Statistiken  
-- die Aktualisierung der Benutzeroberfläche  
-
-Die Berechnung der Soll- und Ist-Flugbahn erfolgt **nicht im Frontend**.
-
----
-
-### 5.2 Herausforderungen
-
-Eine zentrale Herausforderung der Frontend-Entwicklung ist die übersichtliche Darstellung komplexer Daten.  
-Besonders die gleichzeitige Anzeige von Kameraansicht, Statistik und Flugkurve erfordert eine klare Strukturierung.
+Eine der größten Herausforderungen bestand darin, viele Informationen gleichzeitig darzustellen, ohne die Übersichtlichkeit zu verlieren.  
+Insbesondere die Kombination aus Kameraansicht, Statistik und Diagrammen erfordert ein klares Layout.
 
 Weitere Herausforderungen:
-- Responsives Design für unterschiedliche Bildschirmgrößen  
-- Einfügung von Sprachfunktion 
-- Vorbereitung auf dynamische Echtzeitdaten  
+- Skalierung für unterschiedliche Bildschirmgrößen  
+- Lesbarkeit im Dark Mode  
+- Vorbereitung auf Echtzeitdaten  
 
 ---
 
-## 6. Zusammenfassung
+## Ausblick und Integration
 
-Das Frontend stellt einen wesentlichen Bestandteil der Diplomarbeit dar, da es die Schnittstelle zwischen Benutzer und System bildet.  
-Der umgesetzte Prototyp bildet den geplanten Funktionsumfang realistisch ab und ist vorbereitet für die Integration realer Analyseergebnisse.
+In der finalen Version wird das Frontend über eine Schnittstelle mit dem Backend verbunden.  
+Die vom Backend gelieferten Daten ersetzen dabei die aktuell verwendeten Dummy-Daten.
+
+Das Frontend bleibt dabei unverändert und übernimmt weiterhin ausschließlich die Darstellung.
 
 ---
 
-## 12. Anhang
+## Zusammenfassung
 
-### 12.3 Technische Dokumentation – Frontend
+Der Frontend-Prototyp zeigt, wie komplexe Analyseergebnisse übersichtlich dargestellt werden können.  
+Durch den modularen Aufbau ist das System gut erweiterbar und für die Integration in das Gesamtsystem vorbereitet.
 
-Das Frontend ist modular aufgebaut und klar von der Logik des Backends getrennt.  
-Diese Trennung ermöglicht eine einfache Wartung sowie zukünftige Erweiterungen, ohne bestehende Komponenten wesentlich verändern zu müssen.
+---
+
+## Anhang – Technische Dokumentation (Frontend)
+
+Das vollständige Frontend besteht aus den Dateien:
+- `index.html`
+- `style.css`
+- `script.js`
+
+Diese sind dem Projekt beigefügt und dokumentieren die vollständige Implementierung.
