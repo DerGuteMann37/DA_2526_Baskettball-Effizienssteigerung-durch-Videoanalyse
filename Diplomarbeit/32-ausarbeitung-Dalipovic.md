@@ -1,206 +1,235 @@
-# Teilaufgabe Schüler Bravo
-\textauthor{Schueler 2}
+# Teilaufgabe Dalipovic
 
-## Theorie
+# Diplomarbeit: Basketball-Effizienzsteigerung
 
-Dieses Kapitel wird oft auch als _Literaturrecherche_ bezeichnet. Da gehört alles rein was der __normale__ Leser braucht um den praktischen Ansatz zu verstehen. Das bedeutet Sie brauchen einen roten Faden !
+## 1. Einleitung
 
-Das sind z.B: allgemeine Definitionen, Beschreibung von fachspezifischen Vorgehensweisen, Frameworks, Theorie zu verwendeten Algorithmen, besondere Umstände, ...
+Die vorliegende Diplomarbeit mit dem Titel **„Basketball-Effizienzsteigerung“** beschäftigt sich mit der Analyse und Optimierung von Basketballwürfen mithilfe moderner Softwarelösungen.  
+Ziel des Projekts ist es, Wurfbewegungen mittels Videoanalyse zu erfassen, auszuwerten und die Ergebnisse übersichtlich darzustellen, um Spieler bei der Verbesserung ihrer Wurftechnik zu unterstützen.
 
-## Praktische Arbeit
+Die Diplomarbeit wird im Team umgesetzt, wobei jede Person einen klar abgegrenzten Aufgabenbereich übernimmt.  
+Diese Ausarbeitung behandelt ausschließlich den **Frontend-Teil**, welcher von **Dalipovic** umgesetzt wird und für die grafische Benutzeroberfläche sowie die Darstellung der Spieler- und Statistikdaten verantwortlich ist.
 
-Hier beschreiben Sie ihren praktischen Teil. Es geht darum seine Implementierung / Versuche so darzustellen dass anhand dieser dre Leser erkennen kann was sie wie gemacht haben.
+---
 
-Die Frage nach der Detailgenauigkeit lässt sich wie folgt beantworten: So, dass man Ihre Aufgabenstellung vollständig  nachvollziehen kann wenn man nur diese Diplomarbeit in Händen hat!
+## 2. Individuelle Zielsetzung und Aufgabenstellung
 
-### Erzeugen von Java Quellcode
+### 2.x Aufgabenstellung und Terminplan – Dalipovic (Frontend)
 
-Unter einem Array in Java versteht man ein Feld oder Container, das in der Lage ist, mehrere Objekte vom gleichen Typ aufzunehmen und zu verwalten. Dabei wird in Java das Array als eine spezielle Klasse repräsentiert, was unter anderem mit sich bringt, dass man auf spezielle Methoden und Operationen bei Arrays zurückgreifen kann. Der Umgang mit Arrays mag gerade am Anfang etwas schwerer sein und birgt viele Fehlerquellen, nach und nach wird man das System das hinter den Arrays steht aber gut nachvollziehen können. 
+Meine Aufgabe im Rahmen dieser Diplomarbeit ist die Entwicklung des **Frontends**, also der grafischen Benutzeroberfläche der Anwendung.  
+Das Frontend stellt die Schnittstelle zwischen Benutzer und System dar und dient zur Anzeige der vom Backend und der Videoanalyse bereitgestellten Daten.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Initialisieren eines Arrays" .java}
-Typ[] Name = new Typ[Anzahl];
-Typ Name[] = new Typ[Anzahl];
+Die Hauptziele meines Aufgabenbereichs sind:
+- Entwicklung einer übersichtlichen Spieler- und Statistikansicht  
+- Darstellung von Wurfdaten wie Winkel, Geschwindigkeit und Trefferquote  
+- Grafische Visualisierung der Flugkurve eines Basketballwurfs  
+- Vorbereitung des Frontends auf die spätere Anbindung an das Backend  
+- Gestaltung einer modernen, sportlichen Benutzeroberfläche  
+
+Der zeitliche Aufwand gliedert sich in Konzeption, Design, Implementierung sowie Tests und Optimierungen.
+
+---
+
+## 3. Aufgabenstellung Eins – Frontend
+
+Das Frontend wurde als **webbasierte Anwendung** konzipiert.  
+Der Fokus liegt dabei nicht auf der Berechnung der Wurfdaten, sondern ausschließlich auf deren **Darstellung und Benutzerführung**.
+
+Die eigentliche Videoanalyse sowie die Berechnung der Soll- und Ist-Flugbahnen werden von anderen Teammitgliedern umgesetzt.  
+Das Frontend dient als Visualisierungs- und Steuerungseinheit und soll die Analyseergebnisse übersichtlich darstellen.
+
+---
+
+### 3.1 Ergebnis – Frontend
+
+Als Ergebnis wurde ein funktionsfähiger **Frontend-Prototyp** umgesetzt.  
+Dieser bildet den späteren Ablauf des Gesamtsystems realistisch ab und verwendet aktuell **Dummy-Daten**, um die Benutzerinteraktion und die Darstellung zu demonstrieren.
+
+Der Prototyp enthält:
+- eine Spielerverwaltung  
+- eine zentrale Kameraansicht (Simulation)  
+- eine Statistikübersicht  
+- eine grafische Darstellung der Flugkurve  
+- optionales akustisches Feedback  
+
+---
+
+## 4. Aufgabenstellung Zwei – Technische Umsetzung
+
+### 4.1 Verwendete Technologien
+
+Für die Umsetzung des Frontends wurden folgende Technologien eingesetzt:
+
+- **HTML** zur Strukturierung der Benutzeroberfläche  
+- **CSS** für Layout, Design und Responsivität  
+- **JavaScript** für Interaktion und dynamische Inhalte  
+- **Chart.js** zur grafischen Darstellung der Flugkurven  
+- **Web Speech API** (optional) für akustisches Feedback  
+
+Die Entwicklung erfolgte in **Visual Studio Code**.
+
+---
+
+### 4.2 Aufbau der Benutzeroberfläche
+
+Die Benutzeroberfläche ist in mehrere logisch getrennte Bereiche gegliedert:
+- Spielerverwaltung (linker Bereich)  
+- Wurfsteuerung (rechter Bereich)  
+- Zentrale Live-Kameraansicht  
+- Statistik- und Verlaufsanzeige  
+- Darstellung der Soll- und Ist-Flugbahn  
+
+Das Design ist bewusst im **Dark Mode** mit **orangefarbenen Akzenten** gehalten, um einen sportlichen und modernen Eindruck zu vermitteln.
+
+---
+
+### 4.3 HTML – Struktur der Oberfläche
+
+Der folgende Codeausschnitt zeigt die HTML-Struktur für die Spielersteuerung und die Wurfsteuerung.  
+Der Spielerbereich befindet sich links, während die Wurfanalyse bewusst rechts platziert ist.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="HTML: Spieler- und Wurfsteuerung" .html}
+<section id="player-setup">
+  <div id="player-left">
+    <input type="text" id="newPlayerName" placeholder="Neuen Spieler hinzufügen" />
+    <button id="addPlayerBtn">➕ Spieler hinzufügen</button>
+
+    <label for="playerSelect">Spieler auswählen:</label>
+    <select id="playerSelect"></select>
+  </div>
+
+  <div id="player-right">
+    <button id="newShotBtn">🎯 Neuen Wurf analysieren</button>
+  </div>
+</section>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Etwas erfahrenere Programmierer werden jetzt schon erkennen, worauf es beim Zugriff auf Elemente im Array meist hinausläuft: Auf Schleifen!
-Schleifen sind ein komfortables Mittel um alle Elemente eines Arrays durchzugehen und auf Wunsch auszugeben oder andere Operationen darauf anzuwenden. Allerdings muss man nicht nur hier aufpassen, dass man die länge des Arrays in der Schleife nicht überschreitet und so auf Felder zugreift die gar nicht existieren. Damit so etwas erst gar nicht passiert, kann man in der Abbruchbedingung der for-Schleife direkt die Länge des Arrays ausgeben mit: array.length.
+---
 
-Möchte man nun also alle 5 Elemente unseres Beispiels-Arrays mit einer Schleife ausgeben lassen, dann würde das so gehen:
+### 4.4 CSS – Layout und Design
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Examples of array manipulations" .java}
-// (c) by Mike Scott
+Das Layout basiert auf **Flexbox** und **CSS Grid**, um eine saubere und responsive Struktur zu gewährleisten.
 
-public class ArrayExamples
-{	public static void main(String[] args)
-	{	int[] list = {1, 2, 3, 4, 1, 2, 3};
-		findAndPrintPairs(list, 5);
-		bubblesort(list);
-		showList(list);
-
-		list = new int[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
-		bubblesort(list);
-		showList(list);
-
-		list = new int[]{11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2};
-		bubblesort(list);
-		showList(list);
-
-		list = new int[]{1};
-		bubblesort(list);
-		showList(list);
-	}
-
-
-	// pre: list != null, list.length > 0
-	// post: return index of minimum element of array
-	public static int findMin(int[] list)
-	{	assert list != null && list.length > 0 : "failed precondition";
-
-		int indexOfMin = 0;
-		for(int i = 1; i < list.length; i++)
-		{	if(list[i] < list[indexOfMin])
-			{	indexOfMin = i;
-			}
-		}
-
-		return indexOfMin;
-	}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="CSS: Layout der Spielerleiste" .css}
+#player-setup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 30px auto;
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Obwohl hier nur java gezeigt ist, unterstützt das Template auch scala, java, javascript, css, html5 und xml
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Ein einfaches XML" .xml}
-<?xml version="1.0" standalone="yes"?>
-<!DOCTYPE module [
-    <!ELEMENT module (module|property|metadata|message)*>
-    <!ATTLIST module name NMTOKEN #REQUIRED>
-    <!ELEMENT property EMPTY>
-    <!ATTLIST property
-        name NMTOKEN #REQUIRED
-        value CDATA #REQUIRED
-        default CDATA #IMPLIED
-    >
-    <!ELEMENT metadata EMPTY>
-    <!ATTLIST metadata
-        name NMTOKEN #REQUIRED
-        value CDATA #REQUIRED
-    >
-    <!ELEMENT message EMPTY>
-    <!ATTLIST message
-        key NMTOKEN #REQUIRED
-        value CDATA #REQUIRED
-    >
-]>
-
-<!--
-    Checkstyle configuration that checks if the braces are set correctly
- -->
-
-<module name = "Checker">
-    <property name="charset" value="UTF-8"/>
-    <property name="severity" value="warning"/>
-
-    <property name="fileExtensions" value="java"/>
-    <!-- Checks for whitespace                               -->
-    <!-- See http://checkstyle.sf.net/config_whitespace.html -->
-
-    <module name="TreeWalker">
-        
-        <module name="NeedBraces"/>
-        <module name="LeftCurly">
-        	<property name="option" value="nl"/>
-        </module>
-
-        <module name="RightCurly">
-            <property name="id" value="RightCurlyAlone"/>
-            <property name="option" value="alone"/>
-            <property name="tokens"
-             value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT,
-                    INSTANCE_INIT,LITERAL_TRY, LITERAL_CATCH, LITERAL_FINALLY, LITERAL_IF, LITERAL_ELSE,
-                    LITERAL_DO"/>
-        </module>
-    </module>
-</module>
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Hier etwas in kotlin
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Ein einfaches Kotlin Beispiel" .kotlin}
-// this is a simple code listing:
-println("hello kotlin from latex")
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Und noch ein Beispiel in vba
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Ein einfaches Visual Basic for Applications Beispiel" .vba}
-Private Sub ExitSub()
- 
-    Dim i As Integer
- 
-    For i = 1 To 10      
-        If i = 5 Then
-            Exit Sub
-            MsgBox "The value of i is" & i
-        End If
-    Next i 
- 
-End Sub
- 
- 
-Private Sub CallExitSub()
-    Call ExitSub
-    MsgBox "Exit Sub"  
-End Sub
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-und noch was in Dart (im Markdown direkt als Latex Quellcode eingefügt - damit funktionieren jegliche Sprachen welche als langdef vorliegen) 
-
-\begin{lstlisting}[language=Dart, caption={Ein Beispiel für Dart}]
-library hallo;
-
-void main() {
-  String x;
-  print('Hello, World!');
-  x = 'hallo';
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="CSS: Statistik-Dashboard mit Cards" .css}
+#stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 40px auto;
 }
-\end{lstlisting}
 
+.card {
+  background: #1a1a1a;
+  border-radius: 18px;
+  padding: 25px;
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-### Auswertung der Ergebnisse
+---
 
-Anhand von XY kann man folgende Tabelle ableiten:
+### 4.5 JavaScript – Interaktion und Logik
 
-| Right | Left | Default | Center |
-|------:|:-----|---------|:------:|
-|   12  |  12  |    12   |    12  |
-|  123  |  123 |   123   |   123  |
-|    1  |    1 |     1   |     1  |
+Die dynamischen Funktionen des Frontends werden mit JavaScript umgesetzt.  
+Spieler können hinzugefügt werden und Würfe werden mithilfe von Dummy-Daten simuliert.
 
-: Eine Tolle tabelle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="JavaScript: Spielerverwaltung" .javascript}
+function renderPlayers() {
+  playerSelect.innerHTML = "";
+  players.forEach((p) => {
+    const option = document.createElement("option");
+    option.textContent = p;
+    playerSelect.appendChild(option);
+  });
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#### Eine Überschrift 4ter Ordnung
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="JavaScript: Simulation eines Wurfs" .javascript}
+newShotBtn.addEventListener("click", () => {
+  const angle = Math.floor(Math.random() * 15) + 40;
+  const speed = Math.floor(Math.random() * 10) + 20;
 
-Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext.
+  angleSpan.textContent = angle;
+  speedSpan.textContent = speed;
 
+  updateChart();
+});
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#### Noch ein Überschrift 4ter Ordnung
+---
 
-Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext.
+### 4.6 Darstellung der Flugkurve
 
-Und mit einer Aufzählung:
+Die grafische Darstellung der Flugkurve erfolgt mit **Chart.js**.  
+Dabei werden eine Soll- und eine Ist-Flugbahn angezeigt.
 
-* Alpha
-* Bravo
-* Charlie
-    * Charlie 1
-    * Charlie 2
-    * Charlie 3
-    * Charlie 4
-* Delta
-* Epsilon
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="JavaScript: Chart.js – Soll vs. Ist Flugbahn" .javascript}
+const chart = new Chart(ctx, {
+  type: "line",
+  data: {
+    labels: [0, 1, 2, 3, 4, 5, 6],
+    datasets: [
+      { label: "Soll-Flugbahn", data: [0, 2, 4, 5, 4, 2, 0] },
+      { label: "Ist-Flugbahn", data: [0, 1.8, 3.5, 4.9, 4.2, 1.7, 0] }
+    ]
+  }
+});
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext.
+Die dargestellten Codeauszüge zeigen den aktuellen Prototypenstand mit Dummy-Daten.  
+Die Logik ist so aufgebaut, dass in der finalen Version statt der simulierten Werte reale Messdaten aus dem Backend übernommen und ohne Layoutänderung in dieselben UI-Komponenten eingebunden werden können.
 
+---
+
+## 5. Aufgabenstellung Drei – Integration und Ausblick
+
+### 5.1 Backend-Anbindung (Konzept)
+
+In der finalen Version soll das Frontend mit dem Backend verbunden werden, welches von einem anderen Teammitglied umgesetzt wird.  
+Das Backend stellt die berechneten Wurfdaten sowie gespeicherte Spielerinformationen bereit.
+
+Das Frontend übernimmt dabei ausschließlich:
+- die Darstellung der Daten  
+- die grafische Aufbereitung der Statistiken  
+- die Aktualisierung der Benutzeroberfläche  
+
+Die Berechnung der Soll- und Ist-Flugbahn erfolgt **nicht im Frontend**.
+
+---
+
+### 5.2 Herausforderungen
+
+Eine zentrale Herausforderung der Frontend-Entwicklung ist die übersichtliche Darstellung komplexer Daten.  
+Besonders die gleichzeitige Anzeige von Kameraansicht, Statistik und Flugkurve erfordert eine klare Strukturierung.
+
+Weitere Herausforderungen:
+- Responsives Design für unterschiedliche Bildschirmgrößen  
+- Lesbarkeit im Dark Mode  
+- Vorbereitung auf dynamische Echtzeitdaten  
+
+---
+
+## 6. Zusammenfassung
+
+Das Frontend stellt einen wesentlichen Bestandteil der Diplomarbeit dar, da es die Schnittstelle zwischen Benutzer und System bildet.  
+Der umgesetzte Prototyp bildet den geplanten Funktionsumfang realistisch ab und ist vorbereitet für die Integration realer Analyseergebnisse.
+
+---
+
+## 12. Anhang
+
+### 12.3 Technische Dokumentation – Frontend
+
+Das Frontend ist modular aufgebaut und klar von der Logik des Backends getrennt.  
+Diese Trennung ermöglicht eine einfache Wartung sowie zukünftige Erweiterungen, ohne bestehende Komponenten wesentlich verändern zu müssen.
