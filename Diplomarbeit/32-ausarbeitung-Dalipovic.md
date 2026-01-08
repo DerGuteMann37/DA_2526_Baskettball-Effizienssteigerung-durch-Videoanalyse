@@ -215,7 +215,7 @@ Besonders die gleichzeitige Anzeige von Kameraansicht, Statistik und Flugkurve e
 
 Weitere Herausforderungen:
 - Responsives Design für unterschiedliche Bildschirmgrößen  
-- Lesbarkeit im Dark Mode  
+- Einfügung von Sprachfunktion 
 - Vorbereitung auf dynamische Echtzeitdaten  
 
 ---
