@@ -1,206 +1,252 @@
-# Teilaufgabe Schüler Bravo
-\textauthor{Schueler 2}
+Teilaufgabe Dalipovic  
+Frontend – Spieler- & Statistikansicht  
 
-## Theorie
+---
 
-Dieses Kapitel wird oft auch als _Literaturrecherche_ bezeichnet. Da gehört alles rein was der __normale__ Leser braucht um den praktischen Ansatz zu verstehen. Das bedeutet Sie brauchen einen roten Faden !
+## Einleitung
 
-Das sind z.B: allgemeine Definitionen, Beschreibung von fachspezifischen Vorgehensweisen, Frameworks, Theorie zu verwendeten Algorithmen, besondere Umstände, ...
+Im Rahmen der Diplomarbeit *„Basketball-Effizienzsteigerung“* wird ein Softwaresystem entwickelt, das Basketballwürfe mithilfe von Videoanalyse analysiert und die daraus gewonnenen Daten strukturiert darstellt.  
+Ziel des Gesamtsystems ist es, Spielern eine objektive Rückmeldung über ihre Wurftechnik zu geben und langfristig eine Leistungssteigerung zu ermöglichen.
 
-## Praktische Arbeit
+Diese Ausarbeitung behandelt ausschließlich den **Frontend-Teil** des Projekts.  
+Das Frontend stellt die grafische Benutzeroberfläche dar und ist dafür verantwortlich, die vom Backend und von der Videoanalyse gelieferten Daten verständlich und übersichtlich aufzubereiten.
 
-Hier beschreiben Sie ihren praktischen Teil. Es geht darum seine Implementierung / Versuche so darzustellen dass anhand dieser dre Leser erkennen kann was sie wie gemacht haben.
+Der Fokus liegt dabei auf Benutzerführung, Visualisierung, Struktur und Erweiterbarkeit – nicht auf der mathematischen oder kamerabasierten Analyse.
 
-Die Frage nach der Detailgenauigkeit lässt sich wie folgt beantworten: So, dass man Ihre Aufgabenstellung vollständig  nachvollziehen kann wenn man nur diese Diplomarbeit in Händen hat!
+---
 
-### Erzeugen von Java Quellcode
+## Individuelle Zielsetzung und Aufgabenstellung
 
-Unter einem Array in Java versteht man ein Feld oder Container, das in der Lage ist, mehrere Objekte vom gleichen Typ aufzunehmen und zu verwalten. Dabei wird in Java das Array als eine spezielle Klasse repräsentiert, was unter anderem mit sich bringt, dass man auf spezielle Methoden und Operationen bei Arrays zurückgreifen kann. Der Umgang mit Arrays mag gerade am Anfang etwas schwerer sein und birgt viele Fehlerquellen, nach und nach wird man das System das hinter den Arrays steht aber gut nachvollziehen können. 
+Die Zielsetzung des Frontend-Teils besteht darin, eine moderne, übersichtliche und erweiterbare Benutzeroberfläche zu entwickeln, welche die komplexen Analyseergebnisse verständlich darstellt.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Initialisieren eines Arrays" .java}
-Typ[] Name = new Typ[Anzahl];
-Typ Name[] = new Typ[Anzahl];
+Dabei übernimmt das Frontend folgende Aufgaben:
+- Anzeige und Verwaltung von Spielern
+- Darstellung aktueller Wurfwerte
+- Visualisierung der Soll- und Ist-Flugbahn
+- Anzeige des Wurfverlaufs
+- Bereitstellung eines strukturierten Dashboards
+
+Die Berechnung der Werte sowie die Videoanalyse erfolgen außerhalb des Frontends und werden von anderen Teammitgliedern umgesetzt.
+
+---
+
+## Theoretische Grundlagen der Frontend-Entwicklung
+
+### Webbasierte Frontends
+
+Webbasierte Frontends bieten den Vorteil, dass sie plattformunabhängig genutzt werden können.  
+Ein moderner Webbrowser genügt, um die Anwendung auszuführen, wodurch keine zusätzliche Installation notwendig ist.
+
+Durch die Trennung von Struktur (HTML), Darstellung (CSS) und Logik (JavaScript) entsteht eine klare und wartbare Architektur.
+
+---
+
+### Visualisierung von Daten
+
+Ein wesentlicher Bestandteil moderner Analyseanwendungen ist die visuelle Aufbereitung von Daten.  
+Diagramme, Verlaufsanzeigen und farbliche Hervorhebungen helfen dabei, komplexe Informationen schneller zu erfassen als reine Textdarstellungen.
+
+Für dieses Projekt wurde bewusst auf eine grafische Darstellung der Flugkurven gesetzt, da diese den Wurfverlauf intuitiv nachvollziehbar macht.
+
+---
+
+## Verwendete Technologien
+
+### HTML – Strukturierung der Benutzeroberfläche
+
+HTML bildet die Grundlage der Benutzeroberfläche.  
+Alle Elemente wie Eingabefelder, Buttons, Statistikfelder und Diagrammcontainer werden über HTML strukturiert.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="HTML: Grundstruktur der Anwendung" .html}
+<body>
+  <header>
+    <h1>Smart Shot Analyzer – Basketball Wurftraining</h1>
+  </header>
+
+  <main>
+    <section class="camera-view">
+      Live-Kamera (Simulation)
+    </section>
+
+    <section id="stats-grid">
+      <!-- Statistik Cards -->
+    </section>
+  </main>
+</body>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Etwas erfahrenere Programmierer werden jetzt schon erkennen, worauf es beim Zugriff auf Elemente im Array meist hinausläuft: Auf Schleifen!
-Schleifen sind ein komfortables Mittel um alle Elemente eines Arrays durchzugehen und auf Wunsch auszugeben oder andere Operationen darauf anzuwenden. Allerdings muss man nicht nur hier aufpassen, dass man die länge des Arrays in der Schleife nicht überschreitet und so auf Felder zugreift die gar nicht existieren. Damit so etwas erst gar nicht passiert, kann man in der Abbruchbedingung der for-Schleife direkt die Länge des Arrays ausgeben mit: array.length.
+Diese Struktur sorgt für eine klare Trennung zwischen Kopfbereich, Hauptinhalt und Statistikbereich.
 
-Möchte man nun also alle 5 Elemente unseres Beispiels-Arrays mit einer Schleife ausgeben lassen, dann würde das so gehen:
+---
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Examples of array manipulations" .java}
-// (c) by Mike Scott
+### CSS – Layout, Design und Responsivität
 
-public class ArrayExamples
-{	public static void main(String[] args)
-	{	int[] list = {1, 2, 3, 4, 1, 2, 3};
-		findAndPrintPairs(list, 5);
-		bubblesort(list);
-		showList(list);
+CSS wird verwendet, um das Layout der Anwendung zu gestalten.  
+Das Design wurde bewusst im Dark Mode umgesetzt, da dieser bei längerer Nutzung angenehmer für die Augen ist.
 
-		list = new int[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
-		bubblesort(list);
-		showList(list);
-
-		list = new int[]{11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2};
-		bubblesort(list);
-		showList(list);
-
-		list = new int[]{1};
-		bubblesort(list);
-		showList(list);
-	}
-
-
-	// pre: list != null, list.length > 0
-	// post: return index of minimum element of array
-	public static int findMin(int[] list)
-	{	assert list != null && list.length > 0 : "failed precondition";
-
-		int indexOfMin = 0;
-		for(int i = 1; i < list.length; i++)
-		{	if(list[i] < list[indexOfMin])
-			{	indexOfMin = i;
-			}
-		}
-
-		return indexOfMin;
-	}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="CSS: Grundlegendes Farbschema und Schrift" .css}
+body {
+  background: radial-gradient(circle at top, #1b1b1b, #000);
+  color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  margin: 0;
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Obwohl hier nur java gezeigt ist, unterstützt das Template auch scala, java, javascript, css, html5 und xml
+---
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Ein einfaches XML" .xml}
-<?xml version="1.0" standalone="yes"?>
-<!DOCTYPE module [
-    <!ELEMENT module (module|property|metadata|message)*>
-    <!ATTLIST module name NMTOKEN #REQUIRED>
-    <!ELEMENT property EMPTY>
-    <!ATTLIST property
-        name NMTOKEN #REQUIRED
-        value CDATA #REQUIRED
-        default CDATA #IMPLIED
-    >
-    <!ELEMENT metadata EMPTY>
-    <!ATTLIST metadata
-        name NMTOKEN #REQUIRED
-        value CDATA #REQUIRED
-    >
-    <!ELEMENT message EMPTY>
-    <!ATTLIST message
-        key NMTOKEN #REQUIRED
-        value CDATA #REQUIRED
-    >
-]>
+#### Dashboard-Layout
 
-<!--
-    Checkstyle configuration that checks if the braces are set correctly
- -->
-
-<module name = "Checker">
-    <property name="charset" value="UTF-8"/>
-    <property name="severity" value="warning"/>
-
-    <property name="fileExtensions" value="java"/>
-    <!-- Checks for whitespace                               -->
-    <!-- See http://checkstyle.sf.net/config_whitespace.html -->
-
-    <module name="TreeWalker">
-        
-        <module name="NeedBraces"/>
-        <module name="LeftCurly">
-        	<property name="option" value="nl"/>
-        </module>
-
-        <module name="RightCurly">
-            <property name="id" value="RightCurlyAlone"/>
-            <property name="option" value="alone"/>
-            <property name="tokens"
-             value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT,
-                    INSTANCE_INIT,LITERAL_TRY, LITERAL_CATCH, LITERAL_FINALLY, LITERAL_IF, LITERAL_ELSE,
-                    LITERAL_DO"/>
-        </module>
-    </module>
-</module>
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Hier etwas in kotlin
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Ein einfaches Kotlin Beispiel" .kotlin}
-// this is a simple code listing:
-println("hello kotlin from latex")
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Und noch ein Beispiel in vba
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Ein einfaches Visual Basic for Applications Beispiel" .vba}
-Private Sub ExitSub()
- 
-    Dim i As Integer
- 
-    For i = 1 To 10      
-        If i = 5 Then
-            Exit Sub
-            MsgBox "The value of i is" & i
-        End If
-    Next i 
- 
-End Sub
- 
- 
-Private Sub CallExitSub()
-    Call ExitSub
-    MsgBox "Exit Sub"  
-End Sub
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-und noch was in Dart (im Markdown direkt als Latex Quellcode eingefügt - damit funktionieren jegliche Sprachen welche als langdef vorliegen) 
-
-\begin{lstlisting}[language=Dart, caption={Ein Beispiel für Dart}]
-library hallo;
-
-void main() {
-  String x;
-  print('Hello, World!');
-  x = 'hallo';
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="CSS: Statistik-Dashboard als Grid" .css}
+#stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 30px;
+  padding: 40px;
 }
-\end{lstlisting}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Durch das Grid-Layout können die Statistik-Elemente flexibel angeordnet werden.
 
-### Auswertung der Ergebnisse
+---
 
-Anhand von XY kann man folgende Tabelle ableiten:
+#### Karten-Design
 
-| Right | Left | Default | Center |
-|------:|:-----|---------|:------:|
-|   12  |  12  |    12   |    12  |
-|  123  |  123 |   123   |   123  |
-|    1  |    1 |     1   |     1  |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="CSS: Statistik-Card Design" .css}
+.card {
+  background: #1a1a1a;
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid #333;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-: Eine Tolle tabelle
+Dieses Design sorgt für eine klare visuelle Trennung der einzelnen Informationsbereiche.
 
-#### Eine Überschrift 4ter Ordnung
+---
 
-Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext.
+### JavaScript – Interaktion und Dynamik
 
+JavaScript wird für die komplette Interaktionslogik verwendet.  
+Spieler können angelegt werden, Würfe simuliert und Diagramme aktualisiert.
 
-#### Noch ein Überschrift 4ter Ordnung
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="JavaScript: Initialisierung der Spieler" .javascript}
+let players = [];
+let history = [];
 
-Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext.
+const playerSelect = document.getElementById("playerSelect");
+const newPlayerInput = document.getElementById("newPlayerName");
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Und mit einer Aufzählung:
+---
 
-* Alpha
-* Bravo
-* Charlie
-    * Charlie 1
-    * Charlie 2
-    * Charlie 3
-    * Charlie 4
-* Delta
-* Epsilon
+#### Spieler hinzufügen
 
- Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext. Mit etwas Fließtext.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="JavaScript: Spieler hinzufügen" .javascript}
+addPlayerBtn.addEventListener("click", () => {
+  const name = newPlayerInput.value.trim();
+  if (!name) return;
 
+  players.push(name);
+  renderPlayers();
+  playerSelect.value = name;
+  newPlayerInput.value = "";
+});
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Dieser Code erlaubt es, Spieler dynamisch hinzuzufügen, ohne die Seite neu zu laden.
+
+---
+
+#### Simulation eines Wurfs
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="JavaScript: Simulation eines Wurfs" .javascript}
+newShotBtn.addEventListener("click", () => {
+  const angle = Math.floor(Math.random() * 15) + 40;
+  const speed = Math.floor(Math.random() * 10) + 20;
+
+  document.getElementById("angle").textContent = angle;
+  document.getElementById("speed").textContent = speed;
+
+  history.push({ angle, speed, time: new Date().toLocaleString() });
+  updateHistory();
+  updateChart();
+});
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Die Wurfwerte werden aktuell zufällig generiert und dienen als Dummy-Daten.
+
+---
+
+### Chart.js – Darstellung der Flugkurve
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="JavaScript: Chart.js Initialisierung" .javascript}
+const ctx = document.getElementById("trajectoryChart");
+const chart = new Chart(ctx, {
+  type: "line",
+  data: {
+    labels: [0,1,2,3,4,5,6],
+    datasets: [
+      {
+        label: "Soll-Flugbahn",
+        data: [0,2,4,5,4,2,0],
+        borderColor: "#ff8c1a",
+        tension: 0.4
+      },
+      {
+        label: "Ist-Flugbahn",
+        data: [0,1.8,3.5,4.9,4.2,1.7,0],
+        borderColor: "#00cc88",
+        tension: 0.4
+      }
+    ]
+  }
+});
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diese Visualisierung macht Abweichungen zwischen Soll- und Ist-Wurf sofort sichtbar.
+
+---
+
+Die dargestellten Codeauszüge zeigen den aktuellen Prototypenstand mit Dummy-Daten.  
+Die Struktur ist so aufgebaut, dass reale Daten aus dem Backend später ohne Änderungen am Layout eingebunden werden können.
+
+---
+
+## Herausforderungen
+
+Eine der größten Herausforderungen bestand darin, viele Informationen gleichzeitig darzustellen, ohne die Übersichtlichkeit zu verlieren.  
+Insbesondere die Kombination aus Kameraansicht, Statistik und Diagrammen erfordert ein klares Layout.
+
+Weitere Herausforderungen:
+- Skalierung für unterschiedliche Bildschirmgrößen  
+- Lesbarkeit im Dark Mode  
+- Vorbereitung auf Echtzeitdaten  
+
+---
+
+## Ausblick und Integration
+
+In der finalen Version wird das Frontend über eine Schnittstelle mit dem Backend verbunden.  
+Die vom Backend gelieferten Daten ersetzen dabei die aktuell verwendeten Dummy-Daten.
+
+Das Frontend bleibt dabei unverändert und übernimmt weiterhin ausschließlich die Darstellung.
+
+---
+
+## Zusammenfassung
+
+Der Frontend-Prototyp zeigt, wie komplexe Analyseergebnisse übersichtlich dargestellt werden können.  
+Durch den modularen Aufbau ist das System gut erweiterbar und für die Integration in das Gesamtsystem vorbereitet.
+
+---
+
+## Anhang – Technische Dokumentation (Frontend)
+
+Das vollständige Frontend besteht aus den Dateien:
+- `index.html`
+- `style.css`
+- `script.js`
+
+Diese sind dem Projekt beigefügt und dokumentieren die vollständige Implementierung.
