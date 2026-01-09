@@ -1,6 +1,5 @@
 # Teilaufgabe Schüler Gutmann  
 \textauthor{Gutmann Florian}
-**Autor:** Florian Gutmann  
 
 ---
 

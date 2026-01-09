@@ -1,5 +1,6 @@
 # Teilaufgabe Schüler Dalipovic 
 \textauthor{Nino Dalipovic} 
+
 Frontend – Spieler- & Statistikansicht  
 
 ---
