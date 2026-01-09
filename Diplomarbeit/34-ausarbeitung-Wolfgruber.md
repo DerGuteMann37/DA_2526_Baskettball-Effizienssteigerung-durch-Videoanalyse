@@ -1,3 +1,5 @@
+# Teilaufgabe Schüler Wolfgruber  
+\textauthor{Wolfgruber Bastian}
 ## Implementierung der Ist-Flugbahn (Konzept und Visualisierung)
 
 ### Begriffserklärung: Ist-Flugbahn
