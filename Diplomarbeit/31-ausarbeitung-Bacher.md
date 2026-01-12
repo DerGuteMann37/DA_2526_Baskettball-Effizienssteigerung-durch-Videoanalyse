@@ -156,14 +156,11 @@ Für die grafische Darstellung der Ergebnisse wurde Matplotlib verwendet. Mit di
 
 Das Projekt ist als Pipeline aufgebaut: Aus Rohvideos werden durch mehrere Verarbeitungsschritte strukturierte Ergebnisse erzeugt (Overlays, JSON-Summaries, CSV-Statistiken, Reports). Die Architektur trennt dabei klar zwischen Eingabedaten, Konfiguration/Kalibrierung, Verarbeitungsskripten und Ausgabeordnern.
 
-![Sollflugbahn-Architektur](img/ordnerstruktursoll.png)
 
-
-![Data Ordner](img/dataraw.png)
 
 Enthält die Rohdaten: Videoclips einzelner Würfe (z. B. wurf1.mov, wurf2.mov). Dieser Ordner ist die einzige Video-Eingabequelle.
 
-![Scripts Ordner](img/scripts.png)
+
 
 Hier liegt die gesamte Logik. Die Scripts sind modular nach Aufgaben getrennt:
 
@@ -172,11 +169,3 @@ Hier liegt die gesamte Logik. Die Scripts sind modular nach Aufgaben getrennt:
 - Batch-Verarbeitung (mehrere Clips automatisiert verarbeiten)
 - Statistik/Reporting (CSV sammeln, Plots und PDF erzeugen)
 
-![Output Ordner](img/output.png)
-
-Enthält alle Ergebnisse, strukturiert nach Zweck:
-
-- outputs/overlays/<clip>/… → Bilder/Overlays + JSON-Zusammenfassungen pro Clip
-- outputs/summaries/… → zusammengefasste CSV-Statistiken über alle Clips
-- outputs/figures/… → Diagramme (PNG/PDF)
-- outputs/reports/… → PDF-Report
