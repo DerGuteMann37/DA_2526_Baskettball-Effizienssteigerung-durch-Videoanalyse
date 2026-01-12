@@ -68,7 +68,7 @@ Zur Planung der Datenbankstruktur wird das **Entity-Relationship-Modell (ER-Mode
 
 #### ER-Diagramm des Projekts
 
-![ER-Diagramm](img/ER_Diagramm_first.drawio.png)
+![ER-Diagramm](img/ER_Diagramm_first.png)
 
 Das ER-Diagramm stellt die im Projekt verwendete Datenbankstruktur grafisch dar und zeigt die zentralen Entitäten sowie deren Beziehungen untereinander. Es bildet den realen Trainingsablauf ab und dient als Grundlage für die Implementierung der Datenbank im Backend.
 
