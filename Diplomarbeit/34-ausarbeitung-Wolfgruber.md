@@ -15,7 +15,7 @@ Ziel der Ist-Flugbahn ist es, den realen Bewegungsverlauf des Basketballs mögli
 präzise zu erfassen und visuell darzustellen, um diesen später mit der berechneten
 Soll-Flugbahn vergleichen zu können.
 
----
+
 
 ## Ausgangsmaterial und Videovorbereitung
 
@@ -37,7 +37,7 @@ Für das Schneiden und Vorbereiten der Videos wurde die Software DaVinci Resolve
 verwendet. Dadurch konnte eine gleichbleibende Qualität der Videoclips sowie eine
 klare zeitliche Abgrenzung der einzelnen Würfe sichergestellt werden.
 
----
+
 
 ## Technische Umsetzung der Ist-Flugbahn
 
@@ -53,7 +53,7 @@ miteinander verbunden und grafisch im Videobild dargestellt.
 Eine erste funktionsfähige Version der Ist-Flugbahn wurde erfolgreich umgesetzt
 und bildet die Grundlage für den späteren Vergleich mit der Soll-Flugbahn.
 
----
+
 
 ## Tracking des Basketballs
 
@@ -71,7 +71,7 @@ In solchen Situationen identifizierte der Tracking-Algorithmus fälschlicherweis
 die größere oder stärker bewegte Objektregion als Ziel. Dies führte zu fehlerhaften
 Flugbahnen und machte eine zuverlässige Analyse unmöglich.
 
----
+
 
 ## Lösungsansatz: Manuelle Initialisierung der Region of Interest (ROI)
 
@@ -95,7 +95,7 @@ Zusätzlich wird eine Plausibilitätsprüfung eingesetzt, bei der unplausible
 Bewegungssprünge des Balls zwischen zwei Frames erkannt werden. In solchen Fällen
 wird das Tracking abgebrochen, um fehlerhafte Ergebnisse zu vermeiden.
 
----
+
 
 ## Visualisierung der Ist-Flugbahn
 
@@ -114,7 +114,7 @@ Diese Darstellung bildet die Grundlage für den späteren Vergleich mit der Soll
 und ermöglicht es, Abweichungen zwischen idealem und tatsächlichem Wurfverlauf
 klar zu erkennen.
 
----
+
 
 ## Aktueller Stand der Ist-Flugbahn-Komponente
 
@@ -125,7 +125,6 @@ wird und der Ball im Videomaterial eindeutig sichtbar ist.
 Die erzeugte Ist-Flugbahn dient bereits als valide Grundlage für den Vergleich mit der
 Soll-Flugbahn und stellt einen wesentlichen Bestandteil der Videoanalyse dar.
 
----
 
 ## Architektur der Videoanalyse-Pipeline
 
@@ -138,7 +137,7 @@ Eingabedaten, Konfiguration und Kalibrierung, Verarbeitungsskripten sowie
 Ausgabeartefakten. Dadurch wird eine hohe Nachvollziehbarkeit, Wiederholbarkeit
 und Erweiterbarkeit der Analyse gewährleistet.
 
----
+
 ## Offene Punkte und Ausblick
 
 Ein noch offener Punkt ist die vollständige Zusammenführung der Ist- und Soll-Flugbahn
@@ -150,7 +149,7 @@ Die Kombination beider Flugbahnen stellt einen wichtigen nächsten Entwicklungss
 um Spieler*innen ein direktes visuelles Feedback über Abweichungen zwischen realem
 und idealem Wurfverlauf zu ermöglichen.
 
----
+
 
 ## Eingesetzte Programmiersprache und Bibliotheken (Ist-Flugbahn)
 
@@ -176,7 +175,7 @@ schnelle Entwicklung sowie gute Wartbarkeit.
 - MATLAB (stark für Analyse, aber lizenzpflichtig)  
 - Java (gut für Backend, weniger verbreitet für Computer Vision)
 
----
+
 
 ### OpenCV (`cv2`)
 
@@ -193,7 +192,7 @@ sowie das Zeichnen der Overlays verwendet.
 - Tracker teilweise nur in `opencv-contrib-python` verfügbar  
 - Tracking fehleranfällig bei Verdeckungen oder schlechten Lichtverhältnissen  
 
----
+
 
 ### NumPy (`numpy`)
 
@@ -208,7 +207,7 @@ in CSV-Dateien exportiert.
 **Nachteile:**
 - Höherer Speicherbedarf bei großen Datenmengen  
 
----
+
 
 ### JSON und Dateisystem (`json`, `os`)
 

@@ -1,7 +1,7 @@
 # Teilaufgabe Schüler Gutmann  
 \textauthor{Gutmann Florian}
 
----
+
 
 ## Einführung in den Backend-Teil
 
@@ -13,7 +13,7 @@ Technisch wird das Backend als Webservice umgesetzt, der über eine **REST-Schni
 
 Durch diese Architektur entsteht eine klare Aufgabenteilung: Die Videoanalyse erzeugt Messdaten, das Backend speichert und verarbeitet diese Daten und stellt sie dem Frontend in einer einheitlichen Form zur Verfügung. Diese Trennung erhöht die Wartbarkeit und Erweiterbarkeit des Gesamtsystems, da einzelne Komponenten unabhängig voneinander weiterentwickelt oder ausgetauscht werden können.
 
----
+
 
 ## Praktische Arbeit
 
@@ -39,7 +39,7 @@ Zusätzlich wurden die Anforderungen des Frontends konkretisiert. Das Frontend b
 
 Abschließend wurde festgelegt, dass das Backend über eine REST-Schnittstelle mit dem Frontend kommuniziert. Die Datenübertragung erfolgt im JSON-Format, wodurch eine plattformunabhängige und leicht erweiterbare Kommunikation ermöglicht wird. Diese Entscheidungen bilden die Grundlage für alle weiteren technischen Umsetzungen im Backend und stellen sicher, dass die einzelnen Projektteile nahtlos ineinandergreifen.
 
----
+
 
 ## Datenbank
 
@@ -78,7 +78,7 @@ Jedem Wurf sind spezifische Analyse- und Flugdaten zugeordnet, welche aus der Vi
 
 Das dargestellte ER-Diagramm bildet somit die fachliche Grundlage für die Datenhaltung im Backend und stellt sicher, dass alle relevanten Informationen konsistent und nachvollziehbar gespeichert werden können.
 
----
+
 
 ## Technologieentscheidungen
 
@@ -167,7 +167,7 @@ Zur Testung der entwickelten REST-Schnittstellen wurde das Tool **Postman** verw
 
 Während der Entwicklung des Backends wurde Postman eingesetzt, um die korrekte Funktionalität der API-Endpunkte zu testen, Daten im JSON-Format zu senden sowie Serverantworten zu analysieren. Dadurch konnten Fehler frühzeitig erkannt und die Schnittstellen unabhängig vom Frontend validiert werden. Der Einsatz von Postman unterstützte somit eine strukturierte und effiziente Entwicklung sowie die Qualitätssicherung der REST-API.
 
----
+
 
 ## Backend-Architektur
 
@@ -192,7 +192,7 @@ Die Klasse `Da2526BaskettballEffizienssteigerungDurchVideoanalyseApplication` st
 - **`service`**: Geschäftslogik und Berechnung statistischer Auswertungen  
 - **`resources`**: Konfigurationsdateien und (lokal) Datenbankdateien  
 
----
+
 
 ## Packages
 
