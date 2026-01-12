@@ -62,7 +62,7 @@ Alle Elemente wie Eingabefelder, Buttons, Statistikfelder und Diagrammcontainer 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="HTML: Grundstruktur der Anwendung" .html}
 <body>
   <header>
-    <h1>Smart Shot Analyzer – Basketball Wurftraining</h1>
+    <h1>Smart Shot Analyzer - Basketball Wurftraining</h1>
   </header>
 
   <main>
