@@ -3,7 +3,7 @@
 
 Frontend – Spieler- & Statistikansicht  
 
----
+
 
 ## Einleitung
 
@@ -15,7 +15,7 @@ Das Frontend stellt die grafische Benutzeroberfläche dar und ist dafür verantw
 
 Der Fokus liegt dabei auf Benutzerführung, Visualisierung, Struktur und Erweiterbarkeit – nicht auf der mathematischen oder kamerabasierten Analyse.
 
----
+
 
 ## Individuelle Zielsetzung und Aufgabenstellung
 
@@ -30,7 +30,7 @@ Dabei übernimmt das Frontend folgende Aufgaben:
 
 Die Berechnung der Werte sowie die Videoanalyse erfolgen außerhalb des Frontends und werden von anderen Teammitgliedern umgesetzt.
 
----
+
 
 ## Theoretische Grundlagen der Frontend-Entwicklung
 
@@ -41,7 +41,7 @@ Ein moderner Webbrowser genügt, um die Anwendung auszuführen, wodurch keine zu
 
 Durch die Trennung von Struktur (HTML), Darstellung (CSS) und Logik (JavaScript) entsteht eine klare und wartbare Architektur.
 
----
+
 
 ### Visualisierung von Daten
 
@@ -50,7 +50,7 @@ Diagramme, Verlaufsanzeigen und farbliche Hervorhebungen helfen dabei, komplexe 
 
 Für dieses Projekt wurde bewusst auf eine grafische Darstellung der Flugkurven gesetzt, da diese den Wurfverlauf intuitiv nachvollziehbar macht.
 
----
+
 
 ## Verwendete Technologien
 
@@ -79,7 +79,7 @@ Alle Elemente wie Eingabefelder, Buttons, Statistikfelder und Diagrammcontainer 
 
 Diese Struktur sorgt für eine klare Trennung zwischen Kopfbereich, Hauptinhalt und Statistikbereich.
 
----
+
 
 ### CSS – Layout, Design und Responsivität
 
@@ -89,13 +89,13 @@ Das Design wurde bewusst im Dark Mode umgesetzt, da dieser bei längerer Nutzung
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="CSS: Grundlegendes Farbschema und Schrift" .css}
 body {
   background: radial-gradient(circle at top, #1b1b1b, #000);
-  color: #f2f2f2;
+  color:"#f2f2f2";
   font-family: Arial, sans-serif;
   margin: 0;
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
----
+
 
 #### Dashboard-Layout
 
@@ -110,13 +110,13 @@ body {
 
 Durch das Grid-Layout können die Statistik-Elemente flexibel angeordnet werden.
 
----
+
 
 #### Karten-Design
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="CSS: Statistik-Card Design" .css}
 .card {
-  background: #1a1a1a;
+  background: "#1a1a1a";
   border-radius: 20px;
   padding: 30px;
   border: 1px solid #333;
@@ -126,7 +126,7 @@ Durch das Grid-Layout können die Statistik-Elemente flexibel angeordnet werden.
 
 Dieses Design sorgt für eine klare visuelle Trennung der einzelnen Informationsbereiche.
 
----
+
 
 ### JavaScript – Interaktion und Dynamik
 
@@ -141,7 +141,7 @@ const playerSelect = document.getElementById("playerSelect");
 const newPlayerInput = document.getElementById("newPlayerName");
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
----
+
 
 #### Spieler hinzufügen
 
@@ -159,7 +159,7 @@ addPlayerBtn.addEventListener("click", () => {
 
 Dieser Code erlaubt es, Spieler dynamisch hinzuzufügen, ohne die Seite neu zu laden.
 
----
+
 
 #### Simulation eines Wurfs
 
@@ -179,7 +179,7 @@ newShotBtn.addEventListener("click", () => {
 
 Die Wurfwerte werden aktuell zufällig generiert und dienen als Dummy-Daten.
 
----
+
 
 ### Chart.js – Darstellung der Flugkurve
 
@@ -209,12 +209,12 @@ const chart = new Chart(ctx, {
 
 Diese Visualisierung macht Abweichungen zwischen Soll- und Ist-Wurf sofort sichtbar.
 
----
+
 
 Die dargestellten Codeauszüge zeigen den aktuellen Prototypenstand mit Dummy-Daten.  
 Die Struktur ist so aufgebaut, dass reale Daten aus dem Backend später ohne Änderungen am Layout eingebunden werden können.
 
----
+
 
 ## Herausforderungen
 
@@ -226,7 +226,7 @@ Weitere Herausforderungen:
 - Lesbarkeit im Dark Mode  
 - Vorbereitung auf Echtzeitdaten  
 
----
+
 
 ## Ausblick und Integration
 
@@ -235,14 +235,14 @@ Die vom Backend gelieferten Daten ersetzen dabei die aktuell verwendeten Dummy-D
 
 Das Frontend bleibt dabei unverändert und übernimmt weiterhin ausschließlich die Darstellung.
 
----
+
 
 ## Zusammenfassung
 
 Der Frontend-Prototyp zeigt, wie komplexe Analyseergebnisse übersichtlich dargestellt werden können.  
 Durch den modularen Aufbau ist das System gut erweiterbar und für die Integration in das Gesamtsystem vorbereitet.
 
----
+
 
 ## Anhang – Technische Dokumentation (Frontend)
 
