@@ -1,9 +1,9 @@
-# Teilaufgabe Schüler Gutmann  
+# Teilaufgabe Gutmann Florian
 \textauthor{Gutmann Florian}
 
+## Theorie
 
-
-## Einführung in den Backend-Teil
+### Einführung in den Backend-Teil
 
 Das Backend bildet die technische Grundlage für die Speicherung, Verarbeitung und Bereitstellung der im Projekt erhobenen Daten. Im Rahmen dieser Diplomarbeit entsteht ein System zur **Effizienzsteigerung von Basketballwürfen durch Videoanalyse**. Die Videoanalyse liefert dabei Messwerte und Parameter zu einzelnen Würfen (z. B. Abwurfpunkt, Korbposition, Geschwindigkeit, Winkel sowie Flugbahndaten). Damit diese Daten langfristig gespeichert, ausgewertet und für das Frontend nutzbar gemacht werden können, wird ein eigenständiges Backend entwickelt.
 
@@ -12,10 +12,6 @@ Die zentrale Aufgabe des Backends besteht darin, die Daten aus den Analyseprozes
 Technisch wird das Backend als Webservice umgesetzt, der über eine **REST-Schnittstelle** mit dem Frontend kommuniziert. Das Frontend kann dadurch Spieler*innen anlegen, Trainingseinheiten verwalten, Wurfdaten anzeigen und Statistik-Ergebnisse abrufen. Die Persistenz erfolgt in einer **relationalen Datenbank**, wobei in der Entwicklungsphase eine **H2-Datenbank** verwendet wird. Der Zugriff auf die Datenbank wird über **Object-Relational Mapping** realisiert, um Datenbanktabellen als Java-Objekte (Entities) abzubilden. Dafür werden **Java Persistence API (JPA)** sowie **Hibernate** als ORM-Framework eingesetzt.
 
 Durch diese Architektur entsteht eine klare Aufgabenteilung: Die Videoanalyse erzeugt Messdaten, das Backend speichert und verarbeitet diese Daten und stellt sie dem Frontend in einer einheitlichen Form zur Verfügung. Diese Trennung erhöht die Wartbarkeit und Erweiterbarkeit des Gesamtsystems, da einzelne Komponenten unabhängig voneinander weiterentwickelt oder ausgetauscht werden können.
-
-
-
-## Praktische Arbeit
 
 ### Beginn der Backend-Entwicklung und Anforderungsanalyse
 
@@ -27,7 +23,7 @@ Parallel dazu wurden die Anforderungen des Frontends analysiert. Das Frontend be
 
 Auf Basis dieser gemeinsamen Analyse wurden die Verantwortlichkeiten innerhalb des Backends festgelegt. Der Fokus lag dabei auf der Entwicklung einer Datenbankstruktur, der Definition geeigneter Datenmodelle sowie der Bereitstellung von Schnittstellen zur Kommunikation mit dem Frontend. Durch dieses strukturierte Vorgehen konnte eine solide Grundlage geschaffen werden, auf der die weitere Backend-Entwicklung systematisch aufbauen konnte.
 
-#### Ergebnis der Planungsphase
+### Ergebnis der Planungsphase
 
 Als Ergebnis der gemeinsamen Planungsphase konnten die grundlegenden Anforderungen an das Backend eindeutig festgelegt werden. Ziel war es, einen klaren Datenfluss zwischen Videoanalyse, Backend und Frontend zu definieren und Überschneidungen oder spätere Anpassungen möglichst zu vermeiden.
 
@@ -39,11 +35,9 @@ Zusätzlich wurden die Anforderungen des Frontends konkretisiert. Das Frontend b
 
 Abschließend wurde festgelegt, dass das Backend über eine REST-Schnittstelle mit dem Frontend kommuniziert. Die Datenübertragung erfolgt im JSON-Format, wodurch eine plattformunabhängige und leicht erweiterbare Kommunikation ermöglicht wird. Diese Entscheidungen bilden die Grundlage für alle weiteren technischen Umsetzungen im Backend und stellen sicher, dass die einzelnen Projektteile nahtlos ineinandergreifen.
 
+### Datenbank
 
-
-## Datenbank
-
-### Relationale Datenbanken
+#### Relationale Datenbanken
 
 Relationale Datenbanken speichern Informationen in tabellarischer Form. Jede Tabelle besteht aus Datensätzen (Zeilen) und Attributen (Spalten). Ein Datensatz beschreibt dabei ein konkretes Objekt, beispielsweise einen Spieler oder einen einzelnen Basketballwurf, während die Attribute die Eigenschaften dieses Objekts definieren.
 
@@ -51,11 +45,11 @@ Zur eindeutigen Identifikation eines Datensatzes wird ein **Primärschlüssel** 
 
 Aufgrund dieser Eigenschaften eignet sich das relationale Datenbankmodell besonders gut für das vorliegende Projekt, da die erfassten Daten aus der Videoanalyse langfristig gespeichert, miteinander verknüpft und ausgewertet werden müssen.
 
-### Entity-Relationship-Modell
+#### Entity-Relationship-Modell
 
 Zur Planung der Datenbankstruktur wird das **Entity-Relationship-Modell (ER-Modell)** verwendet. Es dient dazu, die zentralen Datenobjekte eines Systems sowie deren Beziehungen übersichtlich darzustellen und bildet die konzeptionelle Grundlage für die spätere Implementierung der Datenbank.
 
-#### Zentrale Begriffe des ER-Modells
+##### Zentrale Begriffe des ER-Modells
 
 - **Entität**  
   Eine Entität beschreibt ein eindeutig identifizierbares Objekt aus dem Anwendungsbereich. Im Projekt sind dies beispielsweise Spieler*innen, Trainingseinheiten oder einzelne Würfe. Entitäten werden später als Tabellen in der Datenbank umgesetzt.
@@ -66,7 +60,8 @@ Zur Planung der Datenbankstruktur wird das **Entity-Relationship-Modell (ER-Mode
 - **Beziehung**  
   Beziehungen stellen die Verknüpfungen zwischen Entitäten dar. Sie definieren, wie Objekte zueinander in Beziehung stehen, etwa dass eine Spielerin mehrere Trainingseinheiten absolvieren kann oder dass eine Trainingseinheit aus mehreren Würfen besteht.
 
-#### ER-Diagramm des Projekts
+## Praktische Arbeit
+### ER-Diagramm des Projekts
 
 ![ER-Diagramm](img/ER_Diagramm_first.png)
 
@@ -78,9 +73,7 @@ Jedem Wurf sind spezifische Analyse- und Flugdaten zugeordnet, welche aus der Vi
 
 Das dargestellte ER-Diagramm bildet somit die fachliche Grundlage für die Datenhaltung im Backend und stellt sicher, dass alle relevanten Informationen konsistent und nachvollziehbar gespeichert werden können.
 
-
-
-## Technologieentscheidungen
+### Technologieentscheidungen
 
 Zu Beginn der Backend-Entwicklung wurde eine ausführliche Recherche zu möglichen Technologien durchgeführt. Ziel war es, eine stabile, erweiterbare und für den Anwendungsfall der Videoanalyse geeignete technische Basis zu schaffen. Dabei wurden insbesondere Programmiersprachen, Datenbanksysteme sowie Frameworks für die Umsetzung eines webbasierten Backends verglichen.
 
@@ -169,19 +162,19 @@ Während der Entwicklung des Backends wurde Postman eingesetzt, um die korrekte 
 
 
 
-## Backend-Architektur
+### Backend-Architektur
 
 ![Backend-Architektur](img/backend_achitektur.png)
 
-### Aufbau
+#### Aufbau
 
 Das Backend des Projekts ist klar strukturiert und folgt einer **schichtenbasierten Architektur**. Die einzelnen Pakete übernehmen jeweils klar definierte Aufgaben und tragen dadurch zu einer guten Wartbarkeit und Erweiterbarkeit des Systems bei.
 
-#### Hauptklasse
+##### Hauptklasse
 
 Die Klasse `Da2526BaskettballEffizienssteigerungDurchVideoanalyseApplication` stellt den Einstiegspunkt der Spring-Boot-Anwendung dar. Sie startet das Backend, initialisiert alle Komponenten und konfiguriert den eingebetteten Webserver.
 
-#### Paketübersicht
+##### Paketübersicht
 
 - **`config`**: Konfigurationsklassen (z. B. Datenbank, CORS, projektspezifische Einstellungen)  
 - **`controller`**: REST-Endpunkte als Schnittstelle zum Frontend  
@@ -194,9 +187,9 @@ Die Klasse `Da2526BaskettballEffizienssteigerungDurchVideoanalyseApplication` st
 
 
 
-## Packages
+##### Packages
 
-### Package `config`
+###### Package `config`
 
 ![Package config](img/config.png)
 
@@ -206,7 +199,7 @@ Die Klasse `Da2526BaskettballEffizienssteigerungDurchVideoanalyseApplication` st
 - **`WebConfig`**  
   Enthält allgemeine Web-Konfigurationen für die Spring-Boot-Anwendung, z. B. globale Einstellungen des Request-Handlings.
 
-### Package `controller`
+###### Package `controller`
 
 ![Package controller](img/controller.png)
 
@@ -225,7 +218,7 @@ Die Klasse `Da2526BaskettballEffizienssteigerungDurchVideoanalyseApplication` st
 - **`TrainingSessionController`**  
   Verwalten Trainings- bzw. Session-Daten und ermöglichen deren Abfrage und Speicherung.
 
-### Package `dto`
+###### Package `dto`
 
 ![Package dto](img/dto.png)
 
@@ -252,7 +245,7 @@ Die Klasse `Da2526BaskettballEffizienssteigerungDurchVideoanalyseApplication` st
 - **`PlayerTrendItemDTO`**: Trend-/Zeitreihenwerte zur Leistungsentwicklung  
 - **`SessionStatsDTO`**: statistische Auswertungen einer Trainingseinheit  
 
-### Package `exception`
+###### Package `exception`
 
 ![Package exception](img/exception.png)
 
@@ -262,7 +255,7 @@ Die Klasse `Da2526BaskettballEffizienssteigerungDurchVideoanalyseApplication` st
 - **`NotFoundException`**  
   Wird ausgelöst, wenn eine angeforderte Ressource (z. B. Spieler oder Session) nicht gefunden wird.
 
-### Package `model`
+###### Package `model`
 
 ![Package model](img/model.png)
 
@@ -272,7 +265,7 @@ Die Klasse `Da2526BaskettballEffizienssteigerungDurchVideoanalyseApplication` st
 - **`TrainingSession`**: Beschreibt eine Trainingseinheit als zeitliche Klammer für Würfe, Videos und Statistiken.  
 - **`Video`**: Repräsentiert ein analysiertes Video und verbindet Session, Würfe und Analyseergebnisse.  
 
-### Package `repository`
+###### Package `repository`
 
 ![Package repository](img/repository.png)
 
@@ -282,7 +275,7 @@ Die Klasse `Da2526BaskettballEffizienssteigerungDurchVideoanalyseApplication` st
 - **`TrainingSessionRepository`**: Datenbankzugriff für Trainingseinheiten inkl. Abfragen.  
 - **`VideoRepository`**: Zugriff auf Video-Metadaten und Verknüpfung mit Sessions und Analysen.  
 
-### Package `service`
+###### Package `service`
 
 ![Package service](img/service.png)
 
