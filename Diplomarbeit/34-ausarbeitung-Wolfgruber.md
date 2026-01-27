@@ -1,9 +1,8 @@
-# Teilaufgabe Schüler Wolfgruber  
+
+# Teilaufgabe Wolfgruber Bastian
 \textauthor{Wolfgruber Bastian}
 
-
-## Implementierung der Ist-Flugbahn (Konzept und Visualisierung)
-
+## Theorie
 ### Begriffserklärung: Ist-Flugbahn
 Die Ist-Flugbahn beschreibt die tatsächlich ausgeführte Fluglinie des Basketballs
 während eines realen Wurfes. Sie basiert auf der Analyse von Videomaterial und stellt
@@ -15,9 +14,9 @@ Ziel der Ist-Flugbahn ist es, den realen Bewegungsverlauf des Basketballs mögli
 präzise zu erfassen und visuell darzustellen, um diesen später mit der berechneten
 Soll-Flugbahn vergleichen zu können.
 
+## Praktische Arbeit
 
-
-## Ausgangsmaterial und Videovorbereitung
+### Ausgangsmaterial und Videovorbereitung
 
 #### Rohmaterial der Videoaufnahmen
 
@@ -73,7 +72,7 @@ Flugbahnen und machte eine zuverlässige Analyse unmöglich.
 
 
 
-## Lösungsansatz: Manuelle Initialisierung der Region of Interest (ROI)
+### Lösungsansatz: Manuelle Initialisierung der Region of Interest (ROI)
 
 #### Manuelle Auswahl der Region of Interest (ROI)
 
@@ -97,7 +96,7 @@ wird das Tracking abgebrochen, um fehlerhafte Ergebnisse zu vermeiden.
 
 
 
-## Visualisierung der Ist-Flugbahn
+### Visualisierung der Ist-Flugbahn
 
 ![Visualisierung der Ist-Flugbahn](img/Flugbahn.png){width=30%}
 
@@ -116,7 +115,7 @@ klar zu erkennen.
 
 
 
-## Aktueller Stand der Ist-Flugbahn-Komponente
+### Aktueller Stand der Ist-Flugbahn-Komponente
 
 Die Ist-Flugbahn-Komponente ist aktuell funktionsfähig und liefert stabile Ergebnisse.
 Das Balltracking funktioniert zuverlässig, sofern der Tracker korrekt initialisiert
@@ -126,7 +125,7 @@ Die erzeugte Ist-Flugbahn dient bereits als valide Grundlage für den Vergleich 
 Soll-Flugbahn und stellt einen wesentlichen Bestandteil der Videoanalyse dar.
 
 
-## Architektur der Videoanalyse-Pipeline
+### Architektur der Videoanalyse-Pipeline
 
 Die Videoanalyse ist als datengetriebene Pipeline konzipiert. Ausgangspunkt sind
 Rohvideos einzelner Basketballwürfe, welche durch mehrere klar getrennte
@@ -138,7 +137,7 @@ Ausgabeartefakten. Dadurch wird eine hohe Nachvollziehbarkeit, Wiederholbarkeit
 und Erweiterbarkeit der Analyse gewährleistet.
 
 
-## Offene Punkte und Ausblick
+### Offene Punkte und Ausblick
 
 Ein noch offener Punkt ist die vollständige Zusammenführung der Ist- und Soll-Flugbahn
 in einer gemeinsamen Vergleichskomponente. Dabei müssen insbesondere die zeitliche
@@ -151,9 +150,9 @@ und idealem Wurfverlauf zu ermöglichen.
 
 
 
-## Eingesetzte Programmiersprache und Bibliotheken (Ist-Flugbahn)
+### Eingesetzte Programmiersprache und Bibliotheken (Ist-Flugbahn)
 
-### Programmiersprache: Python
+#### Programmiersprache: Python
 
 Die Ist-Flugbahn wurde in Python implementiert. Python eignet sich besonders für
 Computer-Vision-Anwendungen und wissenschaftliche Auswertungen und ermöglicht eine
@@ -177,7 +176,7 @@ schnelle Entwicklung sowie gute Wartbarkeit.
 
 
 
-### OpenCV (`cv2`)
+#### OpenCV (`cv2`)
 
 OpenCV ist die zentrale Bibliothek für die Videoverarbeitung und das Tracking.
 Sie wird für das Laden der Videos, das Balltracking, die Benutzerinteraktion
@@ -194,7 +193,7 @@ sowie das Zeichnen der Overlays verwendet.
 
 
 
-### NumPy (`numpy`)
+#### NumPy (`numpy`)
 
 NumPy wird zur Speicherung und Weiterverarbeitung der ermittelten Ballpositionen
 verwendet. Die Koordinaten werden als numerische Arrays gespeichert und anschließend
@@ -209,7 +208,7 @@ in CSV-Dateien exportiert.
 
 
 
-### JSON und Dateisystem (`json`, `os`)
+#### JSON und Dateisystem (`json`, `os`)
 
 Zur Speicherung von Metadaten und Analyseergebnissen wird das JSON-Format verwendet.
 Zusätzlich werden mit der `os`-Bibliothek Projektpfade und Ausgabeverzeichnisse

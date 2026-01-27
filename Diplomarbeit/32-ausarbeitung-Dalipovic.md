@@ -4,8 +4,8 @@
 Frontend – Spieler- & Statistikansicht  
 
 
-
-## Einleitung
+## Theorie
+### Einleitung
 
 Im Rahmen der Diplomarbeit *„Basketball-Effizienzsteigerung“* wird ein Softwaresystem entwickelt, das Basketballwürfe mithilfe von Videoanalyse analysiert und die daraus gewonnenen Daten strukturiert darstellt.  
 Ziel des Gesamtsystems ist es, Spielern eine objektive Rückmeldung über ihre Wurftechnik zu geben und langfristig eine Leistungssteigerung zu ermöglichen.
@@ -17,7 +17,7 @@ Der Fokus liegt dabei auf Benutzerführung, Visualisierung, Struktur und Erweite
 
 
 
-## Individuelle Zielsetzung und Aufgabenstellung
+### Individuelle Zielsetzung und Aufgabenstellung
 
 Die Zielsetzung des Frontend-Teils besteht darin, eine moderne, übersichtliche und erweiterbare Benutzeroberfläche zu entwickeln, welche die komplexen Analyseergebnisse verständlich darstellt.
 
@@ -32,7 +32,7 @@ Die Berechnung der Werte sowie die Videoanalyse erfolgen außerhalb des Frontend
 
 
 
-## Theoretische Grundlagen der Frontend-Entwicklung
+### Theoretische Grundlagen der Frontend-Entwicklung
 
 ### Webbasierte Frontends
 
@@ -42,7 +42,7 @@ Ein moderner Webbrowser genügt, um die Anwendung auszuführen, wodurch keine zu
 Durch die Trennung von Struktur (HTML), Darstellung (CSS) und Logik (JavaScript) entsteht eine klare und wartbare Architektur.
 
 
-
+## Praktische Arbeit
 ### Visualisierung von Daten
 
 Ein wesentlicher Bestandteil moderner Analyseanwendungen ist die visuelle Aufbereitung von Daten.  
@@ -52,7 +52,7 @@ Für dieses Projekt wurde bewusst auf eine grafische Darstellung der Flugkurven 
 
 
 
-## Verwendete Technologien
+### Verwendete Technologien
 
 ### HTML – Strukturierung der Benutzeroberfläche
 
@@ -216,7 +216,7 @@ Die Struktur ist so aufgebaut, dass reale Daten aus dem Backend später ohne Än
 
 
 
-## Herausforderungen
+### Herausforderungen
 
 Eine der größten Herausforderungen bestand darin, viele Informationen gleichzeitig darzustellen, ohne die Übersichtlichkeit zu verlieren.  
 Insbesondere die Kombination aus Kameraansicht, Statistik und Diagrammen erfordert ein klares Layout.
@@ -228,7 +228,7 @@ Weitere Herausforderungen:
 
 
 
-## Ausblick und Integration
+### Ausblick und Integration
 
 In der finalen Version wird das Frontend über eine Schnittstelle mit dem Backend verbunden.  
 Die vom Backend gelieferten Daten ersetzen dabei die aktuell verwendeten Dummy-Daten.
@@ -237,14 +237,14 @@ Das Frontend bleibt dabei unverändert und übernimmt weiterhin ausschließlich 
 
 
 
-## Zusammenfassung
+### Zusammenfassung
 
 Der Frontend-Prototyp zeigt, wie komplexe Analyseergebnisse übersichtlich dargestellt werden können.  
 Durch den modularen Aufbau ist das System gut erweiterbar und für die Integration in das Gesamtsystem vorbereitet.
 
 
 
-## Anhang – Technische Dokumentation (Frontend)
+### Anhang – Technische Dokumentation (Frontend)
 
 Das vollständige Frontend besteht aus den Dateien:
 - `index.html`

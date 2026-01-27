@@ -2,14 +2,14 @@
 \textauthor{Bacher Fabian} 
 
 
-
-## Einführung in den Soll Flugbahn Teil
+## Theorie
+### Einführung in den Soll Flugbahn Teil
 
 Eine Soll-Flugbahn bezeichnet die idealerweise erwartete Flugkurve eines geworfenen Basketballs. In einfachen Worten: Es ist der Pfad, den der Ball nehmen soll – also der gewünschte oder berechnete Verlauf vom Abwurf bis zum Korb unter optimalen Bedingungen. Theoretisch folgt ein frei geworfener Ball (ohne externe Störeinflüsse) einer parabolischen Bahn – einer sogenannten Wurfparabel
 de.wikipedia.org
 . Diese glatte Kurve ergibt sich aus den physikalischen Grundlagen des Wurfs: Schwerkraft zieht den Ball nach unten, während der Schwung ihn vorwärts und aufwärts trägt. Die Soll-Flugbahn ist somit die vorgesehene Bahn des Balls, die man basierend auf Abwurfwinkel, Abwurfgeschwindigkeit und Physik prognostizieren kann.
 
-## Relevanz im Projekt
+### Relevanz im Projekt
 
 In unserem Rollstuhl-Basketball-Tracking-Projekt spielt die Soll-Flugbahn eine wichtige Rolle als Referenz und Zielvorgabe. Da wir die tatsächlichen Würfe mit Sensoren oder Videoanalyse aufzeichnen, brauchen wir einen Maßstab, um diese Daten einzuordnen. Hier kommt die Soll-Flugbahn ins Spiel: Sie liefert uns den „Goldstandard“ – also eine ideale Flugkurve des Balls, an dem wir alles messen können. Konkret können wir aus den Anfangsdaten eines Wurfs (Position, Winkel, Geschwindigkeit des Balls beim Loslassen) mittels Physik berechnen, wohin der Ball gehen sollte. Diese berechnete Soll-Flugbahn ist relevant, weil sie im Projekt als Benchmark dient: Wir können überprüfen, ob ein gemessener Wurf erwartungsgemäß verläuft, ob er zu kurz oder zu flach ist, oder ob Unregelmäßigkeiten auftreten. Kurz: Die Soll-Flugbahn hilft uns, die Leistungsfähigkeit und Genauigkeit unseres Trackings sowie die Qualität der Würfe besser zu verstehen.
 
@@ -104,9 +104,7 @@ Die PDF-Unterlagen dienten zudem als Referenz für die Wahl realistischer Winkel
 Zusammenfassend lässt sich festhalten, dass die theoretischen Inhalte aus den bereitgestellten PDF-Dokumenten direkt in die mathematische Modellierung und algorithmische Umsetzung der Soll-Flugbahn eingeflossen sind. Die Literatur diente dabei nicht nur als Hintergrundinformation, sondern als konkrete Entscheidungsgrundlage für Parameterwahl, Randbedingungen und Validierung der berechneten Flugbahnen. Dadurch konnte eine enge Verbindung zwischen Theorie und praktischer Umsetzung im Rahmen der Videoanalyse hergestellt werden.
 
 
-
-
-## Technologieentscheidungen
+### Technologieentscheidungen
 
 Im Rahmen der Diplomarbeit mussten zu Beginn mehrere grundlegende Technologieentscheidungen getroffen werden. Diese Entscheidungen betrafen insbesondere die Wahl der Entwicklungsumgebung, der Programmiersprache sowie der eingesetzten Bibliotheken. Ziel war es, eine Lösung zu entwickeln, die sowohl technisch leistungsfähig als auch für ein Schulprojekt realistisch umsetzbar ist.
 
@@ -152,7 +150,7 @@ Zur statistischen Auswertung der Ergebnisse kam die Bibliothek Pandas zum Einsat
 
 Für die grafische Darstellung der Ergebnisse wurde Matplotlib verwendet. Mit dieser Bibliothek konnten Diagramme wie Streudiagramme, Balkendiagramme und Histogramme erstellt werden, die für die Dokumentation und Präsentation der Ergebnisse genutzt wurden.
 
-## Architektur
+### Architektur
 
 Das Projekt ist als Pipeline aufgebaut: Aus Rohvideos werden durch mehrere Verarbeitungsschritte strukturierte Ergebnisse erzeugt (Overlays, JSON-Summaries, CSV-Statistiken, Reports). Die Architektur trennt dabei klar zwischen Eingabedaten, Konfiguration/Kalibrierung, Verarbeitungsskripten und Ausgabeordnern.
 

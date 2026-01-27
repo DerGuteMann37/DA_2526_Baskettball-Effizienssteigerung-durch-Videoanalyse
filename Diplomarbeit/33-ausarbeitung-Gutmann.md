@@ -61,7 +61,7 @@ Zur Planung der Datenbankstruktur wird das **Entity-Relationship-Modell (ER-Mode
   Beziehungen stellen die Verknüpfungen zwischen Entitäten dar. Sie definieren, wie Objekte zueinander in Beziehung stehen, etwa dass eine Spielerin mehrere Trainingseinheiten absolvieren kann oder dass eine Trainingseinheit aus mehreren Würfen besteht.
 
 ## Praktische Arbeit
-### ER-Diagramm des Projekts
+### Erstellung des ER-Diagramm
 
 ![ER-Diagramm](img/ER_Diagramm_first.png)
 
@@ -159,8 +159,6 @@ Dadurch kann im Code mit Objekten gearbeitet werden, ohne SQL-Abfragen manuell s
 Zur Testung der entwickelten REST-Schnittstellen wurde das Tool **Postman** verwendet. Postman ermöglicht das manuelle Erstellen und Ausführen von HTTP-Anfragen und eignet sich besonders gut zur Überprüfung von `GET`-, `POST`-, `PUT`- und `DELETE`-Requests.
 
 Während der Entwicklung des Backends wurde Postman eingesetzt, um die korrekte Funktionalität der API-Endpunkte zu testen, Daten im JSON-Format zu senden sowie Serverantworten zu analysieren. Dadurch konnten Fehler frühzeitig erkannt und die Schnittstellen unabhängig vom Frontend validiert werden. Der Einsatz von Postman unterstützte somit eine strukturierte und effiziente Entwicklung sowie die Qualitätssicherung der REST-API.
-
-
 
 ### Backend-Architektur
 
