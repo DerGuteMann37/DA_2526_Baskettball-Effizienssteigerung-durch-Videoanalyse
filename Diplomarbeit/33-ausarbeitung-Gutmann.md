@@ -13,7 +13,7 @@ Technisch wird das Backend als Webservice umgesetzt, der über eine **REST-Schni
 
 Durch diese Architektur entsteht eine klare Aufgabenteilung: Die Videoanalyse erzeugt Messdaten, das Backend speichert und verarbeitet diese Daten und stellt sie dem Frontend in einer einheitlichen Form zur Verfügung. Diese Trennung erhöht die Wartbarkeit und Erweiterbarkeit des Gesamtsystems, da einzelne Komponenten unabhängig voneinander weiterentwickelt oder ausgetauscht werden können.
 
-### Beginn der Backend-Entwicklung und Anforderungsanalyse
+### Vorbereitung
 
 Bevor mit der eigentlichen Implementierung des Backends begonnen wurde, fand eine gemeinsame Planungs- und Analysephase mit allen Teammitgliedern statt. Ziel dieser Phase war es, die Schnittstellen zwischen den einzelnen Projektteilen klar zu definieren und ein gemeinsames Verständnis über die benötigten Daten und Funktionen zu schaffen.
 

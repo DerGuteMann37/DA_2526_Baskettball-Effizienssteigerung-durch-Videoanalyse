@@ -1,4 +1,4 @@
-# Teilaufgabe Schüler Dalipovic 
+# Teilaufgabe Dalipovic Nino
 \textauthor{Nino Dalipovic} 
 
 Frontend – Spieler- & Statistikansicht  

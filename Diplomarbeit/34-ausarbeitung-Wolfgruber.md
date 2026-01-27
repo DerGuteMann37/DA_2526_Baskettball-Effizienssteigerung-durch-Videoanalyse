@@ -38,7 +38,7 @@ klare zeitliche Abgrenzung der einzelnen Würfe sichergestellt werden.
 
 
 
-## Technische Umsetzung der Ist-Flugbahn
+### Technische Umsetzung der Ist-Flugbahn
 
 Die Implementierung der Ist-Flugbahn erfolgte mithilfe der Programmiersprache Python
 in der Entwicklungsumgebung Visual Studio Code. Python eignet sich besonders für
@@ -54,7 +54,7 @@ und bildet die Grundlage für den späteren Vergleich mit der Soll-Flugbahn.
 
 
 
-## Tracking des Basketballs
+### Tracking des Basketballs
 
 Ein zentraler Bestandteil der Ist-Flugbahn ist das zuverlässige Tracking des Balls
 über mehrere Frames hinweg. Dabei wird der Basketball als Zielobjekt definiert und
