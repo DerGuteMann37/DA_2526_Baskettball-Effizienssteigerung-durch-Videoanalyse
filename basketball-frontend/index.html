@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🏀 Smart Shot Analyzer</title>
+  <link rel="stylesheet" href="src/styles/main.css" />
+  <script>
+    // API-Base kann hier zentral gesetzt werden (z.B. http://localhost:8081/api)
+    // Bei Bedarf in Produktion anpassen oder über env/hosting konfigurieren
+    window.__API_BASE__ = window.__API_BASE__ || 'http://localhost:8081/api';
+  </script>
+</head>
+<body>
+  <header>
+    <img src="https://cdn-icons-png.flaticon.com/512/861/861512.png" alt="Basketball" width="45" />
+    <h1>Smart Shot Analyzer – Basketball Wurftraining</h1>
+  </header>
+
+  <!-- Spielerbereich -->
+  <section id="player-setup">
+    <div id="player-left">
+      <input type="text" id="newPlayerName" placeholder="Neuen Spieler hinzufügen" />
+      <button id="addPlayerBtn">➕ Spieler hinzufügen</button>
+
+      <label for="playerSelect">Spieler auswählen:</label>
+      <select id="playerSelect"></select>
+    </div>
+
+    <div id="player-right">
+      <button id="newShotBtn">🎯 Neuen Wurf analysieren</button>
+    </div>
+  </section>
+
+  <!-- Kamera -->
+  <section id="camera">
+    <div class="camera-view">🎥 Live-Kamera (Simulation)</div>
+  </section>
+
+  <!-- Statistikbereich -->
+  <section id="stats-grid">
+    <div class="card">
+      <h2>🎯 Wurf-Coach</h2>
+      <div id="feedback">Starte mit einem Wurf, um Feedback zu erhalten!</div>
+    </div>
+
+    <div class="card">
+      <h2>⚙️ Aktuelle Wurfwerte</h2>
+      <div id="stats">
+        <p>Winkel: <span id="angle">–</span>°</p>
+        <p>Geschwindigkeit: <span id="speed">–</span> m/s</p>
+        <p>Trefferquote: <span id="accuracy">0</span>%</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📅 Wurf-Verlauf</h2>
+      <ul id="history"></ul>
+    </div>
+
+    <div class="card">
+      <h2>🏀 Soll vs. Ist Flugbahn</h2>
+      <canvas id="trajectoryChart"></canvas>
+    </div>
+  </section>
+
+  <footer>
+    Diplomarbeit 2025 – HTL Leoben | Frontend
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

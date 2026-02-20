@@ -1,0 +1,11 @@
+{
+  "name": "smart-shot-analyzer-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "npx serve . -s"
+  },
+  "devDependencies": {
+    "serve": "^14.2.5"
+  }
+}
