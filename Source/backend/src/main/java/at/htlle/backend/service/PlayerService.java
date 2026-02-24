@@ -1,38 +1,58 @@
 package at.htlle.backend.service;
 
-import at.htlle.backend.dto.player.CreatePlayerDTO;
-import at.htlle.backend.dto.player.CreatePlayerDTO;
-import at.htlle.backend.dto.player.PlayerResponseDTO;
-import at.htlle.backend.dto.player.PlayerResponseDTO;
 import at.htlle.backend.model.Player;
 import at.htlle.backend.repository.PlayerRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
+import java.util.regex.Pattern;
 
 @Service
+@RequiredArgsConstructor
 public class PlayerService {
+    private final PlayerRepository playerRepository;
 
-    private final PlayerRepository repo;
+    private static final Pattern EMAIL_PATTERN = Pattern.compile(
+            "^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+    );
 
-    public PlayerService(PlayerRepository repo) {
-        this.repo = repo;
+    public Player registerPlayer(String firstName,String lastName, String email, String password) {
+
+        String normalizedEmail = email == null ? "" : email.trim().toLowerCase();
+
+        if (normalizedEmail.isEmpty()) {
+            throw new IllegalArgumentException("Email darf nicht leer sein");
+        }
+
+        if (!EMAIL_PATTERN.matcher(normalizedEmail).matches()) {
+            throw new IllegalArgumentException("Ungültiges Email-Format");
+        }
+
+        if (playerRepository.findByEmail(normalizedEmail).isPresent()) {
+            throw new IllegalArgumentException("Email bereits registriert");
+        }
+
+        Player player = new Player();
+        player.setFirstName(firstName);
+        player.setLastName(lastName);
+        player.setEmail(normalizedEmail);
+        player.setPassword(password);
+
+        return playerRepository.save(player);
     }
 
-    public List<PlayerResponseDTO> getAll() {
-        return repo.findAll().stream()
-                .map(p -> new PlayerResponseDTO(p.getId(), p.getFirstName(), p.getLastName(), p.getSchoolClass(), p.getBirthdate()))
-                .toList();
+    public Optional<Player> logginPlayer(String email, String password) {
+        Optional<Player> player = playerRepository.findByEmail(email);
+        if (player.isPresent() && player.get().getPassword().equals(password)) {
+            return player;
+        }
+        return Optional.empty();
     }
 
-    public PlayerResponseDTO create(CreatePlayerDTO dto) {
-        Player p = new Player();
-        p.setFirstName(dto.firstName());
-        p.setLastName(dto.lastName());
-        p.setSchoolClass(dto.schoolClass());
-        p.setBirthdate(dto.birthdate());
-
-        Player saved = repo.save(p);
-        return new PlayerResponseDTO(saved.getId(), saved.getFirstName(), saved.getLastName(), saved.getSchoolClass(), saved.getBirthdate());
+    public Optional<Player> getUserById(Long id) {
+        return playerRepository.findById(id);
     }
+
 }
+

@@ -18,6 +18,12 @@ public class Player {
     @Column(nullable = false)
     private String lastName;
 
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
     private String schoolClass;   // z.B. 4BHWIN
     private LocalDate birthdate;  // optional
 
@@ -25,6 +31,26 @@ public class Player {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     public Player() {}
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     // Getter/Setter
     public Long getId() { return id; }
@@ -43,4 +69,6 @@ public class Player {
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+
 }
