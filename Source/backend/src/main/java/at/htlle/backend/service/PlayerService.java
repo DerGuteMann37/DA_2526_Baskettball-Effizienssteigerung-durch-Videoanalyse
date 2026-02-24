@@ -42,7 +42,7 @@ public class PlayerService {
         return playerRepository.save(player);
     }
 
-    public Optional<Player> logginPlayer(String email, String password) {
+    public Optional<Player> loginPlayer(String email, String password) {
         Optional<Player> player = playerRepository.findByEmail(email);
         if (player.isPresent() && player.get().getPassword().equals(password)) {
             return player;
