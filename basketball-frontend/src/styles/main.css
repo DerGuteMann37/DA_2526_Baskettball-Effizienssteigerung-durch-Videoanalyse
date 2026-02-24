@@ -1,16 +1,31 @@
 body {
-  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-  color: #fff;
+  background: linear-gradient(150deg, #121212 0%, #1e1e1e 100%);
+  color: #eee;
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
+}
+
+:root {
+  --accent: #00cc88;
+  --accent-light: #33ddaa;
+}
+
+header {
+  background: #121212;
+  border-bottom: 2px solid var(--accent);
+}
+
+h1 {
+  /* keep logo accent but make the text itself neutral for better contrast */
+  color: #eee;
 }
 
 /* HEADER */
 header {
   text-align: center;
   padding: 25px;
-  color: #ff8c1a;
+  color: var(--accent);
   font-size: 2rem;
   font-weight: bold;
   display: flex;
@@ -65,7 +80,7 @@ header {
 
 #player-left button,
 #player-right button {
-  background: #ff8c1a;
+  background: var(--accent);
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -74,14 +89,14 @@ header {
 
 #player-left button:hover,
 #player-right button:hover {
-  background: #ffa64d;
+  background: var(--accent-light);
   transform: translateY(-2px);
 }
 
 /* KAMERA */
 .camera-view {
   background: black;
-  border: 3px solid #ff8c1a;
+  border: 3px solid var(--accent);
   border-radius: 25px;
   color: #888;
   text-align: center;
@@ -107,34 +122,35 @@ header {
 }
 
 .card {
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
   border-radius: 18px;
   padding: 25px;
   min-height: 280px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
-  transition: 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 25px rgba(255, 140, 26, 0.25);
+  transform: translateY(-4px);
+  background: #252525;
+  box-shadow: 0 0 30px rgba(0, 204, 136, 0.4);
 }
 
 .card h2 {
-  color: #ff8c1a;
+  color: var(--accent);
   margin-bottom: 12px;
   font-size: 1.4rem;
 }
 
 #feedback {
-  background: #333;
+  background: var(--accent);
   padding: 25px;
   border-radius: 12px;
   text-align: center;
   font-size: 1.15rem;
-  color: #fff;
-  box-shadow: inset 0 0 18px rgba(255, 140, 26, 0.4);
+  color: #101010;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 #history {
@@ -150,7 +166,7 @@ header {
   margin: 6px 0;
   padding: 12px;
   border-radius: 10px;
-  border-left: 4px solid #ff8c1a;
+  border-left: 4px solid var(--accent);
 }
 
 canvas {
@@ -160,11 +176,206 @@ canvas {
   box-shadow: inset 0 0 15px rgba(255, 140, 26, 0.2);
 }
 
+/* VIDEO UPLOAD DROPZONE */
+#camera {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.upload-dropzone {
+  position: relative;
+  border: 2px dashed var(--accent);
+  border-radius: 12px;
+  padding: 40px;
+  margin: 20px auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ccc;
+  transition: background 0.2s;
+}
+/* decorative plus in center, not an interactive button */
+.upload-dropzone::after {
+  content: '+';
+  position: absolute;
+  font-size: 48px;
+  color: var(--accent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0.4;
+}
+.upload-dropzone #dropMessage {
+  /* center text and plus-button horizontally and vertically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* remove gap because plus is now absolutely positioned */
+}
+.upload-dropzone.dragover {
+  background: rgba(0,204,136,0.1); /* var(--accent) with opacity */
+}
+.plus-button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.8rem;
+  line-height: 36px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: background 0.2s;
+}
+.plus-button:hover {
+  background: var(--accent-light);
+}
+.analyse-button {
+  display: block;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 20px auto 0 auto;
+  font-size: 1rem;
+  transition: background 0.2s, transform 0.2s;
+}
+.analyse-button:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+}
+
+/* USER INFO BOX */
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1f1f1f;
+  padding: 10px 24px;
+  border-bottom: 1px solid #333;
+  font-size: 0.95rem;
+  color: #ddd;
+}
+.user-info strong {
+  font-weight: 600;
+  /* avoid using accent color inside the green box to keep text readable */
+  color: #101010;
+}
+#user-details {
+  background: var(--accent);
+  color: #101010;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+.small-button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+.small-button:hover {
+  background: #444;
+}
+
 /* FOOTER */
 footer {
   text-align: center;
   color: #777;
   margin: 40px 0 20px;
+}
+
+/* AUTHENTIFIZIERUNG */
+#auth {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 20px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  text-align: center;
+}
+.auth-card {
+  margin-bottom: 20px;
+}
+.auth-action {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 1rem;
+}
+.auth-action:hover {
+  background: var(--accent-light);
+}
+#auth input {
+  display: block;
+  width: calc(100% - 22px);
+  margin: 8px auto;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #222;
+  color: #fff;
+}
+.small {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+.small a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.small a:hover {
+  text-decoration: underline;
+}
+#authFeedback {
+  color: #f88;
+  margin-top: 10px;
+  min-height: 1.2em;
+}
+
+/* VIDEO-UPLOAD */
+#video-upload {
+  max-width: 600px;
+  margin: 30px auto;
+  text-align: center;
+}
+#video-upload input {
+  margin-bottom: 10px;
+}
+#video-upload button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#videoPreview video {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
 }
 
 /* RESPONSIVE */

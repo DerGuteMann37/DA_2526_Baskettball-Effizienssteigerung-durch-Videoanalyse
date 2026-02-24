@@ -1,10 +1,10 @@
 import { request } from './client.js';
 
-export async function login(username, password) {
-  // erwartet: { token: '...' }
-  return request('/auth/login', { method: 'POST', body: { username, password } });
+// backend verwendet /api/users/register und /api/users/login
+export async function login(email, password) {
+  return request('/users/login', { method: 'POST', body: { email, password } });
 }
 
-export async function refresh() {
-  return request('/auth/refresh', { method: 'POST' });
+export async function register(firstName, lastName, email, password) {
+  return request('/users/register', { method: 'POST', body: { firstName, lastName, email, password } });
 }

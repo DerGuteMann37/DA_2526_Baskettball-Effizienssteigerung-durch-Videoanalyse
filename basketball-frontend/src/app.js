@@ -1,102 +1,191 @@
-import { getPlayers, createPlayer } from './api/players.js';
+import { login, register } from './api/auth.js';
 import { createSession, getSessionsByPlayer } from './api/sessions.js';
 import { getPlayerStats } from './api/stats.js';
 import { getPlayerDashboard } from './api/dashboard.js';
-import { setToken } from './utils/storage.js';
 
-const playerSelect = document.getElementById('playerSelect');
-const addPlayerBtn = document.getElementById('addPlayerBtn');
-const newPlayerInput = document.getElementById('newPlayerName');
+// auth elements
+const authSection = document.getElementById('auth');
+const welcomeCard = document.getElementById('welcome');
+const loginForm = document.getElementById('loginForm');
+const registerForm = document.getElementById('registerForm');
+const showLoginBtn = document.getElementById('showLoginBtn');
+const showRegisterBtn = document.getElementById('showRegisterBtn');
+const switchToRegister = document.getElementById('switchToRegister');
+const switchToLogin = document.getElementById('switchToLogin');
+const loginEmail = document.getElementById('loginEmail');
+const loginPassword = document.getElementById('loginPassword');
+const loginBtn = document.getElementById('loginBtn');
+const regFirstName = document.getElementById('regFirstName');
+const regLastName = document.getElementById('regLastName');
+const regEmail = document.getElementById('regEmail');
+const regPassword = document.getElementById('regPassword');
+const registerBtn = document.getElementById('registerBtn');
+const authFeedback = document.getElementById('authFeedback');
+
+// upload elements
+const dropMessage = document.getElementById('dropMessage');
+
+// main app elements
+const appMain = document.getElementById('app-main');
+const videoFileInput = document.getElementById('videoFile');
+const analyseVideoBtn = document.getElementById('analyseVideoBtn');
+const videoPreview = document.getElementById('videoPreview');
+
 const feedbackDiv = document.getElementById('feedback');
 const angleSpan = document.getElementById('angle');
 const speedSpan = document.getElementById('speed');
 const accuracySpan = document.getElementById('accuracy');
 const historyList = document.getElementById('history');
-const newShotBtn = document.getElementById('newShotBtn');
 
-let players = [];
 let history = [];
+let currentUser = null;
 
-async function loadPlayers() {
-  try {
-    const res = await getPlayers();
-    // Erwartet: Array von Spielern oder Map
-    players = Array.isArray(res) ? res : [];
-  } catch (e) {
-    console.warn('Konnte Spieler vom Backend nicht laden, nutze lokale Defaults', e);
-    players = [ { id: 'p1', name: 'Max Mustermann' }, { id: 'p2', name: 'Lukas Steiner' } ];
-  }
-  renderPlayers();
-  // falls Spieler vorhanden: lade Sessions/Stats für den ersten Spieler
-  if (players.length) {
-    playerSelect.value = players[0].id || (players[0].name || `${players[0].firstName || ''} ${players[0].lastName || ''}`).trim();
-    await onPlayerChange();
+const welcomeText = document.getElementById('welcomeText');
+const logoutBtn = document.getElementById('logoutBtn');
+
+function saveUser(user) {
+  localStorage.setItem('currentUser', JSON.stringify(user));
+}
+
+function loadUser() {
+  const raw = localStorage.getItem('currentUser');
+  if (raw) {
+    try {
+      currentUser = JSON.parse(raw);
+    } catch {}
   }
 }
 
-function renderPlayers() {
-  playerSelect.innerHTML = '';
-  players.forEach((p) => {
-    const opt = document.createElement('option');
-    opt.value = p.id || (p.name || `${p.firstName || ''} ${p.lastName || ''}`).trim();
-    opt.textContent = (p.firstName || p.lastName) ? `${p.firstName || ''} ${p.lastName || ''}`.trim() : (p.name || p);
-    playerSelect.appendChild(opt);
-  });
+function showAuth() {
+  authSection.style.display = '';
+  appMain.style.display = 'none';
 }
 
-playerSelect.addEventListener('change', onPlayerChange);
+function showWelcome() {
+  welcomeCard.style.display = '';
+  loginForm.style.display = 'none';
+  registerForm.style.display = 'none';
+}
 
-async function onPlayerChange() {
-  const playerId = playerSelect.value;
-  if (!playerId) return;
-  // Sessions laden
+function showLogin() {
+  welcomeCard.style.display = 'none';
+  loginForm.style.display = '';
+  registerForm.style.display = 'none';
+}
+
+function showRegister() {
+  welcomeCard.style.display = 'none';
+  loginForm.style.display = 'none';
+  registerForm.style.display = '';
+}
+
+function showMain() {
+  authSection.style.display = 'none';
+  appMain.style.display = '';
+  if (currentUser) welcomeText.textContent = `Angemeldet als ${currentUser.firstName || ''} ${currentUser.lastName || ''}`;
+  loadUserData();
+}
+
+async function loadUserData() {
+  if (!currentUser) return;
   try {
-    const sessions = await getSessionsByPlayer(playerId);
-    // Zeige die letzten Sessions im Verlauf (überschreibt Demo-History)
+    const sessions = await getSessionsByPlayer(currentUser.id);
     if (Array.isArray(sessions)) {
       history = sessions.map((s) => ({
         feedback: s.metrics?.feedback || '—',
         angle: s.metrics?.angle || '—',
         speed: s.metrics?.speed || '—',
-        date: s.date || s.createdAt || '—'
+        date: s.date || s.createdAt || '—',
       }));
       renderHistory();
     }
   } catch (e) {
     console.warn('Sessions konnten nicht geladen werden', e);
   }
-
-  // Player-Stats und Dashboard laden (optional)
   try {
-    const stats = await getPlayerStats(playerId);
-    const dash = await getPlayerDashboard(playerId);
-    // Kurze Anzeige: Setze Feedback-Karte mit einfachem KPI
+    const stats = await getPlayerStats(currentUser.id);
+    const dash = await getPlayerDashboard(currentUser.id);
     if (dash && dash.summary) feedbackDiv.textContent = dash.summary;
-    else if (stats && stats.accuracy !== undefined) feedbackDiv.textContent = `Treffer: ${stats.accuracy}%`;
+    else if (stats && stats.accuracy !== undefined)
+      feedbackDiv.textContent = `Treffer: ${stats.accuracy}%`;
   } catch (e) {
     console.debug('Stats/Dashboard nicht verfügbar', e);
   }
 }
 
-addPlayerBtn.addEventListener('click', async () => {
-  const name = newPlayerInput.value.trim();
-  if (!name) return;
+showLoginBtn.addEventListener('click', showLogin);
+showRegisterBtn.addEventListener('click', showRegister);
+switchToRegister.addEventListener('click', (e) => { e.preventDefault(); showRegister(); });
+switchToLogin.addEventListener('click', (e) => { e.preventDefault(); showLogin(); });
+
+loginBtn.addEventListener('click', async () => {
+  const email = loginEmail.value.trim();
+  const pw = loginPassword.value;
+  if (!email || !pw) {
+    authFeedback.textContent = 'Bitte E-Mail und Passwort eingeben.';
+    return;
+  }
   try {
-    // Map a single input into CreatePlayerDTO expected by backend
-    const parts = name.split(/\s+/);
-    const firstName = parts.shift() || '';
-    const lastName = parts.join(' ') || '';
-    const payload = { firstName, lastName };
-    const created = await createPlayer(payload);
-    // Bei Erfolg: neu laden (Backend sollte den Spieler zurückgeben)
-    await loadPlayers();
-    // Wähle neuen Spieler
-    const newVal = (created && (created.id || `${created.firstName || ''} ${created.lastName || ''}`.trim())) || name;
-    playerSelect.value = newVal;
-    newPlayerInput.value = '';
+    const res = await login(email, pw);
+    if (res && res.success && res.data) {
+      currentUser = res.data;
+      saveUser(currentUser);
+      authFeedback.textContent = '';
+      showMain();
+    } else {
+      authFeedback.textContent = res?.message || 'Login fehlgeschlagen';
+    }
   } catch (e) {
-    console.error('Fehler beim Erstellen des Spielers', e);
-    alert('Spieler konnte nicht erstellt werden. Backend erreichbar?');
+    // backend liefert ApiResponse JSON bei 400/500, sonst e.body may be plain text
+    let msg = 'Fehler beim Login';
+    if (e.body) {
+      try {
+        const parsed = JSON.parse(e.body);
+        msg = parsed.message || JSON.stringify(parsed);
+      } catch {
+        msg = e.body;
+      }
+    } else if (e.message && e.message.toLowerCase().includes('failed to fetch')) {
+      msg = 'Backend nicht erreichbar';
+    }
+    authFeedback.textContent = msg;
+    console.error('Login error', e);
+  }
+});
+
+registerBtn.addEventListener('click', async () => {
+  const first = regFirstName.value.trim();
+  const last = regLastName.value.trim();
+  const email = regEmail.value.trim();
+  const pw = regPassword.value;
+  if (!first || !last || !email || !pw) {
+    authFeedback.textContent = 'Alle Felder ausfüllen';
+    return;
+  }
+  try {
+    const res = await register(first, last, email, pw);
+    if (res && res.success && res.data) {
+      currentUser = res.data;
+      saveUser(currentUser);
+      authFeedback.textContent = '';
+      showMain();
+    } else {
+      authFeedback.textContent = res?.message || 'Registrierung fehlgeschlagen';
+    }
+  } catch (e) {
+    let msg = 'Fehler bei der Registrierung';
+    if (e.body) {
+      try {
+        const parsed = JSON.parse(e.body);
+        msg = parsed.message || JSON.stringify(parsed);
+      } catch {
+        msg = e.body;
+      }
+    } else if (e.message && e.message.toLowerCase().includes('failed to fetch')) {
+      msg = 'Backend nicht erreichbar';
+    }
+    authFeedback.textContent = msg;
+    console.error('Registrierungsfehler', e);
   }
 });
 
@@ -106,11 +195,20 @@ const feedbackOptions = [
   'Guter Winkel!',
   'Etwas zu langsam!',
   'Sehr gute Geschwindigkeit!',
-  'Handhaltung verbessern!'
+  'Handhaltung verbessern!',
 ];
 
-newShotBtn.addEventListener('click', async () => {
-  const feedback = feedbackOptions[Math.floor(Math.random() * feedbackOptions.length)];
+analyseVideoBtn.addEventListener('click', async () => {
+  const file = videoFileInput.files[0];
+  if (!file) {
+    alert('Bitte ein Video auswählen');
+    return;
+  }
+  const url = URL.createObjectURL(file);
+  videoPreview.innerHTML = `<video width="320" controls src="${url}"></video>`;
+
+  const feedback =
+    feedbackOptions[Math.floor(Math.random() * feedbackOptions.length)];
   const angle = Math.floor(Math.random() * 15) + 40;
   const speed = Math.floor(Math.random() * 10) + 20;
 
@@ -124,25 +222,43 @@ newShotBtn.addEventListener('click', async () => {
   utter.pitch = 1.2;
   speechSynthesis.speak(utter);
 
-  const playerId = playerSelect.value;
-
-  // Sende Session an Backend (wenn verfügbar)
-  try {
-    const sessionPayload = {
-      playerId,
-      metrics: { angle, speed, feedback }
-    };
-    await createSession(sessionPayload);
-  } catch (e) {
-    console.warn('Session nicht an Backend gesendet', e);
+  if (currentUser) {
+    try {
+      await createSession({
+        playerId: currentUser.id,
+        metrics: { angle, speed, feedback },
+      });
+    } catch (e) {
+      console.warn('Session nicht gespeichert', e);
+    }
   }
 
   history.push({ feedback, angle, speed, date: new Date().toLocaleString() });
-  const perfectCount = history.filter((h) => h.feedback.includes('Perfekt')).length;
+  const perfectCount = history.filter((h) => h.feedback.includes('Perfekt'))
+    .length;
   accuracySpan.textContent = Math.floor((perfectCount / history.length) * 100);
-
   renderHistory();
   updateChart();
+});
+
+// drag/drop support for video upload
+const dropzone = document.getElementById('video-upload');
+dropzone.addEventListener('click', () => videoFileInput.click());
+dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('dragover'); });
+dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+dropzone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropzone.classList.remove('dragover');
+  const files = e.dataTransfer.files;
+  if (files.length) {
+    videoFileInput.files = files;
+    dropMessage.textContent = files[0].name;
+  }
+});
+// browseBtn removed; clicking dropzone handles file selection now
+
+videoFileInput.addEventListener('change', () => {
+  if (videoFileInput.files.length) dropMessage.textContent = videoFileInput.files[0].name;
 });
 
 function renderHistory() {
@@ -164,14 +280,14 @@ const chart = new Chart(ctx, {
       {
         label: 'Soll-Flugbahn',
         data: [0, 2, 4, 5, 4, 2, 0],
-        borderColor: '#ff8c1a',
+        borderColor: '#00cc88',
         borderWidth: 3,
         tension: 0.4,
       },
       {
         label: 'Ist-Flugbahn',
         data: [0, 1.8, 3.5, 4.9, 4.2, 1.7, 0],
-        borderColor: '#00cc88',
+        borderColor: '#0077cc',
         borderWidth: 3,
         tension: 0.4,
       },
@@ -193,13 +309,26 @@ function updateChart() {
   chart.update();
 }
 
-// Optional: Test-Login für Demo-Zwecke (setzt Token lokal)
-window.demoSetToken = function (token) {
-  setToken(token);
-  alert('Token gesetzt (demo)');
-};
+// beim Start prüfen ob User vorhanden
+loadUser();
+if (currentUser) showMain();
+else {
+  showAuth();
+  showWelcome();
+}
 
-// Init
-(async function init() {
-  await loadPlayers();
-})();
+// Logout-Handler
+logoutBtn.addEventListener('click', () => {
+  localStorage.removeItem('currentUser');
+  currentUser = null;
+  history = [];
+  feedbackDiv.textContent = '';
+  angleSpan.textContent = '–';
+  speedSpan.textContent = '–';
+  accuracySpan.textContent = '0';
+  historyList.innerHTML = '';
+  videoPreview.innerHTML = '';
+  videoFileInput.value = '';
+  showAuth();
+  showWelcome();
+});

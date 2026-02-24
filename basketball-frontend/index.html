@@ -17,27 +17,60 @@
     <h1>Smart Shot Analyzer – Basketball Wurftraining</h1>
   </header>
 
-  <!-- Spielerbereich -->
-  <section id="player-setup">
-    <div id="player-left">
-      <input type="text" id="newPlayerName" placeholder="Neuen Spieler hinzufügen" />
-      <button id="addPlayerBtn">➕ Spieler hinzufügen</button>
-
-      <label for="playerSelect">Spieler auswählen:</label>
-      <select id="playerSelect"></select>
+  <!-- Authentifizierungsbereich mit Begrüßung und getrennten Formularen -->
+  <section id="auth">
+    <div id="welcome" class="auth-card">
+      <h2>Willkommen beim Smart Shot Analyzer</h2>
+      <p>Bitte einloggen oder registrieren, um fortzufahren.</p>
+      <button id="showLoginBtn" class="auth-action">Login</button>
+      <button id="showRegisterBtn" class="auth-action">Registrieren</button>
     </div>
 
-    <div id="player-right">
-      <button id="newShotBtn">🎯 Neuen Wurf analysieren</button>
+    <div id="loginForm" class="auth-card" style="display:none;">
+      <h2>Login</h2>
+      <input type="email" id="loginEmail" placeholder="E-Mail" />
+      <input type="password" id="loginPassword" placeholder="Passwort" />
+      <button id="loginBtn" class="auth-action">Login</button>
+      <p class="small">Noch kein Konto? <a href="#" id="switchToRegister">Registrieren</a></p>
     </div>
+
+    <div id="registerForm" class="auth-card" style="display:none;">
+      <h2>Registrieren</h2>
+      <input type="text" id="regFirstName" placeholder="Vorname" />
+      <input type="text" id="regLastName" placeholder="Nachname" />
+      <input type="email" id="regEmail" placeholder="E-Mail" />
+      <input type="password" id="regPassword" placeholder="Passwort" />
+      <button id="registerBtn" class="auth-action">Registrieren</button>
+      <p class="small">Schon registriert? <a href="#" id="switchToLogin">Login</a></p>
+    </div>
+
+    <div id="authFeedback"></div>
   </section>
 
-  <!-- Kamera -->
+  <!-- Hauptanwendung (verborgen bis Anmeldung) -->
+  <section id="app-main" style="display:none;">
+    <div id="user-info" class="user-info">
+      <div id="user-details">
+        <strong id="welcomeText"></strong>
+      </div>
+      <button id="logoutBtn" class="small-button">Abmelden</button>
+    </div>
+    <!-- "Kamera"-Abschnitt wird für Video-Upload genutzt -->
+
+  <!-- Video-Upload anstelle der Live-Kamera -->
   <section id="camera">
-    <div class="camera-view">🎥 Live-Kamera (Simulation)</div>
+    <div id="video-upload" class="upload-dropzone">
+      <div id="dropMessage">Video hierher ziehen oder wählen</div>
+      <input type="file" id="videoFile" accept="video/*" style="display:none;" />
+    </div>
+    <button id="analyseVideoBtn" class="analyse-button">🎬 Video analysieren</button>
+    <div id="videoPreview"></div>
   </section>
 
   <!-- Statistikbereich -->
+
+  <!-- Statistikbereich -->
+
   <section id="stats-grid">
     <div class="card">
       <h2>🎯 Wurf-Coach</h2>
@@ -62,7 +95,9 @@
       <h2>🏀 Soll vs. Ist Flugbahn</h2>
       <canvas id="trajectoryChart"></canvas>
     </div>
-  </section>
+  </section> <!-- Ende #stats-grid -->
+  
+  </section> <!-- Ende #app-main -->
 
   <footer>
     Diplomarbeit 2025 – HTL Leoben | Frontend
