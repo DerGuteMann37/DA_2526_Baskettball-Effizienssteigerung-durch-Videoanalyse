@@ -1,109 +1,356 @@
 <!DOCTYPE html>
-<html lang="de">
+<html class="dark" lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🏀 Smart Shot Analyzer</title>
-  <link rel="stylesheet" href="src/styles/main.css" />
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>ShotMaster - Pro Player Hub</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00f2ff",
+                        "secondary": "#ff6b00",
+                        "navy-deep": "#050a18",
+                        "navy-card": "#0d152b",
+                        "accent-orange": "#f97316",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+        .court-grid {
+            background-image: 
+                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 50% 100%, transparent 40%, rgba(255, 107, 0, 0.1) 41%, rgba(255, 107, 0, 0.05) 45%, transparent 50%);
+            background-size: 30px 30px, 30px 30px, 100% 100%;
+        }
+        .glow-blue {
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.3), inset 0 0 10px rgba(0, 242, 255, 0.1);
+            border-color: rgba(0, 242, 255, 0.5);
+        }
+        .glow-orange {
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.3), inset 0 0 10px rgba(255, 107, 0, 0.1);
+            border-color: rgba(255, 107, 0, 0.5);
+        }
+        .neo-glass {
+            background: rgba(13, 21, 43, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* custom sizing utilities used in layout */
+        .size-2 { width: 0.5rem; height: 0.5rem; }
+        .size-5 { width: 1.25rem; height: 1.25rem; }
+        .size-10 { width: 2.5rem; height: 2.5rem; }
+        .size-14 { width: 3.5rem; height: 3.5rem; }
+        .size-16 { width: 4rem; height: 4rem; }
+        .size-24 { width: 6rem; height: 6rem; }
+        .size-full { width: 100%; height: 100%; }
+    }
+    body {
+        min-height: 100dvh;
+        background-color: #050a18;
+    }
+</style>
+<style>
+    .glass-panel {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        /* default text color for inputs; override previous white so fields
+           are readable on dark background */
+        color: #000 !important;
+    }    /* ensure input text is legible regardless of type/visibility state */
+    /* note: we removed duplicate color declaration */
+    /* override browser default styling for password fields */
+    input[type="password"].glass-panel,
+    input[type="text"].glass-panel {
+        color: inherit;
+    }
+    /* when visible we apply text-black class via JS */
+
+    /* video preview sits inline with page; let the browser handle scrolling so
+       users can move the page itself rather than a clipped container. */
+    /* make the embedded video a bit smaller to keep it readable without
+       dominating the training card */
+    #videoPreview video { max-width: 480px; width: 80%; }
+    /* formerly constrained to a fixed height with its own scrollbar, which
+       made the page feel unscrollable when a large clip was shown. */
+
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
   <script>
-    // API-Base kann hier zentral gesetzt werden (z.B. http://localhost:8081/api)
-    // Bei Bedarf in Produktion anpassen oder über env/hosting konfigurieren
-    window.__API_BASE__ = window.__API_BASE__ || 'http://localhost:8081/api';
+    // the backend Spring Boot server listens on 8081; when running the
+    // frontend with a separate dev server (e.g. localhost:3000) we must
+    // point API calls at the backend explicitly.  In production the
+    // frontend is usually served from the same origin, so fall back to
+    // origin + '/api' if not on the dev host.
+    window.__API_BASE__ = window.__API_BASE__ || (
+      location.hostname === 'localhost' && location.port === '3000'
+        ? 'http://localhost:8081/api'
+        : location.origin + '/api'
+    );
+    console.log('API base set to', window.__API_BASE__);
   </script>
 </head>
-<body>
-  <header>
-    <img src="https://cdn-icons-png.flaticon.com/512/861/861512.png" alt="Basketball" width="45" />
-    <h1>Smart Shot Analyzer – Basketball Wurftraining</h1>
-  </header>
-
-  <!-- Authentifizierungsbereich mit Begrüßung und getrennten Formularen -->
-  <section id="auth">
-    <div id="welcome" class="auth-card">
-      <h2>Willkommen beim Smart Shot Analyzer</h2>
-      <p>Bitte einloggen oder registrieren, um fortzufahren.</p>
-      <button id="showLoginBtn" class="auth-action">Login</button>
-      <button id="showRegisterBtn" class="auth-action">Registrieren</button>
+<body class="bg-background-dark font-display text-slate-100 antialiased overflow-hidden">
+<!-- hidden helpers -->
+<input type="file" id="videoFile" accept="video/*" class="hidden" />
+<!-- preview container relocated below in training section -->
+<!-- authentication container -->
+<div id="auth" class="relative flex h-screen w-full flex-col overflow-hidden">
+    <!-- background layers -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/80 to-transparent z-10"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 z-10"></div>
+      <img alt="Stylized basketball court with neon lighting" class="w-full h-full object-cover blur-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMlVBNV2yYzKJLjb6rc2CK2P3LAX1yAShVTiL6OkUjgAzMzGFHC0yP7gXPvpw4sYBWGEZ94hppZE_4xFO2OHMIXH9vPWliydRvTTwR7LoOz3PTXne-DqRrrZC86_64GumvfBV4z76hTHULD8_u6o0Y0mQ9oBR-FzRW1dCp50hUMCEyvEFwV820nC3jkYNMuNFhCuzrGGUAfreSGMBm6e3khMkmmlASLEbrzlRdCxYYBLHozVaT1S2TeFXg8ZUdGMmAhCOzKmm1zOAb"/>
     </div>
-
-    <div id="loginForm" class="auth-card" style="display:none;">
-      <h2>Login</h2>
-      <input type="email" id="loginEmail" placeholder="E-Mail" />
-      <input type="password" id="loginPassword" placeholder="Passwort" />
-      <button id="loginBtn" class="auth-action">Login</button>
-      <p class="small">Noch kein Konto? <a href="#" id="switchToRegister">Registrieren</a></p>
-    </div>
-
-    <div id="registerForm" class="auth-card" style="display:none;">
-      <h2>Registrieren</h2>
-      <input type="text" id="regFirstName" placeholder="Vorname" />
-      <input type="text" id="regLastName" placeholder="Nachname" />
-      <input type="email" id="regEmail" placeholder="E-Mail" />
-      <input type="password" id="regPassword" placeholder="Passwort" />
-      <button id="registerBtn" class="auth-action">Registrieren</button>
-      <p class="small">Schon registriert? <a href="#" id="switchToLogin">Login</a></p>
-    </div>
-
-    <div id="authFeedback"></div>
-  </section>
-
-  <!-- Hauptanwendung (verborgen bis Anmeldung) -->
-  <section id="app-main" style="display:none;">
-    <div id="user-info" class="user-info">
-      <div id="user-details">
-        <strong id="welcomeText"></strong>
+    <div class="relative z-20 flex flex-col h-full px-6 pt-12 pb-8">
+      <!-- top bar -->
+      <div class="flex items-center justify-between mb-12">
+        <div></div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-3xl">analytics</span>
+          <h2 class="text-xl font-bold tracking-tight">Basketball - Effizienzsteigerung durch Videoanalyse</h2>
+        </div>
+        <div class="w-10"></div>
       </div>
-      <button id="logoutBtn" class="small-button">Abmelden</button>
-    </div>
-    <!-- "Kamera"-Abschnitt wird für Video-Upload genutzt -->
-
-  <!-- Video-Upload anstelle der Live-Kamera -->
-  <section id="camera">
-    <div id="video-upload" class="upload-dropzone">
-      <div id="dropMessage">Video hierher ziehen oder wählen</div>
-      <input type="file" id="videoFile" accept="video/*" style="display:none;" />
-    </div>
-    <button id="analyseVideoBtn" class="analyse-button">🎬 Video analysieren</button>
-    <div id="videoPreview"></div>
-  </section>
-
-  <!-- Statistikbereich -->
-
-  <!-- Statistikbereich -->
-
-  <section id="stats-grid">
-    <div class="card">
-      <h2>🎯 Wurf-Coach</h2>
-      <div id="feedback">Starte mit einem Wurf, um Feedback zu erhalten!</div>
-    </div>
-
-    <div class="card">
-      <h2>⚙️ Aktuelle Wurfwerte</h2>
-      <div id="stats">
-        <p>Winkel: <span id="angle">–</span>°</p>
-        <p>Geschwindigkeit: <span id="speed">–</span> m/s</p>
-        <p>Trefferquote: <span id="accuracy">0</span>%</p>
+      <!-- hero -->
+      <div class="flex flex-col items-center mb-10">
+        <div class="w-20 h-20 bg-primary/20 rounded-2xl flex items-center justify-center mb-6 border border-primary/30">
+          <span class="material-symbols-outlined text-primary text-5xl">sports_basketball</span>
+        </div>
+        <h1 class="text-4xl font-extrabold text-center mb-2 tracking-tight">Level Up.</h1>
+        <p class="text-slate-400 text-center max-w-[280px]">Pro-grade video analysis for athletes and teams.</p>
       </div>
+      <!-- forms container -->
+      <div class="flex-1 flex flex-col justify-end gap-6 max-w-md mx-auto w-full">
+        <!-- login form -->
+        <div id="loginForm" class="space-y-4">
+          <div class="relative">
+            <label class="sr-only">Username or Email</label>
+            <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+              <span class="material-symbols-outlined text-slate-400 text-xl">alternate_email</span>
+            </div>
+            <input id="loginEmail" class="glass-panel w-full rounded-xl h-14 pl-12 pr-4 placeholder:text-slate-500 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all outline-none" placeholder="Username or email" type="text"/>
+          </div>
+          <div class="relative">
+            <label class="sr-only">Password</label>
+            <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+              <span class="material-symbols-outlined text-slate-400 text-xl">lock</span>
+            </div>
+            <input id="loginPassword" class="glass-panel w-full rounded-xl h-14 pl-12 pr-4 placeholder:text-slate-500 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all outline-none" placeholder="Password" type="password"/>
+            <button id="toggleLoginPwd" type="button" class="absolute inset-y-0 right-4 flex items-center text-slate-400 cursor-pointer">
+
+              <span class="material-symbols-outlined text-slate-400 text-xl">visibility_off</span>
+            </button>
+          </div>
+          <div class="flex justify-end">
+            <button id="forgotPwd" class="text-sm font-medium text-primary hover:text-primary/80">Forgot Password?</button>
+          </div>
+          <button id="loginBtn" class="w-full h-14 bg-accent-orange text-white rounded-xl font-bold text-lg shadow-lg shadow-accent-orange/20 active:scale-[0.98] transition-transform">
+                        Sign In
+                    </button>
+          <div class="mt-4 text-center">
+            <p class="text-slate-400 text-sm">
+                        Don't have an account? 
+                        <a id="switchToRegister" class="text-accent-orange font-bold ml-1" href="#">Join the Team</a>
+            </p>
+          </div>
+        </div>
+        <!-- register form -->
+        <div id="registerForm" class="space-y-4 hidden">
+          <div class="relative">
+            <label class="sr-only">First Name</label>
+            <input id="regFirstName" class="glass-panel w-full rounded-xl h-14 pl-4 pr-4 placeholder:text-slate-500 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all outline-none" placeholder="Vorname" type="text"/>
+          </div>
+          <div class="relative">
+            <label class="sr-only">Last Name</label>
+            <input id="regLastName" class="glass-panel w-full rounded-xl h-14 pl-4 pr-4 placeholder:text-slate-500 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all outline-none" placeholder="Nachname" type="text"/>
+          </div>
+          <div class="relative">
+            <label class="sr-only">Email</label>
+            <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+              <span class="material-symbols-outlined text-slate-400 text-xl">alternate_email</span>
+            </div>
+            <input id="regEmail" class="glass-panel w-full rounded-xl h-14 pl-12 pr-4 text-slate-100 placeholder:text-slate-500 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all outline-none" placeholder="E-Mail" type="text"/>
+          </div>
+          <div class="relative">
+            <label class="sr-only">Password</label>
+            <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+              <span class="material-symbols-outlined text-slate-400 text-xl">lock</span>
+            </div>
+            <input id="regPassword" class="glass-panel w-full rounded-xl h-14 pl-12 pr-4 text-slate-100 placeholder:text-slate-500 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all outline-none" placeholder="Password" type="password"/>
+            <button id="toggleRegPwd" type="button" class="absolute inset-y-0 right-4 flex items-center text-slate-400 cursor-pointer">
+              <span class="material-symbols-outlined text-slate-400 text-xl">visibility_off</span>
+            </button>
+          </div>
+          <button id="registerBtn" class="w-full h-14 bg-accent-orange text-white rounded-xl font-bold text-lg shadow-lg shadow-accent-orange/20 active:scale-[0.98] transition-transform">
+                        Register
+                    </button>
+          <div class="mt-4 text-center">
+            <p class="text-slate-400 text-sm">
+                        Already have an account? 
+                        <a id="switchToLogin" class="text-accent-orange font-bold ml-1" href="#">Login</a>
+            </p>
+          </div>
+        </div>
+        <div id="authFeedback" class="text-red-400 text-sm text-center"></div>
+      </div>
+      <!-- bottom safe area bar -->
+      <div class="w-32 h-1 bg-slate-800 rounded-full mx-auto mt-8"></div>
     </div>
+</div>
 
-    <div class="card">
-      <h2>📅 Wurf-Verlauf</h2>
-      <ul id="history"></ul>
+<!-- main application area -->
+<main id="app-main" class="hidden font-display text-slate-100 min-h-screen flex flex-col selection:bg-primary/30">
+<header class="p-6 pt-8 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="size-14 rounded-full p-[2px] bg-gradient-to-tr from-primary via-transparent to-secondary">
+<div class="size-full rounded-full overflow-hidden border-2 border-navy-deep">
+<img id="avatarImg" alt="Player Avatar" class="w-full h-full object-cover" src="https://via.placeholder.com/150"/>
+</div>
+</div>
+<div class="absolute -bottom-1 -right-1 size-5 bg-emerald-500 border-2 border-navy-deep rounded-full"></div>
+</div>
+<div>
+<p class="text-sm text-slate-400 font-medium">Elevate your game,</p>
+<h1 id="userName" class="text-xl font-extrabold tracking-tight">Player</h1>
+</div>
+</div>
+<div class="flex gap-2 items-center">
+<button id="notifyBtn" class="size-10 rounded-full bg-navy-card flex items-center justify-center border border-white/10 relative">
+<span class="material-symbols-outlined text-slate-300">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-secondary rounded-full"></span>
+</button>
+<!-- logout button added -->
+<button id="logoutBtn" class="ml-4 text-sm text-red-400 hover:text-red-300">Logout</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto court-grid pb-32">
+<section class="px-6 mb-8">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Live Performance</h2>
+<div class="px-2 py-0.5 rounded bg-primary/10 border border-primary/20">
+<span id="userLevel" class="text-[10px] text-primary font-bold">LVL ?</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+  <!-- left KPI: release angle -->
+  <div id="shootingCard" class="glow-orange bg-navy-card/80 border p-4 rounded-2xl relative overflow-hidden group">
+    <div class="absolute -right-2 -top-2 opacity-10 group-hover:opacity-20 transition-opacity">
+      <span class="material-symbols-outlined text-6xl text-secondary">sports_basketball</span>
     </div>
-
-    <div class="card">
-      <h2>🏀 Soll vs. Ist Flugbahn</h2>
-      <canvas id="trajectoryChart"></canvas>
+    <p class="text-[10px] font-bold text-secondary uppercase tracking-wider mb-2">Release Angle</p>
+    <div class="flex items-baseline gap-1">
+      <!-- existing element retained for JS reference -->
+      <span id="angle" class="text-3xl font-black"></span>
     </div>
-  </section> <!-- Ende #stats-grid -->
-  
-  </section> <!-- Ende #app-main -->
+    <div class="mt-2 text-[10px] font-bold text-emerald-400">
+      Optimal: 45°–55°
+    </div>
+  </div>
+  <!-- right KPI: shot quality -->
+  <div id="arcCard" class="glow-blue bg-navy-card/80 border p-4 rounded-2xl relative overflow-hidden group">
+    <div class="absolute -right-2 -top-2 opacity-10 group-hover:opacity-20 transition-opacity">
+      <span class="material-symbols-outlined text-6xl text-primary">analytics</span>
+    </div>
+    <p class="text-[10px] font-bold text-primary uppercase tracking-wider mb-2">Shot Quality Score</p>
+    <div class="flex items-baseline gap-1">
+      <span id="shotScore" class="text-3xl font-black"></span>
+    </div>
+    <div class="mt-2 text-[10px] font-bold text-primary">
+      <span id="shotStatus"></span>
+    </div>
+  </div>
+</div>
+</section>
+<section class="px-6 mb-8">
+<div class="relative group">
+<div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-[2rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+<div class="relative bg-navy-card border border-white/10 rounded-[2rem] p-8 flex flex-col items-center text-center">
+<div class="mb-6 relative">
+<div class="size-24 rounded-3xl bg-gradient-to-br from-slate-800 to-navy-deep shadow-2xl flex items-center justify-center transform group-hover:scale-105 transition-transform">
+<div class="scoreCard">
+          <span class="material-symbols-outlined text-5xl bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">videocam</span>
+        </div>
+</div>
+<div class="absolute -bottom-2 -right-2 size-10 rounded-full bg-secondary flex items-center justify-center shadow-lg border-4 border-navy-card">
+<span class="material-symbols-outlined text-white text-xl">add</span>
+</div>
+</div>
+<h3 class="text-2xl font-extrabold mb-2 italic uppercase">New Training Session</h3>
+<p class="text-slate-400 text-sm mb-8 px-4">Instant AI feedback on arc, release speed, and follow-through.</p>
+<button id="analyseVideoBtn" class="w-full bg-white text-navy-deep py-4 rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl hover:bg-primary transition-colors">
+                    Start Analysis
+                </button>
+<div id="videoPreview" class="hidden mt-4"></div>
+</div>
+</div>
+</section>
+<section class="px-6 pb-12">
+<div class="flex items-center justify-between mb-5">
+<h2 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Recent Throws</h2>
+<button class="text-primary text-[10px] font-bold uppercase tracking-widest">History</button>
+</div>
+<div id="historyList" class="space-y-4"></div>
+</section>
+</main>
+<nav class="fixed bottom-6 left-6 right-6 h-16 neo-glass rounded-2xl z-50 flex items-center justify-between px-6">
+<a class="text-primary" href="#">
+<span class="material-symbols-outlined !text-3xl font-variation-fill">home</span>
+</a>
+<a id="chartsLink" class="text-slate-500 cursor-pointer">
+<span class="material-symbols-outlined !text-3xl">bar_chart</span>
+</a>
+<div class="relative -top-10">
+<button class="size-16 rounded-full bg-gradient-to-tr from-primary to-secondary p-[2px] shadow-[0_10px_30px_rgba(0,242,255,0.4)]">
+<div class="size-full rounded-full bg-navy-deep flex items-center justify-center">
+<span class="material-symbols-outlined !text-3xl text-white">add</span>
+</div>
+</button>
+</div>
+<a id="infoLink" class="text-slate-500 cursor-pointer">
+<span class="material-symbols-outlined !text-3xl">movie</span>
+</a>
+<a class="text-slate-500" href="#">
+<span class="material-symbols-outlined !text-3xl">settings</span>
+</a>
+</nav>
+<style>
+    .font-variation-fill {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+</style>
 
-  <footer>
-    Diplomarbeit 2025 – HTL Leoben | Frontend
-  </footer>
+<!-- load chart.js before our module; required by the code that displays
+     charts.  using CDN for simplicity in this prototype. -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script type="module" src="src/app.js"></script>
+<!-- application script must be loaded as a module; otherwise none of the
+     event handlers or API calls will work.  placing at body end ensures the
+     DOM elements exist when app.js runs. -->
+<script type="module" src="src/app.js"></script>
+
+<!-- optional chart page placeholder -->
+<!-- create charts.html in future to show actual graphs -->
+
 </body>
 </html>
