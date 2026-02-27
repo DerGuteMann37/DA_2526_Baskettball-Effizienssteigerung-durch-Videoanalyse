@@ -273,12 +273,11 @@ registerBtn.addEventListener('click', async () => {
 });
 
 const feedbackOptions = [
-  'Perfekter Wurf!',
-  'Etwas zu flach!',
-  'Guter Winkel!',
-  'Etwas zu langsam!',
-  'Sehr gute Geschwindigkeit!',
-  'Handhaltung verbessern!',
+  'Leicht zu flach – Brettkontakt.',
+  'Guter Treffer, aber nicht optimal.',
+  'Flugbahn etwas zu flach.',
+  'Kein Direktwurf – über das Brett.',
+  'Leichte Abweichung vom perfekten Wurf.',
 ];
 
 analyseVideoBtn.addEventListener('click', async () => {
@@ -300,10 +299,10 @@ analyseVideoBtn.addEventListener('click', async () => {
   const arc = Math.floor(Math.random() * 100);
   const feedback =
     feedbackOptions[Math.floor(Math.random() * feedbackOptions.length)];
-  // new angle metric: 20–70 degrees
-  const angleVal = (20 + Math.random() * 50).toFixed(1);
+  // new angle metric: 45–56 degrees (narrow test range)
+  const angleVal = (45 + Math.random() * 11).toFixed(1);
   // shot quality score and status
-  const score = Math.floor(60 + Math.random() * 40); // 60–99
+  const score = Math.floor(70 + Math.random() * 21); // 70–90
   const statusText = score > 85 ? 'Excellent Mechanics' : score > 70 ? 'Good Mechanics' : 'Needs Work';
 
   if (shootingValue) shootingValue.textContent = efficiency;
