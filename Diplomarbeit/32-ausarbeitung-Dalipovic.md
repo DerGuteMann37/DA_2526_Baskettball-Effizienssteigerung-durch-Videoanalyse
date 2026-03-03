@@ -1,7 +1,6 @@
 # Teilaufgabe Dalipovic Nino
 \textauthor{Nino Dalipovic} 
-
-Frontend – Spieler- & Statistikansicht  
+ 
 
 
 ## Theorie
