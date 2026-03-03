@@ -34,22 +34,200 @@ Ein weiterer wesentlicher Punkt war die Definition der Datenstruktur innerhalb d
 Zusätzlich wurden die Anforderungen des Frontends konkretisiert. Das Frontend benötigt nicht nur Rohdaten einzelner Würfe, sondern vor allem aggregierte Informationen in Form von statistischen Auswertungen. Daher wurde beschlossen, dass die Berechnung dieser Statistiken vollständig im Backend erfolgt. Das Backend stellt dem Frontend ausschließlich bereits aufbereitete Ergebnisse zur Verfügung, beispielsweise Trefferquoten, Durchschnittswerte oder zeitliche Leistungsentwicklungen. Dadurch wird die Komplexität im Frontend reduziert und eine konsistente Auswertung sichergestellt.
 
 Abschließend wurde festgelegt, dass das Backend über eine REST-Schnittstelle mit dem Frontend kommuniziert. Die Datenübertragung erfolgt im JSON-Format, wodurch eine plattformunabhängige und leicht erweiterbare Kommunikation ermöglicht wird. Diese Entscheidungen bilden die Grundlage für alle weiteren technischen Umsetzungen im Backend und stellen sicher, dass die einzelnen Projektteile nahtlos ineinandergreifen.
+## Backend
+### Was ist überhaupt das Backend
+Unter dem Backend versteht man den serverseitigen Teil einer Softwareanwendung. Es ist jener Bereich, der für Nutzerinnen und Nutzer meist nicht direkt sichtbar ist, jedoch die zentrale technische Grundlage eines Systems bildet. Während das Frontend die grafische Oberfläche und Interaktionen bereitstellt, übernimmt das Backend die Verarbeitung von Daten und die Ausführung der eigentlichen Anwendungslogik.
 
-### Datenbank
+Im Allgemeinen erfüllt ein Backend folgende Kernaufgaben:
 
-#### Relationale Datenbanken
+- **Anfragen verarbeiten:** 
+Das Backend nimmt Anfragen von Clients (z. B. einer Webanwendung) entgegen, prüft diese und verarbeitet sie nach definierten Regeln.
 
-Relationale Datenbanken speichern Informationen in tabellarischer Form. Jede Tabelle besteht aus Datensätzen (Zeilen) und Attributen (Spalten). Ein Datensatz beschreibt dabei ein konkretes Objekt, beispielsweise einen Spieler oder einen einzelnen Basketballwurf, während die Attribute die Eigenschaften dieses Objekts definieren.
+- **Geschäftslogik umsetzen:** Fachliche Abläufe und Regeln (z. B. Zuordnung von Daten zu einer Trainingseinheit) werden zentral im Backend implementiert.
 
-Zur eindeutigen Identifikation eines Datensatzes wird ein **Primärschlüssel** verwendet. Beziehungen zwischen verschiedenen Tabellen werden mithilfe von **Fremdschlüsseln** realisiert. Dadurch können Daten logisch miteinander verknüpft werden, ohne Informationen mehrfach speichern zu müssen. Diese Struktur erhöht die Datenkonsistenz und erleichtert spätere statistische Auswertungen.
+- **Daten speichern und verwalten:** Das Backend stellt die Verbindung zur Datenbank her und sorgt dafür, dass Daten strukturiert, konsistent und dauerhaft gespeichert werden.
 
-Aufgrund dieser Eigenschaften eignet sich das relationale Datenbankmodell besonders gut für das vorliegende Projekt, da die erfassten Daten aus der Videoanalyse langfristig gespeichert, miteinander verknüpft und ausgewertet werden müssen.
+- **Daten bereitstellen:** Über definierte Schnittstellen (typischerweise eine API) gibt das Backend Daten in strukturierter Form (z. B. JSON) an das Frontend zurück.
 
-#### Entity-Relationship-Modell
+- **Sicherheit und Qualität im Betrieb:** Je nach System gehören auch Authentifizierung/Autorisierung, Fehlerbehandlung, Logging und Monitoring zu den Aufgaben des Backends.
 
-Zur Planung der Datenbankstruktur wird das **Entity-Relationship-Modell (ER-Modell)** verwendet. Es dient dazu, die zentralen Datenobjekte eines Systems sowie deren Beziehungen übersichtlich darzustellen und bildet die konzeptionelle Grundlage für die spätere Implementierung der Datenbank.
+Im Kontext dieser Diplomarbeit ist das Backend besonders wichtig, da es die Analyseergebnisse aus der Videoverarbeitung entgegennimmt, in einer relationalen Datenbank speichert, statistisch auswertet und die daraus entstehenden Kennzahlen über eine REST-Schnittstelle dem Frontend zur Visualisierung zur Verfügung stellt. Dadurch fungiert das Backend als zentrale Logik- und Datenebene des gesamten Systems.
 
-##### Zentrale Begriffe des ER-Modells
+## Spring Boot
+### Was ist Spring Boot
+Spring Boot ist ein Java-basiertes Framework zur Entwicklung von serverseitigen Anwendungen. Es baut auf dem Spring Framework auf und erweitert dieses um Funktionen, die den Projektstart und die Konfiguration deutlich vereinfachen. Ziel ist es, schnell lauffähige und produktionsnahe Anwendungen zu erstellen, ohne dass umfangreiche manuelle Konfiguration notwendig ist.
+
+Ein zentrales Konzept ist dabei „Convention over Configuration“. Das bedeutet, dass Spring Boot für viele Standardfälle sinnvolle Voreinstellungen mitliefert. Zusätzlich enthält Spring Boot einen eingebetteten Webserver (z. B. Tomcat), wodurch Anwendungen direkt als eigenständiges Programm gestartet werden können, ohne einen externen Application-Server installieren zu müssen. Häufig verwendete Komponenten werden über sogenannte Starter-Abhängigkeiten (z. B. für Web, Datenbank oder Security) gebündelt eingebunden, was die Entwicklung weiter beschleunigt.
+
+### Wann soll man Spring Boot verwenden
+Spring Boot eignet sich besonders dann, wenn eine Anwendung als Backend-System oder Webservice entwickelt werden soll und dabei eine klare Struktur, Wartbarkeit und schnelle Umsetzung wichtig sind. Typische Einsatzbereiche sind:
+
+- REST-Backends für Web- oder Mobile-Anwendungen
+
+- Anwendungen, die Datenbanken nutzen und Daten persistieren (z. B. über JPA/Hibernate)
+
+- Projekte, bei denen eine klare Schichtenarchitektur (Controller–Service–Repository) umgesetzt werden soll
+
+- Systeme, die schnell startbar und einfach deploybar sein sollen (durch eingebetteten Server)
+
+- Anwendungen, die später erweiterbar sein müssen, z. B. um zusätzliche Endpunkte, Logik oder Sicherheitsfunktionen
+
+In vielen Projekten ist Spring Boot eine gute Wahl, weil es die technische Basis bereitstellt, die Entwicklung beschleunigt und gleichzeitig professionelle Standards für größere Anwendungen unterstützt.
+
+### Was ist eine REST-API
+Eine REST-API (Representational State Transfer Application Programming Interface) ist eine Programmierschnittstelle, über die Systeme über das HTTP-Protokoll miteinander kommunizieren. Eine REST-API stellt Funktionen und Daten so bereit, dass Clients (z. B. ein Frontend) auf definierte Ressourcen zugreifen können.
+
+Die Datenübertragung erfolgt meist im JSON-Format. Ein Client kann beispielsweise Spieler-, Trainings- oder Statistikdaten anfordern oder neue Daten an das Backend senden. Dadurch dient eine REST-API als verbindendes Element zwischen Frontend und Backend.
+
+### Wie ist die Funktionsweise von REST-API
+Die Funktionsweise einer REST-API basiert auf dem Prinzip, dass Daten als Ressourcen betrachtet werden, die über eindeutige URLs (Endpunkte) erreichbar sind. Jede Ressource wird über HTTP-Methoden angesprochen, wobei jede Methode eine bestimmte Bedeutung hat:
+
+- GET: Daten abrufen (z. B. alle Spieler anzeigen)
+
+- POST: neue Daten anlegen (z. B. neuen Spieler erstellen)
+
+- PUT / PATCH: bestehende Daten ändern (z. B. Trainingseinheit aktualisieren)
+
+- DELETE: Daten löschen (z. B. Spieler entfernen)
+
+Zusätzlich verwendet eine REST-API HTTP-Statuscodes, um das Ergebnis einer Anfrage zu beschreiben. Beispiele sind:
+
+- 200 (OK): Anfrage erfolgreich
+
+- 201 (Created): Ressource erfolgreich erstellt
+
+- 400 (Bad Request): ungültige Anfrage
+
+- 404 (Not Found): Ressource nicht gefunden
+
+Ein wesentliches Merkmal von REST ist außerdem Statelessness: Jede Anfrage enthält alle notwendigen Informationen, sodass der Server keinen Zustand zwischen zwei Anfragen speichern muss. Das macht Systeme oft besser skalierbar und einfacher wartbar.
+
+### Was versteht man unter CRUD?
+CRUD ist ein Grundkonzept der Datenverarbeitung und beschreibt die vier grundlegenden Operationen, die in fast jedem datenbasierten System vorkommen. CRUD steht für:
+
+- Create: Daten erstellen (z. B. neuen Spieler anlegen)
+
+- Read: Daten lesen/abrufen (z. B. Spielerinformationen anzeigen)
+
+- Update: Daten verändern (z. B. Trainingssession bearbeiten)
+
+- Delete: Daten löschen (z. B. Wurfdatensatz entfernen)
+
+Diese vier Operationen bilden die Basis für die Verwaltung von Daten in Datenbanken und werden in REST-APIs meist direkt durch HTTP-Methoden abgebildet: Create → POST, Read → GET, Update → PUT/PATCH, Delete → DELETE.
+
+## Spring Initializer
+Der Spring Initializr ist ein webbasiertes Tool, das die Erstellung eines neuen Spring-Boot-Projekts stark vereinfacht. Anstatt ein Projekt manuell aufzusetzen und alle benötigten Bibliotheken selbst zu konfigurieren, kann über den Spring Initializr in wenigen Schritten eine fertige Projektstruktur generiert werden.
+
+Dabei wählt man unter anderem:
+
+- Programmiersprache (meist Java)
+
+- Build-Tool (Maven oder Gradle)
+
+- Spring-Boot-Version
+
+- sowie die benötigten Dependencies (z. B. Spring Web, Spring Data JPA, H2 Database)
+
+Auf Basis dieser Auswahl erstellt der Spring Initializr automatisch ein Projekt mit:
+
+- einer passenden Ordnerstruktur,
+
+- einer Startklasse (Main Application),
+
+- einer vorkonfigurierten Build-Datei (pom.xml bei Maven),
+
+- und den notwendigen Grundeinstellungen für Spring Boot.
+
+Der Vorteil besteht darin, dass die grundlegende Projektkonfiguration schnell, standardisiert und fehlerarm erfolgt. Dadurch kann direkt mit der eigentlichen Entwicklung begonnen werden, ohne Zeit in manuelles Setup zu investieren.
+
+## Java / JavaScript
+### Was ist Java?
+Java ist eine objektorientierte Programmiersprache, die ursprünglich mit dem Ziel entwickelt wurde, plattformunabhängige Anwendungen zu ermöglichen. Ein zentrales Prinzip von Java lautet „Write once, run anywhere“. Java-Programme werden dabei in Bytecode übersetzt und anschließend von der Java Virtual Machine (JVM) ausgeführt, wodurch dieselbe Anwendung auf unterschiedlichen Betriebssystemen laufen kann.
+
+Java wird häufig für größere, strukturierte Softwareprojekte eingesetzt, da die Sprache stark typisiert ist, viele Bibliotheken bietet und sich gut für wartbare und skalierbare Anwendungen eignet.
+
+### Was ist JavaScript
+JavaScript ist eine Skriptsprache, die hauptsächlich für die Entwicklung von interaktiven Webanwendungen verwendet wird. Ursprünglich wurde JavaScript dafür entwickelt, Webseiten im Browser dynamisch zu machen, z. B. durch Formvalidierung, Animationen oder das Nachladen von Inhalten ohne Seitenreload.
+
+Heute wird JavaScript nicht nur im Browser, sondern auch serverseitig eingesetzt (z. B. mit Node.js). Dadurch kann JavaScript sowohl im Frontend als auch im Backend verwendet werden, je nach Technologie-Stack.
+
+### Wofür wird Java verwendet
+Java wird in vielen Bereichen eingesetzt, besonders dort, wo Stabilität, Struktur und Performance wichtig sind. Typische Anwendungsbereiche sind:
+
+- Backend-Entwicklung (z. B. REST-APIs mit Spring Boot)
+
+- Unternehmenssoftware (z. B. ERP-Systeme, Verwaltungssoftware)
+
+- Android-App-Entwicklung (klassisch mit Java, heute oft Kotlin)
+
+- Server- und Cloud-Anwendungen, bei denen Skalierbarkeit entscheidend ist
+
+In diesem Projekt ist Java vor allem relevant, weil damit das Backend umgesetzt wird und Spring Boot als Java-Framework darauf aufbaut.
+
+### Wofür wird JavaScript verwendet
+JavaScript wird vor allem für Webentwicklung genutzt, insbesondere für alles, was im Browser interaktiv sein soll. Typische Einsatzbereiche sind:
+
+- Frontend-Entwicklung (Benutzeroberflächen, dynamische Inhalte)
+
+- Web-Frameworks wie React, Vue oder Angular
+
+- Kommunikation mit Backends über APIs (z. B. REST-Aufrufe)
+
+- Backend-Entwicklung mit Node.js, wenn JavaScript auch serverseitig genutzt wird
+
+In vielen Projekten wird JavaScript eingesetzt, um das Frontend zu bauen, das dann über eine API mit dem Backend kommuniziert.
+
+### Unterschied zwischen Java und JavaScript
+Obwohl die Namen ähnlich klingen, sind Java und JavaScript zwei unterschiedliche Programmiersprachen mit unterschiedlichen Zielen und Eigenschaften:
+
+- **Syntax und Konzept:** Java ist objektorientiert und stark typisiert, während JavaScript dynamisch typisiert ist und flexibler verwendet werden kann.
+
+- **Laufzeitumgebung:** Java läuft auf der JVM, JavaScript läuft primär im Browser oder serverseitig über Node.js.
+
+- **Einsatzgebiet:** Java wird häufig für Backend-Systeme, Unternehmenssoftware und große Anwendungen verwendet. JavaScript ist die Standardsprache für interaktive Webseiten und moderne Web-Frontends.
+
+- **Struktur:** Java ist in der Regel strenger strukturiert (Klassen, Typen, Compile-Time Checks), während JavaScript mehr Freiheit bietet, aber dadurch auch fehleranfälliger sein kann, wenn kein klarer Stil eingehalten wird.
+
+Java ist eine klassische Sprache für strukturierte, größere Anwendungen (z. B. Backends), während JavaScript vor allem für Webentwicklung und Interaktivität im Browser eingesetzt wird.
+
+## Postman
+Postman ist ein Tool zur Entwicklung und zum Testen von REST-APIs. Es ermöglicht, HTTP-Anfragen wie GET, POST, PUT/PATCH und DELETE direkt an ein Backend zu senden, ohne dass dafür bereits ein fertiges Frontend notwendig ist. Dabei können Request-Details wie Header, Parameter und ein JSON-Body einfach eingestellt werden. Postman zeigt anschließend die Antwort des Servers übersichtlich an, inklusive Statuscode und Rückgabedaten. Dadurch eignet sich das Tool besonders gut, um API-Endpunkte während der Backend-Entwicklung zu prüfen, Fehler zu analysieren und die Funktionalität der Schnittstelle schrittweise zu verifizieren.
+
+## Datenbank
+## Was ist eine Datenbank?
+Eine Datenbank ist ein System zur strukturierten Speicherung, Organisation und Verwaltung von Daten. Im Gegensatz zu einfachen Dateien werden Informationen in einer Datenbank nach klaren Regeln abgelegt, sodass sie gezielt durchsucht und verarbeitet werden können. Verwaltet wird eine Datenbank in der Regel durch ein Datenbankmanagementsystem (DBMS), das den Zugriff regelt und Funktionen für das Speichern, Abrufen und Bearbeiten von Daten bereitstellt. Dadurch können Daten nicht nur dauerhaft gespeichert, sondern auch konsistent und nachvollziehbar verwaltet werden.
+
+### Wofür werden Datenbanken verwendet?
+Datenbanken werden verwendet, um Daten dauerhaft, sicher und effizient verfügbar zu machen. Sie ermöglichen es, Informationen schnell abzufragen, zu filtern, zu sortieren und zu ändern, auch wenn sehr große Datenmengen vorhanden sind. Zudem helfen Datenbanken dabei, Daten logisch zu strukturieren und Beziehungen zwischen verschiedenen Objekten abzubilden (z. B. ein Spieler mit mehreren Trainingseinheiten oder Würfen). In Backend-Systemen sind Datenbanken besonders wichtig, weil sie die Grundlage dafür bilden, dass Anwendungsdaten wie Benutzer, Trainingsdaten oder Analyseergebnisse gespeichert und später für Auswertungen oder zur Anzeige im Frontend wieder abgerufen werden können.
+
+
+### Was sind Relationale Datenbanken
+
+Relationale Datenbanken speichern Informationen in tabellarischer Form. Die Daten sind in Tabellen (Relationen) organisiert, die aus Datensätzen (Zeilen/Tupeln) und Attributen (Spalten) bestehen. Ein Datensatz beschreibt dabei ein konkretes Objekt, beispielsweise einen Spieler oder einen einzelnen Basketballwurf, während die Attribute die jeweiligen Eigenschaften dieses Objekts (z. B. Name, Zeitpunkt, Winkel oder Treffer) definieren.
+
+Zur eindeutigen Identifikation eines Datensatzes wird in jeder Tabelle ein Primärschlüssel verwendet. Beziehungen zwischen verschiedenen Tabellen werden über Fremdschlüssel umgesetzt, indem ein Attribut einer Tabelle auf den Primärschlüssel einer anderen Tabelle verweist. Auf diese Weise lassen sich Daten logisch miteinander verknüpfen, ohne Informationen mehrfach speichern zu müssen. Dies reduziert Redundanzen, erhöht die Datenkonsistenz und erleichtert die Durchführung von Abfragen und statistischen Auswertungen, da Zusammenhänge zwischen Objekten (z. B. Spieler → Trainingseinheit → Würfe) klar modelliert werden können.
+
+Aufgrund dieser Eigenschaften eignet sich das relationale Datenbankmodell besonders gut für das vorliegende Projekt: Die aus der Videoanalyse entstehenden Daten müssen langfristig gespeichert, eindeutig einer Trainingseinheit bzw. einem Spieler zugeordnet und anschließend für Kennzahlen wie Trefferquoten, Durchschnittswerte oder Abweichungen zwischen Soll- und Ist-Flugbahn ausgewertet werden. Relationale Datenbanken bieten dafür eine stabile und strukturierte Grundlage.
+
+## Java Persistand API (JPA)
+### Was ist JPA
+JPA (Java Persistence API) ist eine Java-Standard-Spezifikation für die objekt-relationalen Persistierung. Sie beschreibt, wie Java-Objekte (z. B. Player, TrainingSession) in einer relationalen Datenbank gespeichert, gelesen und verwaltet werden können. JPA legt dabei nur fest, wie diese Persistenz grundsätzlich funktionieren soll (z. B. über Annotationen wie @Entity, @Id, @OneToMany), stellt aber selbst keine konkrete Implementierung bereit.
+
+Durch JPA kann die Datenbankarbeit auf einer höheren Ebene erfolgen: Statt SQL direkt zu schreiben, werden Objekte gespeichert und abgefragt, wodurch der Code meist übersichtlicher und besser wartbar wird.
+
+### Was sind Annotationen
+Annotationen sind spezielle Markierungen im Quellcode (in Java erkennbar am @-Symbol), mit denen zusätzliche Informationen über Klassen, Methoden oder Variablen angegeben werden. Sie verändern nicht direkt den Programmablauf, sondern dienen Frameworks und Tools als „Metadaten“, um bestimmtes Verhalten automatisch umzusetzen.
+
+Im Backend mit Spring Boot und JPA werden Annotationen z. B. verwendet, um eine Klasse als Datenbank-Entität zu kennzeichnen (@Entity), Primärschlüssel festzulegen (@Id) oder REST-Endpunkte zu definieren (@RestController, @GetMapping). Dadurch wird Konfiguration in den Code verlagert, was die Struktur klarer macht und die Entwicklung vereinfacht.
+## Entity-Relationship-Modell
+
+Relationale Datenbanken speichern Informationen in tabellarischer Form. Die Daten sind in Tabellen (Relationen) organisiert, die aus Datensätzen (Zeilen/Tupeln) und Attributen (Spalten) bestehen. Ein Datensatz beschreibt dabei ein konkretes Objekt, beispielsweise einen Spieler oder einen einzelnen Basketballwurf, während die Attribute die jeweiligen Eigenschaften dieses Objekts (z. B. Name, Zeitpunkt, Winkel oder Treffer) definieren.
+
+Zur eindeutigen Identifikation eines Datensatzes wird in jeder Tabelle ein Primärschlüssel verwendet. Ein Primärschlüssel ist ein Attribut (oder eine Kombination mehrerer Attribute), dessen Wert in der Tabelle eindeutig ist und somit jeden Datensatz klar identifiziert, z. B. eine automatisch vergebene ID. Beziehungen zwischen verschiedenen Tabellen werden über Fremdschlüssel umgesetzt. Ein Fremdschlüssel ist ein Attribut in einer Tabelle, das auf den Primärschlüssel einer anderen Tabelle verweist. Dadurch kann beispielsweise ein Wurf einem bestimmten Spieler oder einer konkreten Trainingseinheit zugeordnet werden, ohne die Spielerdaten im Wurf-Datensatz erneut speichern zu müssen.
+
+Durch diese Verknüpfungen lassen sich Daten logisch miteinander verbinden, ohne Informationen mehrfach abzulegen. Mehrfach gespeicherte Informationen bezeichnet man als Redundanzen (z. B. wenn der Name eines Spielers in vielen Wurf-Datensätzen wiederholt gespeichert wird). Redundanzen erhöhen das Risiko von Fehlern, da Änderungen dann an mehreren Stellen durchgeführt werden müssten. Die Vermeidung solcher Redundanzen verbessert die Datenkonsistenz, also die Eigenschaft, dass Daten innerhalb der Datenbank widerspruchsfrei und korrekt bleiben (z. B. ein Spielername ist überall gleich und nicht in unterschiedlichen Varianten gespeichert). Zusätzlich erleichtert diese Struktur die Durchführung von Abfragen und statistischen Auswertungen, da Zusammenhänge zwischen Objekten (z. B. Spieler → Trainingseinheit → Würfe) klar modelliert und gezielt ausgewertet werden können.
+
+### Zentrale Begriffe des ER-Modells
 
 - **Entität**  
   Eine Entität beschreibt ein eindeutig identifizierbares Objekt aus dem Anwendungsbereich. Im Projekt sind dies beispielsweise Spieler*innen, Trainingseinheiten oder einzelne Würfe. Entitäten werden später als Tabellen in der Datenbank umgesetzt.
@@ -60,6 +238,87 @@ Zur Planung der Datenbankstruktur wird das **Entity-Relationship-Modell (ER-Mode
 - **Beziehung**  
   Beziehungen stellen die Verknüpfungen zwischen Entitäten dar. Sie definieren, wie Objekte zueinander in Beziehung stehen, etwa dass eine Spielerin mehrere Trainingseinheiten absolvieren kann oder dass eine Trainingseinheit aus mehreren Würfen besteht.
 
+### Unterschied zwischen Beziehungen und Kardinalitäten
+
+- **Beziehungen** beschreiben, dass zwei Entitäten miteinander verknüpft sind (z. B. Spieler hat Trainingseinheiten).
+- **Kardinalitäten** beschreiben, wie viele Objekte an dieser Beziehung beteiligt sein können (z. B. 1:n = ein Spieler kann viele Trainingseinheiten haben).
+
+### Was sind Kardinalitäten
+Neben Entitäten, Attributen und Beziehungen sind Kardinalitäten ein zentrales Element des ER-Modells. Sie beschreiben, wie viele Objekte einer Entität mit Objekten einer anderen Entität in Beziehung stehen können. Kardinalitäten helfen dabei, die Struktur einer Datenbank korrekt zu planen und später sauber in Tabellen und Fremdschlüssel-Beziehungen umzusetzen.
+
+- **1:1-Beziehung (One-to-One)**
+
+  Bei einer 1:1-Beziehung ist jedes Objekt der ersten Entität genau einem Objekt der zweiten Entität zugeordnet – und umgekehrt.
+  Beispiel: Ein Personalausweis gehört genau zu einer Person und eine Person hat genau einen Personalausweis.
+  In relationalen Datenbanken wird dies meist über einen Fremdschlüssel realisiert, der eindeutig sein muss (Unique-Constraint).
+
+- **1:n-Beziehung (One-to-Many)**
+
+  Eine 1:n-Beziehung bedeutet, dass ein Objekt der ersten Entität mit mehreren Objekten der zweiten Entität verbunden sein kann, während ein Objekt der zweiten Entität nur einem Objekt der ersten Entität zugeordnet ist.
+  Beispiel: Ein Spieler kann mehrere Trainingseinheiten absolvieren, aber eine Trainingseinheit gehört zu genau einem Spieler.
+  In der Datenbank wird dies typischerweise dadurch umgesetzt, dass die „n-Seite“ (z. B. Trainingseinheit) einen Fremdschlüssel auf die „1-Seite“ (z. B. Spieler) enthält.
+
+- **n:m-Beziehung (Many-to-Many)**
+
+  Bei einer n:m-Beziehung können mehrere Objekte der ersten Entität mit mehreren Objekten der zweiten Entität verbunden sein.
+  Beispiel: Studierende können mehrere Kurse besuchen und jeder Kurs hat mehrere Studierende.
+  In relationalen Datenbanken wird eine n:m-Beziehung üblicherweise über eine Zwischentabelle (Join-Tabelle) umgesetzt, die die Primärschlüssel beider Entitäten als Fremdschlüssel enthält.
+
+## ER Diagramme
+### Was ist ein ER Diagramm
+Ein ER-Diagramm ist eine grafische Darstellung des Entity-Relationship-Modells und wird verwendet, um die Struktur einer Datenbank übersichtlich zu planen. Es zeigt, welche Entitäten im System vorkommen, welche Attribute diese besitzen und wie die Entitäten miteinander in Beziehung stehen. Dadurch eignet sich ein ER-Diagramm besonders gut, um komplexe Datenmodelle verständlich zu visualisieren, bevor diese in einer relationalen Datenbank umgesetzt werden.
+
+### Verschiedene Notationsformen
+- **Chen-Notation**
+
+  Eine klassische Darstellung des ER-Modells: Entitäten werden als Rechtecke, Beziehungen als Rauten und Attribute als Ovale dargestellt. Kardinalitäten werden an den Beziehungslinien angegeben. Diese Notation ist sehr anschaulich, wird aber in der Praxis bei großen Modellen schnell unübersichtlich.
+
+- **Crow’s-Foot-Notation (Krähenfuß)**
+
+  Eine sehr verbreitete Notation in der Datenbankpraxis. Entitäten werden als Tabellen-/Boxen dargestellt, Beziehungen als Linien. Die Kardinalitäten werden mit Symbolen wie dem „Krähenfuß“ (für „viele“) visualisiert. Dadurch lassen sich 1:1-, 1:n- und n:m-Beziehungen sehr schnell erkennen.
+
+- **IDEF1X-Notation**
+
+  Eine stärker technisch orientierte Notation, die häufig in professionellen Datenbankdesigns eingesetzt wird. Sie unterscheidet klar zwischen identifizierenden und nicht-identifizierenden Beziehungen und legt großen Fokus auf Schlüsselstrukturen. Dadurch ist sie präzise, aber für Einsteiger oft komplexer.
+
+- **UML-Klassendiagramm (als alternative Darstellung)**
+
+  Zwar kein klassisches ER-Notation-System, aber häufig in objektorientierten Projekten genutzt. Klassen entsprechen dabei oft Entitäten, Attribute werden innerhalb der Klasse dargestellt, und Beziehungen werden als Assoziationen mit Multiplizitäten (z. B. 1..*, 0..1) angegeben. UML ist besonders praktisch, wenn Datenmodell und Code-Design eng zusammenhängen.
+
+## H2 Datenbank
+Die H2-Datenbank ist ein leichtgewichtiges, relationales Datenbankmanagementsystem (DBMS), das in Java geschrieben wurde und besonders häufig für Entwicklung, Tests und Prototyping eingesetzt wird. Ein großer Vorteil von H2 ist, dass sie ohne aufwendige Installation verwendet werden kann und sich sehr einfach in Java- und Spring-Boot-Projekte integrieren lässt.
+
+H2 kann in zwei typischen Betriebsarten genutzt werden:
+
+- In-Memory-Modus: Die Datenbank läuft nur im Arbeitsspeicher und ist nach dem Beenden der Anwendung wieder leer. Das ist ideal für schnelle Tests, da keine Dateien verwaltet werden müssen.
+
+- File-Modus: Die Daten werden in einer Datei gespeichert und bleiben auch nach einem Neustart erhalten.
+
+In Spring Boot wird H2 oft als Entwicklungsdatenbank verwendet, weil sie schnell startbar ist und gut mit Spring Data JPA/Hibernate zusammenarbeitet. Zusätzlich bietet H2 eine integrierte Web-Konsole, über die Tabellen, Inhalte und SQL-Abfragen bequem im Browser angesehen werden können. Für produktive Systeme wird häufig später auf leistungsfähigere Datenbanken (z. B. PostgreSQL oder MySQL) umgestellt, während H2 weiterhin für Tests und lokale Entwicklung genutzt werden kann.
+
+## MySQL
+MySQL ist ein weit verbreitetes relationales Datenbankmanagementsystem (RDBMS), das zur dauerhaften Speicherung und Verwaltung strukturierter Daten eingesetzt wird. Die Daten werden in Tabellen organisiert und können mithilfe von SQL (Structured Query Language) effizient abgefragt und bearbeitet werden. MySQL wird häufig in Web- und Backend-Anwendungen verwendet, weil es stabil, performant und für den produktiven Dauerbetrieb geeignet ist. Typische Einsatzbereiche sind Anwendungen mit Nutzer- und Trainingsdaten, Content-Systeme oder allgemeine Geschäftsanwendungen, bei denen Daten langfristig gespeichert und zuverlässig verwaltet werden müssen. In Spring-Boot-Projekten lässt sich MySQL über einen JDBC-Treiber anbinden und wird oft gemeinsam mit Spring Data JPA/Hibernate verwendet, um Datenbankzugriffe strukturiert über das Objektmodell umzusetzen.
+
+### Was ist der Unterschied zwischen H2 Datenbank und MySql
+Die H2-Datenbank und MySQL sind beide relationale Datenbanken, unterscheiden sich jedoch vor allem in ihrem Einsatzgebiet und ihrer Betriebsart:
+
+- **Einsatzbereich:** H2 wird meist für Entwicklung und Tests genutzt, während MySQL typischerweise in produktiven Systemen eingesetzt wird.
+
+- **Installation und Betrieb:** H2 ist sehr leichtgewichtig und kann ohne große Einrichtung direkt im Projekt laufen (z. B. In-Memory). MySQL benötigt in der Regel eine separate Installation und läuft als eigener Datenbankserver.
+
+- **Persistenz:** H2 kann im In-Memory-Modus betrieben werden (Daten gehen nach dem Beenden verloren) oder als Datei gespeichert werden. MySQL speichert Daten standardmäßig dauerhaft auf dem Server.
+
+- **Skalierbarkeit und Leistung:** MySQL ist für größere Datenmengen, mehrere Benutzer und dauerhafte Nutzung optimiert. H2 ist eher für kleinere lokale Umgebungen gedacht.
+
+## IntelJ IDA
+IntelliJ IDEA ist eine integrierte Entwicklungsumgebung (IDE) von JetBrains, die vor allem für die Entwicklung mit Java (und weiteren Sprachen) verwendet wird. Sie bietet eine zentrale Arbeitsumgebung, in der Quellcode geschrieben, strukturiert, getestet und ausgeführt werden kann. Durch Funktionen wie Code-Vervollständigung, Fehlererkennung in Echtzeit, Refactoring-Werkzeuge und Debugging unterstützt IntelliJ IDEA eine effiziente und saubere Softwareentwicklung.
+
+Im Backend-Kontext wird IntelliJ IDEA typischerweise genutzt, um Spring-Boot-Projekte zu erstellen und zu verwalten, Abhängigkeiten (z. B. über Maven) einzubinden, REST-Controller und Datenbankklassen zu entwickeln sowie die Anwendung lokal zu starten und zu testen. Dadurch erleichtert die IDE sowohl die Umsetzung als auch die Wartung des Backends erheblich.
+
+## Visual Studio Code
+Visual Studio Code (VS Code) ist ein leichter, plattformübergreifender Code-Editor von Microsoft, der sich durch hohe Erweiterbarkeit auszeichnet. Er unterstützt viele Programmiersprachen wie JavaScript, TypeScript, HTML/CSS, Python und auch Java über Erweiterungen. VS Code bietet Funktionen wie Syntax-Highlighting, Code-Vervollständigung, integriertes Terminal, Debugging sowie eine starke Git-Integration, wodurch die Entwicklung übersichtlich und effizient wird.
+
+VS Code wird häufig für die Frontend-Entwicklung eingesetzt, z. B. zum Erstellen von Weboberflächen mit JavaScript-Frameworks, und eignet sich durch Extensions auch für Backend-Aufgaben. Besonders praktisch ist die flexible Anpassbarkeit: Durch Plugins können zusätzliche Tools, Linter, Formatter oder Framework-Unterstützung eingebunden werden, sodass sich VS Code gut für moderne Webprojekte und die Arbeit im Team eignet.
 ## Praktische Arbeit
 ### Erstellung des ER-Diagramm
 
