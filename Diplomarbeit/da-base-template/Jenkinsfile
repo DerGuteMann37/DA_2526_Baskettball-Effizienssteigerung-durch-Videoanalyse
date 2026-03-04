@@ -19,7 +19,7 @@ pipeline {
         )
         string(
             name: 'GIT_BRANCH',
-            defaultValue: '*/jada',
+            defaultValue: '*/dali',
             description: 'Experte: Wenn Sie einen anderen als den \'main\' Branch bauen möchten' 
         )
         choice(
