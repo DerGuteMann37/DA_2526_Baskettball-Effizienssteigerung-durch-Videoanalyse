@@ -451,12 +451,29 @@ Damit bildet die Implementierung einen geschlossenen technischen Workflow von de
 
 ![Overlay der rekonstruierten Flugbahn](img/code4.png)
 
-
 ### Physikalische Modellierung und Berechnung der Sollflugbahn
 
 Im folgenden Abschnitt wird ausschließlich die theoretische Sollflugbahn eines Basketballwurfs betrachtet. Grundlage ist das physikalische Modell des schiefen Wurfs, bei dem der Ball als Punktmasse in einem zweidimensionalen Koordinatensystem beschrieben wird. Die horizontale Richtung wird durch die Achse $x$, die vertikale Höhe durch die Achse $y$ dargestellt. Unter Vernachlässigung des Luftwiderstands ergibt sich eine mathematisch gut beschreibbare Flugkurve, die als Referenz für die Sollflugbahn dient.
 
-Für die Modellierung werden die Parameter Abwurfhöhe $h_0$, Korbhöhe $h_K$, horizontale Distanz zum Korb $x_K$, Abwurfwinkel $\alpha$, Anfangsgeschwindigkeit $v_0$ und Erdbeschleunigung $g$ verwendet. Die zeitabhängigen Bewegungsgleichungen lauten:
+Für die Modellierung werden die Parameter Abwurfhöhe $h_0$, Korbhöhe $h_K$, horizontale Distanz zum Korb $x_K$, Abwurfwinkel $\alpha$, Anfangsgeschwindigkeit $v_0$ und Erdbeschleunigung $g$ verwendet.
+
+**Listing 4.1: Definition der Modellparameter des Wurfmodells**
+
+```python
+import numpy as np
+
+h_0 = 1.95
+h_K = 3.05
+x_K = 5.20
+g = 9.81
+alpha_deg = 52.0
+
+alpha = np.deg2rad(alpha_deg)
+```
+
+Dieses Listing definiert die zentralen Parameter der Sollflugbahn und bereitet den Abwurfwinkel für die weitere Berechnung in Radiant auf.
+
+Die zeitabhängigen Bewegungsgleichungen lauten:
 
 $$
 x(t) = v_0 \cos(\alpha)\, t
@@ -486,48 +503,107 @@ $$
 v_0 = \sqrt{\frac{g x_K^2}{2 \cos^2(\alpha)\,\bigl(h_0 + x_K \tan(\alpha) - h_K\bigr)}}
 $$
 
+**Listing 4.2: Berechnung der Anfangsgeschwindigkeit aus der Treffbedingung**
+
+```python
+import numpy as np
+
+nenner = 2 * np.cos(alpha)**2 * (h_0 + x_K * np.tan(alpha) - h_K)
+
+if nenner <= 0:
+    raise ValueError("Keine physikalisch sinnvolle Lösung für diese Parameter.")
+
+v_0 = np.sqrt(g * x_K**2 / nenner)
+print(f"Erforderliche Anfangsgeschwindigkeit: {v_0:.2f} m/s")
+```
+
+Dieses Listing zeigt die direkte programmtechnische Umsetzung der Treffbedingung und die Berechnung von $v_0$.
+
 Eine physikalisch sinnvolle Lösung existiert nur, wenn der Nenner positiv ist:
 
 $$
 h_0 + x_K \tan(\alpha) - h_K > 0
 $$
 
-Zur praktischen Berechnung wird der Bereich $x \in [0, x_K]$ in diskrete Stützstellen unterteilt. Für jede Stützstelle wird $y(x)$ ausgewertet, wodurch eine berechenbare Punktfolge entsteht, die die Sollflugbahn repräsentiert. Dieses Vorgehen ist reproduzierbar, numerisch stabil und für die Simulation verschiedener Wurfsituationen geeignet, da einzelne Parameter gezielt variiert werden können.
+Zur praktischen Berechnung wird der Bereich $x \in [0, x_K]$ in diskrete Stützstellen unterteilt. Für jede Stützstelle wird $y(x)$ ausgewertet, wodurch eine berechenbare Punktfolge entsteht, die die Sollflugbahn repräsentiert.
+
+**Listing 4.3: Diskrete Berechnung der Sollflugbahn über $x$-Stützstellen**
+
+```python
+import numpy as np
+
+x = np.linspace(0, x_K, 200)
+y = h_0 + x * np.tan(alpha) - (g * x**2) / (2 * v_0**2 * np.cos(alpha)**2)
+```
+
+Optional kann die berechnete Kurve mit Matplotlib visualisiert werden:
+
+```python
+import matplotlib.pyplot as plt
+
+plt.plot(x, y, color="black", label="Sollflugbahn")
+plt.scatter([0, x_K], [h_0, h_K], color="black")
+plt.xlabel("x [m]"); plt.ylabel("y [m]")
+plt.grid(True, linestyle=":"); plt.legend(); plt.show()
+```
+
+Die Auswirkungen variierender Modellparameter auf die Form der Sollflugbahn sind in folgender Abbildung dargestellt.Die Kurven erfüllen jeweils die Treffbedingung am Korbpunkt.
+
+![Parameterstudie der Sollflugbahn](img/abbildung_soll_3_parameterstudie.png)
+
+Dieses Vorgehen ist reproduzierbar, numerisch stabil und für die Simulation verschiedener Wurfsituationen geeignet, da einzelne Parameter gezielt variiert werden können.
 
 Das Modell des schiefen Wurfs ist für diese Anwendung geeignet, weil es die wesentlichen kinematischen Zusammenhänge mit begrenzter Komplexität abbildet. Dadurch entsteht eine nachvollziehbare und technisch umsetzbare Grundlage für die Berechnung der theoretischen Sollflugbahn im Rahmen der Diplomarbeit.
 
 
 
+## Grafische Visualisierung der berechneten Sollflugbahn
 
+Nach der mathematischen Bestimmung der Sollflugbahn folgt die grafische Darstellung als zentraler Schritt der Ergebnisaufbereitung. Die Berechnung liefert zunächst diskrete Stützpunkte \((x_i, y_i)\), die aus der Bahnfunktion für definierte \(x\)-Werte gewonnen werden. Erst durch die Visualisierung dieser Punktfolge wird der Verlauf der Flugkurve anschaulich und wissenschaftlich interpretierbar. Die Diagrammdarstellung dient damit der strukturierten Aufbereitung der Modellergebnisse.
 
+Eine kontinuierlich wirkende Flugkurve entsteht durch die feine Diskretisierung des Bereichs \(x \in [0, x_K]\). Für jeden Stützpunkt wird der entsprechende Höhenwert \(y(x)\) berechnet. Werden diese Punkte in aufsteigender Reihenfolge verbunden, ergibt sich eine glatte Parabel, die die Sollflugbahn approximiert. Die Auflösung der Kurve hängt direkt von der Anzahl der gewählten Stützstellen ab.
 
+**Listing 4.4: Grunddarstellung der Sollflugbahn aus diskreten Stützpunkten**
 
+```python
+import numpy as np
+import matplotlib.pyplot as plt
 
+x = np.linspace(0, x_K, 200)
+y = h_0 + x * np.tan(alpha) - (g * x**2) / (2 * v_0**2 * np.cos(alpha)**2)
 
+plt.plot(x, y, color="black", label="Sollflugbahn")
+plt.xlabel("Horizontale Entfernung x [m]")
+plt.ylabel("Höhe y [m]")
+plt.title("Berechnete Sollflugbahn")
+plt.grid(True, linestyle=":")
+plt.legend()
+plt.show()
+```
 
+Das Listing zeigt die numerische Erzeugung und grafische Ausgabe der Sollkurve auf Basis bereits berechneter Modellparameter.
 
+Für die wissenschaftliche Lesbarkeit müssen Diagramme einheitlich aufgebaut sein. Dazu zählen eindeutig beschriftete Achsen mit Einheiten, eine Legende zur Kurvenzuordnung sowie ein dezentes Gitternetz zur verbesserten Ablesbarkeit. Ebenso ist eine geeignete Skalierung wichtig, damit der vollständige Bahnverlauf vom Abwurf bis zum Zielpunkt sichtbar bleibt.
 
+Zur inhaltlichen Interpretation ist die Markierung charakteristischer Punkte wesentlich. Der Abwurfpunkt \((0, h_0)\) und die Korbposition \((x_K, h_K)\) können als Referenzpunkte direkt in die Grafik eingetragen werden. Dadurch wird die Treffbedingung visuell überprüfbar, da die Sollkurve den Zielpunkt erreicht.
 
+**Listing 4.5: Erweiterte Visualisierung mit markiertem Abwurfpunkt und Korbposition**
 
+```python
+import matplotlib.pyplot as plt
 
+plt.plot(x, y, color="black", label="Sollflugbahn")
+plt.scatter([0, x_K], [h_0, h_K], color="black")
+plt.annotate("Abwurfpunkt", (0, h_0), xytext=(0.2, h_0 - 0.3))
+plt.annotate("Korbposition", (x_K, h_K), xytext=(x_K - 1.1, h_K + 0.2))
+plt.xlabel("x [m]"); plt.ylabel("y [m]")
+plt.grid(True, linestyle=":")
+plt.legend()
+plt.show()
+```
+Die praktische Umsetzung der beschriebenen Visualisierung ist in Abbildung X als Overlay der berechneten Sollflugbahn auf einem Videoframe dargestellt.
 
+![Overlay-Darstellung der berechneten Sollflugbahn mit markierter Abwurfposition](img/wurf1_soll_overlay.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Die grafische Darstellung bildet damit die Verbindung zwischen mathematischer Modellierung und technischer Dokumentation. Sie ermöglicht eine kompakte und nachvollziehbare Interpretation der berechneten Sollflugbahn und unterstützt die Bewertung der Plausibilität des simulierten Wurfverlaufs.
 
