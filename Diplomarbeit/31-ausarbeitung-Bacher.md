@@ -204,7 +204,9 @@ Ziel dieses Kapitels ist es, auf Grundlage der zuvor hergeleiteten Bahnkurve jen
 
 Die Flugbahn eines geworfenen Körpers wird durch folgende Gleichung beschrieben:
 
-![Gleichung](img/1-Formel.png)
+$$
+y(x)=h_0 + x \tan(\alpha) - \frac{g x^2}{2 v_0^2 \cos^2(\alpha)}
+$$
 
 
 
@@ -219,15 +221,17 @@ Dabei bezeichnet
 Ein Zielpunkt kann allgemein durch seine Koordinaten ($Z(x_Z, y_Z)$) beschrieben werden.
 Damit der geworfene Körper das Ziel trifft, muss gelten:
 
-![Bedingung für das Treffen des Zielpunkts](img/2.Formel.png)
+$$
+y(x_Z)=y_Z
+$$
+
 
 
 Setzt man den Zielpunkt in die Bahnkurve ein, ergibt sich:
 
-
-
-![Bahnkurvengleichung mit eingesetztem Zielpunkt](img/3.Formel.png)
-
+$$
+y_Z=h_0 + x_Z\tan(\alpha) - \frac{g x_Z^2}{2 v_0^2 \cos^2(\alpha)}
+$$
 
 
 
@@ -240,18 +244,19 @@ Diese Gleichung stellt die grundlegende Bedingung für das Treffen des Zielpunkt
 
 Zur Bestimmung der Sollflugbahn kann die Gleichung nach der Anfangsgeschwindigkeit ($v_0$) aufgelöst werden. Durch Umstellen erhält man:
 
+$$
+v_0=\sqrt{\frac{g x_Z^2}{2\cos^2(\alpha)\left(h_0 + x_Z\tan(\alpha)-y_Z\right)}}
+$$
 
-
-![Nach der Anfangsgeschwindigkeit ($v_0$)  aufgelöste Bahnkurvengleichung](img/4-Formel.png)
 
 
 Diese Gleichung ermöglicht es, für einen gewählten Abwurfwinkel die notwendige Anfangsgeschwindigkeit zu berechnen, um das Ziel zu erreichen.
 
 Damit eine reale Lösung existiert, muss der Ausdruck im Nenner positiv sein:
 
-
-![Bedingung für die Existenz einer realen Lösung](img/5-Formel.png)
-
+$$
+h_0 + x_Z\tan(\alpha)-y_Z>0
+$$
 
 Ist diese Bedingung nicht erfüllt, reicht der gewählte Winkel nicht aus, um die notwendige Höhe zu erreichen.
 
