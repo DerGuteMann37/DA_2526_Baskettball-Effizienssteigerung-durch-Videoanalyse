@@ -1,9 +1,11 @@
 # Teilaufgabe Dalipovic Nino
 \textauthor{Nino Dalipovic}
-<!-- 1.1 -->
-## Theorieteil – Frontend 
 
-<!-- 1.1.1 -->
+
+## Theorieteil – Frontend
+
+
+
 ### Technischer Kontext und Zielsetzung des Frontend-Teils
 
 Diese Arbeit befasst sich mit der Konzeption und Umsetzung einer webbasierten Benutzeroberfläche im Kontext einer sportbezogenen Trainingsanwendung. Der Fokus liegt dabei ausschließlich auf der clientseitigen Anwendung, die im Webbrowser ausgeführt wird und als Interaktionsschnittstelle zwischen Benutzer und serverseitiger Systemlogik fungiert.
