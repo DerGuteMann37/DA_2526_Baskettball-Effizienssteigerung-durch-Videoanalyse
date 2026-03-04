@@ -29,9 +29,9 @@ Durch diese strukturierte theoretische Fundierung wird gewährleistet, dass die 
 
 \newpage
 
-### Grundlagen von Webanwendungen
+## Grundlagen von Webanwendungen
 
-#### Das Client-Server-Modell und das HTTP-Protokoll
+### Das Client-Server-Modell und das HTTP-Protokoll
 
 Webanwendungen basieren grundlegend auf dem Client-Server-Architekturmodell. Dieses beschreibt ein verteiltes System, bei dem Aufgaben zwischen mindestens zwei logisch getrennten Komponenten aufgeteilt sind: einem Client und einem Server [@tanenbaum2007].
 
@@ -92,7 +92,7 @@ Diese Mechanismen sind essenziell für responsive Webdesign-Konzepte, bei denen 
 Die konsequente Trennung von Struktur (HTML) und Gestaltung (CSS) verbessert Wartbarkeit und Erweiterbarkeit, da Layout-Anpassungen unabhängig von der Dokumentenstruktur vorgenommen werden können.
 
 
-## Dynamische Interaktion mit JavaScript
+### Dynamische Interaktion mit JavaScript
 
 JavaScript ergänzt HTML und CSS um Interaktivität und dynamisches Verhalten. Es handelt sich um eine skriptbasierte Programmiersprache, die direkt im Browser ausgeführt wird.
 
@@ -112,9 +112,9 @@ Die Kombination aus HTML (Struktur), CSS (Gestaltung) und JavaScript (Logik und 
 
 \newpage
 
-# Moderne Frontend-Entwicklung
+## Moderne Frontend-Entwicklung
 
-## Von statischen Webseiten zu dynamischen Anwendungen
+### Von statischen Webseiten zu dynamischen Anwendungen
 
 Die Entwicklung von Webanwendungen hat sich im Laufe der Zeit grundlegend verändert. Während frühe Webseiten überwiegend aus statischen HTML-Dokumenten bestanden, die bei jeder Interaktion vollständig neu geladen wurden, verfolgen moderne Webanwendungen zunehmend dynamische, clientseitige Architekturen.
 
@@ -125,7 +125,7 @@ Mit steigenden Anforderungen an Interaktivität, Benutzerfreundlichkeit und Reak
 Diese Entwicklung führte zu einer stärkeren Rolle des Frontends innerhalb der Gesamtarchitektur. Der Client fungiert nicht mehr ausschließlich als Anzeigemedium, sondern als eigenständige Laufzeitumgebung mit komplexer Zustandsverwaltung und Interaktionslogik.
 
 
-## Single Page Applications (SPA)
+### Single Page Applications (SPA)
 
 Eine Single Page Application (SPA) ist eine Webanwendung, die innerhalb eines einzigen HTML-Dokuments betrieben wird. Im Gegensatz zu klassischen Multi-Page-Ansätzen wird bei Benutzerinteraktionen nicht die gesamte Seite neu geladen. Stattdessen wird der sichtbare Inhalt dynamisch im Browser aktualisiert.
 
@@ -150,7 +150,7 @@ Gleichzeitig entstehen neue Herausforderungen. Dazu gehören:
 Trotz dieser Herausforderungen haben sich SPAs als dominierendes Architekturmodell für interaktive Webanwendungen etabliert.
 
 
-## Utility-First CSS und moderne Styling-Paradigmen
+### Utility-First CSS und moderne Styling-Paradigmen
 
 Mit wachsender Komplexität von Benutzeroberflächen entwickelten sich unterschiedliche Strategien zur Organisation von CSS. Klassische Ansätze verwenden häufig semantische Klassennamen, die größere Stildefinitionen kapseln. Mit zunehmender Projektgröße können dabei umfangreiche und schwer wartbare Stylesheets entstehen.
 
@@ -168,7 +168,7 @@ Demgegenüber kann die starke Nutzung von Utility-Klassen die Lesbarkeit des Mar
 Die Wahl eines Styling-Paradigmas beeinflusst somit unmittelbar Wartbarkeit, Skalierbarkeit und Teamarbeit innerhalb eines Frontend-Projekts.
 
 
-## CDN-basierte Einbindung versus Build-Prozesse
+### CDN-basierte Einbindung versus Build-Prozesse
 
 Frontend-Abhängigkeiten können entweder direkt über Content Delivery Networks (CDNs) eingebunden oder über lokale Build-Prozesse verwaltet werden.
 
@@ -192,7 +192,7 @@ Demgegenüber bieten Build-Prozesse zusätzliche Möglichkeiten zur Optimierung:
 Während CDN-basierte Ansätze insbesondere für kleinere Projekte oder Prototypen geeignet sind, gewinnen Build-Prozesse mit steigender Projektgröße und wachsender Komplexität an Bedeutung.
 
 
-## Browser-APIs und clientseitige Erweiterungsmechanismen
+### Browser-APIs und clientseitige Erweiterungsmechanismen
 
 Moderne Webbrowser stellen eine Vielzahl zusätzlicher Programmierschnittstellen (APIs) bereit, die über die klassische DOM-Manipulation hinausgehen. Diese APIs erweitern die Funktionalität des Clients erheblich.
 
@@ -210,9 +210,9 @@ Mit der steigenden Funktionalität des Clients wächst jedoch auch die Verantwor
 
 \newpage
 
-# Client-Server-Architektur und REST-basierte Kommunikation
+## Client-Server-Architektur und REST-basierte Kommunikation
 
-## Verteilte Systeme und Mehrschichtarchitektur
+### Verteilte Systeme und Mehrschichtarchitektur
 
 Webanwendungen sind als verteilte Systeme konzipiert. Ein verteiltes System besteht aus mehreren unabhängigen Komponenten, die über ein Netzwerk miteinander kommunizieren und gemeinsam eine funktionale Einheit bilden [@tanenbaum2007]. Diese Komponenten sind logisch voneinander getrennt und übernehmen jeweils klar definierte Aufgaben.
 
@@ -229,7 +229,7 @@ Dieses Architekturmodell folgt dem Prinzip der Separation of Concerns. Jede Schi
 Die Trennung der Verantwortlichkeiten ist insbesondere bei größeren Anwendungen entscheidend, da sie parallele Weiterentwicklung sowie unabhängige Skalierung einzelner Systemkomponenten ermöglicht.
 
 
-## REST als Architekturstil
+### REST als Architekturstil
 
 Representational State Transfer (REST) ist ein Architekturstil für verteilte hypermediale Systeme, der von Roy T. Fielding definiert wurde [@fielding2000]. REST beschreibt keine konkrete Implementierung, sondern eine Menge architektonischer Constraints, die ein System erfüllen muss.
 
@@ -248,7 +248,7 @@ Besonders relevant ist die Zustandslosigkeit. Jede Anfrage enthält alle notwend
 Die einheitliche Schnittstelle sorgt dafür, dass Interaktionen standardisiert über HTTP-Methoden und klar definierte Ressourcen erfolgen. Dies erhöht die Interoperabilität zwischen Systemen.
 
 
-## Ressourcenorientierung und HTTP-Semantik
+### Ressourcenorientierung und HTTP-Semantik
 
 Im REST-Architekturstil werden Funktionalitäten als Ressourcen modelliert. Jede Ressource besitzt eine eindeutige Adresse (URI) und kann über standardisierte HTTP-Methoden manipuliert werden.
 
@@ -273,7 +273,7 @@ Diese standardisierte Statuskommunikation ermöglicht eine strukturierte Fehlerb
 Die korrekte Nutzung von HTTP-Semantik ist wesentlich für Vorhersagbarkeit, Caching-Strategien und Interoperabilität verteilter Systeme.
 
 
-## Data Transfer Objects und API-Verträge
+### Data Transfer Objects und API-Verträge
 
 In mehrschichtigen Architekturen werden interne Domänenmodelle häufig nicht direkt an externe Clients übertragen. Stattdessen werden spezielle Übertragungsstrukturen verwendet, sogenannte Data Transfer Objects (DTOs) [@fowler2002].
 
@@ -297,7 +297,7 @@ Ein konsistenter API-Vertrag ist entscheidend für Wartbarkeit und Stabilität. 
 Die Gestaltung von API-Verträgen ist somit eine zentrale architektonische Entscheidung und beeinflusst die langfristige Erweiterbarkeit eines Systems.
 
 
-## Fehlerbehandlung und Robustheit in Web-APIs
+### Fehlerbehandlung und Robustheit in Web-APIs
 
 Robustheit ist eine zentrale Eigenschaft verteilter Systeme. Fehler können auf unterschiedlichen Ebenen auftreten, beispielsweise durch:
 
@@ -321,9 +321,9 @@ Fehlermanagement ist daher kein Nebenaspekt, sondern ein integraler Bestandteil 
 
 \newpage
 
-# Architekturprinzipien im Frontend
+## Architekturprinzipien im Frontend
 
-## Monolithische Frontend-Architekturen
+### Monolithische Frontend-Architekturen
 
 In kleineren oder frühen Webanwendungen wird die gesamte clientseitige Logik häufig innerhalb einer zentralen Struktur organisiert. Eine solche Architektur wird als monolithisches Frontend bezeichnet. Charakteristisch ist, dass Präsentationslogik, Zustandsverwaltung, Ereignisbehandlung und Netzwerkkommunikation innerhalb weniger oder sogar einer einzigen zentralen Codebasis gebündelt sind.
 
@@ -339,7 +339,7 @@ Mit steigender Anwendungsgröße entstehen jedoch strukturelle Herausforderungen
 Monolithische Frontend-Architekturen können somit kurzfristig effizient sein, stoßen jedoch bei wachsender Funktionsvielfalt und steigender Projektkomplexität an ihre Grenzen.
 
 
-## Komponentenbasierte Architekturen
+### Komponentenbasierte Architekturen
 
 Als Reaktion auf die Skalierungsprobleme monolithischer Ansätze etablierten sich komponentenbasierte Architekturen. In diesem Modell wird die Benutzeroberfläche in eigenständige, wiederverwendbare Bausteine unterteilt. Jede Komponente kapselt Struktur, Darstellung und häufig auch einen Teil der Logik.
 
@@ -355,7 +355,7 @@ Komponenten können isoliert entwickelt, getestet und bei Bedarf ersetzt werden.
 Allerdings erfordert eine komponentenbasierte Architektur eine klare Strategie zur Verwaltung von Zuständen und zur Kommunikation zwischen Komponenten. Ohne definierte Konventionen kann auch hier Komplexität entstehen.
 
 
-## Separation of Concerns im Frontend
+### Separation of Concerns im Frontend
 
 Das Prinzip der Separation of Concerns beschreibt die klare Trennung unterschiedlicher Verantwortlichkeiten innerhalb eines Systems. Im Frontend-Kontext betrifft dies insbesondere:
 
@@ -370,7 +370,7 @@ Eine saubere Trennung dieser Bereiche reduziert implizite Abhängigkeiten und er
 Architektonisch betrachtet ist die konsequente Umsetzung dieses Prinzips entscheidend für Skalierbarkeit und Teamarbeit. Je klarer Verantwortlichkeiten abgegrenzt sind, desto leichter lassen sich einzelne Teile unabhängig weiterentwickeln.
 
 
-## Zustandsverwaltung in Webanwendungen
+### Zustandsverwaltung in Webanwendungen
 
 Der Zustand (State) einer Anwendung beschreibt alle Informationen, die den aktuellen Kontext der Benutzerinteraktion definieren. Dazu gehören unter anderem:
 
@@ -392,7 +392,7 @@ Ein unidirektionales Datenflussmodell erhöht Transparenz und Nachvollziehbarkei
 Die Wahl einer Zustandsstrategie beeinflusst maßgeblich Wartbarkeit, Testbarkeit und Erweiterbarkeit einer Frontend-Anwendung.
 
 
-## Rendering-Strategien: Imperativ versus Deklarativ
+### Rendering-Strategien: Imperativ versus Deklarativ
 
 Rendering beschreibt den Prozess, bei dem Daten in visuelle Elemente übersetzt werden. In klassischen, imperativen Ansätzen wird das DOM direkt manipuliert. Entwickler definieren explizit, welche Elemente erstellt, verändert oder entfernt werden.
 
@@ -404,14 +404,14 @@ Die Wahl einer Rendering-Strategie ist somit eine grundlegende Architekturentsch
 
 \newpage
 
-# Nichtfunktionale Anforderungen und Sicherheitsaspekte
+## Nichtfunktionale Anforderungen und Sicherheitsaspekte
 
 Neben funktionalen Anforderungen – also den konkret umgesetzten Fähigkeiten einer Anwendung – spielen nichtfunktionale Anforderungen eine zentrale Rolle in der Architektur moderner Softwaresysteme. Nichtfunktionale Anforderungen beschreiben Qualitätsmerkmale, die das Verhalten und die Eigenschaften eines Systems betreffen [@bass2012].
 
 Im Kontext von Webanwendungen sind insbesondere Wartbarkeit, Erweiterbarkeit, Skalierbarkeit, Performance und Sicherheit von Bedeutung.
 
 
-## Wartbarkeit
+### Wartbarkeit
 
 Wartbarkeit beschreibt die Fähigkeit eines Systems, effizient angepasst, erweitert oder korrigiert werden zu können. Eine hohe Wartbarkeit reduziert langfristige Entwicklungskosten und erleichtert die Weiterentwicklung über den ursprünglichen Projektumfang hinaus.
 
@@ -428,7 +428,7 @@ Eine stark gekoppelte Architektur erschwert Änderungen erheblich. Werden beispi
 Architektonische Prinzipien wie Modularisierung und Separation of Concerns erhöhen die Wartbarkeit signifikant. Durch klar definierte Verantwortlichkeiten können einzelne Komponenten isoliert analysiert und angepasst werden.
 
 
-## Erweiterbarkeit
+### Erweiterbarkeit
 
 Erweiterbarkeit beschreibt die Fähigkeit eines Systems, neue Funktionen zu integrieren, ohne bestehende Komponenten grundlegend verändern zu müssen.
 
@@ -446,7 +446,7 @@ Fehlt diese strukturelle Vorbereitung, steigt mit jeder Erweiterung die Komplexi
 Erweiterbarkeit ist daher nicht nur eine Implementierungsfrage, sondern eine architektonische Grundentscheidung.
 
 
-## Skalierbarkeit
+### Skalierbarkeit
 
 Skalierbarkeit kann sowohl technisch als auch organisatorisch verstanden werden.
 
@@ -462,7 +462,7 @@ Organisatorische Skalierbarkeit hingegen beschreibt die Fähigkeit eines Projekt
 Ein schlecht strukturiertes Frontend kann bei wachsender Teamgröße schnell zu Integrationsproblemen führen. Eine klare Komponentenstruktur erleichtert hingegen parallele Entwicklung.
 
 
-## Performance
+### Performance
 
 Performance beschreibt die Effizienz, mit der eine Anwendung auf Benutzerinteraktionen reagiert. Wahrgenommene Performance beeinflusst unmittelbar die Benutzerzufriedenheit.
 
@@ -485,11 +485,11 @@ Strategien zur Performance-Optimierung umfassen:
 Die Wahl der Architektur beeinflusst Performance erheblich. Komplexe Rendering-Mechanismen oder ineffiziente Zustandsänderungen können zu spürbaren Verzögerungen führen.
 
 
-## Sicherheit in Webanwendungen
+### Sicherheit in Webanwendungen
 
 Sicherheit ist eine zentrale nichtfunktionale Anforderung moderner Websysteme. Webanwendungen sind öffentlich zugänglich und potenziellen Angriffen ausgesetzt.
 
-### Passwortspeicherung und Hashing
+#### Passwortspeicherung und Hashing
 
 Passwörter dürfen niemals im Klartext gespeichert werden. Stattdessen werden kryptographische Hashfunktionen eingesetzt, um das Passwort in eine nicht rückrechenbare Form zu überführen.
 
@@ -500,7 +500,7 @@ Zusätzlich wird empfohlen, für jedes Passwort einen individuellen Salt-Wert zu
 Die sichere Passwortverarbeitung ist ein fundamentaler Bestandteil jeder Webanwendung mit Benutzerverwaltung.
 
 
-### Token-basierte Authentifizierung
+#### Token-basierte Authentifizierung
 
 In zustandslosen Architekturen wird Authentifizierung häufig über Token realisiert. JSON Web Tokens (JWT) sind ein verbreiteter Standard für tokenbasierte Authentifizierungsmechanismen [@rfc7519].
 
@@ -515,7 +515,7 @@ Vorteile tokenbasierter Authentifizierung:
 Gleichzeitig müssen Ablaufzeiten, Signaturvalidierung und sichere Speicherung im Client sorgfältig umgesetzt werden.
 
 
-### Same-Origin-Policy und CORS
+#### Same-Origin-Policy und CORS
 
 Die Same-Origin-Policy ist ein grundlegender Sicherheitsmechanismus von Webbrowsern. Sie verhindert, dass Skripte einer Herkunft (Origin) unkontrolliert auf Ressourcen einer anderen Herkunft zugreifen [@whatwg-fetch].
 
@@ -524,7 +524,7 @@ Cross-Origin Resource Sharing (CORS) erweitert dieses Modell kontrolliert. Serve
 Fehlkonfigurationen von CORS können Sicherheitsrisiken darstellen. Zu weit gefasste Freigaben ermöglichen potenziell unautorisierten Zugriff auf sensible Daten.
 
 
-### Clientseitige Speicherung sensibler Daten
+#### Clientseitige Speicherung sensibler Daten
 
 Moderne Browser bieten mit localStorage und sessionStorage persistente Speichermechanismen. Diese APIs sind komfortabel, bergen jedoch Sicherheitsrisiken.
 
@@ -533,7 +533,7 @@ Insbesondere bei Cross-Site-Scripting-Angriffen (XSS) können gespeicherte Token
 Daher sollten sicherheitsrelevante Daten nur mit Vorsicht im Browser gespeichert werden. Alternative Konzepte wie HttpOnly-Cookies reduzieren das Risiko clientseitiger Token-Exfiltration.
 
 
-## Datenschutz und Privacy by Design
+### Datenschutz und Privacy by Design
 
 Neben technischer Sicherheit gewinnt Datenschutz zunehmend an Bedeutung. Konzepte wie „Privacy by Design“ fordern, Datenschutz bereits auf Architekturebene zu berücksichtigen [@enisa-privacy].
 
