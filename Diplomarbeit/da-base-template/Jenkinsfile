@@ -14,7 +14,7 @@ pipeline {
         )
         string(
             name: 'GIT_PATH',
-            defaultValue: './',
+            defaultValue: './selective',
             description: "Pfad zur DA in git (z.B.: dipl/)"
         )
         string(
