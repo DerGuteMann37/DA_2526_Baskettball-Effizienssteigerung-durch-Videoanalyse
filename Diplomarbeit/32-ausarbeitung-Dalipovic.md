@@ -4,7 +4,7 @@
 
 ## Theorieteil – Frontend
 
-
+![Beispielbild](../img/Flugbahn.png)
 
 ### Technischer Kontext und Zielsetzung des Frontend-Teils
 
