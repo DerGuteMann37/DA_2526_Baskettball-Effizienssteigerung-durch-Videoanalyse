@@ -113,7 +113,7 @@ CRUD ist ein Grundkonzept der Datenverarbeitung und beschreibt die vier grundleg
 
 - Delete: Daten löschen (z. B. Wurfdatensatz entfernen)
 
-Diese vier Operationen bilden die Basis für die Verwaltung von Daten in Datenbanken und werden in REST-APIs meist direkt durch HTTP-Methoden abgebildet: Create → POST, Read → GET, Update → PUT/PATCH, Delete → DELETE.
+Diese vier Operationen bilden die Basis für die Verwaltung von Daten in Datenbanken und werden in REST-APIs meist direkt durch HTTP-Methoden abgebildet: Create -> POST, Read -> GET, Update -> PUT/PATCH, Delete -> DELETE.
 
 ## Spring Initializer
 Der Spring Initializr ist ein webbasiertes Tool, das die Erstellung eines neuen Spring-Boot-Projekts stark vereinfacht. Anstatt ein Projekt manuell aufzusetzen und alle benötigten Bibliotheken selbst zu konfigurieren, kann über den Spring Initializr in wenigen Schritten eine fertige Projektstruktur generiert werden.
