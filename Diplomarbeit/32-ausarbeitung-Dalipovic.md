@@ -1,8 +1,9 @@
 # Teilaufgabe Dalipovic Nino
-\textauthor{Nino Dalipovic} 
- 
+\textauthor{Nino Dalipovic}
 
-# A.) Theorieteil – Frontend
+
+
+## Theorieteil – Frontend
 
 
 # 0. Technischer Kontext und Zielsetzung des Frontend-Teils
