@@ -397,217 +397,137 @@ Matplotlib ist eine Bibliothek zur grafischen Darstellung von Daten. Sie ermögl
 
 Weitere unterstützende Bibliotheken wurden für organisatorische oder technische Nebentätigkeiten verwendet. Diese sind für die physikalische Modellierung und Analyse nicht von zentraler Bedeutung und werden daher nicht im Detail erläutert.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Praktische Arbeit
 
-### Beginn der Entwicklung 
+### Beginn der Entwicklung
 
-Im Rahmen der Diplomarbeit „Basketball-Effizienzsteigerung durch Videoanalyse“ wurde ein eigenständiger Projektteil zur Berechnung und Visualisierung einer Soll-Flugbahn umgesetzt. Ziel dieses Teilprojekts war es, eine ideale Flugkurve für einen Basketballwurf zu bestimmen, unabhängig davon, wie der Ball tatsächlich geflogen ist. Der Fokus lag somit nicht auf der Analyse der Ist-Flugbahn, sondern auf der Ermittlung einer theoretisch optimalen Wurfparabel, die zu einem erfolgreichen Treffer führt.
+Zu Projektbeginn lag die zentrale Ausgangslage darin, dass für die Bewertung von Basketballwürfen zwar Videoaufnahmen vorhanden waren, jedoch noch kein verlässlicher technischer Ablauf zur quantitativen Auswertung existierte. Als übergeordnetes Ziel wurde definiert, aus realen Würfen zunächst verwertbare Bilddaten zu gewinnen und damit die Voraussetzungen für spätere Schritte wie automatische Erkennung, Trajektorienanalyse und Soll-Ist-Vergleich zu schaffen. In der Startphase stand daher zunächst nicht die vollständige Automatisierung im Vordergrund, sondern die schrittweise Vorbereitung der Datenerfassung und der späteren Auswertung.
 
-Die Besonderheit des Projekts besteht darin, dass die verwendeten Videodaten von Spielern des österreichischen Rollstuhlbasketball-Nationalteams stammen. Dadurch unterscheiden sich Abwurfhöhe, Abwurfposition und Körperhaltung deutlich von herkömmlichen Basketballwürfen, was eine individuelle und flexible Lösung erforderlich machte.
+Als erste Materialien wurden mehrere Beispielvideos mit unterschiedlichen Kamerapositionen, Perspektiven und Beleuchtungssituationen gesammelt. Dabei wurden insbesondere Auflösung, Bildrate, sichtbarer Korbbereich und die relative Größe des Balls im Bild dokumentiert, da diese Faktoren die spätere Erkennbarkeit maßgeblich beeinflussen. Auf dieser Basis wurden frühe Anforderungen festgelegt: Der Ball muss in aufeinanderfolgenden Frames eindeutig lokalisierbar sein, der Korb muss im relevanten Bildausschnitt sichtbar bleiben, und die Verarbeitung muss reproduzierbar über mehrere Clips hinweg durchgeführt werden können. Ein exemplarischer Frame einer solchen Videoaufnahme mit markiertem Ball und Korbbereich ist in Abbildung X dargestellt.
 
-Zu Beginn des Projekts wurde eine klare Projektstruktur erstellt, um eine saubere Trennung zwischen Rohdaten, Verarbeitungsskripten und Ergebnissen zu gewährleisten. Die Implementierung erfolgte hauptsächlich in der Programmiersprache Python, da diese umfangreiche Bibliotheken für Videoverarbeitung, numerische Berechnungen und Visualisierung bietet. Zur Isolation der Entwicklungsumgebung wurde eine virtuelle Python-Umgebung eingerichtet, wodurch eine reproduzierbare und stabile Ausführung des Projekts sichergestellt werden konnte.
+![Beispielhafter Video-Frame eines Basketballwurfs mit markiertem Ball und Korbbereich](img/p-1.png)
 
-Die Videoaufnahmen der Würfe wurden in einem eigenen Datenordner abgelegt und bildeten die Grundlage für alle weiteren Verarbeitungsschritte. Zusätzlich wurde ein separater Ordner für Kalibrierungsdaten eingerichtet, da diese eine zentrale Rolle bei der Umrechnung von Bildkoordinaten in reale physikalische Größen spielen.
+Die ersten Prototypen umfassten das Extrahieren einzelner Frames aus Videosequenzen, die manuelle Markierung von Ballpositionen sowie einfache Visualisierungen der Punkte über der Zeit. Für diese initialen Versuche wurde Python als Entwicklungsumgebung gewählt, da die Sprache eine schnelle prototypische Umsetzung erlaubt, während OpenCV grundlegende Funktionen für Videoeinlesen, Framezugriff und Bilddarstellung bereitstellt. Ein Beispiel einer manuellen Ballmarkierung über mehrere Frames ist in Abbildung X dargestellt.
 
-### Kalibrierung des Basketballkorbs
+![Manuelle Markierung der Ballposition über mehrere Frames zur ersten Rekonstruktion der Flugbahn.](img/p-2.png)
 
-Ein essenzieller Schritt für die Berechnung der Soll-Flugbahn war die Kalibrierung des Korbes. Dabei wurde aus einem Videoframe der Mittelpunkt des Korbes in Pixelkoordinaten bestimmt. Zusätzlich wurde ein Skalierungsfaktor berechnet, der angibt, wie viele Meter einem Pixel im Bild entsprechen. Diese Kalibrierung ermöglichte es, später Abwurfpositionen und Flugbahnen nicht nur im Bild, sondern auch in realen physikalischen Einheiten (Meter) zu berechnen.
+Bereits in dieser frühen Phase zeigten sich typische Herausforderungen wie Bewegungsunschärfe, geringe Ballgröße, ähnliche Hintergrundstrukturen und perspektivische Verzerrungen. Diese Faktoren erschweren eine zuverlässige automatische Erkennung des Balls und mussten daher bei der weiteren Entwicklung berücksichtigt werden. Als Ergebnis der Startphase entstand ein erster belastbarer Proof-of-Concept mit strukturierter Datenablage und klar definierten nächsten Arbeitsschritten in Richtung Kalibrierung der Bilddaten sowie robuster Objekterkennung.
 
-Die Kalibrierungsdaten wurden in einer JSON-Datei gespeichert und von allen relevanten Programmen geladen, um konsistente Ergebnisse sicherzustellen.
+### Technischer Aufbau der Analysepipeline
 
-### Grundkonzept der Soll-Flugbahn
+Aufbauend auf der in Kapitel 4.12.1 beschriebenen Startphase wurde im nächsten Entwicklungsschritt eine durchgängige Verarbeitungspipeline definiert, mit der aus Videoaufnahmen verwertbare Bewegungsdaten des Basketballs gewonnen werden können. Ziel dieser Pipeline ist es, den Weg von unstrukturierten Bilddaten bis zu einer quantitativ auswertbaren Trajektorie klar zu standardisieren. Dadurch wird sichergestellt, dass einzelne Würfe unter vergleichbaren Bedingungen verarbeitet und später systematisch gegenübergestellt werden können.
 
-Die Soll-Flugbahn basiert auf einem physikalischen Wurfmodell, das die Bewegung eines Basketballs als schrägen Wurf unter Einfluss der Erdgravitation beschreibt. Die Flugbahn wird durch eine Parabel dargestellt, deren Form von folgenden Parametern abhängt:
-- Abwurfposition (horizontal und vertikal)
-- Abwurfwinkel
-- Anfangsgeschwindigkeit
-- Erdbeschleunigung
+Die technische Umsetzung basiert auf Python als zentraler Programmiersprache. Python wurde gewählt, da sich damit Bildverarbeitung, numerische Berechnung und Visualisierung in einer gemeinsamen Umgebung abbilden lassen. Für den Zugriff auf Videodaten und die frameweise Verarbeitung wird OpenCV verwendet. Numerische Operationen, etwa die Verarbeitung von Koordinatenreihen oder die Berechnung von Modellfunktionen, erfolgen mit NumPy. Für grafische Darstellungen und die visuelle Interpretation der Ergebnisse wird Matplotlib eingesetzt. Sofern eine automatische Objekterkennung integriert ist, kann zusätzlich ein YOLO-basiertes Modell zur Balllokalisierung genutzt werden; die Pipeline bleibt jedoch auch mit manueller oder halbautomatischer Punktzuweisung funktionsfähig.
 
-Ziel der Berechnung ist es, jene Kombination aus Abwurfwinkel und Anfangsgeschwindigkeit zu finden, mit der der Ball den Korb erreicht und dabei eine möglichst geringe Anfangsgeschwindigkeit benötigt. Diese Annahme basiert auf dem Gedanken, dass ein effizienter Wurf weniger Kraftaufwand erfordert und somit reproduzierbarer ist.
+Der Ablauf beginnt mit dem Einlesen eines Wurfvideos und der Ermittlung grundlegender Metadaten wie Bildrate, Auflösung und Frameanzahl. Anschließend wird die Sequenz in einzelne Frames überführt beziehungsweise frameweise verarbeitet. Für jeden relevanten Frame wird die Ballposition bestimmt. Diese Positionsermittlung kann je nach Datenqualität und Ausbaustufe der Pipeline auf unterschiedlichen Wegen erfolgen: durch manuelle Markierung, durch regelbasierte Bildverarbeitung oder durch modellbasierte Objekterkennung. Unabhängig von der Methode wird als Ergebnis pro Frame mindestens eine zweidimensionale Koordinate des Ballzentrums gespeichert, ergänzt um den zugehörigen Zeitindex.
 
-### Interaktive Bestimmung des Abwurfpunkts
+Die so entstehende Punktfolge bildet die Grundlage für die Rekonstruktion der Ist-Trajektorie. Da reale Videodaten typischerweise Messrauschen, Ausreißer und einzelne Fehlmessungen enthalten, werden die Rohkoordinaten vor der weiteren Analyse validiert und geglättet. Dazu zählen beispielsweise die Prüfung auf zeitliche Konsistenz, das Entfernen unplausibler Sprünge sowie die Approximation durch eine kontinuierliche Kurve. In der Praxis ergibt sich dadurch eine robuste Näherung der Flugbahn, die den tatsächlichen Bewegungsverlauf besser repräsentiert als die ungefilterte Punktwolke.
 
-Da der exakte Abwurfpunkt nicht zuverlässig automatisch erkannt werden konnte, wurde eine interaktive Lösung implementiert. Das entwickelte Programm öffnet das jeweilige Wurfvideo und erlaubt dem Benutzer, frameweise durch das Video zu navigieren. Mithilfe der Pfeiltasten kann der genaue Zeitpunkt des Ballabwurfs ausgewählt werden.
+Für den Vergleich mit dem physikalischen Modell wird die rekonstruierte Ist-Trajektorie in ein gemeinsames Bezugssystem überführt. Je nach Auswertungsziel kann dies in Pixelkoordinaten oder, nach Kalibrierung, in metrischen Einheiten erfolgen. Parallel dazu wird die Sollflugbahn mit dem Modell des schiefen Wurfs berechnet. Dieses Modell beschreibt den Zusammenhang zwischen Abwurfhöhe, Abwurfwinkel, Anfangsgeschwindigkeit und Zielpunkt. Durch die Gegenüberstellung beider Kurven lassen sich Abweichungen in Form, Höhe und Treffpunktlage quantitativ beschreiben. Typische Vergleichsgrößen sind unter anderem der vertikale Abstand zwischen Ist- und Sollkurve an definierten horizontalen Positionen, die Lage des Scheitelpunkts oder die Zielpunktabweichung im Korbbereich.
 
-Anschließend wird der Abwurfpunkt manuell per Mausklick festgelegt. Dieser Punkt repräsentiert entweder die Ballposition oder die Handposition im Moment des Abwurfs. Diese manuelle Auswahl stellte sich als besonders robust heraus, da die Videos direkt beim Abwurf beginnen und der Ball oft nur wenige Frames sichtbar ist.
+Damit erfüllt die Pipeline zwei zentrale Anforderungen der Arbeit: Erstens wird der Übergang von visuellen Rohdaten zu reproduzierbaren Messdaten technisch nachvollziehbar umgesetzt. Zweitens entsteht eine belastbare Basis für die spätere Bewertung von Wurfqualität und Effizienz anhand eines konsistenten Soll-Ist-Vergleichs.
 
+Perfekt — hier ist dein Kapiteltext mit den gewünschten Mini-Ergänzungen an den passenden Stellen eingefügt:
 
-### Berechnung und Visualisierung der Soll-Flugbahn
+### Implementierung der Videoanalyse und Flugbahnrekonstruktion
 
-Nach Auswahl des Abwurfpunkts wird die Soll-Flugbahn berechnet. Dabei wird ein definierter Winkelbereich systematisch durchlaufen und für jeden Winkel die notwendige Anfangsgeschwindigkeit berechnet. Die physikalisch gültigen Lösungen werden geprüft, und jene Lösung mit der geringsten Anfangsgeschwindigkeit wird ausgewählt.
+Aufbauend auf der in Kapitel 4.12.2 dargestellten Pipeline wurde die praktische Umsetzung als modular strukturierter Programmablauf in Python realisiert. Ziel dieser Implementierungsphase ist die reproduzierbare Gewinnung von Bewegungsdaten aus Videoaufnahmen von Basketballwürfen. Der Schwerpunkt liegt dabei auf der technischen Verarbeitung der Bilddaten, der Lokalisierung des Balls über mehrere Frames sowie der Rekonstruktion einer konsistenten Flugbahn. Die physikalische Sollflugbahn dient in diesem Zusammenhang als theoretische Grundlage des Modells, steht jedoch nicht als direkte Vergleichsauswertung im Zentrum dieses Arbeitsschritts.
 
-Besonderes Augenmerk lag darauf, dass die Berechnung unabhängig davon funktioniert, ob sich der Korb links oder rechts vom Abwurfpunkt befindet. Dafür wurde die Berechnung der horizontalen Flugrichtung entsprechend angepasst.
+Die Verarbeitung beginnt mit dem Einlesen der Videodatei über OpenCV. Bereits zu diesem Zeitpunkt werden zentrale Metadaten wie Auflösung, Bildrate und Anzahl der Frames ausgelesen, da diese für die zeitliche Einordnung der Bewegung erforderlich sind. Anschließend wird ein relevanter Startbereich im Video festgelegt, um die Berechnung auf den tatsächlichen Wurfabschnitt zu begrenzen. Diese Eingrenzung reduziert die Rechenlast und verbessert die Stabilität der nachfolgenden Schritte, da nur Frames mit inhaltlicher Relevanz verarbeitet werden.Im folgenden Codeausschnitt ist das Einlesen der Videodatei sowie das Auslesen zentraler Metadaten (Bildrate und Frameanzahl) dargestellt.
 
-Die berechnete Soll-Flugbahn wird anschließend direkt auf einen Videoframe gezeichnet. Zusätzlich zum Overlay-Bild werden alle relevanten Berechnungsdaten in einer strukturierten JSON-Datei gespeichert.
+![Video einlesen und Metadaten](img/code1.png)
 
-### Batch-Verarbeitung mehrerer Würf
-Um mehrere Würfe effizient auswerten zu können, wurde ein Batch-Skript entwickelt. Dieses öffnet automatisch alle vorhandenen Wurfvideos nacheinander. Für jeden Wurf muss lediglich der Abwurfpunkt ausgewählt werden, woraufhin das Programm selbstständig die Soll-Flugbahn berechnet und speichert. Dadurch konnte eine große Anzahl an Würfen mit geringem manuellem Aufwand verarbeitet werden.
+Die eigentliche Analyse erfolgt in einer Frame-Schleife. Für jedes Bild wird die Position des Basketballs bestimmt, je nach verfügbarer Konfiguration manuell initialisiert und danach verfolgt oder automatisch über geeignete Erkennungsverfahren lokalisiert. In der praktischen Umsetzung kommen dafür OpenCV-basierte Methoden sowie modellgestützte Verfahren zum Einsatz. Wird ein Tracking-Ansatz verwendet, liefert das Programm pro Frame eine Bounding Box; aus deren Mittelpunkt werden die Ballkoordinaten im Bildraum berechnet. Zusätzlich werden Plausibilitätsprüfungen angewendet, um fehlerhafte Sprünge oder Ausreißer zu erkennen und instabile Messpunkte zu reduzieren. Dadurch entsteht eine robuste und zeitlich geordnete Punktfolge der Ballzentren.Der Ablauf der frameweisen Verarbeitung und die Berechnung der Ballkoordinaten aus einer Bounding Box sind in einem Codeausschnitt exemplarisch gezeigt.
 
-### Statistische Auswertung und Ergebnisdarstellung
+![Frame-Schleife & Ballkoordinatenn](img/code2.png)
 
-Die gespeicherten Ergebnisse aller Würfe wurden anschließend automatisiert gesammelt. Aus den einzelnen JSON-Dateien wurde eine zentrale CSV-Datei erzeugt, die unter anderem folgende Werte enthält:
+Die ermittelten Koordinaten werden während der Verarbeitung in geeigneten Datenstrukturen gesammelt und nach Abschluss des Durchlaufs persistent gespeichert. Für die weitere Nutzung werden die Daten als CSV-Datei mit Frame-Index und Pixelkoordinaten sowie als JSON-Zusammenfassung mit Metainformationen exportiert. Diese Trennung zwischen numerischen Rohdaten und Prozessmetadaten unterstützt die Nachvollziehbarkeit der Analyse und erleichtert die spätere Wiederverwendung in Auswertungsskripten. Ergänzend erzeugt das Programm Overlay-Bilder, in denen die rekonstruierten Positionspunkte direkt auf einem Videoframe dargestellt werden.Die Speicherung der ermittelten Ballpositionen in einem reproduzierbaren Datenformat (CSV/JSON) wird in einem weiteren Codeausschnitt dokumentiert.
 
-- Abwurfwinkel
-- Anfangsgeschwindigkeit
-- verwendeter Frame
-- zugehöriger Videoclip
+![CSV/JSON-Speicherung](img/code3.png)
 
-Diese CSV-Datei ist direkt mit Tabellenkalkulationsprogrammen wie Microsoft Excel kompatibel und bildet die Grundlage für weitere Auswertungen.
+Die Rekonstruktion der Flugbahn erfolgt auf Basis der sequenziellen Ballpositionen. Zunächst liegt eine diskrete Punktmenge vor, die den beobachteten Bewegungsverlauf beschreibt. Mit NumPy werden diese Daten für numerische Berechnungen aufbereitet, etwa für Glättung, Interpolation oder die Ableitung charakteristischer Bahnabschnitte. Auf diese Weise wird aus einzelnen Messpunkten eine zusammenhängende Trajektorie abgeleitet, die den Wurfverlauf im Bildraum konsistent repräsentiert. Für die visuelle Darstellung wird Matplotlib eingesetzt, um Kurvenverläufe, Punktreihen und zeitliche Abschnitte in einer wissenschaftlich klaren Form aufzubereiten.
 
-Zusätzlich wurden verschiedene Diagramme erstellt, darunter Streudiagramme, Balkendiagramme und Histogramme. Abschließend wurde ein automatischer PDF-Report generiert, der alle Diagramme sowie statistische Kennzahlen übersichtlich auf einer Seite zusammenfasst. Dieser Report eignet sich sowohl für die Dokumentation der Diplomarbeit als auch für Präsentationen.
+Damit bildet die Implementierung einen geschlossenen technischen Workflow von der Videoeingabe bis zur dokumentierten Flugbahnrekonstruktion. Die Kombination aus OpenCV für Bildverarbeitung, NumPy für numerische Verarbeitung und Matplotlib für Visualisierung ermöglicht eine methodisch saubere und reproduzierbare Analyse der Wurfbewegung.
 
-### Weiterentwicklung und Verfeinerung der Soll-Flugbahn
+![Overlay der rekonstruierten Flugbahn](img/code4.png)
 
-Im Vergleich zur ursprünglichen Implementierung der Soll-Flugbahn wurde das Modell im weiteren Projektverlauf wesentlich erweitert und präzisiert. Während zu Beginn eine idealisierte Wurfparabel berechnet wurde, die ausschließlich den Korb als Zielpunkt berücksichtigte, erfolgte später eine realitätsnahe Anpassung unter Einbeziehung zusätzlicher physikalischer und praktischer Randbedingungen.
 
-Zunächst wurde die Zieldefinition der Soll-Flugbahn verändert. Anstatt die Parabel exakt auf die Korbmitte zu richten, wird nun das Ballzentrum so berechnet, dass der Ball den Korb mit einem Sicherheitsabstand passiert. Dabei wird der reale Ballradius sowie ein zusätzlicher Clearance-Abstand berücksichtigt, sodass sichergestellt ist, dass der Ball den Ring nicht berührt, sondern sauber durch den Korb fällt. Diese Anpassung orientiert sich an der sportwissenschaftlichen Theorie, wonach erfolgreiche Würfe den Korb in der hinteren Hälfte mit ausreichender Höhe passieren.
+### Physikalische Modellierung und Berechnung der Sollflugbahn
 
-Darüber hinaus wurde der Einfallswinkel des Balls am Korb explizit in die Berechnung integriert. Basierend auf Literaturangaben zur optimalen Wurfparabel im Basketball wurde ein Mindest-Einfallswinkel definiert, da steilere Eintrittswinkel die Trefferwahrscheinlichkeit erhöhen. Die Soll-Flugbahn wird daher nur akzeptiert, wenn dieser Winkel einen vorgegebenen Mindestwert überschreitet. Falls unter diesen Bedingungen keine gültige Lösung gefunden wird, greift ein kontrollierter Fallback-Mechanismus, der die Einschränkungen schrittweise lockert, ohne die physikalische Plausibilität zu verlieren.
+Im folgenden Abschnitt wird ausschließlich die theoretische Sollflugbahn eines Basketballwurfs betrachtet. Grundlage ist das physikalische Modell des schiefen Wurfs, bei dem der Ball als Punktmasse in einem zweidimensionalen Koordinatensystem beschrieben wird. Die horizontale Richtung wird durch die Achse $x$, die vertikale Höhe durch die Achse $y$ dargestellt. Unter Vernachlässigung des Luftwiderstands ergibt sich eine mathematisch gut beschreibbare Flugkurve, die als Referenz für die Sollflugbahn dient.
 
-Eine wesentliche Erweiterung gegenüber der ursprünglichen Version stellt die Berücksichtigung des Auffangnetzes hinter dem Korb dar. In der realen Versuchsanordnung befindet sich hinter dem Korb ein Fangnetz, das in früheren Versionen der Soll-Flugbahn nicht berücksichtigt wurde. Dies führte dazu, dass berechnete Parabeln teilweise durch das Netz verliefen, was in der Praxis nicht realistisch ist. In der überarbeiteten Implementierung wird das Fangnetz als räumliche Begrenzung modelliert. Dabei wird die Oberkante des Netzes als horizontale Grenze definiert, die von der Balloberkante nach dem Passieren des Korbes nicht überschritten werden darf.
+Für die Modellierung werden die Parameter Abwurfhöhe $h_0$, Korbhöhe $h_K$, horizontale Distanz zum Korb $x_K$, Abwurfwinkel $\alpha$, Anfangsgeschwindigkeit $v_0$ und Erdbeschleunigung $g$ verwendet. Die zeitabhängigen Bewegungsgleichungen lauten:
 
-Um diese Bedingung umzusetzen, wird die Flugbahn hinter dem Korb abschnittsweise überprüft. Für jeden relevanten Punkt der Parabel wird kontrolliert, ob sich die Balloberkante unterhalb der angenommenen Netzoberkante befindet. Nur Soll-Flugbahnen, die diese Bedingung erfüllen, werden als gültig akzeptiert. Dadurch wird gewährleistet, dass die visualisierte Soll-Flugbahn sowohl den Korb korrekt trifft als auch das Fangnetz nicht schneidet.
+$$
+x(t) = v_0 \cos(\alpha)\, t
+$$
 
-Zusätzlich wurde die Visualisierung erweitert. Neben der Soll-Flugbahn und den Markierungen für Abwurfpunkt und Korb wird nun auch die angenommene Oberkante des Auffangnetzes im Video dargestellt. Dies ermöglicht eine intuitive visuelle Kontrolle der berechneten Flugbahn und verdeutlicht die Einhaltung der Randbedingungen unmittelbar im Bildmaterial.
+$$
+y(t) = h_0 + v_0 \sin(\alpha)\, t - \frac{1}{2} g t^2
+$$
 
-Zusammenfassend stellt die überarbeitete Soll-Flugbahn eine deutlich realitätsnähere Modellierung dar als die ursprüngliche Version. Durch die Einbeziehung von Ballgeometrie, Einfallswinkel, Sicherheitsabständen und der realen Versuchsumgebung wurde aus einer idealisierten Wurfparabel ein praxisnahes Referenzmodell geschaffen, das als fundierte Vergleichsbasis für die Analyse der Ist-Flugbahn dient.
+Durch Eliminieren der Zeitvariable $t$ erhält man die Bahnkurve in Abhängigkeit von $x$:
 
-### Einbindung der theoretischen Grundlagen aus der Fachliteratur
+$$
+y(x) = h_0 + x \tan(\alpha) - \frac{g x^2}{2 v_0^2 \cos^2(\alpha)}
+$$
 
-Die Weiterentwicklung der Soll-Flugbahn erfolgte nicht ausschließlich auf Basis programmiertechnischer Überlegungen, sondern stützt sich gezielt auf sportwissenschaftliche und biomechanische Erkenntnisse aus der Fachliteratur. Insbesondere wurden dabei die vom Betreuer zur Verfügung gestellten PDF-Unterlagen zur idealen Wurfparabel im Basketball sowie zu positionsabhängigen Unterschieden von Würfen herangezogen.
+Diese Gleichung beschreibt eine Parabel und bildet damit die mathematische Grundlage der Sollflugbahn.
 
-In diesen Unterlagen wird beschrieben, dass erfolgreiche Basketballwürfe durch eine Kombination aus ausreichend hohem Abwurfwinkel, einem steilen Einfallswinkel am Korb sowie einer präzisen Zielzone charakterisiert sind. Die Literatur hebt hervor, dass Würfe mit einem größeren Einfallswinkel eine höhere Fehlertoleranz besitzen, da der Ball mit größerer Wahrscheinlichkeit durch den Korb fällt, selbst wenn die horizontale Zielgenauigkeit leicht abweicht. Diese Erkenntnisse bildeten die Grundlage für die Einführung eines Mindest-Einfallswinkels in der Berechnung der Soll-Flugbahn.
+Damit der Ball den Zielpunkt am Korb erreicht, wird die Bedingung
 
-Darüber hinaus wird in der Fachliteratur erläutert, dass der Ball den Korb idealerweise nicht exakt in der geometrischen Mitte, sondern leicht in der hinteren Korbhälfte passieren sollte. Dieses Prinzip wurde in der Implementierung berücksichtigt, indem nicht die Ringmitte selbst als Zielpunkt für den Ballmittelpunkt verwendet wird, sondern ein leicht nach unten versetzter Zielpunkt, der den Ballradius sowie einen zusätzlichen Sicherheitsabstand einbezieht. Dadurch wird sichergestellt, dass die Balloberkante den Ring nicht berührt und der Wurf den theoretisch optimalen Eintrittspfad einhält.
+$$
+y(x_K) = h_K
+$$
 
-Die PDF-Unterlagen dienten zudem als Referenz für die Wahl realistischer Winkelbereiche. Der Abwurfwinkel der Soll-Flugbahn wurde bewusst auf einen Bereich beschränkt, der in der Literatur als biomechanisch sinnvoll beschrieben wird. Gleichzeitig wurde ein mehrstufiges Suchverfahren implementiert, das zunächst strenge theoretische Vorgaben anwendet und diese nur dann schrittweise lockert, wenn unter realen Aufnahmebedingungen keine gültige Lösung gefunden werden kann.
+gesetzt. Durch Umstellen ergibt sich die notwendige Anfangsgeschwindigkeit für einen gewählten Winkel $\alpha$:
 
-Zusammenfassend lässt sich festhalten, dass die theoretischen Inhalte aus den bereitgestellten PDF-Dokumenten direkt in die mathematische Modellierung und algorithmische Umsetzung der Soll-Flugbahn eingeflossen sind. Die Literatur diente dabei nicht nur als Hintergrundinformation, sondern als konkrete Entscheidungsgrundlage für Parameterwahl, Randbedingungen und Validierung der berechneten Flugbahnen. Dadurch konnte eine enge Verbindung zwischen Theorie und praktischer Umsetzung im Rahmen der Videoanalyse hergestellt werden.
+$$
+v_0 = \sqrt{\frac{g x_K^2}{2 \cos^2(\alpha)\,\bigl(h_0 + x_K \tan(\alpha) - h_K\bigr)}}
+$$
 
+Eine physikalisch sinnvolle Lösung existiert nur, wenn der Nenner positiv ist:
 
-### Technologieentscheidungen
+$$
+h_0 + x_K \tan(\alpha) - h_K > 0
+$$
 
-Im Rahmen der Diplomarbeit mussten zu Beginn mehrere grundlegende Technologieentscheidungen getroffen werden. Diese Entscheidungen betrafen insbesondere die Wahl der Entwicklungsumgebung, der Programmiersprache sowie der eingesetzten Bibliotheken. Ziel war es, eine Lösung zu entwickeln, die sowohl technisch leistungsfähig als auch für ein Schulprojekt realistisch umsetzbar ist.
+Zur praktischen Berechnung wird der Bereich $x \in [0, x_K]$ in diskrete Stützstellen unterteilt. Für jede Stützstelle wird $y(x)$ ausgewertet, wodurch eine berechenbare Punktfolge entsteht, die die Sollflugbahn repräsentiert. Dieses Vorgehen ist reproduzierbar, numerisch stabil und für die Simulation verschiedener Wurfsituationen geeignet, da einzelne Parameter gezielt variiert werden können.
 
-### Entwicklungsumgebung (VS Code)
+Das Modell des schiefen Wurfs ist für diese Anwendung geeignet, weil es die wesentlichen kinematischen Zusammenhänge mit begrenzter Komplexität abbildet. Dadurch entsteht eine nachvollziehbare und technisch umsetzbare Grundlage für die Berechnung der theoretischen Sollflugbahn im Rahmen der Diplomarbeit.
 
-Als Entwicklungsumgebung wurde Visual Studio Code (VS Code) verwendet. VS Code ist ein plattformunabhängiger Quelltexteditor, der für Windows, macOS und Linux verfügbar ist und sich besonders für die Entwicklung mit Python eignet.
 
-VS Code bietet eine übersichtliche Benutzeroberfläche, integrierte Terminalfunktionen sowie eine Vielzahl an Erweiterungen, die speziell für die Softwareentwicklung konzipiert sind. Durch diese Eigenschaften eignet sich VS Code sowohl für Einsteiger als auch für fortgeschrittene Entwickler.
 
-### Programmiersprache
 
-Als Programmiersprache wurde Python gewählt. Python ist eine weit verbreitete, interpretierte Programmiersprache, die besonders in den Bereichen Datenanalyse, maschinelles Lernen und Bildverarbeitung eingesetzt wird.
 
-Die Entscheidung für Python basierte auf der hohen Verfügbarkeit leistungsfähiger Bibliotheken sowie auf der guten Lesbarkeit und Verständlichkeit des Codes. Gerade für ein Schulprojekt mit begrenzter Entwicklungszeit stellte Python eine sehr geeignete Wahl dar.
 
-#### Vorteile von Python
 
-- entscheidender Vorteil von Python ist die große Auswahl an Bibliotheken für Video- und Bildverarbeitung, mathematische Berechnungen sowie Datenvisualisierung. Dadurch konnte ein Großteil der benötigten Funktionalität ohne aufwendige Eigenimplementierungen umgesetzt werden.
 
-- entscheidender Vorteil von Python ist die große Auswahl an Bibliotheken für Video- und Bildverarbeitung, mathematische Berechnungen sowie Datenvisualisierung. Dadurch konnte ein Großteil der benötigten Funktionalität ohne aufwendige Eigenimplementierungen umgesetzt werden.
 
-#### Nachteile von Python 
 
-- Im Vergleich zu kompilierten Sprachen wie C++ weist Python eine geringere Ausführungsgeschwindigkeit auf. Für zeitkritische Echtzeitanwendungen könnte dies ein Nachteil sein
 
-### Verwendete Bibliotheken
 
-#### OpenCV (Open Source Computer Vision Library)
 
-Für die Video- und Bildverarbeitung wurde die Bibliothek OpenCV eingesetzt. OpenCV ermöglicht das Laden, Verarbeiten und Anzeigen von Videodateien sowie das Zeichnen von Overlays direkt auf Videoframes.
 
-Ein großer Vorteil von OpenCV ist die hohe Performance bei gleichzeitiger einfacher Bedienbarkeit. Dadurch konnten sowohl interaktive Funktionen (z. B. Frame-Navigation und Mausklicks) als auch Visualisierungen effizient umgesetzt werden.
 
-#### NumPy
 
-Für mathematische Berechnungen und Vektoroperationen wurde NumPy verwendet. NumPy bietet leistungsfähige Datenstrukturen für numerische Berechnungen und ist besonders für physikalische Modelle geeignet.
 
-Die Berechnung der Soll-Flugbahn basiert auf mathematischen Gleichungen, die mithilfe von NumPy effizient umgesetzt werden konnten.
 
-#### Pandas und Matplotlib
 
-Zur statistischen Auswertung der Ergebnisse kam die Bibliothek Pandas zum Einsatz. Pandas erleichtert das strukturierte Verarbeiten von Messdaten und ermöglicht den Export in Formate wie CSV, die mit Tabellenkalkulationsprogrammen kompatibel sind.
 
-Für die grafische Darstellung der Ergebnisse wurde Matplotlib verwendet. Mit dieser Bibliothek konnten Diagramme wie Streudiagramme, Balkendiagramme und Histogramme erstellt werden, die für die Dokumentation und Präsentation der Ergebnisse genutzt wurden.
 
-### Architektur
 
-Das Projekt ist als Pipeline aufgebaut: Aus Rohvideos werden durch mehrere Verarbeitungsschritte strukturierte Ergebnisse erzeugt (Overlays, JSON-Summaries, CSV-Statistiken, Reports). Die Architektur trennt dabei klar zwischen Eingabedaten, Konfiguration/Kalibrierung, Verarbeitungsskripten und Ausgabeordnern.
 
 
 
-Enthält die Rohdaten: Videoclips einzelner Würfe (z. B. wurf1.mov, wurf2.mov). Dieser Ordner ist die einzige Video-Eingabequelle.
 
 
 
-Hier liegt die gesamte Logik. Die Scripts sind modular nach Aufgaben getrennt:
 
-- Analyse eines Clips (Tracking, Overlays, Messwerte)
-- Soll-Flugbahn (Abwurfpunkt wählen, Parabel berechnen, Overlay erzeugen)
-- Batch-Verarbeitung (mehrere Clips automatisiert verarbeiten)
-- Statistik/Reporting (CSV sammeln, Plots und PDF erzeugen)
+
+
+
+
+
+
 
