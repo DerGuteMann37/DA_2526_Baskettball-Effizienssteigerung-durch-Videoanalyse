@@ -14,7 +14,7 @@ Aufbauend auf diesen Grundlagen wird anschließend versucht, eine optimale Flugb
 
 ## Wurfbewegungen in Alltag und Sport
 
-![Wurf eines Basketballer](img/wmbi-schusss.jpg)
+![Wurf eines Basketballspielers](img/wmbi-schusss.jpg)
 
 Wurfbewegungen treten in vielen Bereichen des täglichen Lebens auf. Besonders deutlich sind sie in zahlreichen Sportarten zu beobachten. Beispiele dafür sind der Korbwurf im Basketball, der Torwurf im Handball, ein Einwurf im Fußball oder das gezielte Werfen eines Gegenstandes auf ein bestimmtes Ziel. Die verschiedenen Sportarten unterscheiden sich dabei unter anderem in der Wurfentfernung, der Höhe des Ziels und der Art der Bewegung. Während beim Handball beispielsweise mit hoher Geschwindigkeit auf ein Tor geworfen wird, steht beim Basketball das präzise Treffen eines erhöhten Korbes im Vordergrund.
 
@@ -53,12 +53,7 @@ Die Form der Flugkurve wird vollständig durch die Bedingungen im Moment des Abw
 
 ### Warum ist die Flugkurve gekrümmt?
 
-Die gekrümmte Form der Flugbahn ergibt sich aus der Überlagerung zweier Bewegungsanteile. Einerseits besitzt der geworfene Körper eine horizontale Geschwindigkeit, die ihn nach vorne bewegt. Andererseits wirkt gleichzeitig die Erdanziehungskraft, welche den Körper stetig nach unten beschleunigt.
-
-Während die horizontale Bewegung annähernd gleichförmig bleibt, nimmt die vertikale Geschwindigkeit aufgrund der Gravitation kontinuierlich zu. Dadurch entsteht eine Bahn, die zunächst ansteigt, einen höchsten Punkt erreicht und anschließend wieder abfällt.
-
-Diese Kombination aus gleichförmiger Bewegung in horizontaler Richtung und gleichmäßig beschleunigter Bewegung in vertikaler Richtung führt zu einer charakteristischen Bogenform der Flugkurve.
-
+Die gekrümmte Form der Flugbahn entsteht durch die Überlagerung zweier Bewegungen. Während sich der geworfene Körper in horizontaler Richtung mit annähernd konstanter Geschwindigkeit bewegt, wirkt in vertikaler Richtung die Erdanziehungskraft. Dadurch wird der Körper kontinuierlich nach unten beschleunigt. Die Kombination dieser beiden Bewegungen führt zu der charakteristischen bogenförmigen Flugbahn.
 
 
 ### Höchster Punkt der Flugbahn
@@ -197,6 +192,8 @@ Da die Flugbahn eines geworfenen Körpers vollständig durch die Anfangsbedingun
 Ziel dieses Kapitels ist es, auf Grundlage der zuvor hergeleiteten Bahnkurve jene Abwurfparameter zu bestimmen, die das Treffen eines definierten Zielpunktes ermöglichen.
 
 ![Sollflugbahn](img/Sollflugbahn_foto.png)
+
+
 ### Mathematische Bedingung für das Treffen eines Zielpunktes
 
 Die Flugbahn eines geworfenen Körpers wird durch folgende Gleichung beschrieben:
@@ -286,6 +283,21 @@ Dabei wird deutlich, dass:
 - und beide Größen gemeinsam optimiert werden müssen.
 
 Die Sollflugbahn stellt somit die theoretisch ideale Lösung unter den getroffenen Modellannahmen dar. In realen Situationen können zusätzliche Einflüsse wie Luftwiderstand oder Rotationsbewegungen auftreten, die zu Abweichungen führen. Dennoch bietet das Modell des schiefen Wurfs eine fundierte Grundlage zur Beschreibung und Optimierung von Wurfbewegungen.
+
+
+### Geometrische Bedingungen beim Basketballwurf
+
+Die zuvor beschriebenen physikalischen Zusammenhänge gelten allgemein für den schiefen Wurf. Beim Basketballwurf müssen jedoch zusätzlich die geometrischen Eigenschaften von Ball und Korb berücksichtigt werden, da diese bestimmen, unter welchen Bedingungen ein Wurf erfolgreich sein kann.
+
+Der Basketballkorb befindet sich in einer Höhe von 3,05 m über dem Boden. Der Durchmesser des Rings beträgt etwa 45 cm, während der Durchmesser eines Basketballs ungefähr 24 cm beträgt. Dadurch ergibt sich ein begrenzter Raum, durch den der Ball beim Wurf hindurchfliegen muss.
+
+Aus diesen geometrischen Größen lässt sich ein minimaler Einfallswinkel bestimmen, unter dem der Ball den Korb noch ohne Ringberührung passieren kann. Dieser Winkel ergibt sich aus dem Verhältnis zwischen Ball- und Ringdurchmesser und beträgt etwa 32°. Wird der Ball mit einem kleineren Einfallswinkel geworfen, ist die Wahrscheinlichkeit groß, dass er den Ring berührt oder daran abprallt.
+
+Neben dem Einfallswinkel spielen auch weitere Faktoren eine wichtige Rolle für einen erfolgreichen Korbwurf. Dazu zählen insbesondere die Abwurfhöhe des Spielers, die Entfernung zum Korb, der Abwurfwinkel sowie die Abwurfgeschwindigkeit des Balls.
+
+Eine typische Situation, die häufig untersucht wird, ist der Freiwurf. Die Entfernung von der Freiwurflinie zur Korbmitte beträgt etwa 4,19 m. Da der Spieler in dieser Situation nicht durch Verteidiger gestört wird, lassen sich die physikalischen Bedingungen des Wurfs besonders gut analysieren. Untersuchungen zeigen, dass der optimale Abwurfwinkel bei einer typischen Abwurfhöhe eines Spielers in etwa im Bereich von 50° liegt.
+
+Ein größerer Einfallswinkel führt dazu, dass sich die effektive Trefferfläche des Korbs vergrößert. Dadurch können kleinere Abweichungen beim Abwurfwinkel oder bei der Abwurfgeschwindigkeit besser ausgeglichen werden. Aus diesem Grund wird beim Basketballwurf häufig eine eher steilere Flugbahn bevorzugt, da sie eine höhere Toleranz gegenüber kleinen Fehlern beim Abwurf bietet.
 
 
 
