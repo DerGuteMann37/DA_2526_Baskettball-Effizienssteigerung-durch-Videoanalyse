@@ -561,7 +561,7 @@ Das Modell des schiefen Wurfs ist für diese Anwendung geeignet, weil es die wes
 
 Nach der mathematischen Bestimmung der Sollflugbahn folgt die grafische Darstellung als zentraler Schritt der Ergebnisaufbereitung. Die Berechnung liefert zunächst diskrete Stützpunkte \((x_i, y_i)\), die aus der Bahnfunktion für definierte \(x\)-Werte gewonnen werden. Erst durch die Visualisierung dieser Punktfolge wird der Verlauf der Flugkurve anschaulich und wissenschaftlich interpretierbar. Die Diagrammdarstellung dient damit der strukturierten Aufbereitung der Modellergebnisse.
 
-Eine kontinuierlich wirkende Flugkurve entsteht durch die feine Diskretisierung des Bereichs \(x \in [0, x_K]\). Für jeden Stützpunkt wird der entsprechende Höhenwert \(y(x)\) berechnet. Werden diese Punkte in aufsteigender Reihenfolge verbunden, ergibt sich eine glatte Parabel, die die Sollflugbahn approximiert. Die Auflösung der Kurve hängt direkt von der Anzahl der gewählten Stützstellen ab.
+Eine kontinuierlich wirkende Flugkurve entsteht durch die feine Diskretisierung des Bereichs ($x \in [0,1]$). Für jeden Stützpunkt wird der entsprechende Höhenwert \(y(x)\) berechnet. Werden diese Punkte in aufsteigender Reihenfolge verbunden, ergibt sich eine glatte Parabel, die die Sollflugbahn approximiert. Die Auflösung der Kurve hängt direkt von der Anzahl der gewählten Stützstellen ab.
 
 **Listing 4.4: Grunddarstellung der Sollflugbahn aus diskreten Stützpunkten**
 
