@@ -14,12 +14,12 @@ pipeline {
         )
         string(
             name: 'GIT_PATH',
-            defaultValue: './selective',
+            defaultValue: './',
             description: "Pfad zur DA in git (z.B.: dipl/)"
         )
         string(
             name: 'GIT_BRANCH',
-            defaultValue: '*/jada',
+            defaultValue: '*/',
             description: 'Experte: Wenn Sie einen anderen als den \'main\' Branch bauen möchten' 
         )
         choice(
