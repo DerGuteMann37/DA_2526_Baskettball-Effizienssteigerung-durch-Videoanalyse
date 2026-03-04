@@ -1,10 +1,10 @@
 # Teilaufgabe Dalipovic Nino
 \textauthor{Nino Dalipovic}
+<!-- 1.1 -->
+## Theorieteil – Frontend 
 
-# Theorieteil – Frontend
-
-
-# Technischer Kontext und Zielsetzung des Frontend-Teils
+<!-- 1.1.1 -->
+### Technischer Kontext und Zielsetzung des Frontend-Teils
 
 Diese Arbeit befasst sich mit der Konzeption und Umsetzung einer webbasierten Benutzeroberfläche im Kontext einer sportbezogenen Trainingsanwendung. Der Fokus liegt dabei ausschließlich auf der clientseitigen Anwendung, die im Webbrowser ausgeführt wird und als Interaktionsschnittstelle zwischen Benutzer und serverseitiger Systemlogik fungiert.
 
@@ -29,9 +29,9 @@ Durch diese strukturierte theoretische Fundierung wird gewährleistet, dass die 
 
 \newpage
 
-# Grundlagen von Webanwendungen
+### Grundlagen von Webanwendungen
 
-## Das Client-Server-Modell und das HTTP-Protokoll
+#### Das Client-Server-Modell und das HTTP-Protokoll
 
 Webanwendungen basieren grundlegend auf dem Client-Server-Architekturmodell. Dieses beschreibt ein verteiltes System, bei dem Aufgaben zwischen mindestens zwei logisch getrennten Komponenten aufgeteilt sind: einem Client und einem Server [@tanenbaum2007].
 
@@ -53,7 +53,7 @@ Gleichzeitig entsteht dadurch die Notwendigkeit zusätzlicher Mechanismen zur Ve
 Die klare Trennung von Client- und Serververantwortlichkeiten bildet die architektonische Grundlage moderner Webanwendungen und ermöglicht eine modulare Weiterentwicklung beider Systemseiten.
 
 
-## Strukturierung von Inhalten mit HTML
+### Strukturierung von Inhalten mit HTML
 
 Die HyperText Markup Language (HTML) ist die standardisierte Auszeichnungssprache zur Strukturierung von Webdokumenten [@fielding2000]. Sie definiert die logische Gliederung von Inhalten und beschreibt, wie Informationen semantisch ausgezeichnet werden.
 
@@ -72,7 +72,7 @@ ermöglicht nicht nur eine visuelle Darstellung, sondern auch eine maschinelle I
 HTML selbst enthält keine Informationen über Layout oder visuelles Design. Es beschreibt ausschließlich die Struktur und Bedeutung der Inhalte. Diese bewusste Trennung von Struktur und Darstellung ist ein zentrales Prinzip moderner Webarchitektur.
 
 
-## Gestaltung und Layout mit CSS
+### Gestaltung und Layout mit CSS
 
 Cascading Style Sheets (CSS) dienen der visuellen Gestaltung von HTML-Dokumenten. Während HTML die Struktur definiert, legt CSS fest, wie diese Struktur dargestellt wird.
 
