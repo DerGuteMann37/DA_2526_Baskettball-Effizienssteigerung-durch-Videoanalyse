@@ -40,7 +40,7 @@ Nach dem Abwurf wirken auf den geworfenen Körper keine vom Werfer erzeugten Kr�
 Zusätzlich wirkt der Luftwiderstand. Dieser entsteht durch die Bewegung des Körpers durch die Luft und wirkt der Bewegungsrichtung entgegen. Im Vergleich zur Gravitation ist sein Einfluss bei üblichen Wurfgeschwindigkeiten jedoch deutlich geringer. Aus diesem Grund wird der Luftwiderstand in vielen physikalischen Betrachtungen vereinfacht vernachlässigt.
 
 
-![Kräfte auf einen geworfenen Koerper (vereinfachtes Modell)](img/kraefte-modell.png){ width=70% }
+![Kräfte auf einen geworfenen Koerper (vereinfachtes Modell)](img/kraefte-modell.png)
 
 Durch die Wirkung der Gravitation wird der Körper während des Fluges kontinuierlich nach unten gezogen, während seine Vorwärtsbewegung zunächst erhalten bleibt. Die Kombination dieser beiden Effekte führt dazu, dass ein geworfener Körper keine geradlinige Bahn beschreibt, sondern eine gekrümmte Flugbahn entsteht.
 
@@ -70,7 +70,8 @@ Während des Fluges steigt der geworfene Körper zunächst an, bis er einen höc
 
 Der höchste Punkt entsteht dadurch, dass die anfängliche Aufwärtsbewegung durch die Erdanziehungskraft zunehmend abgebremst wird. Schließlich kommt die Aufwärtsbewegung vollständig zum Stillstand, bevor die Bewegung in eine Abwärtsbewegung übergeht.
 
-Dieser Punkt besitzt eine besondere Bedeutung, da er die maximale Flughöhe des Körpers darstellt und maßgeblich von der Anfangsgeschwindigkeit sowie dem Abwurfwinkel abhängt. ![](img/hoechster-punkt.png){ width=28% }
+Dieser Punkt besitzt eine besondere Bedeutung, da er die maximale Flughöhe des Körpers darstellt und maßgeblich von der Anfangsgeschwindigkeit sowie dem Abwurfwinkel abhängt. 
+[](img/hoechster-punkt.png)
 
 
 ### Einfluss des Abwurfs auf die Flugbahn
@@ -203,7 +204,7 @@ Ziel dieses Kapitels ist es, auf Grundlage der zuvor hergeleiteten Bahnkurve jen
 
 Die Flugbahn eines geworfenen Körpers wird durch folgende Gleichung beschrieben:
 
-Screenshot einfügem!!!!!!!!!!!!
+![Gleichung](img/1-Formel.png)
 
 
 
@@ -218,14 +219,14 @@ Dabei bezeichnet
 Ein Zielpunkt kann allgemein durch seine Koordinaten ($Z(x_Z, y_Z)$) beschrieben werden.
 Damit der geworfene Körper das Ziel trifft, muss gelten:
 
-Screenshot einfügen !!!!!!!!!!!!!!!!!!!!!!!!!!
+![Bedingung für das Treffen des Zielpunkts](img/2.Formel.png)
 
 
 Setzt man den Zielpunkt in die Bahnkurve ein, ergibt sich:
 
 
 
-Screenshot einfügen !!!!!!!!!!!!!!!!!!!!!!!!!!
+![Bahnkurvengleichung mit eingesetztem Zielpunkt](img/3.Formel.png)
 
 
 
@@ -241,7 +242,7 @@ Zur Bestimmung der Sollflugbahn kann die Gleichung nach der Anfangsgeschwindigke
 
 
 
-Screenshot einfügen !!!!!!!!!!!!!!!!!!!!!!!!!!
+![Nach der Anfangsgeschwindigkeit ($v_0$)  aufgelöste Bahnkurvengleichung](img/4-Formel.png)
 
 
 Diese Gleichung ermöglicht es, für einen gewählten Abwurfwinkel die notwendige Anfangsgeschwindigkeit zu berechnen, um das Ziel zu erreichen.
@@ -249,7 +250,7 @@ Diese Gleichung ermöglicht es, für einen gewählten Abwurfwinkel die notwendig
 Damit eine reale Lösung existiert, muss der Ausdruck im Nenner positiv sein:
 
 
-Screenshot einfügen !!!!!!!!!!!!!!!!!!!!!!!!!!
+![Bedingung für die Existenz einer realen Lösung](img/5-Formel.png)
 
 
 Ist diese Bedingung nicht erfüllt, reicht der gewählte Winkel nicht aus, um die notwendige Höhe zu erreichen.
@@ -301,6 +302,8 @@ Python ist eine interpretierte, objektorientierte Programmiersprache, die sich d
 ### Warum wurde Python gewählt?
 
 Für die Umsetzung der mathematischen Modelle wurde Python gewählt, da die Programmiersprache eine effiziente Durchführung umfangreicher Berechnungen ermöglicht. Insbesondere bei der wiederholten Berechnung von Flugbahnen mit variierenden Parametern bietet Python den Vorteil einer schnellen und reproduzierbaren Ausführung. Darüber hinaus erlaubt Python eine übersichtliche Strukturierung der Berechnungsschritte, wodurch die Nachvollziehbarkeit der mathematischen Herleitungen gewährleistet bleibt.
+
+![Beispiel eines Python-Programmcodes](img/Python.png)
 
 ### Vorteile von Python im Projektkontext
 Im Rahmen dieser Arbeit bot Python folgende Vorteile:
