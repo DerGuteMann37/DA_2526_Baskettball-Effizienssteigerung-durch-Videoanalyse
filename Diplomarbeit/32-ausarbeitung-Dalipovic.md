@@ -4,7 +4,10 @@
 
 ## Theorieteil – Frontend
 
-![Beispielbild](../img/Flugbahn.png)
+![Beispielbild](img/Flugbahn.png) {#fig-flugbahn width=60%}
+
+Das Bild ist in @fig-flugbahn dargestelt!!!
+
 
 ### Technischer Kontext und Zielsetzung des Frontend-Teils
 
