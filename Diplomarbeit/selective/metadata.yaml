@@ -1,0 +1,91 @@
+---
+da-titel: Basketball Effizienzsteigerung durch Videoanalyse
+
+da-jahr: 2025/26 
+
+da-keywords: HTLLE, Basketball, Videoanalyse, System
+
+#lang: english
+
+bibliography: [literatur.bib]
+
+da-author:
+- vorname: Fabian 
+  nachname: Bacher
+  klasse: 5BHWIN
+  thema: Videoanalyse (Soll-Situation)
+  ki-tools:
+  - name: ChatGPT5.2
+    zweck: Informationsbeschaffung
+  - name: Midjourney
+    zweck: Künstlerische Illustration
+
+- vorname: Nino 
+  nachname: Dalipovic
+  klasse: 5BHWIN
+  thema: Frontend
+  ki-tools:
+  - name: Github Copilot
+    zweck: Boilerplate codegenerierung, Codedokumentation
+  - name: ChatGPT5.2
+    zweck: Informationsbeschaffung
+
+- vorname: Florian 
+  nachname: Gutmann
+  klasse: 5BHWIN
+  thema: Backend
+  ki-tools:
+  - name: ChatGPT5.2
+    zweck: Informationsbeschaffung
+
+- vorname: Bastian 
+  nachname: Wolfgruber
+  klasse: 5BHWIN
+  thema: Videoanalyse (Ist-Situation)
+  ki-tools:
+  - name: ChatGPT5.2
+    zweck: Informationsbeschaffung
+  - name: Galileo AI
+    zweck: Setendesign sowie UI/UX Design der App
+  - name: Grammarly Go
+    zweck: Stilverbesserung sowie Rechtschreibkorrekturen
+
+da-betreuer:
+- paraffe: jada
+  name: DI Darko Jankovic
+
+- paraffe: hg
+  name: Ing. DI(FH) Günther Hutter, Msc.
+
+da-kurzfassung-de: Hier kommt eine deutsche Kurzfassung hin.
+
+da-kurzfassung-en: Hier kommt eine englische Kurzfassung hin.
+
+
+da-kiquellen:
+- ki: ChatGPT5.2
+  short-prompt: Erklärung Pandoc
+  pdf-file: gpt-pandoc.pdf
+
+- ki: ChatGPT5.2
+  short-prompt: Aufbau eines Atoms
+  pdf-file: gpt-atom.pdf
+
+
+da-appendix:
+- abschnitt: Technische Dokumentation
+  pdf-file: pandoc-manual.pdf
+  seiten: 53-73
+
+- abschnitt: Betreuungsprotokolle
+  pdf-file: betreuungsprotokolle.pdf    
+
+# Diplomarbeitsvereinbarungen müssen zum Schluss sein 
+
+- abschnitt: Diplomatbeitsvereinbarung Englisch
+  pdf-file: HTL-DA-Doku-EN.pdf
+
+- abschnitt: Diplomatbeitsvereinbarung Deutsch
+  pdf-file: HTL-DA-Doku-DE.pdf
+  
+---
