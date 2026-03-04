@@ -10,37 +10,34 @@ In meinem Teil soll untersucht werden, wie sich ein geworfener Körper nach dem 
 Aufbauend auf diesen Grundlagen wird anschließend versucht, eine optimale Flugbahn – eine sogenannte Sollflugbahn – zu bestimmen. Ziel ist es, jene Bedingungen zu ermitteln, unter denen ein vorgegebenes Ziel möglichst zuverlässig erreicht werden kann.
 
 
-![Skizze-Aufgabenstellung](img/skizze.JPG)
-
 ## Theorie
 
 ## Wurfbewegungen in Alltag und Sport
 
-Wurfbewegungen treten in vielen Bereichen des täglichen Lebens auf. Besonders deutlich sind sie in zahlreichen Sportarten zu beobachten. Beispiele dafür sind der Korbwurf im Basketball, der Torwurf im Handball, ein Einwurf im Fußball oder das gezielte Werfen eines Gegenstandes auf ein bestimmtes Ziel. Auch außerhalb des Sports kommen vergleichbare Bewegungen vor, etwa beim Werfen eines Gegenstandes oder beim Abschießen eines Körpers durch technische Vorrichtungen.
+![Wurf eines Basketballer](img/wmbi-schusss.jpg)
+
+Wurfbewegungen treten in vielen Bereichen des täglichen Lebens auf. Besonders deutlich sind sie in zahlreichen Sportarten zu beobachten. Beispiele dafür sind der Korbwurf im Basketball, der Torwurf im Handball, ein Einwurf im Fußball oder das gezielte Werfen eines Gegenstandes auf ein bestimmtes Ziel. Die verschiedenen Sportarten unterscheiden sich dabei unter anderem in der Wurfentfernung, der Höhe des Ziels und der Art der Bewegung. Während beim Handball beispielsweise mit hoher Geschwindigkeit auf ein Tor geworfen wird, steht beim Basketball das präzise Treffen eines erhöhten Korbes im Vordergrund.
+
+Im Rahmen dieser Arbeit wird daher der Korbwurf im Basketball betrachtet. Diese Sportart eignet sich besonders gut für eine physikalische Analyse, da der Ball auf ein fest definiertes Ziel in einer bestimmten Höhe geworfen wird. Dadurch lässt sich die Flugbahn des Balls gut mit den physikalischen Modellen der Wurfbewegung beschreiben.
 
 Unabhängig von der jeweiligen Situation lässt sich beobachten, dass ein geworfener Körper nicht geradlinig fliegt, sondern stets eine gekrümmte Bahn beschreibt. Die Flugbahn hängt dabei davon ab, wie der Körper geworfen wird. Bereits kleine Änderungen in der Wurfbewegung können dazu führen, dass ein Ziel verfehlt wird.
-
-Diese Beobachtung wirft die Frage auf, ob der Flug eines geworfenen Körpers zufällig erfolgt oder ob er bestimmten Gesetzmäßigkeiten folgt. Um diese Zusammenhänge zu verstehen, ist es notwendig, die Bewegung geworfener Körper physikalisch zu untersuchen.
 
 
 ## Bewegung geworfener Körper
 
 ### Was versteht man unter der Bewegung eines geworfenen Körpers?
 
-Unter der Bewegung eines geworfenen Körpers versteht man den Bewegungsablauf eines Gegenstandes ab dem Zeitpunkt, an dem er die Hand des Werfers verlässt. Während des Abwurfs erhält der Körper eine Anfangsgeschwindigkeit. Nach dem Loslassen wirkt jedoch keine vom Werfer erzeugte Kraft mehr auf ihn.
+Unter der Bewegung eines geworfenen Körpers versteht man den Bewegungsablauf eines Gegenstandes ab dem Zeitpunkt, an dem er die Hand des Werfers verlässt. Während des Abwurfs erhält der Körper eine Anfangsgeschwindigkeit. Nach dem Loslassen wirkt jedoch keine vom Werfer erzeugte Kraft mehr auf ihn. Die weitere Bewegung erfolgt daher ausschließlich unter dem Einfluss äußerer Kräfte. Die dominierende Kraft ist dabei die Erdanziehungskraft, welche den Körper ständig in Richtung Boden beschleunigt. Zusätzlich wirkt ein geringer Luftwiderstand, der die Bewegung leicht abbremst.
 
-Die weitere Bewegung erfolgt daher ausschließlich unter dem Einfluss äußerer Kräfte. Die wichtigste Kraft ist dabei die Erdanziehungskraft, welche den Körper ständig in Richtung Boden beschleunigt. Zusätzlich wirkt ein geringer Luftwiderstand, der die Bewegung leicht abbremst.
-
-Da nach dem Abwurf keine Korrektur mehr möglich ist, wird der gesamte weitere Bewegungsverlauf bereits im Moment des Loslassens festgelegt. Die Art, wie ein Körper geworfen wird, bestimmt somit direkt seine spätere Flugbahn.
+Da nach dem Abwurf keine Korrektur mehr möglich ist, wird der gesamte weitere Bewegungsverlauf bereits im Moment des Loslassens festgelegt. Sowohl die Anfangsgeschwindigkeit als auch der Abwurfwinkel bestimmen dabei maßgeblich die spätere Flugbahn des Körpers.
 
 ### Kräfte, die auf einen geworfenen Körper wirken
 
-Nach dem Abwurf wirken auf den geworfenen Körper keine vom Werfer erzeugten Kräfte mehr. Seine weitere Bewegung wird ausschließlich durch äußere Einflüsse bestimmt. Die bedeutendste Kraft ist dabei die Erdanziehungskraft (Gravitation). Sie bewirkt, dass der Körper ständig in Richtung Boden beschleunigt wird.
+Auf einen geworfenen Körper wirken während seiner Flugphase hauptsächlich zwei Kräfte: die Erdanziehungskraft (Gravitation) und der Luftwiderstand.
+
+Die Erdanziehungskraft ist dabei die dominierende Kraft. Sie wirkt ständig nach unten in Richtung Erdmittelpunkt und sorgt dafür, dass der Körper kontinuierlich zum Boden beschleunigt wird. Dadurch entsteht die charakteristische gekrümmte Flugbahn eines geworfenen Körpers.
 
 Zusätzlich wirkt der Luftwiderstand. Dieser entsteht durch die Bewegung des Körpers durch die Luft und wirkt der Bewegungsrichtung entgegen. Im Vergleich zur Gravitation ist sein Einfluss bei üblichen Wurfgeschwindigkeiten jedoch deutlich geringer. Aus diesem Grund wird der Luftwiderstand in vielen physikalischen Betrachtungen vereinfacht vernachlässigt.
-
-
-![Kräfte auf einen geworfenen Koerper (vereinfachtes Modell)](img/kraefte-modell.png)
 
 Durch die Wirkung der Gravitation wird der Körper während des Fluges kontinuierlich nach unten gezogen, während seine Vorwärtsbewegung zunächst erhalten bleibt. Die Kombination dieser beiden Effekte führt dazu, dass ein geworfener Körper keine geradlinige Bahn beschreibt, sondern eine gekrümmte Flugbahn entsteht.
 
@@ -106,9 +103,9 @@ In vertikaler Richtung hingegen wirkt die Erdanziehungskraft. Dadurch wird der K
 Durch die Überlagerung dieser beiden Bewegungen ergibt sich die typische gekrümmte Flugbahn eines geworfenen Körpers.
 
 ### Horizontale Bewegung
-Da in horizontaler Richtung keine beschleunigende Kraft wirkt, bleibt die Geschwindigkeit konstant. Es handelt sich somit um eine gleichförmige Bewegung. Die in horizontaler Richtung zurückgelegte Strecke ergibt sich aus dem Produkt von Geschwindigkeit und Zeit.
+Da in horizontaler Richtung keine beschleunigende Kraft wirkt, bleibt die Geschwindigkeit konstant. Es handelt sich somit um eine gleichförmige Bewegung. Der in horizontaler Richtung zurückgelegte Weg ergibt sich aus dem Produkt von Geschwindigkeit und Zeit.
 
-Für die horizontale Bewegung gilt:
+Für die horizontale Bewegung gilt (unter der Annahme, dass der Luftwiderstand vernachlässigt wird):
 
 $x(t) = v_0 \cdot \cos(\alpha) \cdot t$
 
@@ -122,9 +119,9 @@ Für die vertikale Bewegung gilt:
 
 $y(t) = h_0 + v_0 \cdot \sin(\alpha) \cdot t - \frac{1}{2} \cdot g \cdot t^2$
 
-Hierbei beschreibt $y(t)$ die Höhe des Körpers über dem Boden, $h_0$ die Abwurfhöhe und $g$ die Erdbeschleunigung ($g \approx 9{,}81\,\mathrm{m/s^2}$).
+Hierbei beschreibt $y(t)$ die Abwurfhöhe des Körpers über dem Boden, $h_0$ die Abwurfhöhe und $g$ die Erdbeschleunigung ($g \approx 9{,}81\,\mathrm{m/s^2}$).
 
-### Mathematische Beschreibung
+### Mathematische Berechnung
 
 Um den schiefen Wurf berechnen zu können, müssen zunächst die grundlegenden Größen beschrieben werden. Beim Abwurf erhält der Körper eine Anfangsgeschwindigkeit $v_0$. Diese Geschwindigkeit wirkt nicht nur in eine Richtung, sondern setzt sich aus einer horizontalen und einer vertikalen Komponente zusammen.
 
@@ -135,7 +132,7 @@ Die Anfangsgeschwindigkeit kann daher in zwei Teilgeschwindigkeiten zerlegt werd
 
 ### Bahnkurve des schiefen Wurfs
 
-Um die tatsächliche Form der Flugbahn zu bestimmen, muss die Zeit t aus den Gleichungen eliminiert werden. Ziel ist es, die Höhe y direkt in Abhängigkeit von der horizontalen Entfernung x zu beschreiben.
+Um die tatsächliche Form der Flugbahn zu bestimmen, muss die Zeit (t) aus den Gleichungen eliminiert werden. Ziel ist es, die Höhe (y) direkt in Abhängigkeit von der horizontalen Entfernung (x) zu beschreiben. In der folgenden Herleitung wird der Luftwiderstand vernachlässigt.
 
 Aus der Gleichung der horizontalen Bewegung ergibt sich:
 
@@ -199,7 +196,7 @@ Da die Flugbahn eines geworfenen Körpers vollständig durch die Anfangsbedingun
 
 Ziel dieses Kapitels ist es, auf Grundlage der zuvor hergeleiteten Bahnkurve jene Abwurfparameter zu bestimmen, die das Treffen eines definierten Zielpunktes ermöglichen.
 
-
+![Sollflugbahn](img/Sollflugbahn_foto.png)
 ### Mathematische Bedingung für das Treffen eines Zielpunktes
 
 Die Flugbahn eines geworfenen Körpers wird durch folgende Gleichung beschrieben:
@@ -269,6 +266,8 @@ Für viele Zielkonstellationen existieren grundsätzlich zwei mögliche Flugbahn
 - eine flachere Flugbahn mit kleinerem Winkel und höherer Geschwindigkeit,
 
 - eine steilere Flugbahn mit größerem Winkel.
+
+![optimaler Einfallswinkel](img/einfallswinkel.jpeg)
 
 Beide Varianten erfüllen mathematisch die Treffbedingung, unterscheiden sich jedoch hinsichtlich maximaler Höhe, Einfallswinkel und Empfindlichkeit gegenüber kleinen Abweichungen der Abwurfparameter.
 
