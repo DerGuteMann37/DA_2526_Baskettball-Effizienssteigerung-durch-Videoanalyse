@@ -33,7 +33,7 @@ Das Backend nimmt Anfragen von Clients (z. B. einer Webanwendung) entgegen, prü
 
 Im Kontext dieser Diplomarbeit ist das Backend besonders wichtig, da es die Analyseergebnisse aus der Videoverarbeitung entgegennimmt, in einer relationalen Datenbank speichert, statistisch auswertet und die daraus entstehenden Kennzahlen über eine REST-Schnittstelle dem Frontend zur Visualisierung zur Verfügung stellt. Dadurch fungiert das Backend als zentrale Logik- und Datenebene des gesamten Systems.
 
-![Backend Übersicht in Zusammenhang mit den anderen Teilen](img/Zusammenhänge_Projekt.png)
+![Backend Übersicht in Zusammenhang mit den anderen Teilen](img/Zusammenhaenge_Projekt.png)
 
 ## Spring Boot
 ### Was ist Spring Boot
@@ -283,7 +283,7 @@ H2 kann in zwei typischen Betriebsarten genutzt werden:
 
 In Spring Boot wird H2 oft als Entwicklungsdatenbank verwendet, weil sie schnell startbar ist und gut mit Spring Data JPA/Hibernate zusammenarbeitet. Zusätzlich bietet H2 eine integrierte Web-Konsole, über die Tabellen, Inhalte und SQL-Abfragen bequem im Browser angesehen werden können. Für produktive Systeme wird häufig später auf leistungsfähigere Datenbanken (z. B. PostgreSQL oder MySQL) umgestellt, während H2 weiterhin für Tests und lokale Entwicklung genutzt werden kann.
 
-![H2 Datenbank Überblick](img/H2Datenbank_Überblick.png)
+![H2 Datenbank Überblick](img/H2Datenbank_UEberblick.png)
 
 ## MySQL
 MySQL ist ein weit verbreitetes relationales Datenbankmanagementsystem (RDBMS), das zur dauerhaften Speicherung und Verwaltung strukturierter Daten eingesetzt wird. Die Daten werden in Tabellen organisiert und können mithilfe von SQL (Structured Query Language) effizient abgefragt und bearbeitet werden. MySQL wird häufig in Web- und Backend-Anwendungen verwendet, weil es stabil, performant und für den produktiven Dauerbetrieb geeignet ist. Typische Einsatzbereiche sind Anwendungen mit Nutzer- und Trainingsdaten, Content-Systeme oder allgemeine Geschäftsanwendungen, bei denen Daten langfristig gespeichert und zuverlässig verwaltet werden müssen. In Spring-Boot-Projekten lässt sich MySQL über einen JDBC-Treiber anbinden und wird oft gemeinsam mit Spring Data JPA/Hibernate verwendet, um Datenbankzugriffe strukturiert über das Objektmodell umzusetzen.
@@ -304,7 +304,7 @@ IntelliJ IDEA ist eine integrierte Entwicklungsumgebung (IDE) von JetBrains, die
 
 Im Backend-Kontext wird IntelliJ IDEA typischerweise genutzt, um Spring-Boot-Projekte zu erstellen und zu verwalten, Abhängigkeiten (z. B. über Maven) einzubinden, REST-Controller und Datenbankklassen zu entwickeln sowie die Anwendung lokal zu starten und zu testen. Dadurch erleichtert die IDE sowohl die Umsetzung als auch die Wartung des Backends erheblich.
 
-![Überblick IntelJ](img/IntelJ_Überblick.png)
+![Überblick IntelJ](img/IntelJ_UEberblick.png)
 
 ## Visual Studio Code
 Visual Studio Code (VS Code) ist ein leichter, plattformübergreifender Code-Editor von Microsoft, der sich durch hohe Erweiterbarkeit auszeichnet. Er unterstützt viele Programmiersprachen wie JavaScript, TypeScript, HTML/CSS, Python und auch Java über Erweiterungen. VS Code bietet Funktionen wie Syntax-Highlighting, Code-Vervollständigung, integriertes Terminal, Debugging sowie eine starke Git-Integration, wodurch die Entwicklung übersichtlich und effizient wird.
@@ -399,7 +399,7 @@ Nach der Erstellung des ER-Diagramms wurde im nächsten Schritt die Datenbankanb
 
 Um die korrekte Datenbankanbindung frühzeitig zu überprüfen, wurde zunächst eine H2-Dateidatenbank manuell angelegt. Dafür wurde im Ordner
 
-C:\Users\flori\_SCHULE\5BIT\Diplomarbeit\DA_2526_Baskettball-Effizienssteigerung-durch-Videoanalyse\Source\backend\src\main\resources
+'C:Users\flori\_SCHULE\5BIT\Diplomarbeit\DA_2526_Baskettball-Effizienssteigerung-durch-Videoanalyse\Source\backend\src\main\resources'
 
 eine Datenbankdatei mit dem Namen da_basketball.mv.db erstellt. Diese Vorgehensweise diente dazu, die Verbindung zu einer persistenten, dateibasierten H2-Datenbank zu testen (im Gegensatz zum reinen In-Memory-Betrieb).
 
