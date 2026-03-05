@@ -399,7 +399,7 @@ Nach der Erstellung des ER-Diagramms wurde im nächsten Schritt die Datenbankanb
 
 Um die korrekte Datenbankanbindung frühzeitig zu überprüfen, wurde zunächst eine H2-Dateidatenbank manuell angelegt. Dafür wurde im Ordner
 
-'C:Users\flori\_SCHULE\5BIT\Diplomarbeit\DA_2526_Baskettball-Effizienssteigerung-durch-Videoanalyse\Source\backend\src\main\resources'
+```C:Users\flori\_SCHULE\5BIT\Diplomarbeit\DA_2526_Baskettball-Effizienssteigerung-durch-Videoanalyse\Source\backend\src\main\resources```
 
 eine Datenbankdatei mit dem Namen da_basketball.mv.db erstellt. Diese Vorgehensweise diente dazu, die Verbindung zu einer persistenten, dateibasierten H2-Datenbank zu testen (im Gegensatz zum reinen In-Memory-Betrieb).
 
