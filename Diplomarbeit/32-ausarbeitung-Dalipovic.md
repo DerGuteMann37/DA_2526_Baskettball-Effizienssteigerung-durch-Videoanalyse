@@ -64,7 +64,7 @@ Die HyperText Markup Language (HTML) ist die standardisierte Auszeichnungssprach
 
 Ein HTML-Dokument besteht aus einer hierarchischen Baumstruktur von Elementen. Diese Struktur wird im Browser als sogenanntes Document Object Model (DOM) repräsentiert [@fowler2002]. Das DOM bildet das Dokument als Baum aus Knoten ab, wobei jedes HTML-Element einem Objekt im Speicher entspricht.
 
-![DOM-Struktur eines HTML-Dokuments](img/html_dom.jpg.png){ width=70% }
+![DOM-Struktur eines HTML-Dokuments](img/html_dom.jpg){ width=70% }
 
 Abbildung: Baumstruktur des Document Object Models (DOM) als interne Repräsentation eines HTML-Dokuments im Browser.
 
