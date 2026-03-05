@@ -583,3 +583,513 @@ Technische Prinzipien umfassen:
 Webanwendungen, die personenbezogene Daten verarbeiten, müssen diese Prinzipien frühzeitig in Architekturentscheidungen integrieren, um rechtliche und ethische Anforderungen zu erfüllen.
 
 \newpage
+
+
+
+
+
+
+
+
+# Teilaufgabe Dalipovic Nino
+\textauthor{Nino Dalipovic}
+
+## Praxisteil – Frontend
+
+### Einleitung zum Praxisteil
+
+Im folgenden Kapitel wird die praktische Umsetzung des Frontends der entwickelten Anwendung beschrieben. Während der Theorieteil die grundlegenden Technologien und Architekturprinzipien moderner Webanwendungen erläutert, liegt der Fokus dieses Abschnitts auf der konkreten Implementierung der Benutzeroberfläche sowie der Interaktionslogik im Browser.
+
+Das Frontend bildet die zentrale Interaktionsschnittstelle zwischen Benutzer und System. Es ermöglicht die Anmeldung eines Benutzers, die Durchführung einer Trainingsanalyse sowie die visuelle Darstellung der Analyseergebnisse. Dabei werden moderne Webtechnologien eingesetzt, die vollständig im Browser ausgeführt werden.
+
+Die Anwendung ist als webbasierte Trainingsplattform konzipiert, deren Ziel es ist, Basketballwürfe über Videoaufnahmen auszuwerten und dem Benutzer eine visuelle Rückmeldung über seine Wurfmechanik zu geben. Das Frontend stellt hierbei die Benutzeroberfläche bereit, über die Videos ausgewählt, Trainingssessions gestartet und Analyseergebnisse dargestellt werden können.
+
+Besonderes Augenmerk liegt auf einer klar strukturierten Benutzeroberfläche, einer intuitiven Bedienung sowie einer modular aufgebauten Architektur. Dadurch kann die Anwendung sowohl erweitert als auch an zukünftige Analysefunktionen angepasst werden.
+
+\newpage
+
+
+### Projektkontext der Anwendung
+
+Die entwickelte Anwendung ist Teil eines Systems zur Analyse von Basketballwürfen. Ziel des Systems ist es, durch Videoaufnahmen eines Wurfes eine Analyse der Flugbahn sowie bestimmter Wurfparameter durchzuführen und diese visuell aufzubereiten.
+
+Das Frontend übernimmt dabei mehrere zentrale Aufgaben:
+
+- Darstellung der Benutzeroberfläche
+- Verarbeitung von Benutzereingaben
+- Auswahl und Vorschau von Trainingsvideos
+- Kommunikation mit Backend-Schnittstellen
+- Visualisierung von Analyseergebnissen
+
+Die Anwendung ist als **Single Page Application (SPA)** konzipiert. Das bedeutet, dass nach dem initialen Laden der Anwendung sämtliche Interaktionen innerhalb einer einzigen HTML-Seite stattfinden. Inhalte werden dynamisch über JavaScript aktualisiert, ohne dass ein vollständiges Neuladen der Seite erforderlich ist.
+
+Dadurch entsteht eine flüssige Benutzererfahrung, die sich ähnlich wie eine native Anwendung verhält.
+
+Die Frontend-Anwendung arbeitet eng mit einer serverseitigen Backend-Komponente zusammen. Das Backend stellt REST-basierte Schnittstellen bereit, über die Benutzer authentifiziert, Trainingssessions gespeichert und statistische Daten abgerufen werden können.
+
+\newpage
+
+
+### Überblick über die Frontend-Architektur
+
+Die Frontend-Architektur folgt einer klar strukturierten Trennung zwischen Darstellung, Logik und Kommunikationsschnittstellen.
+
+Die wichtigsten Bestandteile der Anwendung sind:
+
+- **HTML-Struktur** zur Definition der Benutzeroberfläche
+- **CSS-Styling** zur Gestaltung und Layoutsteuerung
+- **JavaScript-Logik** zur Verarbeitung von Ereignissen
+- **API-Module** zur Kommunikation mit dem Backend
+
+Die gesamte Anwendung wird im Browser ausgeführt und nutzt dabei die DOM-Struktur zur dynamischen Aktualisierung der Oberfläche.
+
+Ein zentrales Element der Architektur ist die Zustandsverwaltung innerhalb der Anwendung. Hierbei wird der aktuell angemeldete Benutzer im Browser gespeichert, sodass die Oberfläche entsprechend angepasst werden kann.
+
+Die Anwendung besitzt zwei Hauptansichten:
+
+1. Authentifizierungsansicht (Login und Registrierung)
+2. Hauptanwendung (Dashboard)
+
+Zwischen diesen Ansichten wird dynamisch gewechselt, sobald ein Benutzer erfolgreich angemeldet oder registriert wurde.
+
+Dieses Architekturprinzip ermöglicht eine klare Trennung zwischen Authentifizierung und eigentlicher Trainingsfunktionalität.
+
+\newpage
+
+
+### Technische Projektstruktur
+
+Die Frontend-Anwendung befindet sich im Projektverzeichnis innerhalb des Ordners `frontend`. Die Struktur ist bewusst übersichtlich gehalten, um eine einfache Wartbarkeit zu gewährleisten.
+
+Die wichtigsten Bestandteile der Projektstruktur sind:
+
+- **index.html**  
+  Einstiegspunkt der Anwendung und grundlegende HTML-Struktur.
+
+- **app.js**  
+  Zentrale Logik der Anwendung. Hier werden Ereignisse verarbeitet, Views gewechselt und Benutzeraktionen gesteuert.
+
+- **src/api/**  
+  Enthält Module für API-Aufrufe zum Backend.
+
+- **client.js**  
+  Implementiert einen Wrapper für HTTP-Anfragen.
+
+- **charts.html**  
+  Testseite zur Darstellung von Diagrammen.
+
+Diese Struktur erlaubt eine klare Trennung zwischen UI-Logik und Kommunikationsschnittstellen.
+
+Darüber hinaus werden externe Bibliotheken über ein Content Delivery Network (CDN) eingebunden. Dies reduziert die Komplexität der Projektstruktur und ermöglicht eine schnelle Integration von Visualisierungsbibliotheken.
+
+\newpage
+
+
+### Start der Anwendung im Browser
+
+Die Anwendung wird als statische Webanwendung im Browser ausgeführt. Damit alle Funktionen korrekt arbeiten, muss sie über einen lokalen Webserver gestartet werden.
+
+Der Start erfolgt beispielsweise über ein einfaches statisches Serving-Tool.
+
+Der Grund hierfür liegt darin, dass moderne Browser Sicherheitsmechanismen besitzen, die bestimmte Funktionen – insbesondere Netzwerkzugriffe – blockieren können, wenn eine Seite direkt über das lokale Dateisystem (`file://`) geöffnet wird.
+
+Durch den Einsatz eines lokalen Servers erhält die Anwendung eine definierte Herkunft (Origin), wodurch Netzwerkzugriffe sowie API-Kommunikation korrekt funktionieren.
+
+Nach dem Start öffnet der Browser die `index.html`-Datei, welche das Grundgerüst der Anwendung lädt. Anschließend wird die JavaScript-Logik initialisiert und die Benutzeroberfläche dargestellt.
+
+\newpage
+
+
+### Login-Oberfläche
+
+Beim ersten Aufruf der Anwendung erscheint die Login-Ansicht. Diese stellt die Einstiegsschnittstelle für den Benutzer dar und ermöglicht die Anmeldung mit bestehenden Zugangsdaten.
+
+![Login-Oberfläche der Anwendung](img/homescreenLogin.jpeg){ width=80% }
+
+Abbildung: Login-Oberfläche der Anwendung mit Eingabefeldern für Benutzername oder E-Mail sowie Passwort.
+
+Die Login-Oberfläche enthält folgende zentrale Elemente:
+
+- Eingabefeld für Benutzername oder E-Mail
+- Passwortfeld
+- Passwort-Sichtbarkeitsschalter
+- Button zur Anmeldung
+- Link zur Registrierung
+
+Die Benutzeroberfläche wurde bewusst minimalistisch gestaltet, um eine klare Benutzerführung zu ermöglichen.
+
+Nach Eingabe der Zugangsdaten wird eine Anfrage an das Backend gesendet, welches die Authentifizierung durchführt.
+
+\newpage
+
+
+### Registrierung neuer Benutzer
+
+Neben der Anmeldung bietet die Anwendung auch eine Registrierungsfunktion für neue Benutzer.
+
+![Registrierungsoberfläche der Anwendung](img/homescreenRegistrierung.jpeg){ width=80% }
+
+Abbildung: Registrierungsformular zur Erstellung eines neuen Benutzerkontos.
+
+Die Registrierung erfordert folgende Informationen:
+
+- Vorname
+- Nachname
+- E-Mail-Adresse
+- Passwort
+
+Nach erfolgreicher Registrierung wird der Benutzer automatisch in die Hauptansicht der Anwendung weitergeleitet.
+
+Diese Funktion ermöglicht es neuen Nutzern, ohne zusätzliche Systemadministration ein Konto zu erstellen und direkt mit der Trainingsanalyse zu beginnen.
+
+\newpage
+
+
+### Authentifizierungs-Flow im Frontend
+
+Der Authentifizierungsprozess besteht aus mehreren Schritten.
+
+Zunächst gibt der Benutzer seine Zugangsdaten in das Login-Formular ein. Nach dem Absenden des Formulars wird eine HTTP-Anfrage an die entsprechende Backend-Schnittstelle gesendet.
+
+Das Backend überprüft die übermittelten Daten und sendet eine Antwort an den Client zurück. Bei erfolgreicher Authentifizierung wird der Benutzer im Frontend als angemeldet gespeichert.
+
+Anschließend erfolgt ein Wechsel der Benutzeroberfläche von der Authentifizierungsansicht zur Hauptanwendung.
+
+Dieser Wechsel erfolgt vollständig clientseitig. Das Frontend blendet die Authentifizierungsoberfläche aus und zeigt stattdessen das Dashboard der Anwendung an.
+
+Der aktuell angemeldete Benutzer wird im Browser gespeichert, sodass der Zustand auch nach einem Neuladen der Seite wiederhergestellt werden kann.
+
+\newpage
+
+## Dashboard der Anwendung
+
+Nach erfolgreicher Authentifizierung wechselt die Anwendung automatisch in die Hauptansicht, das sogenannte Dashboard. Dieses stellt die zentrale Benutzeroberfläche dar, über die sämtliche Trainingsaktionen gesteuert werden können.
+
+Das Dashboard wurde so gestaltet, dass die wichtigsten Informationen und Funktionen direkt sichtbar sind. Ziel der Oberfläche ist es, dem Benutzer eine klare Übersicht über seine Trainingsdaten zu geben und gleichzeitig den Einstieg in eine neue Analyse möglichst einfach zu gestalten.
+
+Die Oberfläche besteht aus mehreren logisch getrennten Bereichen:
+
+- Kopfbereich mit Benutzerinformationen
+- KPI-Anzeige für aktuelle Leistungswerte
+- Trainingsbereich zum Starten einer Analyse
+- Liste vergangener Würfe
+- Navigationsleiste
+
+Diese Struktur ermöglicht eine intuitive Bedienung der Anwendung, ohne dass zusätzliche Menüs oder komplexe Navigation erforderlich sind.
+
+![Dashboard der Anwendung](img/dashboard.jpeg){ width=80% }
+
+Abbildung: Hauptansicht der Anwendung nach erfolgreicher Anmeldung.
+
+Im oberen Bereich der Oberfläche wird der aktuell angemeldete Benutzer angezeigt. Zusätzlich steht dort eine Logout-Funktion zur Verfügung, mit der der Benutzer seine Sitzung beenden kann.
+
+Das Dashboard bildet somit die zentrale Steuerungsoberfläche für alle weiteren Funktionen der Anwendung.
+
+\newpage
+
+
+## Live Performance Anzeige
+
+Ein wichtiger Bestandteil des Dashboards ist der sogenannte **Live Performance Bereich**. Dieser zeigt Kennzahlen an, die dem Benutzer eine unmittelbare Rückmeldung über seine Wurfmechanik geben.
+
+![Live Performance Bereich](img/livePerformanceFenster.jpeg){ width=80% }
+
+Abbildung: KPI-Bereich der Anwendung mit Wurfparametern.
+
+In der aktuellen Implementierung werden zwei zentrale Kennzahlen dargestellt:
+
+- **Release Angle**  
+  Der Winkel, in dem der Ball beim Wurf die Hand verlässt.
+
+- **Shot Quality Score**  
+  Ein zusammengefasster Bewertungswert, der verschiedene Wurfparameter berücksichtigt.
+
+Der Release Angle wird dabei als Gradwert angezeigt. Zusätzlich wird ein optimaler Bereich angegeben, der sich typischerweise zwischen etwa 45° und 55° befindet.
+
+Der Shot Quality Score wird als Punktwert dargestellt und soll dem Benutzer eine schnelle Einschätzung seiner Wurfqualität geben.
+
+Im aktuellen Entwicklungsstand werden diese Werte prototypisch generiert. Sie dienen primär dazu, die spätere Darstellung realer Analysewerte im Interface vorzubereiten.
+
+\newpage
+
+
+## Start einer Trainingssession
+
+Im Zentrum des Dashboards befindet sich der Bereich **New Training Session**. Dieser dient dazu, eine neue Analyse eines Basketballwurfs zu starten.
+
+Die Benutzeroberfläche zeigt hierfür einen klar hervorgehobenen Button mit der Beschriftung **Start Analysis**.
+
+Durch diese Gestaltung wird die wichtigste Aktion der Anwendung visuell betont.
+
+Der Ablauf für eine neue Trainingsanalyse ist folgender:
+
+1. Benutzer klickt auf „Start Analysis“
+2. Auswahl eines Videos
+3. Vorschau des ausgewählten Videos
+4. Darstellung der Analysewerte
+
+Die Benutzerführung ist bewusst einfach gehalten, sodass auch neue Benutzer ohne Anleitung eine Analyse starten können.
+
+\newpage
+
+
+## Auswahl eines Trainingsvideos
+
+Um eine Analyse durchführen zu können, muss zunächst ein Video eines Basketballwurfs ausgewählt werden. Die Anwendung unterstützt hierfür zwei unterschiedliche Methoden:
+
+- Auswahl über einen Dateidialog
+- Drag-and-Drop direkt auf die Anwendung
+
+Diese Flexibilität ermöglicht es dem Benutzer, Videos schnell und unkompliziert auszuwählen.
+
+Der Dateiinput akzeptiert ausschließlich Videodateien. Dadurch wird sichergestellt, dass nur geeignete Dateien verarbeitet werden können.
+
+Technisch erfolgt die Auswahl über ein HTML-Dateieingabeelement, das mit JavaScript verbunden ist. Sobald der Benutzer eine Datei auswählt, wird ein Ereignis ausgelöst, das die weitere Verarbeitung im Frontend startet.
+
+\newpage
+
+
+## Drag-and-Drop Unterstützung
+
+Zusätzlich zur klassischen Dateiauswahl unterstützt die Anwendung auch Drag-and-Drop. Dabei kann der Benutzer eine Videodatei direkt aus dem Dateisystem in das Browserfenster ziehen.
+
+Dieses Verhalten wird über sogenannte Drag-Events im Browser umgesetzt.
+
+Die wichtigsten Ereignisse dabei sind:
+
+- `dragover`
+- `drop`
+
+Während des Drag-Vorgangs verhindert die Anwendung das Standardverhalten des Browsers, um das Ablegen der Datei innerhalb der Anwendung zu ermöglichen.
+
+Beim Drop-Ereignis wird anschließend überprüft, ob es sich um eine gültige Videodatei handelt. Falls dies der Fall ist, wird die Datei an die gleiche Verarbeitungsroutine übergeben wie bei der klassischen Dateiauswahl.
+
+Diese Funktion erhöht die Benutzerfreundlichkeit erheblich und entspricht modernen Webanwendungsstandards.
+
+\newpage
+
+
+## Video-Vorschau im Dashboard
+
+Nachdem ein Video ausgewählt wurde, zeigt die Anwendung eine Vorschau des Clips direkt im Dashboard an.
+
+![Dashboard nach Analyse](img/dashboardNachAnalyse.jpeg){ width=80% }
+
+Abbildung: Dashboard mit Video-Vorschau nach Auswahl eines Trainingsvideos.
+
+Die Vorschau wird mithilfe eines HTML-Videoelements realisiert. Damit das Video direkt im Browser abgespielt werden kann, wird aus der ausgewählten Datei eine temporäre lokale URL erzeugt.
+
+Diese URL wird anschließend als Quelle (`src`) für das Videoelement verwendet.
+
+Der Vorteil dieses Ansatzes besteht darin, dass keine sofortige Serverkommunikation erforderlich ist. Das Video kann direkt lokal abgespielt werden, wodurch eine schnelle Rückmeldung für den Benutzer entsteht.
+
+Der Benutzer kann den Clip damit nochmals überprüfen, bevor weitere Analysefunktionen ausgeführt werden.
+
+\newpage
+
+
+## Anzeige von Trainingseinträgen (Recent Throws)
+
+Unterhalb des Analysebereichs befindet sich eine Liste mit dem Titel **Recent Throws**. Diese Liste zeigt vergangene Würfe an und dient als Übersicht über bereits durchgeführte Trainingsanalysen.
+
+Ein Eintrag enthält typischerweise folgende Informationen:
+
+- Bezeichnung des Wurfs
+- kurze Beschreibung oder Feedback
+- Zeitstempel
+
+Die Darstellung erfolgt in Form einer einfachen Liste, wodurch die Ergebnisse leicht überblickt werden können.
+
+Ein Beispiel für einen solchen Eintrag ist:
+
+"Wurf 1 – Leichte Abweichung vom perfekten Wurf."
+
+Diese Funktion bildet die Grundlage für eine zukünftige Trainingshistorie. In einer erweiterten Version der Anwendung könnten hier mehrere Trainingssessions gespeichert und analysiert werden.
+
+Dadurch wäre es möglich, langfristige Verbesserungen der Wurfmechanik zu verfolgen.
+
+\newpage
+
+## Visualisierung der Wurftrajektorie
+
+Ein zentrales Element der Anwendung ist die visuelle Darstellung einer Wurftrajektorie. Ziel dieser Visualisierung ist es, dem Benutzer eine verständliche Darstellung der Flugbahn des Basketballs zu geben.
+
+Die Darstellung erfolgt in Form eines Liniencharts. Dabei werden zwei Kurven dargestellt:
+
+- eine Referenzkurve (Soll-Flugbahn)
+- eine gemessene Flugbahn (Ist-Flugbahn)
+
+Die Referenzkurve stellt eine idealisierte Flugbahn dar, während die Ist-Kurve den tatsächlichen Verlauf eines Wurfes repräsentieren soll.
+
+Durch den Vergleich dieser beiden Kurven kann der Benutzer erkennen, ob sein Wurf beispielsweise zu flach, zu hoch oder zu kurz war.
+
+Die Visualisierung erfolgt mithilfe der JavaScript-Bibliothek **Chart.js**, welche eine einfache Integration von Diagrammen in Webanwendungen ermöglicht.
+
+\newpage
+
+
+## Darstellung der Analyse im Chart-Overlay
+
+Die Diagrammvisualisierung wird nicht direkt im Dashboard angezeigt, sondern innerhalb eines sogenannten Overlays dargestellt.
+
+Ein Overlay ist ein zusätzliches Fenster, das über die bestehende Benutzeroberfläche gelegt wird. Dadurch bleibt das Dashboard sichtbar, während gleichzeitig eine detaillierte Visualisierung angezeigt werden kann.
+
+![Chart-Overlay der Anwendung](img/charts.jpeg){ width=80% }
+
+Abbildung: Diagrammvisualisierung der Wurftrajektorie mit Soll- und Ist-Kurve.
+
+Das Overlay wird über ein Symbol in der Navigationsleiste geöffnet. Nach dem Öffnen wird ein Canvas-Element erzeugt, in das das Diagramm gezeichnet wird.
+
+Die Darstellung erfolgt als Linienchart mit zwei Datensätzen:
+
+- **Soll-Kurve** (grün dargestellt)
+- **Ist-Kurve** (blau dargestellt)
+
+Die X-Achse repräsentiert dabei die Zeit bzw. den Verlauf des Wurfes, während die Y-Achse die Höhe des Balls darstellt.
+
+Im aktuellen Projektstand werden die Kurvenwerte prototypisch erzeugt. Sie dienen dazu, die Visualisierungslogik sowie das Layout der Analyseansicht zu demonstrieren.
+
+\newpage
+
+
+## Analysekonzept einer Wurftrajektorie
+
+Um eine Wurftrajektorie zu analysieren, müssen verschiedene physikalische Parameter berücksichtigt werden.
+
+Zu den wichtigsten Parametern gehören:
+
+- Abwurfwinkel (Release Angle)
+- Abwurfgeschwindigkeit
+- Flugbahn des Balls
+- Treffpunkt im Korb
+
+Diese Werte können theoretisch aus Videodaten berechnet werden, indem die Position des Balls in mehreren Frames verfolgt wird.
+
+Die daraus resultierenden Positionsdaten können anschließend verwendet werden, um eine Flugkurve zu berechnen.
+
+Ein Beispiel für eine solche Visualisierung zeigt die folgende Abbildung.
+
+![Beispiel einer Analysevisualisierung](img/analyseWieEsAusschauenSollte.jpeg){ width=80% }
+
+Abbildung: Beispielhafte Darstellung einer idealisierten Wurftrajektorie.
+
+In einer erweiterten Version des Systems könnten reale Trackingdaten aus der Videoanalyse verwendet werden, um diese Kurven automatisch zu generieren.
+
+\newpage
+
+
+## Zustandsverwaltung im Frontend
+
+Damit eine Webanwendung korrekt funktioniert, muss der aktuelle Zustand der Anwendung verwaltet werden. Dieser Zustand umfasst beispielsweise:
+
+- den aktuell angemeldeten Benutzer
+- geladene Trainingsdaten
+- ausgewählte Videos
+- aktuelle Analysewerte
+
+In der implementierten Anwendung wird dieser Zustand in JavaScript-Variablen gespeichert.
+
+Eine zentrale Variable ist dabei `currentUser`. Diese enthält Informationen über den aktuell angemeldeten Benutzer.
+
+Zusätzlich existiert eine Liste für vergangene Würfe, die im Dashboard angezeigt werden können.
+
+Die Zustandsverwaltung ist bewusst einfach gehalten, da die Anwendung keine komplexen parallelen Interaktionen enthält.
+
+Für größere Anwendungen werden häufig spezielle Zustandsverwaltungsbibliotheken eingesetzt, die eine strukturierte Verwaltung von Daten ermöglichen.
+
+\newpage
+
+
+## Speicherung von Benutzerdaten im Browser
+
+Um den Benutzerzustand auch nach einem Neuladen der Seite zu erhalten, werden bestimmte Informationen im Browser gespeichert.
+
+Hierfür wird die sogenannte **LocalStorage API** verwendet.
+
+LocalStorage ermöglicht es, kleine Datenmengen dauerhaft im Browser zu speichern. Diese Daten bleiben auch nach dem Schließen des Browsers erhalten.
+
+Im Kontext dieser Anwendung wird LocalStorage verwendet, um den aktuell angemeldeten Benutzer zu speichern.
+
+Beim Start der Anwendung wird überprüft, ob ein Benutzer im LocalStorage vorhanden ist. Falls dies der Fall ist, wird die Anwendung direkt im Dashboard gestartet.
+
+Dieses Verhalten verbessert die Benutzerfreundlichkeit, da der Benutzer sich nicht bei jedem Aufruf erneut anmelden muss.
+
+\newpage
+
+
+## Kommunikation mit dem Backend
+
+Das Frontend kommuniziert mit dem Backend über REST-basierte Schnittstellen. Diese Kommunikation erfolgt über HTTP-Anfragen.
+
+Für die Umsetzung wird die JavaScript-Funktion `fetch()` verwendet, welche moderne Browser standardmäßig unterstützen.
+
+Die wichtigsten API-Aufrufe der Anwendung sind:
+
+- Benutzerregistrierung
+- Benutzerlogin
+- Erstellung einer Trainingssession
+- Abrufen von Trainingsdaten
+
+Die API-Kommunikation erfolgt über JSON-Daten. Das bedeutet, dass sowohl die Anfrage als auch die Antwort strukturierte JSON-Objekte enthalten.
+
+Diese Daten werden im Frontend verarbeitet und anschließend in der Benutzeroberfläche dargestellt.
+
+Durch diese Architektur bleibt das Frontend unabhängig von der internen Implementierung des Backends.
+
+\newpage
+
+
+## Fehlerbehandlung im Frontend
+
+In Webanwendungen können unterschiedliche Fehler auftreten. Dazu gehören beispielsweise:
+
+- ungültige Login-Daten
+- fehlgeschlagene Netzwerkverbindungen
+- unerwartete Serverantworten
+
+Die Anwendung berücksichtigt solche Situationen und zeigt dem Benutzer entsprechende Fehlermeldungen an.
+
+Ein Beispiel ist der Login-Prozess. Wenn das Backend eine fehlerhafte Authentifizierung zurückmeldet, erscheint im Frontend eine entsprechende Meldung.
+
+Zusätzlich werden Netzwerkfehler abgefangen, um zu verhindern, dass die Anwendung in einen undefinierten Zustand gerät.
+
+Eine robuste Fehlerbehandlung ist besonders wichtig, um eine stabile Benutzererfahrung zu gewährleisten.
+
+\newpage
+
+
+## Grenzen der aktuellen Implementierung
+
+Wie viele Softwareprojekte befindet sich auch diese Anwendung in einem Entwicklungsstand, der bereits funktionsfähige Komponenten enthält, jedoch noch Erweiterungsmöglichkeiten besitzt.
+
+Einige Funktionen sind aktuell prototypisch umgesetzt. Dazu gehören insbesondere:
+
+- Analysewerte im Dashboard
+- Diagrammdaten im Chart
+- Trainingshistorie
+
+Diese Elemente sind bereits in der Benutzeroberfläche vorgesehen, werden jedoch derzeit noch nicht vollständig durch reale Analysewerte gespeist.
+
+Die vorhandene Struktur ermöglicht jedoch eine spätere Erweiterung, ohne dass grundlegende Änderungen an der Benutzeroberfläche notwendig sind.
+
+\newpage
+
+
+## Weiterentwicklungsmöglichkeiten
+
+Für zukünftige Versionen der Anwendung ergeben sich mehrere mögliche Erweiterungen.
+
+Eine zentrale Weiterentwicklung wäre die Integration einer automatischen Videoanalyse. Dabei könnten Computer-Vision-Algorithmen verwendet werden, um die Position des Balls in einzelnen Frames zu erkennen und daraus eine Flugkurve zu berechnen.
+
+Weitere mögliche Erweiterungen sind:
+
+- automatische Wurferkennung in Trainingsvideos
+- detaillierte Trainingsstatistiken
+- langfristige Performanceanalyse
+- mobile Optimierung der Benutzeroberfläche
+
+Durch diese Erweiterungen könnte die Anwendung zu einem umfassenden Trainingswerkzeug für Basketballspieler weiterentwickelt werden.
+
+\newpage
+
+
