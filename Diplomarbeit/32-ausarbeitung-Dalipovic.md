@@ -4,10 +4,6 @@
 
 ## Theorieteil – Frontend
 
-![Beispielbild](img/Flugbahn.png) {#fig-flugbahn width=60%}
-
-Das Bild ist in @fig-flugbahn dargestelt!!!
-
 
 ### Technischer Kontext und Zielsetzung des Frontend-Teils
 
@@ -57,12 +53,20 @@ Gleichzeitig entsteht dadurch die Notwendigkeit zusätzlicher Mechanismen zur Ve
 
 Die klare Trennung von Client- und Serververantwortlichkeiten bildet die architektonische Grundlage moderner Webanwendungen und ermöglicht eine modulare Weiterentwicklung beider Systemseiten.
 
+![Client-Server-Kommunikation als Mehrschichtprinzip](img/threeTierArchitecture.jpg){ width=75% }
+
+Abbildung: Vereinfachte Darstellung einer Webanwendung mit Präsentationsschicht (Client), Logikschicht (Server) und Datenhaltung (Datenbank).
+
 
 ### Strukturierung von Inhalten mit HTML
 
 Die HyperText Markup Language (HTML) ist die standardisierte Auszeichnungssprache zur Strukturierung von Webdokumenten [@fielding2000]. Sie definiert die logische Gliederung von Inhalten und beschreibt, wie Informationen semantisch ausgezeichnet werden.
 
 Ein HTML-Dokument besteht aus einer hierarchischen Baumstruktur von Elementen. Diese Struktur wird im Browser als sogenanntes Document Object Model (DOM) repräsentiert [@fowler2002]. Das DOM bildet das Dokument als Baum aus Knoten ab, wobei jedes HTML-Element einem Objekt im Speicher entspricht.
+
+![DOM-Struktur eines HTML-Dokuments](img/html_dom.jpg.png){ width=70% }
+
+Abbildung: Baumstruktur des Document Object Models (DOM) als interne Repräsentation eines HTML-Dokuments im Browser.
 
 Die semantische Strukturierung durch HTML-Elemente wie:
 
