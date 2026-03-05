@@ -656,7 +656,7 @@ Dadurch entsteht ein konsistentes Erscheinungsbild über alle UI-Komponenten.
 
 Beim Start der Anwendung wird dem Benutzer zunächst die Login-Oberfläche angezeigt. Diese ermöglicht registrierten Benutzern den Zugriff auf das System.
 
-![Login Screen der Anwendung](img/homescreenLogin2.png){ width=80% }
+![Login Screen der Anwendung](img/homescreenLogin2.jpeg){ width=80% }
 
 Abbildung: Login-Oberfläche der Anwendung mit Eingabefeldern für Benutzername bzw. E-Mail und Passwort.
 
@@ -675,7 +675,7 @@ Die Eingaben werden im Browser verarbeitet und anschließend über eine HTTP-Anf
 
 Neben der Anmeldung bietet die Anwendung auch eine Möglichkeit zur Registrierung neuer Benutzer.
 
-![Registrierungsoberfläche](img/homescreenRegistrierung2.png){ width=80% }
+![Registrierungsoberfläche](img/homescreenRegistrierung2.jpeg){ width=80% }
 
 Abbildung: Registrierungsansicht zur Erstellung eines neuen Benutzerkontos.
 
@@ -820,7 +820,7 @@ Neben der Anmeldung muss eine Anwendung auch die Möglichkeit bieten, eine beste
 
 Beim Logout werden alle gespeicherten Sitzungsinformationen aus dem Browser entfernt. Dadurch wird der Benutzer aus dem aktuellen Anwendungskontext entfernt und die Oberfläche kehrt zur Login-Ansicht zurück.
 
-![Logout-Bereich im Dashboard](img/LogOut.png){ width=80% }
+![Logout-Bereich im Dashboard](img/LogOut.jpeg){ width=80% }
 
 Abbildung: Dashboard mit markiertem Logout-Button zum Beenden der aktuellen Sitzung.
 
@@ -849,7 +849,7 @@ Durch das Entfernen der gespeicherten Daten wird sichergestellt, dass kein vorhe
 
 Nach erfolgreicher Anmeldung wird innerhalb der Hauptansicht der aktuell angemeldete Benutzer angezeigt. Diese Anzeige dient als visuelles Feedback und zeigt dem Benutzer, unter welchem Account die Anwendung aktuell verwendet wird.
 
-![Profilanzeige im Dashboard](img/ProfilAnzeige.png){ width=80% }
+![Profilanzeige im Dashboard](img/ProfilAnzeige.jpeg){ width=80% }
 
 Abbildung: Anzeige des aktuell angemeldeten Benutzers im Dashboard der Anwendung.
 
@@ -882,7 +882,7 @@ Durch diese dynamische Einbindung kann das Dashboard automatisch personalisiert 
 
 Nach erfolgreicher Authentifizierung wird der Benutzer in die Hauptansicht der Anwendung weitergeleitet. Diese Ansicht bildet das zentrale Dashboard und dient als Ausgangspunkt für die Interaktion mit dem System.
 
-![Dashboard der Anwendung](img/dashboard.png){ width=80% }
+![Dashboard der Anwendung](img/dashboard.jpeg){ width=80% }
 
 Abbildung: Hauptansicht der Anwendung nach erfolgreicher Anmeldung.
 
@@ -907,7 +907,7 @@ Der Benutzer kann über eine entsprechende Schaltfläche den Analyseprozess init
 
 Nach Abschluss einer Analyse werden zusätzliche Informationen im Dashboard angezeigt.
 
-![Dashboard nach Analyse](img/dashboardNachAnalyse.png){ width=80% }
+![Dashboard nach Analyse](img/dashboardNachAnalyse.jpeg){ width=80% }
 
 Abbildung: Dashboard nach Durchführung einer Analyse mit aktualisierten Anzeigen.
 
@@ -925,7 +925,7 @@ Diese Informationen dienen dazu, dem Benutzer eine schnelle Einschätzung der an
 
 Neben der normalen Dashboard-Anzeige kann zusätzlich ein spezielles Fenster zur Darstellung von Leistungsinformationen geöffnet werden. Dieses Fenster wird als sogenanntes Overlay dargestellt und erscheint über der bestehenden Benutzeroberfläche.
 
-![Live Performance Fenster](img/livePerformanceFenster2.png){ width=80% }
+![Live Performance Fenster](img/livePerformanceFenster2.jpeg){ width=80% }
 
 Abbildung: Overlay-Fenster zur Darstellung zusätzlicher Analyseinformationen.
 
@@ -984,7 +984,7 @@ Neben der Darstellung des Trainingsvideos spielt auch die grafische Darstellung 
 
 Für diese Visualisierung wird die JavaScript-Bibliothek **Chart.js** eingesetzt. Diese ermöglicht die Darstellung von Diagrammen direkt im Browser.
 
-![Diagrammansicht der Analyse](img/charts.png){ width=80% }
+![Diagrammansicht der Analyse](img/charts.jpeg){ width=80% }
 
 Abbildung: Diagrammdarstellung von Analysewerten innerhalb der Anwendung.
 
@@ -1016,7 +1016,7 @@ Durch diese visuelle Darstellung kann der Benutzer Unterschiede zwischen idealer
 
 Neben der tatsächlichen Implementierung enthält die Anwendung auch eine Beispielansicht, die zeigt, wie eine vollständige Analyseoberfläche aussehen kann. Diese Darstellung dient als Konzept und verdeutlicht mögliche Erweiterungen der Benutzeroberfläche.
 
-![Analyseansicht der Anwendung](img/analyseWieEsAusschauenSollte.png){ width=80% }
+![Analyseansicht der Anwendung](img/analyseWieEsAusschauenSollte.jpeg){ width=80% }
 
 Abbildung: Konzeptuelle Darstellung einer möglichen Analyseoberfläche.
 
@@ -1035,7 +1035,7 @@ Diese Darstellung zeigt, wie verschiedene Informationsquellen innerhalb einer Ob
 
 Nachdem eine Analyse durchgeführt wurde, werden die entsprechenden Werte im Dashboard aktualisiert. Die Benutzeroberfläche zeigt dem Benutzer sofort die wichtigsten Ergebnisse an.
 
-![Dashboard nach Analyse](img/dashboardNachAnalyse.png){ width=80% }
+![Dashboard nach Analyse](img/dashboardNachAnalyse.jpeg){ width=80% }
 
 Abbildung: Dashboard nach Durchführung einer Analyse.
 
