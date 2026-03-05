@@ -17,16 +17,12 @@ da-author:
   ki-tools:
   - name: ChatGPT5.2
     zweck: Informationsbeschaffung
-  - name: Midjourney
-    zweck: Künstlerische Illustration
 
 - vorname: Nino 
   nachname: Dalipovic
   klasse: 5BHWIN
   thema: Frontend
   ki-tools:
-  - name: Github Copilot
-    zweck: Boilerplate codegenerierung, Codedokumentation
   - name: ChatGPT5.2
     zweck: Informationsbeschaffung
 
@@ -37,6 +33,8 @@ da-author:
   ki-tools:
   - name: ChatGPT5.2
     zweck: Informationsbeschaffung
+  - name: Github Copilot
+    zweck: Boilerplate codegenerierung, Codedokumentation
 
 - vorname: Bastian 
   nachname: Wolfgruber
@@ -45,11 +43,7 @@ da-author:
   ki-tools:
   - name: ChatGPT5.2
     zweck: Informationsbeschaffung
-  - name: Galileo AI
-    zweck: Setendesign sowie UI/UX Design der App
-  - name: Grammarly Go
-    zweck: Stilverbesserung sowie Rechtschreibkorrekturen
-
+    
 da-betreuer:
 - paraffe: jada
   name: DI Darko Jankovic

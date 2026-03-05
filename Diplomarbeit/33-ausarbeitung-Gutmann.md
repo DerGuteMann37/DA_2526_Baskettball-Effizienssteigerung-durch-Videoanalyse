@@ -13,27 +13,7 @@ Technisch wird das Backend als Webservice umgesetzt, der über eine **REST-Schni
 
 Durch diese Architektur entsteht eine klare Aufgabenteilung: Die Videoanalyse erzeugt Messdaten, das Backend speichert und verarbeitet diese Daten und stellt sie dem Frontend in einer einheitlichen Form zur Verfügung. Diese Trennung erhöht die Wartbarkeit und Erweiterbarkeit des Gesamtsystems, da einzelne Komponenten unabhängig voneinander weiterentwickelt oder ausgetauscht werden können.
 
-### Vorbereitung
-
-Bevor mit der eigentlichen Implementierung des Backends begonnen wurde, fand eine gemeinsame Planungs- und Analysephase mit allen Teammitgliedern statt. Ziel dieser Phase war es, die Schnittstellen zwischen den einzelnen Projektteilen klar zu definieren und ein gemeinsames Verständnis über die benötigten Daten und Funktionen zu schaffen.
-
-Im Rahmen dieser Abstimmung wurden insbesondere die Ergebnisse der Videoanalyse betrachtet. Dabei wurde festgelegt, welche Parameter aus der Analyse einzelner Würfe erzeugt werden und in welcher Form diese Daten dem Backend zur Verfügung gestellt werden. Zu diesen Daten zählen unter anderem Informationen zum Abwurfpunkt, zur Korbposition, zum Abwurfwinkel, zur Anfangsgeschwindigkeit des Balls sowie weitere Werte zur Beschreibung der Flugbahn. Diese Parameter bilden die Grundlage für alle weiteren Auswertungen und mussten daher frühzeitig eindeutig definiert werden.
-
-Parallel dazu wurden die Anforderungen des Frontends analysiert. Das Frontend benötigt strukturierte und konsistente Daten, um Spieler*innen, Trainingseinheiten und statistische Auswertungen übersichtlich darstellen zu können. In gemeinsamen Besprechungen wurde daher festgelegt, welche Informationen vom Backend bereitgestellt werden müssen, beispielsweise Spielerstatistiken, Session-Zusammenfassungen oder zeitliche Leistungsentwicklungen. Diese Abstimmung stellte sicher, dass das Backend nicht isoliert entwickelt wird, sondern optimal auf die Bedürfnisse der Benutzeroberfläche abgestimmt ist.
-
-Auf Basis dieser gemeinsamen Analyse wurden die Verantwortlichkeiten innerhalb des Backends festgelegt. Der Fokus lag dabei auf der Entwicklung einer Datenbankstruktur, der Definition geeigneter Datenmodelle sowie der Bereitstellung von Schnittstellen zur Kommunikation mit dem Frontend. Durch dieses strukturierte Vorgehen konnte eine solide Grundlage geschaffen werden, auf der die weitere Backend-Entwicklung systematisch aufbauen konnte.
-
-### Ergebnis der Planungsphase
-
-Als Ergebnis der gemeinsamen Planungsphase konnten die grundlegenden Anforderungen an das Backend eindeutig festgelegt werden. Ziel war es, einen klaren Datenfluss zwischen Videoanalyse, Backend und Frontend zu definieren und Überschneidungen oder spätere Anpassungen möglichst zu vermeiden.
-
-Ein zentrales Ergebnis des Meetings war die Festlegung der Daten, die aus der Videoanalyse an das Backend übergeben werden. Für jeden analysierten Basketballwurf werden strukturierte Datensätze erzeugt, welche sowohl geometrische als auch zeitliche Informationen enthalten. Dazu zählen unter anderem der Abwurfpunkt des Balls, die Position des Korbes, der Abwurfwinkel, die Anfangsgeschwindigkeit sowie zusätzliche Parameter zur Beschreibung der berechneten Soll- und der erkannten Ist-Flugbahn. Diese Daten werden automatisiert in Form von **JSON-Dateien** erzeugt und dienen als Eingabe für das Backend.
-
-Ein weiterer wesentlicher Punkt war die Definition der Datenstruktur innerhalb des Backends. Es wurde festgelegt, dass die Daten in einer **relationalen Datenbank** gespeichert werden, um eine klare Strukturierung und langfristige Persistenz zu gewährleisten. Dabei wurden zentrale Entitäten identifiziert, darunter Spieler*innen, Trainingseinheiten, einzelne Würfe sowie zugehörige Analyse- und Flugdaten. Diese Entitäten stehen in klar definierten Beziehungen zueinander und bilden die Grundlage für das spätere Entity-Relationship-Modell.
-
-Zusätzlich wurden die Anforderungen des Frontends konkretisiert. Das Frontend benötigt nicht nur Rohdaten einzelner Würfe, sondern vor allem aggregierte Informationen in Form von statistischen Auswertungen. Daher wurde beschlossen, dass die Berechnung dieser Statistiken vollständig im Backend erfolgt. Das Backend stellt dem Frontend ausschließlich bereits aufbereitete Ergebnisse zur Verfügung, beispielsweise Trefferquoten, Durchschnittswerte oder zeitliche Leistungsentwicklungen. Dadurch wird die Komplexität im Frontend reduziert und eine konsistente Auswertung sichergestellt.
-
-Abschließend wurde festgelegt, dass das Backend über eine REST-Schnittstelle mit dem Frontend kommuniziert. Die Datenübertragung erfolgt im JSON-Format, wodurch eine plattformunabhängige und leicht erweiterbare Kommunikation ermöglicht wird. Diese Entscheidungen bilden die Grundlage für alle weiteren technischen Umsetzungen im Backend und stellen sicher, dass die einzelnen Projektteile nahtlos ineinandergreifen.
+![Backend](img/Backend_hell.png){ width=500px }
 ## Backend
 ### Was ist überhaupt das Backend
 Unter dem Backend versteht man den serverseitigen Teil einer Softwareanwendung. Es ist jener Bereich, der für Nutzerinnen und Nutzer meist nicht direkt sichtbar ist, jedoch die zentrale technische Grundlage eines Systems bildet. Während das Frontend die grafische Oberfläche und Interaktionen bereitstellt, übernimmt das Backend die Verarbeitung von Daten und die Ausführung der eigentlichen Anwendungslogik.
@@ -52,6 +32,8 @@ Das Backend nimmt Anfragen von Clients (z. B. einer Webanwendung) entgegen, prü
 - **Sicherheit und Qualität im Betrieb:** Je nach System gehören auch Authentifizierung/Autorisierung, Fehlerbehandlung, Logging und Monitoring zu den Aufgaben des Backends.
 
 Im Kontext dieser Diplomarbeit ist das Backend besonders wichtig, da es die Analyseergebnisse aus der Videoverarbeitung entgegennimmt, in einer relationalen Datenbank speichert, statistisch auswertet und die daraus entstehenden Kennzahlen über eine REST-Schnittstelle dem Frontend zur Visualisierung zur Verfügung stellt. Dadurch fungiert das Backend als zentrale Logik- und Datenebene des gesamten Systems.
+
+![Backend Übersicht in Zusammenhang mit den anderen Teilen](img/Zusammenhänge_Projekt.png)
 
 ## Spring Boot
 ### Was ist Spring Boot
@@ -140,6 +122,8 @@ Auf Basis dieser Auswahl erstellt der Spring Initializr automatisch ein Projekt 
 
 Der Vorteil besteht darin, dass die grundlegende Projektkonfiguration schnell, standardisiert und fehlerarm erfolgt. Dadurch kann direkt mit der eigentlichen Entwicklung begonnen werden, ohne Zeit in manuelles Setup zu investieren.
 
+![Überblick Spring Initializer](img/SpringInitializer.png)
+
 ## Java / JavaScript
 ### Was ist Java?
 Java ist eine objektorientierte Programmiersprache, die ursprünglich mit dem Ziel entwickelt wurde, plattformunabhängige Anwendungen zu ermöglichen. Ein zentrales Prinzip von Java lautet „Write once, run anywhere“. Java-Programme werden dabei in Bytecode übersetzt und anschließend von der Java Virtual Machine (JVM) ausgeführt, wodurch dieselbe Anwendung auf unterschiedlichen Betriebssystemen laufen kann.
@@ -193,6 +177,8 @@ Java ist eine klassische Sprache für strukturierte, größere Anwendungen (z. B
 ## Postman
 Postman ist ein Tool zur Entwicklung und zum Testen von REST-APIs. Es ermöglicht, HTTP-Anfragen wie GET, POST, PUT/PATCH und DELETE direkt an ein Backend zu senden, ohne dass dafür bereits ein fertiges Frontend notwendig ist. Dabei können Request-Details wie Header, Parameter und ein JSON-Body einfach eingestellt werden. Postman zeigt anschließend die Antwort des Servers übersichtlich an, inklusive Statuscode und Rückgabedaten. Dadurch eignet sich das Tool besonders gut, um API-Endpunkte während der Backend-Entwicklung zu prüfen, Fehler zu analysieren und die Funktionalität der Schnittstelle schrittweise zu verifizieren.
 
+![Postman Überblick](img/Postman.png)
+
 ## Datenbank
 ### Was ist eine Datenbank?
 Eine Datenbank ist ein System zur strukturierten Speicherung, Organisation und Verwaltung von Daten. Im Gegensatz zu einfachen Dateien werden Informationen in einer Datenbank nach klaren Regeln abgelegt, sodass sie gezielt durchsucht und verarbeitet werden können. Verwaltet wird eine Datenbank in der Regel durch ein Datenbankmanagementsystem (DBMS), das den Zugriff regelt und Funktionen für das Speichern, Abrufen und Bearbeiten von Daten bereitstellt. Dadurch können Daten nicht nur dauerhaft gespeichert, sondern auch konsistent und nachvollziehbar verwaltet werden.
@@ -219,6 +205,7 @@ Durch JPA kann die Datenbankarbeit auf einer höheren Ebene erfolgen: Statt SQL 
 Annotationen sind spezielle Markierungen im Quellcode (in Java erkennbar am @-Symbol), mit denen zusätzliche Informationen über Klassen, Methoden oder Variablen angegeben werden. Sie verändern nicht direkt den Programmablauf, sondern dienen Frameworks und Tools als „Metadaten“, um bestimmtes Verhalten automatisch umzusetzen.
 
 Im Backend mit Spring Boot und JPA werden Annotationen z. B. verwendet, um eine Klasse als Datenbank-Entität zu kennzeichnen (@Entity), Primärschlüssel festzulegen (@Id) oder REST-Endpunkte zu definieren (@RestController, @GetMapping). Dadurch wird Konfiguration in den Code verlagert, was die Struktur klarer macht und die Entwicklung vereinfacht.
+
 ## Entity-Relationship-Modell
 
 Relationale Datenbanken speichern Informationen in tabellarischer Form. Die Daten sind in Tabellen (Relationen) organisiert, die aus Datensätzen (Zeilen/Tupeln) und Attributen (Spalten) bestehen. Ein Datensatz beschreibt dabei ein konkretes Objekt, beispielsweise einen Spieler oder einen einzelnen Basketballwurf, während die Attribute die jeweiligen Eigenschaften dieses Objekts (z. B. Name, Zeitpunkt, Winkel oder Treffer) definieren.
@@ -296,6 +283,8 @@ H2 kann in zwei typischen Betriebsarten genutzt werden:
 
 In Spring Boot wird H2 oft als Entwicklungsdatenbank verwendet, weil sie schnell startbar ist und gut mit Spring Data JPA/Hibernate zusammenarbeitet. Zusätzlich bietet H2 eine integrierte Web-Konsole, über die Tabellen, Inhalte und SQL-Abfragen bequem im Browser angesehen werden können. Für produktive Systeme wird häufig später auf leistungsfähigere Datenbanken (z. B. PostgreSQL oder MySQL) umgestellt, während H2 weiterhin für Tests und lokale Entwicklung genutzt werden kann.
 
+![H2 Datenbank Überblick](img/H2Datenbank_Überblick.png)
+
 ## MySQL
 MySQL ist ein weit verbreitetes relationales Datenbankmanagementsystem (RDBMS), das zur dauerhaften Speicherung und Verwaltung strukturierter Daten eingesetzt wird. Die Daten werden in Tabellen organisiert und können mithilfe von SQL (Structured Query Language) effizient abgefragt und bearbeitet werden. MySQL wird häufig in Web- und Backend-Anwendungen verwendet, weil es stabil, performant und für den produktiven Dauerbetrieb geeignet ist. Typische Einsatzbereiche sind Anwendungen mit Nutzer- und Trainingsdaten, Content-Systeme oder allgemeine Geschäftsanwendungen, bei denen Daten langfristig gespeichert und zuverlässig verwaltet werden müssen. In Spring-Boot-Projekten lässt sich MySQL über einen JDBC-Treiber anbinden und wird oft gemeinsam mit Spring Data JPA/Hibernate verwendet, um Datenbankzugriffe strukturiert über das Objektmodell umzusetzen.
 
@@ -315,6 +304,8 @@ IntelliJ IDEA ist eine integrierte Entwicklungsumgebung (IDE) von JetBrains, die
 
 Im Backend-Kontext wird IntelliJ IDEA typischerweise genutzt, um Spring-Boot-Projekte zu erstellen und zu verwalten, Abhängigkeiten (z. B. über Maven) einzubinden, REST-Controller und Datenbankklassen zu entwickeln sowie die Anwendung lokal zu starten und zu testen. Dadurch erleichtert die IDE sowohl die Umsetzung als auch die Wartung des Backends erheblich.
 
+![Überblick IntelJ](img/IntelJ_Überblick.png)
+
 ## Visual Studio Code
 Visual Studio Code (VS Code) ist ein leichter, plattformübergreifender Code-Editor von Microsoft, der sich durch hohe Erweiterbarkeit auszeichnet. Er unterstützt viele Programmiersprachen wie JavaScript, TypeScript, HTML/CSS, Python und auch Java über Erweiterungen. VS Code bietet Funktionen wie Syntax-Highlighting, Code-Vervollständigung, integriertes Terminal, Debugging sowie eine starke Git-Integration, wodurch die Entwicklung übersichtlich und effizient wird.
 
@@ -323,224 +314,548 @@ VS Code wird häufig für die Frontend-Entwicklung eingesetzt, z. B. zum Erstell
 
 ## Praktische Arbeit
 
-### Erstellung des ER-Diagramm
+### Vorbereitung
 
-![ER-Diagramm](img/ER_Diagramm_first.png)
+Bevor mit der eigentlichen Implementierung des Backends begonnen wurde, fand eine gemeinsame Planungs- und Analysephase mit allen Teammitgliedern statt. Ziel dieser Phase war es, die Schnittstellen zwischen den einzelnen Projektteilen frühzeitig zu definieren und ein gemeinsames Verständnis über benötigte Daten, Formate und Funktionalitäten zu schaffen.
 
-Das ER-Diagramm stellt die im Projekt verwendete Datenbankstruktur grafisch dar und zeigt die zentralen Entitäten sowie deren Beziehungen untereinander. Es bildet den realen Trainingsablauf ab und dient als Grundlage für die Implementierung der Datenbank im Backend.
+Im Rahmen dieser Abstimmung wurden insbesondere die Ergebnisse der Videoanalyse betrachtet. Dabei wurde festgelegt, welche Parameter bei der Analyse einzelner Würfe entstehen und in welcher Form diese Daten dem Backend bereitgestellt werden. Zu den relevanten Parametern zählen unter anderem Informationen zum Abwurfpunkt, zur Korbposition, zum Abwurfwinkel, zur Anfangsgeschwindigkeit des Balls sowie zusätzliche Werte zur Beschreibung der Flugbahn. Da diese Daten die Grundlage für alle späteren Auswertungen darstellen, war eine eindeutige Definition bereits zu Beginn wesentlich.
 
-Im Zentrum des Modells steht die Entität **Spieler**, welche die grundlegenden Informationen zu den einzelnen Spieler*innen enthält. Eine Spielerin kann mehrere Trainingseinheiten absolvieren, wodurch eine **Eins-zu-viele-Beziehung** zwischen Spieler und Trainingseinheit entsteht. Jede Trainingseinheit wiederum besteht aus mehreren Würfen, die während des Trainings durchgeführt werden.
+Parallel dazu wurden die Anforderungen des Frontends analysiert. Das Frontend benötigt strukturierte und konsistente Daten, um Spieler*innen, Trainingseinheiten sowie statistische Auswertungen übersichtlich darstellen zu können. In gemeinsamen Besprechungen wurde daher festgelegt, welche Informationen vom Backend bereitgestellt werden müssen, beispielsweise Spielerstatistiken, Session-Zusammenfassungen und zeitliche Leistungsentwicklungen. Diese Abstimmung stellte sicher, dass das Backend nicht isoliert entwickelt wird, sondern technisch und fachlich auf die Anforderungen der Benutzeroberfläche abgestimmt ist.
 
-Jedem Wurf sind spezifische Analyse- und Flugdaten zugeordnet, welche aus der Videoanalyse stammen. Diese Daten beschreiben sowohl die erkannte Ist-Flugbahn als auch die berechnete Soll-Flugbahn des Basketballs. Durch diese Struktur ist es möglich, einzelne Würfe detailliert zu analysieren sowie statistische Auswertungen über mehrere Trainingseinheiten hinweg durchzuführen.
+Auf Basis der Analyse wurden die zentralen Aufgaben des Backends konkretisiert. Der Fokus lag dabei auf dem Entwurf einer geeigneten Datenbankstruktur, der Modellierung der benötigten Datenobjekte sowie der Bereitstellung von Schnittstellen zur Kommunikation mit dem Frontend. Durch dieses strukturierte Vorgehen konnte eine belastbare Grundlage geschaffen werden, auf der die weitere Backend-Entwicklung systematisch aufbauen konnte.
 
-Das dargestellte ER-Diagramm bildet somit die fachliche Grundlage für die Datenhaltung im Backend und stellt sicher, dass alle relevanten Informationen konsistent und nachvollziehbar gespeichert werden können.
+### Ergebnis der Planungsphase
 
-### Technologieentscheidungen
+Als Ergebnis der gemeinsamen Planungsphase konnten die grundlegenden Anforderungen an das Backend eindeutig festgelegt werden. Ziel war es, einen klaren und nachvollziehbaren Datenfluss zwischen Videoanalyse, Backend und Frontend zu definieren und spätere Schnittstellenänderungen möglichst zu vermeiden.
 
-Zu Beginn der Backend-Entwicklung wurde eine ausführliche Recherche zu möglichen Technologien durchgeführt. Ziel war es, eine stabile, erweiterbare und für den Anwendungsfall der Videoanalyse geeignete technische Basis zu schaffen. Dabei wurden insbesondere Programmiersprachen, Datenbanksysteme sowie Frameworks für die Umsetzung eines webbasierten Backends verglichen.
+Ein zentrales Ergebnis war die Festlegung der Daten, die aus der Videoanalyse an das Backend übergeben werden. Für jeden analysierten Basketballwurf werden strukturierte Datensätze erzeugt, die sowohl geometrische als auch zeitliche Informationen enthalten. Dazu zählen unter anderem der Abwurfpunkt des Balls, die Position des Korbes, der Abwurfwinkel, die Anfangsgeschwindigkeit sowie zusätzliche Parameter zur Beschreibung der berechneten Soll-Flugbahn und der erkannten Ist-Flugbahn. Diese Daten werden automatisiert in Form von JSON-Dateien erzeugt und dienen als Eingabe für den Importprozess im Backend.
 
-Die Auswahl der eingesetzten Technologien erfolgte anhand mehrerer Kriterien, darunter Wartbarkeit, Performance, Erweiterbarkeit, Dokumentation sowie die Eignung für den Einsatz in einer Diplomarbeit mit langfristiger Perspektive und basierend auf Erfahrungen aus dem Unterricht.
+Ein weiterer wesentlicher Punkt war die Definition der internen Datenhaltung. Es wurde festgelegt, dass die Daten in einer relationalen Datenbank gespeichert werden, um eine klare Strukturierung, konsistente Verknüpfungen sowie langfristige Persistenz zu gewährleisten. Dabei wurden zentrale Entitäten identifiziert, darunter Spieler*innen, Trainingseinheiten, einzelne Würfe sowie zugehörige Analyse- und Flugdaten. Diese Entitäten stehen in definierten Beziehungen zueinander und bilden die Grundlage für das spätere Entity-Relationship-Modell.
 
-### Entwicklungsumgebung (IntelliJ IDEA)
+Zusätzlich wurden die Anforderungen des Frontends konkretisiert. Das Frontend benötigt nicht nur Rohdaten einzelner Würfe, sondern insbesondere aggregierte Informationen in Form statistischer Auswertungen. Daher wurde beschlossen, dass die Berechnung dieser Statistiken vollständig im Backend erfolgt. Das Backend stellt dem Frontend somit aufbereitete Ergebnisse zur Verfügung, beispielsweise Trefferquoten, Durchschnittswerte und zeitliche Leistungsentwicklungen. Dadurch wird die Komplexität im Frontend reduziert und eine konsistente Berechnungslogik sichergestellt.
 
-Für die Entwicklung des Backend-Systems wurde die integrierte Entwicklungsumgebung **IntelliJ IDEA** verwendet. Diese IDE wird auch im Unterricht regelmäßig eingesetzt und war daher den Projektmitgliedern bereits gut vertraut. IntelliJ IDEA bietet umfassende Unterstützung für Java- und Spring-Boot-Projekte, darunter automatische Codevervollständigung, integrierte Build- und Testwerkzeuge (Maven), Debugging sowie eine enge Integration mit Versionsverwaltungssystemen. Durch den Einsatz einer bekannten Entwicklungsumgebung konnte die Entwicklungszeit reduziert und der Fokus auf die fachliche Umsetzung des Backends gelegt werden.
+Abschließend wurde festgelegt, dass die Kommunikation zwischen Frontend und Backend über eine REST-Schnittstelle erfolgt. Die Datenübertragung findet im JSON-Format statt, wodurch eine plattformunabhängige und erweiterbare Kommunikation ermöglicht wird. Diese Entscheidungen bilden die Grundlage für die nachfolgenden technischen Umsetzungen im Backend und stellen sicher, dass die einzelnen Projektteile nahtlos ineinandergreifen.
 
-### Programmiersprache (Java)
+## Technische Umsetzung
+Nach Abschluss der Planungsphase wurde das Backend technisch umgesetzt. Ziel war es, eine stabile Basis zu schaffen, auf der Daten aus der Videoanalyse importiert, dauerhaft gespeichert und über eine REST-Schnittstelle für das Frontend bereitgestellt werden können. Für die Implementierung wurde ein Java-basierter Technologie-Stack gewählt, da dieser insbesondere in Kombination mit Spring Boot eine strukturierte Entwicklung von Webservices ermöglicht.
 
-Als Programmiersprache für das Backend wurde **Java** ausgewählt. Ein wesentlicher Grund dafür ist, dass Java die Hauptprogrammiersprache im Unterricht darstellt und daher die meiste praktische Erfahrung in diesem Umfeld vorhanden ist. Java ist eine weit verbreitete, objektorientierte Programmiersprache, die besonders im Bereich serverseitiger Anwendungen und Unternehmenssoftware eingesetzt wird. Durch die starke Typisierung und die klare Struktur eignet sich Java gut für größere Projekte mit mehreren Modulen und klaren Verantwortlichkeiten.
+### Projektanlage und Entwicklungsumgebung 
 
-Ein weiterer Vorteil von Java ist die große Anzahl an verfügbaren Bibliotheken sowie die ausgezeichnete Integration mit etablierten Frameworks. Zudem bietet Java eine hohe Plattformunabhängigkeit, da Programme auf verschiedenen Betriebssystemen ausgeführt werden können, sofern eine Java Virtual Machine vorhanden ist.
+Die Erstellung des Projekts erfolgte über den Spring Initializr, wodurch eine standardisierte Grundstruktur für ein Spring-Boot-Projekt erzeugt werden konnte.
+ Als Build-Tool wurde Maven verwendet, um Abhängigkeiten einheitlich zu verwalten und den Build-Prozess nachvollziehbar zu gestalten. 
+ 
+ ![Erstellung des Spring Projekt mit Hilfe von Spring Initializer](img/ErstellungdesSpringProjekts.png)
 
-### Datenbanksysteme
+ Erklärung der einzelnen Komponenten
 
-Für die Speicherung und Verwaltung der anfallenden Daten wurde ein relationales Datenbanksystem eingesetzt. Die Wahl fiel bewusst auf zwei unterschiedliche Datenbanksysteme, die in verschiedenen Phasen des Projekts verwendet werden: **H2** für die lokale Entwicklungsphase und **MySQL** für den späteren produktiven Einsatz.
+- Project: Maven
+  Du hast Maven als Build- und Dependency-Management-Tool gewählt. Dadurch werden Bibliotheken (Dependencies) über die pom.xml verwaltet und das Projekt kann standardisiert gebaut/gestartet werden.
 
-Diese Vorgehensweise ermöglicht eine effiziente Entwicklung, ohne auf eine realistische Zielumgebung verzichten zu müssen.
+- Language: Java
+  Die Programmiersprache des Backends ist Java.
 
-#### H2-Datenbank (lokale Entwicklungsphase)
+- Spring Boot Version (z. B. 3.5.11)
+  Hier legst du fest, welche Spring-Boot-Version verwendet wird. Im Hinweis oben sieht man, dass eine ursprünglich gewünschte Version nicht verfügbar war und daher automatisch eine verfügbare Version ausgewählt wurde.
 
-In der frühen Entwicklungsphase wurde die **H2-Datenbank** eingesetzt. H2 ist eine leichtgewichtige, in Java geschriebene relationale Datenbank, die besonders für Entwicklungs- und Testzwecke geeignet ist.
+- Project Metadata
 
-**Vorteile:**
-- Keine separate Installation eines Datenbankservers notwendig  
-- Sehr schneller Start und geringe Systemanforderungen  
-- Gute Integration in Spring Boot  
-- Ideal für lokale Entwicklung und automatisierte Tests  
-- Datenbank kann direkt im Projekt eingebettet betrieben werden  
+  Diese Angaben bestimmen Identität und Struktur des Projekts:
+  - Group (z. B. at.htlle): „Namensraum“/Organisation, wird später Teil des     Package-Namens.
+  - Artifact (z. B. backend): Name des erzeugten Artefakts (Projekt-/Jar-Name).
+  - Name: Anzeigename des Projekts.
+  - Description: Kurze Beschreibung (wird z. B. in der pom.xml geführt).
+  -  Package name (z. B. at.htlle.backend): Basis-Package, unter dem deine    Java-Klassen liegen (wichtig für saubere Struktur).
 
-**Nachteile:**
-- Nicht für produktive Umgebungen mit vielen Nutzern ausgelegt  
-- Unterschiede im SQL-Dialekt im Vergleich zu produktiven Datenbanken  
-- Begrenzte Performance und Skalierbarkeit  
-- Nicht repräsentativ für reale Serverumgebungen  
+- Packaging: Jar
+Das Projekt wird als JAR gebaut, also als eigenständig ausführbare Anwendung (typisch für Spring Boot).
 
-**Begründung der Auswahl:**  
-Die H2-Datenbank wurde bewusst gewählt, um in der Entwicklungsphase schnell arbeiten zu können, ohne zusätzlichen Konfigurationsaufwand. Änderungen an der Datenbankstruktur konnten dadurch effizient getestet und angepasst werden.
+- Configuration: Properties
+Konfiguration wird primär in application.properties vorgenommen (alternativ wäre YAML möglich).
 
-#### MySQL (produktive Zielumgebung)
+- Java Version: 21
+Das Projekt nutzt Java 21 als Zielversion.
 
-Für den späteren Einsatz des Systems wurde **MySQL** als produktives Datenbanksystem vorgesehen. MySQL ist ein weit verbreitetes relationales Datenbanksystem, das häufig in webbasierten Anwendungen eingesetzt wird.
+- Dependencies: H2 Database
+Für das Projekt H2-Datenbank als Abhängigkeit ausgewählt. Dadurch kann das Backend in der Entwicklungsphase eine integrierte, leichtgewichtige relationale Datenbank nutzen (inkl. optionaler H2-Console), ohne einen externen Datenbankserver installieren zu müssen.
 
-**Vorteile:**
-- Hohe Stabilität und Zuverlässigkeit  
-- Gute Performance auch bei größeren Datenmengen  
-- Mehrbenutzerfähig und für Serverbetrieb ausgelegt  
-- Weit verbreitet und gut dokumentiert  
-- Geeignet für produktive und reale Anwendungsszenarien  
+Nachdem alle gewünschten Angaben im Spring Initializr korrekt eingetragen und die benötigten Dependencies ausgewählt wurden, kann das Projekt über „Generate“ erstellt werden. Dabei wird ein fertiges Spring-Boot-Startprojekt als ZIP-Datei heruntergeladen, das bereits die grundlegende Ordnerstruktur, eine Startklasse sowie die Build-Konfiguration (bei Maven die pom.xml) enthält. Dieses Projekt wird anschließend entpackt und in der Entwicklungsumgebung (z. B. IntelliJ IDEA) importiert, sodass direkt mit der Implementierung des Backends begonnen werden kann.
 
-**Nachteile:**
-- Erfordert Installation und Konfiguration eines Datenbankservers  
-- Höherer administrativer Aufwand im Vergleich zu H2  
-- Für lokale Entwicklung teilweise langsamer im Setup  
+![Projekt nach dem Öffnen in IntelJ](img/AnfangProjekt.png)
 
-**Begründung der Auswahl:**  
-MySQL wurde gewählt, da es sich für den produktiven Einsatz in einer realen Anwendung eignet und den Anforderungen an Datenintegrität, Performance und Mehrbenutzerbetrieb gerecht wird.
+## Erstellung eines ER-Diagrammsa
 
-#### Begründung der zweistufigen Datenbankstrategie
+Bevor die Datenbank technisch angebunden und im Backend umgesetzt wurde, wurde das Datenmodell zunächst in Form eines ER-Diagramms grafisch dargestellt. Dafür wurde das Tool Draw.io verwendet, da es eine einfache und übersichtliche Modellierung von Entitäten, Attributen und Beziehungen ermöglicht.
 
-Die Kombination aus H2 und MySQL ermöglicht eine klare Trennung zwischen Entwicklungs- und Produktivphase. Während H2 eine schnelle und flexible Entwicklung erlaubt, stellt MySQL sicher, dass das System später unter realistischen Bedingungen betrieben werden kann.
+Im ER-Diagramm wurden die zentralen Entitäten des Projekts definiert, darunter Player, TrainingSession, Shot, SollFlightData und Video. Zusätzlich wurden die wichtigsten Attribute (z. B. Identifikations-IDs, Zeitpunkte, Winkel, Geschwindigkeiten) sowie die Beziehungen zwischen den Entitäten festgelegt. Besonders relevant war dabei die korrekte Abbildung der Kardinalitäten, beispielsweise dass ein Spieler mehrere Trainingseinheiten haben kann und eine Trainingseinheit aus mehreren Würfen besteht.
 
-Durch den Einsatz von **JPA** und **Hibernate** bleibt das Datenmodell weitgehend unabhängig vom verwendeten Datenbanksystem. Dadurch ist ein Wechsel von H2 zu MySQL mit minimalem Anpassungsaufwand möglich. Diese zweistufige Datenbankstrategie unterstützt somit sowohl eine effiziente Entwicklung als auch eine realitätsnahe Umsetzung des finalen Systems.
+Durch diese grafische Modellierung konnte das Datenbankschema bereits vor der Implementierung logisch überprüft werden. Das ER-Diagramm diente anschließend als Grundlage für die Umsetzung der Datenbankstruktur im Backend mit JPA/Hibernate und half dabei, die spätere Implementierung konsistent und nachvollziehbar durchzuführen.
 
-### Spring Boot Framework
+![ER-Diagramm](img/ER-DIAGRAMM_hell.png)
 
-Für die Umsetzung des Backends wurde das Framework **Spring Boot** eingesetzt. Spring Boot baut auf dem Spring-Framework auf und vereinfacht die Entwicklung von Webanwendungen erheblich, indem viele Konfigurationsschritte automatisiert werden.
+## Datenbankanbindung
+Nach der Erstellung des ER-Diagramms wurde im nächsten Schritt die Datenbankanbindung im Backend umgesetzt. Ziel war es, eine funktionierende Persistenzschicht bereitzustellen, damit die aus der Videoanalyse importierten Daten dauerhaft gespeichert und für Abfragen sowie statistische Auswertungen verwendet werden können. Für die Entwicklungsphase wurde eine H2-Datenbank eingesetzt, da sie leichtgewichtig ist und ohne zusätzliche Installation direkt mit Spring Boot betrieben werden kann.
 
-Ein zentraler Vorteil von Spring Boot ist die klare Trennung der einzelnen Schichten (Controller, Service und Datenzugriff). Dadurch bleibt der Code übersichtlich und gut wartbar. Zudem ermöglicht Spring Boot die einfache Erstellung von REST-Schnittstellen, welche für die Kommunikation mit dem Frontend erforderlich sind.
+### Test der Datenbankverbindung mit einer lokalen H2-Datenbank
 
-Durch integrierte Funktionen wie Dependency Injection, Konfigurationsmanagement und Serverunterstützung eignet sich Spring Boot besonders gut für die Entwicklung moderner Backend-Systeme.
+Um die korrekte Datenbankanbindung frühzeitig zu überprüfen, wurde zunächst eine H2-Dateidatenbank manuell angelegt. Dafür wurde im Ordner
 
-### Objekt-relationales Mapping mit JPA und Hibernate
+C:\Users\flori\_SCHULE\5BIT\Diplomarbeit\DA_2526_Baskettball-Effizienssteigerung-durch-Videoanalyse\Source\backend\src\main\resources
 
-Um die relationale Datenbank effizient mit der objektorientierten Java-Struktur zu verbinden, wurde **JPA (Java Persistence API)** in Kombination mit **Hibernate** verwendet. Diese Technologien ermöglichen ein objekt-relationales Mapping, bei dem Datenbanktabellen direkt als Java-Klassen abgebildet werden.
+eine Datenbankdatei mit dem Namen da_basketball.mv.db erstellt. Diese Vorgehensweise diente dazu, die Verbindung zu einer persistenten, dateibasierten H2-Datenbank zu testen (im Gegensatz zum reinen In-Memory-Betrieb).
 
-Dadurch kann im Code mit Objekten gearbeitet werden, ohne SQL-Abfragen manuell schreiben zu müssen. Dies reduziert Fehlerquellen, erhöht die Lesbarkeit des Codes und erleichtert spätere Erweiterungen des Datenmodells. Besonders im Zusammenspiel mit Spring Boot ist die Integration von JPA und Hibernate sehr effizient.
+Anschließend wurde über die H2-Console eine Verbindung mit dem H2-Treiber (org.h2.Driver) und der entsprechenden JDBC-URL hergestellt. Über die Funktionen „Verbindung testen“ und „Verbinden“ konnte überprüft werden, ob das Backend bzw. die Console korrekt auf die Datenbankdatei zugreifen kann. Damit war sichergestellt, dass die Datenbankkonfiguration grundsätzlich funktioniert und Daten persistent in einer lokalen Datei gespeichert werden können.
 
-### Verwendung von Postman zur Schnittstellentestung
+![Datenbank Verbindung](img/H2_Datenbank_Verbindung.png)
 
-Zur Testung der entwickelten REST-Schnittstellen wurde das Tool **Postman** verwendet. Postman ermöglicht das manuelle Erstellen und Ausführen von HTTP-Anfragen und eignet sich besonders gut zur Überprüfung von `GET`-, `POST`-, `PUT`- und `DELETE`-Requests.
+### Datenbankverbindung im Projekt (Springboot + H2)
 
-Während der Entwicklung des Backends wurde Postman eingesetzt, um die korrekte Funktionalität der API-Endpunkte zu testen, Daten im JSON-Format zu senden sowie Serverantworten zu analysieren. Dadurch konnten Fehler frühzeitig erkannt und die Schnittstellen unabhängig vom Frontend validiert werden. Der Einsatz von Postman unterstützte somit eine strukturierte und effiziente Entwicklung sowie die Qualitätssicherung der REST-API.
+Nachdem die Funktion der H2-Dateidatenbank über die Console erfolgreich getestet wurde, wurde im nächsten Schritt die Datenbankverbindung direkt im Spring-Boot-Projekt eingerichtet. Ziel war es, dass das Backend beim Start automatisch eine Verbindung zur H2-Datenbank herstellt und alle Persistenzoperationen (Speichern, Lesen, Auswerten) über diese Verbindung durchführen kann.
 
-### Backend-Architektur
+#### Schritt 1 : Einbindung der benötigten Bibiotheken (Dependencies) über Maven
+Im ersten Schritt wurde das Spring-Boot-Projekt um die notwendigen Bibliotheken zur Datenpersistenz erweitert. In einem Maven-Projekt werden diese Abhängigkeiten zentral in der Datei pom.xml definiert, wodurch Maven die benötigten Libraries automatisiert verwaltet und in den Build-Prozess integriert. Für den Zugriff auf relationale Datenbanken wurde spring-boot-starter-data-jpa eingebunden, welches die Persistenz über JPA ermöglicht und standardmäßig Hibernate als ORM-Implementierung verwendet. Als Entwicklungsdatenbank wurde die H2-Datenbank über die Dependency h2 integriert, wodurch lokale Tests ohne zusätzlichen Datenbankserver möglich sind. Zusätzlich wurde spring-boot-starter-web verwendet, um das Backend als Webservice mit REST-Endpunkten zu betreiben. Zur Reduktion von Boilerplate-Code kam Lombok zum Einsatz, wodurch insbesondere Daten- und Entity-Klassen übersichtlicher umgesetzt werden konnten.
 
-![Backend-Architektur](img/backend_achitektur.png)
+        <dependencies>
+        <!-- Web / REST API -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
-#### Aufbau
+        <!-- Validation -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
 
-Das Backend des Projekts ist klar strukturiert und folgt einer **schichtenbasierten Architektur**. Die einzelnen Pakete übernehmen jeweils klar definierte Aufgaben und tragen dadurch zu einer guten Wartbarkeit und Erweiterbarkeit des Systems bei.
+        <!-- JPA / Hibernate -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
 
-##### Hauptklasse
+        <!-- H2 Datenbank -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
-Die Klasse `Da2526BaskettballEffizienssteigerungDurchVideoanalyseApplication` stellt den Einstiegspunkt der Spring-Boot-Anwendung dar. Sie startet das Backend, initialisiert alle Komponenten und konfiguriert den eingebetteten Webserver.
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
 
-##### Paketübersicht
+        <!-- Tests -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-- **`config`**: Konfigurationsklassen (z. B. Datenbank, CORS, projektspezifische Einstellungen)  
-- **`controller`**: REST-Endpunkte als Schnittstelle zum Frontend  
-- **`dto`**: sichere Datenübertragung zwischen Backend und Frontend  
-- **`exception`**: zentrale Fehlerbehandlung und einheitliche Fehlermeldungen  
-- **`model`**: Entitäten (JPA) als Abbildung der Datenbanktabellen  
-- **`repository`**: Datenzugriff (CRUD) und Abfragen auf Datenbankebene  
-- **`service`**: Geschäftslogik und Berechnung statistischer Auswertungen  
-- **`resources`**: Konfigurationsdateien und (lokal) Datenbankdateien  
+#### Schritt 2: Konfiguration der Datenbankverbindung in Springboot
+Nach der Einbindung der benötigten Bibliotheken (Dependencies) wurde im nächsten Schritt die Datenbankverbindung in Spring Boot eingerichtet. Die Konfiguration erfolgt zentral in der Datei src/main/resources/application.properties. Dort wird festgelegt, welche Datenbank verwendet wird und wie das Backend beim Start eine Verbindung zu dieser Datenbank herstellt.
 
+Für die Entwicklungsphase wurde eine H2-Datenbank im In-Memory-Modus konfiguriert. Dadurch wird die Datenbank beim Start der Anwendung automatisch im Arbeitsspeicher erstellt, was schnelle lokale Tests ermöglicht und keine zusätzliche Installation eines Datenbankservers erfordert. Die Verbindung wird über eine JDBC-URL (z. B. jdbc:h2:mem:da_basketball) sowie den H2-Treiber org.h2.Driver hergestellt. Als Standardzugang wird der Benutzer sa verwendet.
 
+Zusätzlich wurde JPA/Hibernate so eingestellt, dass das Datenbankschema anhand der im Projekt definierten Entities automatisch erstellt bzw. aktualisiert werden kann (spring.jpa.hibernate.ddl-auto=update). Dadurch musste das Schema nicht manuell per SQL gepflegt werden, sondern bleibt direkt mit dem Java-Datenmodell synchron. Um die Datenbank während der Entwicklung kontrollieren zu können, wurde außerdem die H2-Console aktiviert. Über den Pfad /h2-console können Tabellen und gespeicherte Daten im Browser eingesehen und geprüft werden.
 
-##### Packages
+      springapplicationname=DA_2526_Baskettball-Effizienssteigerung-durch-Videoanalyse
 
-###### Package `config`
+      Use an in-memory H2 database for local development to avoid file permission issues
+      spring.datasource.url=jdbc:h2:mem:da_basketball;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      spring.datasource.driverClassName=org.h2.Driver
+      spring.datasource.username=sa
+      spring.datasource.password=
 
-![Package config](img/config.png)
+      JPA Configuration
+      spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+      spring.jpa.hibernate.ddl-auto=update
+      spring.jpa.show-sql=true
 
-- **`CorsConfig`**  
-  Konfiguriert Cross-Origin Resource Sharing (CORS), damit das Frontend auf einem anderen Port oder einer anderen Domain auf das Backend zugreifen darf.
+      H2 Console (fuer Entwicklung)
+      spring.h2.console.enabled=true
+      spring.h2.console.path=/h2-console
 
-- **`WebConfig`**  
-  Enthält allgemeine Web-Konfigurationen für die Spring-Boot-Anwendung, z. B. globale Einstellungen des Request-Handlings.
+Jetzt funktioniert einmal die Verbindung der Datenbank mit dem Projekt.
 
-###### Package `controller`
+## Start der Implementierung
+Bevor mit der eigentlichen Programmierung (z. B. dem Erstellen der Entity-Klassen) begonnen wurde, wurde zunächst die grundlegende Architektur des Backends festgelegt. Ziel war es, von Beginn an eine klare Struktur zu schaffen, damit der Code übersichtlich, wartbar und langfristig erweiterbar bleibt. Aus diesem Grund wurde eine klassische Schichtenarchitektur (Layered Architecture) verwendet.
 
-![Package controller](img/controller.png)
+Die Schichtenarchitektur teilt ein Backend in logisch getrennte Bereiche, wobei jede Schicht eine klar definierte Aufgabe übernimmt. Dadurch wird verhindert, dass beispielsweise Datenbankzugriffe direkt in REST-Endpunkten implementiert werden oder Geschäftslogik unkontrolliert im Projekt verteilt ist. Zusätzlich erleichtert diese Trennung das Testen einzelner Komponenten sowie spätere Erweiterungen, da Änderungen in einer Schicht weniger Auswirkungen auf andere Bereiche haben.
 
-- **`AnalysisImportController`**  
-  Stellt Endpunkte zum Importieren und Verarbeiten von Analyse- bzw. Videodaten bereit.
+Im Backend wurden dabei folgende Schichten vorgesehen:
 
-- **`DashboardController`**  
-  Liefert zusammengefasste Daten für das Dashboard, z. B. Übersichten und aggregierte Statistiken.
+- Controller-Schicht: Bereitstellung der REST-Endpunkte, Annahme von HTTP-Anfragen und Rückgabe von  JSON-Responses.
 
-- **`PlayerController`**  
-  Verwaltet REST-Endpunkte zur Erstellung, Abfrage und Verwaltung von Spielern.
+- Service-Schicht: Umsetzung der Geschäftslogik, z. B. Import von Analyse-Daten, Validierungen und statistische Berechnungen.
 
-- **`StatsController`**  
-  Stellt statistische Auswertungen und Leistungsdaten der Spieler bereit.
+- Repository-Schicht: Datenzugriff über Spring Data JPA Repositories (CRUD und Abfragen).
 
-- **`TrainingSessionController`**  
-  Verwalten Trainings- bzw. Session-Daten und ermöglichen deren Abfrage und Speicherung.
+- Entity-/Model-Schicht: Abbildung der Datenbanktabellen als Java-Entities inklusive Beziehungen.
 
-###### Package `dto`
+Um diese Architektur auch im Projekt klar sichtbar zu machen, wurde eine entsprechende Package-Struktur angelegt (z. B. controller, service, repository, entity/model). Durch diese vorbereitende Festlegung konnte die weitere Implementierung systematisch erfolgen und das Backend von Anfang an nach einem einheitlichen und professionellen Aufbau entwickelt werden.
 
-![Package dto](img/dto.png)
+![Layerd Achitecture](img/LayeredAchitecture.png)
 
-#### `analysis`
-- **`AnalysisImportDTO`**: Eingabedaten für den Import einer Video- bzw. Analyseauswertung  
-- **`AnalysisImportResponseDTO`**: Ergebnis eines Analyseimports (z. B. Status, Anzahl verarbeiteter Datensätze)  
-- **`AnalysisPayload`**: eigentliche Analysedaten aus der Videoanalyse  
-- **`ShotDTO`**: Beschreibung eines einzelnen Wurfes (z. B. Treffer/Fehlwurf)  
-- **`SollDTO`**: Soll- bzw. Referenzwerte für Auswertung und Leistungsvergleich  
+## Projektstruktur 
+### Implementirung der Entity Klassen
 
-#### `dashboard`
-- **`PlayerDashboardDTO`**: zusammengefasste Spielerinformationen für die Dashboard-Anzeige  
+Nach der Festlegung der Projektstruktur wurden die im ER-Diagramm definierten Tabellen als JPA-Entities in Java umgesetzt. Jede Entity entspricht dabei einer Datenbanktabelle, Attribute werden als Klassenfelder abgebildet und Beziehungen über JPA-Annotationen (z. B. @ManyToOne, @OneToMany, @OneToOne) modelliert. Dadurch kann Hibernate das Schema anhand der Entities automatisch erstellen bzw. aktualisieren.
 
-#### `player`
-- **`CreatePlayerDTO`**: Daten zum Anlegen eines neuen Spielers  
-- **`PlayerResponseDTO`**: Rückgabe von Spielerinformationen an das Frontend  
+- Entity: Player
 
-#### `session`
-- **`CreateSessionDTO`**: Eingabedaten zum Erstellen einer neuen Trainingseinheit  
-- **`SessionResponseDTO`**: gespeicherte Informationen einer Trainingseinheit  
+  Die Entity Player speichert die Stammdaten einer Spieler*in (z. B. Vorname, Nachname, Geburtsdatum, Erstellungszeitpunkt). Ein Player kann mehrere Trainingseinheiten besitzen (1:n zu TrainingSession).
 
-#### `stats`
-- **`PlayerStatsDTO`**: statistische Kennzahlen zur Spielerleistung  
-- **`PlayerTrendItemDTO`**: Trend-/Zeitreihenwerte zur Leistungsentwicklung  
-- **`SessionStatsDTO`**: statistische Auswertungen einer Trainingseinheit  
+      package at.htlle.backend.model;
 
-###### Package `exception`
+      import jakarta.persistence.*;
+      import java.time.LocalDate;
+      import java.time.LocalDateTime;
 
-![Package exception](img/exception.png)
+      @Entity
+      @Table(name = "player")
+      public class Player {
 
-- **`GlobalExceptionHandler`**  
-  Fängt zentral auftretende Exceptions ab und wandelt sie in einheitliche, verständliche HTTP-Fehlermeldungen für das Frontend um.
+      @Id
+      @GeneratedValue(strategy = GenerationType.IDENTITY)
+      private Long id;
 
-- **`NotFoundException`**  
-  Wird ausgelöst, wenn eine angeforderte Ressource (z. B. Spieler oder Session) nicht gefunden wird.
+      @Column(nullable = false)
+      private String firstName;
 
-###### Package `model`
+      @Column(nullable = false)
+      private String lastName;
 
-![Package model](img/model.png)
+      @Column(nullable = false, unique = true)
+      private String email;
 
-- **`Player`**: Repräsentiert einen Spieler und enthält Stammdaten für Sessions, Würfe und Statistiken.  
-- **`Shot`**: Speichert Informationen zu einem einzelnen Wurf (z. B. Ergebnis, Zeitpunkt, Zuordnung).  
-- **`SollFlightData`**: Enthält berechnete Soll-Flugbahndaten (z. B. Winkel, Geschwindigkeit, Abwurfpunkt).  
-- **`TrainingSession`**: Beschreibt eine Trainingseinheit als zeitliche Klammer für Würfe, Videos und Statistiken.  
-- **`Video`**: Repräsentiert ein analysiertes Video und verbindet Session, Würfe und Analyseergebnisse.  
+      @Column(nullable = false)
+      private String password;
 
-###### Package `repository`
+      private String schoolClass;   // z.B. 4BHWIN
+      private LocalDate birthdate;  // optional
 
-![Package repository](img/repository.png)
+      @Column(nullable = false)
+      private LocalDateTime createdAt = LocalDateTime.now();
 
-- **`PlayerRepository`**: CRUD-Operationen für Spieler.  
-- **`ShotRepository`**: Speichern, Laden und Abfragen von Würfen.  
-- **`SollFlightDataRepository`**: Zugriff auf Soll-Flugbahndaten und Persistierung.  
-- **`TrainingSessionRepository`**: Datenbankzugriff für Trainingseinheiten inkl. Abfragen.  
-- **`VideoRepository`**: Zugriff auf Video-Metadaten und Verknüpfung mit Sessions und Analysen.  
+      public Player() {}
 
-###### Package `service`
+      public void setId(Long id) {
+          this.id = id;
+      }
 
-![Package service](img/service.png)
+      public String getEmail() {
+          return email;
+      }
 
-- **`AnalysisImportService`**: Verarbeitet importierte Analyse-/JSON-Daten und speichert erzeugte Entitäten.  
-- **`DashboardService`**: Bereitet aggregierte Daten für das Dashboard auf.  
-- **`PlayerService`**: Geschäftslogik rund um Spieler (Erstellen, Laden, Validieren).  
-- **`StatsService`**: Berechnet Statistiken und Trends auf Basis von Sessions, Würfen und Analyseergebnissen.  
-- **`TrainingSessionService`**: Logik für Trainingseinheiten (Erstellen, Zuordnung von Spielern und Videos).  
+      public void setEmail(String email) {
+          this.email = email;
+      }
+
+      public String getPassword() {
+          return password;
+      }
+
+      public void setPassword(String password) {
+          this.password = password;
+      }
+
+      // Getter/Setter
+      public Long getId() { return id; }
+
+      public String getFirstName() { return firstName; }
+      public void setFirstName(String firstName) { this.firstName = firstName; }
+
+      public String getLastName() { return lastName; }
+      public void setLastName(String lastName) { this.lastName = lastName; }
+
+      public String getSchoolClass() { return schoolClass; }
+      public void setSchoolClass(String schoolClass) { this.schoolClass = schoolClass; }
+
+      public LocalDate getBirthdate() { return birthdate; }
+      public void setBirthdate(LocalDate birthdate) { this.birthdate = birthdate; }
+
+      public LocalDateTime getCreatedAt() { return createdAt; }
+      public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+
+      }
+
+- Entity: TrainingSession
+
+  Die Entity TrainingSession repräsentiert eine Trainingseinheit und enthält u. a. Datum und Startzeitpunkt. Jede Trainingseinheit ist genau einem Player zugeordnet (n:1) und enthält mehrere Würfe (1:n zu Shot). Zusätzlich ist eine Trainingseinheit mit einem Video verknüpft (1:1 zu Video).
+
+- Entity: Shot
+
+  Die Entity Shot beschreibt einen einzelnen Wurf innerhalb einer Trainingseinheit. Gespeichert werden z. B. Ergebnis und Zeitpunkt. Jeder Shot gehört zu genau einer Trainingseinheit (n:1) und besitzt zugehörige Analyse-/Flugdaten (1:1 zu FlightData).
+
+- Entity: Video
+
+  Die Entity Video verwaltet die zur Trainingseinheit gehörige Videodatei (Dateipfad, Erstellungszeitpunkt). Das Video ist einer Trainingseinheit zugeordnet (1:1) und kann zusätzlich über FlightData referenziert werden.
+
+- Entity: FlightData
+
+  Die Entity FlightData enthält die Analysewerte aus der Videoverarbeitung (z. B. Abwurfpunkt, Korbposition, Winkel, Geschwindigkeit und weitere Parameter). Die Daten sind eindeutig einem Shot zugeordnet (1:1) und zusätzlich mit einem Video verknüpft (Fremdschlüssel auf Video).
+
+### Implementierung des repository-Package
+Nach der Modellierung der Entities im Package model wurde die Repository-Schicht umgesetzt. Ziel dieser Schicht ist es, alle Datenbankzugriffe zentral zu kapseln, damit Controller und Services nicht direkt mit SQL oder EntityManager arbeiten müssen. Spring Data JPA stellt dafür Repository-Interfaces bereit, die bereits Standardfunktionen für CRUD-Operationen enthalten.
+
+Repositories in dem Projekt
+- PlayerRepository
+
+  Für den Datenzugriff auf die Spieler*innen wurde das Interface PlayerRepository implementiert. Es erweitert JpaRepository<Player, Long> und erhält dadurch automatisch grundlegende CRUD-Funktionen wie save(), findById(), findAll() und deleteById(), ohne dass dafür eigener SQL-Code geschrieben werden muss.
+
+  Zusätzlich wurden zwei projektspezifische Methoden ergänzt: findByEmail(String email) liefert optional einen Player anhand der E-Mail-Adresse zurück, während existsByEmail(String email) prüft, ob bereits ein Datensatz mit dieser E-Mail existiert. Diese Methoden werden von Spring Data JPA automatisch anhand des Methodennamens in passende Datenbankabfragen übersetzt. Die Annotation @Repository kennzeichnet die Klasse als Bestandteil der Persistenzschicht und ermöglicht die automatische Einbindung (Dependency Injection) in Services.
+
+      package at.htlle.backend.repository;
+
+      import at.htlle.backend.model.Player;
+      import org.springframework.data.jpa.repository.JpaRepository;
+      import org.springframework.stereotype.Repository;
+
+      import java.util.Optional;
+
+      @Repository
+      public interface PlayerRepository extends JpaRepository<Player, Long> {
+          Optional<Player> findByEmail(String email);
+          boolean existsByEmail(String email);
+      }
+
+- TrainingSessionRepository
+
+- ShotRepository
+
+- SollFlightDataRepository
+
+- VideoRepository
+
+Damit ist die Grundlage geschaffen, damit die Service-Schicht später sauber und wiederverwendbar auf Daten zugreifen kann.
+
+### Implementireung des service-Package
+Als nächstes folgt das Package service, das die Geschäftslogik des Backends kapselt. Während Controller lediglich HTTP-Anfragen annehmen und Responses zurückgeben, übernimmt die Service-Schicht die eigentliche Verarbeitung: z. B. das Validieren von Eingaben, das Speichern und Verknüpfen von Entities über Repositories, sowie die Berechnung von Statistiken oder das Importieren von Analyse-Daten. Dadurch bleibt die Logik zentral gebündelt, wiederverwendbar und leichter testbar.
+
+Für dein Projekt sind im Service-Package u. a. folgende Klassen vorhanden:
+
+- PlayerService
+
+  Die Klasse PlayerService bildet die Service-Schicht für Spieler*innen-Funktionen und kapselt die zugehörige Geschäftslogik. Sie ist mit @Service als Spring-Komponente gekennzeichnet und wird über @RequiredArgsConstructor (Lombok) automatisch mit dem benötigten PlayerRepository via Dependency Injection initialisiert.
+
+  Ein zentraler Bestandteil ist die Methode registerPlayer(...). Dabei wird die übergebene E-Mail-Adresse zunächst normalisiert (Trimmen und Umwandlung in Kleinbuchstaben), anschließend auf Leerwert und Format geprüft. Für die Formatprüfung wird ein vordefiniertes Regex-Muster (EMAIL_PATTERN) verwendet. Zusätzlich wird über das Repository geprüft, ob die E-Mail bereits existiert, um doppelte Accounts zu verhindern. Erst danach wird ein Player-Objekt erstellt und über playerRepository.save(player) in der Datenbank gespeichert.
+
+  Die Methode loginPlayer(...) implementiert eine einfache Login-Logik, indem ein Player über die E-Mail gesucht und das gespeicherte Passwort mit dem eingegebenen Passwort verglichen wird. Als Rückgabewert wird Optional<Player> verwendet, um sauber zwischen „gefunden“ und „nicht gefunden/ungültig“ zu unterscheiden. Ergänzend stellt getUserById(...) eine Zugriffsfunktion bereit, um Spieler*innen anhand der ID abzurufen.
+
+      package at.htlle.backend.service;
+
+      import at.htlle.backend.model.Player;
+      import at.htlle.backend.repository.PlayerRepository;
+      import lombok.RequiredArgsConstructor;
+      import org.springframework.stereotype.Service;
+
+      import java.util.Optional;
+      import java.util.regex.Pattern;
+
+      @Service
+      @RequiredArgsConstructor
+      public class PlayerService {
+          private final PlayerRepository playerRepository;
+
+          private static final Pattern EMAIL_PATTERN = Pattern.compile(
+                  "^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+          );
+
+          public Player registerPlayer(String firstName,String lastName, String email, String password) {
+
+              String normalizedEmail = email == null ? "" : email.trim().toLowerCase();
+
+              if (normalizedEmail.isEmpty()) {
+                  throw new IllegalArgumentException("Email darf nicht leer sein");
+              }
+
+              if (!EMAIL_PATTERN.matcher(normalizedEmail).matches()) {
+                  throw new IllegalArgumentException("Ungültiges Email-Format");
+              }
+
+              if (playerRepository.findByEmail(normalizedEmail).isPresent()) {
+                  throw new IllegalArgumentException("Email bereits registriert");
+              }
+
+              Player player = new Player();
+              player.setFirstName(firstName);
+              player.setLastName(lastName);
+              player.setEmail(normalizedEmail);
+              player.setPassword(password);
+
+              return playerRepository.save(player);
+          }
+
+          public Optional<Player> loginPlayer(String email, String password) {
+              Optional<Player> player = playerRepository.findByEmail(email);
+              if (player.isPresent() && player.get().getPassword().equals(password)) {
+                  return player;
+              }
+              return Optional.empty();
+          }
+
+          public Optional<Player> getUserById(Long id) {
+              return playerRepository.findById(id);
+          }
+
+      }
+- TrainingSessionService
+  Enthält die Logik zur Verwaltung von Trainingseinheiten. Dazu gehören typischerweise das Anlegen neuer Sessions, das Abrufen vorhandener Sessions sowie das Verknüpfen einer Session mit einem bestimmten Player. Die Datenbankzugriffe erfolgen dabei über das TrainingSessionRepository.
+
+- AnalysisImportService
+  Diese Klasse übernimmt den Import der Analyse-Daten aus der Videoverarbeitung. Sie verarbeitet die eingehenden JSON-Daten, validiert sie und überführt sie in die entsprechenden Entities (z. B. Shots und Soll-/Flugdaten). Anschließend werden die Daten korrekt mit der passenden Trainingseinheit verknüpft und in der Datenbank gespeichert.
+
+- StatsService
+  Zuständig für die Berechnung und Bereitstellung statistischer Kennzahlen. Dazu zählen z. B. Trefferquoten, Durchschnittswerte von Winkel und Geschwindigkeit sowie weitere aggregierte Auswertungen pro Spieler oder pro Trainingseinheit. Die Ergebnisse werden in DTOs verpackt und an die Controller-Schicht weitergegeben.
+
+- DashboardService
+  Bündelt Daten für eine kompakte Übersicht im Frontend (Dashboard). Typischerweise werden hierfür verschiedene Informationen kombiniert, z. B. aktuelle Session-Zusammenfassungen, Trenddaten oder die wichtigsten Kennzahlen eines Spielers, um sie in einer einzigen Antwort bereitstellen zu können.
+
+### Implementierung des contoller Packages
+Im Package controller wurden die REST-Endpunkte des Backends umgesetzt. Controller bilden die Schnittstelle zwischen Frontend und Backend: Sie nehmen HTTP-Anfragen entgegen (z. B. GET/POST), lesen Parameter oder JSON-Request-Bodies aus, rufen die passende Geschäftslogik in der Service-Schicht auf und geben das Ergebnis als JSON-Response zurück. Dadurch bleibt die Controller-Schicht schlank, während die eigentliche Logik in Services gekapselt ist.
+
+In deinem Projekt gibt es unter anderem:
+
+- PlayerController
+
+  Der PlayerController stellt die REST-Schnittstelle für Benutzerfunktionen bereit und ist über @RestController als Controller in Spring Boot registriert. Mit @RequestMapping("/api/users") wird ein gemeinsamer Basispfad für alle Endpunkte definiert. Über @RequiredArgsConstructor (Lombok) wird der PlayerService automatisch per Dependency Injection eingebunden. Die Annotation @CrossOrigin(origins = "*") erlaubt während der Entwicklung Cross-Origin-Anfragen vom Frontend.
+
+  Der Controller implementiert drei zentrale Endpunkte:
+
+  - POST /api/users/register
+  Nimmt Registrierungsdaten als JSON (RegisterRequest) entgegen und ruft playerService.registerPlayer(...) auf. Bei Erfolg wird eine strukturierte Antwort über ApiResponse zurückgegeben. Validierungsfehler werden als 400 Bad Request behandelt.
+
+  - POST /api/users/login
+  Prüft Anmeldedaten (LoginRequest). Wenn ein passender Benutzer gefunden wird, wird 200 OK zurückgegeben, andernfalls 401 Unauthorized.
+
+  - GET /api/users/{playerId}
+  Liefert einen Benutzer anhand der ID. Wird kein Datensatz gefunden, antwortet der Controller mit 404 Not Found.
+
+  Durch diese Umsetzung bleibt die Controller-Schicht auf die HTTP-Kommunikation und Response-Struktur fokussiert, während die eigentliche Logik (Validierung, Datenbankzugriff) im PlayerService gekapselt ist.
+
+        package at.htlle.backend.controller;
+
+        import at.htlle.backend.dto.player.ApiResponse;
+        import at.htlle.backend.dto.player.LoginRequest;
+        import at.htlle.backend.dto.player.RegisterRequest;
+        import at.htlle.backend.model.Player;
+        import at.htlle.backend.service.PlayerService;
+        import org.springframework.http.HttpStatus;
+        import org.springframework.http.ResponseEntity;
+        import org.springframework.web.bind.annotation.*;
+        import lombok.RequiredArgsConstructor;
+
+        import java.util.Optional;
+
+        @RestController
+        @RequestMapping("/api/users")
+        @RequiredArgsConstructor
+        @CrossOrigin(origins = "*")
+        public class PlayerController {
+            private final PlayerService playerService;
+
+            @PostMapping("/register")
+            public ResponseEntity<ApiResponse> register(@RequestBody RegisterRequest request) {
+                try {
+                    Player player = playerService.registerPlayer(request.getFirstName(),request.getLastName(), request.getEmail(), request.getPassword());
+                    return ResponseEntity.ok(new ApiResponse(true, "Registrierung erfolgreich", player));
+                } catch (IllegalArgumentException e) {
+                    return ResponseEntity.badRequest().body(new ApiResponse(false, e.getMessage(), null));
+                }
+            }
+
+            @PostMapping("/login")
+            public ResponseEntity<ApiResponse> login(@RequestBody LoginRequest request) {
+                Optional<Player> player = playerService.loginPlayer(request.getEmail(), request.getPassword());
+                if (player.isPresent()) {
+                    return ResponseEntity.ok(new ApiResponse(true, "Login erfolgreich", player.get()));
+                } else {
+                    return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                            .body(new ApiResponse(false, "Ungültige Anmeldedaten", null));
+                }
+            }
+
+
+
+            @GetMapping("/{playerId}")
+            public ResponseEntity<ApiResponse> getPlayer(@PathVariable Long playerId) {
+                Optional<Player> player = playerService.getUserById(playerId);
+                if (player.isPresent()) {
+                    return ResponseEntity.ok(new ApiResponse(true, "Benutzer gefunden", player.get()));
+                } else {
+                    return ResponseEntity.notFound().build();
+                }
+            }
+        }
+
+
+- TrainingSessionController
+  Stellt Endpunkte zur Verwaltung von Trainingseinheiten bereit. Dazu gehören typischerweise das Anlegen neuer Sessions, das Abrufen vorhandener Sessions sowie das Zuordnen von Sessions zu Spieler*innen. Die Verarbeitung erfolgt über den TrainingSessionService.
+
+- AnalysisImportController
+  Dieser Controller bildet die Schnittstelle für den Import der Analyse-Daten aus der Videoverarbeitung. Er nimmt die übermittelten JSON-Daten entgegen und startet den Importprozess über den AnalysisImportService, wodurch Shots und zugehörige Analyse-/Flugdaten gespeichert und mit einer Trainingseinheit verknüpft werden.
+
+- StatsController
+  Stellt Endpunkte zur Verfügung, über die statistische Kennzahlen abgerufen werden können (z. B. Trefferquote, Durchschnittswerte, Session-Statistiken oder Trenddaten). Die Berechnung und Aggregation erfolgt im StatsService, der Controller liefert die Ergebnisse als JSON an das Frontend zurück.
+
+- DashboardController
+  Dient zur Bereitstellung einer kompakten Übersicht für das Frontend-Dashboard. Hier werden mehrere Informationen zusammengeführt (z. B. letzte Sessions, wichtigste Kennzahlen, Trends) und in einer gebündelten Response ausgegeben, um die Darstellung im Frontend zu vereinfachen.
+
+### Implementireung des dto-Package
+Im Package dto wurden Data Transfer Objects (DTOs) umgesetzt. DTOs sind einfache Klassen, die ausschließlich dafür verwendet werden, Daten strukturiert zwischen Client (Frontend) und Server (Backend) zu übertragen. Sie trennen damit externe API-Datenmodelle von internen Datenbank-Entities (model). Dadurch werden:
+
+- die REST-Schnittstellen klarer und stabiler,
+
+- unnötige Felder (z. B. interne IDs oder Passwörter) nicht versehentlich   ausgegeben,
+
+- und Eingaben/Antworten unabhängig vom Datenbankschema versionier- und anpassbar.
+
+In dem Projekt sind die DTOs nach Funktionsbereichen unterteilt, z. B.:
+
+- dto/player (Register, Login, Response)
+
+  Die Klasse RegisterRequest ist ein Data Transfer Object (DTO) und dient dazu, Registrierungsdaten vom Frontend an das Backend zu übertragen. Sie enthält die benötigten Felder firstName, lastName, email und password, die beim Aufruf des Registrierungs-Endpunkts als JSON im Request-Body gesendet werden.
+
+  Durch die Trennung von DTO und Entity wird verhindert, dass direkt mit der Datenbankstruktur (Player Entity) gearbeitet werden muss. Dadurch bleibt die REST-Schnittstelle klar definiert und kann unabhängig vom internen Datenmodell angepasst werden. Die Lombok-Annotation @Data erzeugt automatisch Getter, Setter sowie weitere Standardmethoden, wodurch die Klasse kompakt und übersichtlich bleibt.
+
+
+        package at.htlle.backend.dto.player;
+
+        import lombok.Data;
+
+        @Data
+        public class RegisterRequest {
+            private String firstName;
+            private String lastName;
+            private String email;
+            private String password;
+        }
+
+
+- dto/session (CreateSession, SessionResponse)
+
+- dto/analysis (Import-Payloads, ShotDTO, SollDTO)
+
+- dto/stats (PlayerStats, SessionStats, Trend-Items)
+
+- dto/dashboard (Dashboard-Übersicht)
+
+### Implementireung des config-Pageges
+
+Im Package config werden Klassen gesammelt, die technische Einstellungen für das Backend zentral definieren. Das betrifft vor allem Themen wie CORS, Web-Konfiguration und ggf. spätere Erweiterungen (z. B. Security, Interceptors). Der Vorteil ist, dass diese Einstellungen nicht in einzelnen Controllern verteilt sind, sondern an einer Stelle gebündelt werden.
+
+In deinem Projekt sind hier:
+
+- CorsConfig.java
+
+- WebConfig.java
+
+## Testing
+  Im Rahmen der Implementierung wurde jede neu erstellte Controller-Klasse unmittelbar nach der Entwicklung mit Postman getestet. Dabei wurden die zugehörigen Endpunkte (z. B. GET/POST-Anfragen) mit passenden Request-Bodys und Parametern aufgerufen und die Antworten anhand von Statuscodes sowie der zurückgegebenen JSON-Strukturen überprüft. Durch dieses fortlaufende Testen konnte sichergestellt werden, dass die Schnittstellen korrekt reagieren, die Daten wie vorgesehen verarbeitet werden und die Kommunikation zwischen Backend und späterem Frontend zuverlässig funktioniert. Alle getesteten Endpunkte verhielten sich dabei wie erwartet und konnten ohne Fehler verwendet werden.
+
+  ![Getestet mit Postman](img/PostmanTesting.png)
