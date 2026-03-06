@@ -59,7 +59,7 @@ In vielen Projekten ist Spring Boot eine gute Wahl, weil es die technische Basis
 ### Was ist eine REST-API
 Eine REST-API (Representational State Transfer Application Programming Interface) ist eine Programmierschnittstelle, über die Systeme über das HTTP-Protokoll miteinander kommunizieren. Eine REST-API stellt Funktionen und Daten so bereit, dass Clients (z. B. ein Frontend) auf definierte Ressourcen zugreifen können.
 
-Die Datenübertragung erfolgt meist im JSON-Format. Ein Client kann beispielsweise Spieler-, Trainings- oder Statistikdaten anfordern oder neue Daten an das Backend senden. Dadurch dient eine REST-API als verbindendes Element zwischen Frontend und Backend.
+Die Datenübertragung erfolgt meist im JSON-Format. Ein Client kann beispielsweise Spieler-, Trainings- oder Statistikdaten anfordern oder neue Daten an das Backend senden. Dadurch dient eine REST-API als verbindendes Element zwischen Frontend und Backend.[@RedHatRESTAPI]
 
 ### Wie ist die Funktionsweise von REST-API
 Die Funktionsweise einer REST-API basiert auf dem Prinzip, dass Daten als Ressourcen betrachtet werden, die über eindeutige URLs (Endpunkte) erreichbar sind. Jede Ressource wird über HTTP-Methoden angesprochen, wobei jede Methode eine bestimmte Bedeutung hat:
@@ -82,7 +82,7 @@ Zusätzlich verwendet eine REST-API HTTP-Statuscodes, um das Ergebnis einer Anfr
 
 - 404 (Not Found): Ressource nicht gefunden
 
-Ein wesentliches Merkmal von REST ist außerdem Statelessness: Jede Anfrage enthält alle notwendigen Informationen, sodass der Server keinen Zustand zwischen zwei Anfragen speichern muss. Das macht Systeme oft besser skalierbar und einfacher wartbar.
+Ein wesentliches Merkmal von REST ist außerdem Statelessness: Jede Anfrage enthält alle notwendigen Informationen, sodass der Server keinen Zustand zwischen zwei Anfragen speichern muss. Das macht Systeme oft besser skalierbar und einfacher wartbar.[@RedHatRESTPrinciples]
 
 ### Was versteht man unter CRUD?
 CRUD ist ein Grundkonzept der Datenverarbeitung und beschreibt die vier grundlegenden Operationen, die in fast jedem datenbasierten System vorkommen. CRUD steht für:
@@ -95,7 +95,7 @@ CRUD ist ein Grundkonzept der Datenverarbeitung und beschreibt die vier grundleg
 
 - Delete: Daten löschen (z. B. Wurfdatensatz entfernen)
 
-Diese vier Operationen bilden die Basis für die Verwaltung von Daten in Datenbanken und werden in REST-APIs meist direkt durch HTTP-Methoden abgebildet: Create -> POST, Read -> GET, Update -> PUT/PATCH, Delete -> DELETE.
+Diese vier Operationen bilden die Basis für die Verwaltung von Daten in Datenbanken und werden in REST-APIs meist direkt durch HTTP-Methoden abgebildet: Create -> POST, Read -> GET, Update -> PUT/PATCH, Delete -> DELETE.[@IBMCRUD]
 
 ## Spring Initializer
 Der Spring Initializr ist ein webbasiertes Tool, das die Erstellung eines neuen Spring-Boot-Projekts stark vereinfacht. Anstatt ein Projekt manuell aufzusetzen und alle benötigten Bibliotheken selbst zu konfigurieren, kann über den Spring Initializr in wenigen Schritten eine fertige Projektstruktur generiert werden.
@@ -120,7 +120,7 @@ Auf Basis dieser Auswahl erstellt der Spring Initializr automatisch ein Projekt 
 
 - und den notwendigen Grundeinstellungen für Spring Boot.
 
-Der Vorteil besteht darin, dass die grundlegende Projektkonfiguration schnell, standardisiert und fehlerarm erfolgt. Dadurch kann direkt mit der eigentlichen Entwicklung begonnen werden, ohne Zeit in manuelles Setup zu investieren.
+Der Vorteil besteht darin, dass die grundlegende Projektkonfiguration schnell, standardisiert und fehlerarm erfolgt. Dadurch kann direkt mit der eigentlichen Entwicklung begonnen werden, ohne Zeit in manuelles Setup zu investieren.[@SpringInitializrDocs]
 
 ![Überblick Spring Initializer](img/SpringInitializer.png)
 
@@ -128,12 +128,12 @@ Der Vorteil besteht darin, dass die grundlegende Projektkonfiguration schnell, s
 ### Was ist Java?
 Java ist eine objektorientierte Programmiersprache, die ursprünglich mit dem Ziel entwickelt wurde, plattformunabhängige Anwendungen zu ermöglichen. Ein zentrales Prinzip von Java lautet „Write once, run anywhere“. Java-Programme werden dabei in Bytecode übersetzt und anschließend von der Java Virtual Machine (JVM) ausgeführt, wodurch dieselbe Anwendung auf unterschiedlichen Betriebssystemen laufen kann.
 
-Java wird häufig für größere, strukturierte Softwareprojekte eingesetzt, da die Sprache stark typisiert ist, viele Bibliotheken bietet und sich gut für wartbare und skalierbare Anwendungen eignet.
+Java wird häufig für größere, strukturierte Softwareprojekte eingesetzt, da die Sprache stark typisiert ist, viele Bibliotheken bietet und sich gut für wartbare und skalierbare Anwendungen eignet.[@OracleJavaOverview]
 
 ### Was ist JavaScript
 JavaScript ist eine Skriptsprache, die hauptsächlich für die Entwicklung von interaktiven Webanwendungen verwendet wird. Ursprünglich wurde JavaScript dafür entwickelt, Webseiten im Browser dynamisch zu machen, z. B. durch Formvalidierung, Animationen oder das Nachladen von Inhalten ohne Seitenreload.
 
-Heute wird JavaScript nicht nur im Browser, sondern auch serverseitig eingesetzt (z. B. mit Node.js). Dadurch kann JavaScript sowohl im Frontend als auch im Backend verwendet werden, je nach Technologie-Stack.
+Heute wird JavaScript nicht nur im Browser, sondern auch serverseitig eingesetzt (z. B. mit Node.js). Dadurch kann JavaScript sowohl im Frontend als auch im Backend verwendet werden, je nach Technologie-Stack.[@MDNJavaScriptIntroduction]
 
 ### Wofür wird Java verwendet
 Java wird in vielen Bereichen eingesetzt, besonders dort, wo Stabilität, Struktur und Performance wichtig sind. Typische Anwendungsbereiche sind:
@@ -146,7 +146,7 @@ Java wird in vielen Bereichen eingesetzt, besonders dort, wo Stabilität, Strukt
 
 - Server- und Cloud-Anwendungen, bei denen Skalierbarkeit entscheidend ist
 
-In diesem Projekt ist Java vor allem relevant, weil damit das Backend umgesetzt wird und Spring Boot als Java-Framework darauf aufbaut.
+In diesem Projekt ist Java vor allem relevant, weil damit das Backend umgesetzt wird und Spring Boot als Java-Framework darauf aufbaut.[@OracleJavaApplications]
 
 ### Wofür wird JavaScript verwendet
 JavaScript wird vor allem für Webentwicklung genutzt, insbesondere für alles, was im Browser interaktiv sein soll. Typische Einsatzbereiche sind:
@@ -159,7 +159,7 @@ JavaScript wird vor allem für Webentwicklung genutzt, insbesondere für alles, 
 
 - Backend-Entwicklung mit Node.js, wenn JavaScript auch serverseitig genutzt wird
 
-In vielen Projekten wird JavaScript eingesetzt, um das Frontend zu bauen, das dann über eine API mit dem Backend kommuniziert.
+In vielen Projekten wird JavaScript eingesetzt, um das Frontend zu bauen, das dann über eine API mit dem Backend kommuniziert.[@MDNJavaScriptOverview]
 
 ### Unterschied zwischen Java und JavaScript
 Obwohl die Namen ähnlich klingen, sind Java und JavaScript zwei unterschiedliche Programmiersprachen mit unterschiedlichen Zielen und Eigenschaften:
@@ -172,20 +172,19 @@ Obwohl die Namen ähnlich klingen, sind Java und JavaScript zwei unterschiedlich
 
 - **Struktur:** Java ist in der Regel strenger strukturiert (Klassen, Typen, Compile-Time Checks), während JavaScript mehr Freiheit bietet, aber dadurch auch fehleranfälliger sein kann, wenn kein klarer Stil eingehalten wird.
 
-Java ist eine klassische Sprache für strukturierte, größere Anwendungen (z. B. Backends), während JavaScript vor allem für Webentwicklung und Interaktivität im Browser eingesetzt wird.
+Java ist eine klassische Sprache für strukturierte, größere Anwendungen (z. B. Backends), während JavaScript vor allem für Webentwicklung und Interaktivität im Browser eingesetzt wird.[@MDNJavaScriptVsJava]
 
 ## Postman
-Postman ist ein Tool zur Entwicklung und zum Testen von REST-APIs. Es ermöglicht, HTTP-Anfragen wie GET, POST, PUT/PATCH und DELETE direkt an ein Backend zu senden, ohne dass dafür bereits ein fertiges Frontend notwendig ist. Dabei können Request-Details wie Header, Parameter und ein JSON-Body einfach eingestellt werden. Postman zeigt anschließend die Antwort des Servers übersichtlich an, inklusive Statuscode und Rückgabedaten. Dadurch eignet sich das Tool besonders gut, um API-Endpunkte während der Backend-Entwicklung zu prüfen, Fehler zu analysieren und die Funktionalität der Schnittstelle schrittweise zu verifizieren.
+Postman ist ein Tool zur Entwicklung und zum Testen von REST-APIs. Es ermöglicht, HTTP-Anfragen wie GET, POST, PUT/PATCH und DELETE direkt an ein Backend zu senden, ohne dass dafür bereits ein fertiges Frontend notwendig ist. Dabei können Request-Details wie Header, Parameter und ein JSON-Body einfach eingestellt werden. Postman zeigt anschließend die Antwort des Servers übersichtlich an, inklusive Statuscode und Rückgabedaten. Dadurch eignet sich das Tool besonders gut, um API-Endpunkte während der Backend-Entwicklung zu prüfen, Fehler zu analysieren und die Funktionalität der Schnittstelle schrittweise zu verifizieren.[@PostmanOverview]
 
 ![Postman Überblick](img/Postman.png)
 
 ## Datenbank
 ### Was ist eine Datenbank?
-Eine Datenbank ist ein System zur strukturierten Speicherung, Organisation und Verwaltung von Daten. Im Gegensatz zu einfachen Dateien werden Informationen in einer Datenbank nach klaren Regeln abgelegt, sodass sie gezielt durchsucht und verarbeitet werden können. Verwaltet wird eine Datenbank in der Regel durch ein Datenbankmanagementsystem (DBMS), das den Zugriff regelt und Funktionen für das Speichern, Abrufen und Bearbeiten von Daten bereitstellt. Dadurch können Daten nicht nur dauerhaft gespeichert, sondern auch konsistent und nachvollziehbar verwaltet werden.
+Eine Datenbank ist ein System zur strukturierten Speicherung, Organisation und Verwaltung von Daten. Im Gegensatz zu einfachen Dateien werden Informationen in einer Datenbank nach klaren Regeln abgelegt, sodass sie gezielt durchsucht und verarbeitet werden können. Verwaltet wird eine Datenbank in der Regel durch ein Datenbankmanagementsystem (DBMS), das den Zugriff regelt und Funktionen für das Speichern, Abrufen und Bearbeiten von Daten bereitstellt. Dadurch können Daten nicht nur dauerhaft gespeichert, sondern auch konsistent und nachvollziehbar verwaltet werden.[@OracleDatabaseOverview]
 
 ### Wofür werden Datenbanken verwendet?
-Datenbanken werden verwendet, um Daten dauerhaft, sicher und effizient verfügbar zu machen. Sie ermöglichen es, Informationen schnell abzufragen, zu filtern, zu sortieren und zu ändern, auch wenn sehr große Datenmengen vorhanden sind. Zudem helfen Datenbanken dabei, Daten logisch zu strukturieren und Beziehungen zwischen verschiedenen Objekten abzubilden (z. B. ein Spieler mit mehreren Trainingseinheiten oder Würfen). In Backend-Systemen sind Datenbanken besonders wichtig, weil sie die Grundlage dafür bilden, dass Anwendungsdaten wie Benutzer, Trainingsdaten oder Analyseergebnisse gespeichert und später für Auswertungen oder zur Anzeige im Frontend wieder abgerufen werden können.
-
+Datenbanken werden verwendet, um Daten dauerhaft, sicher und effizient verfügbar zu machen. Sie ermöglichen es, Informationen schnell abzufragen, zu filtern, zu sortieren und zu ändern, auch wenn sehr große Datenmengen vorhanden sind. Zudem helfen Datenbanken dabei, Daten logisch zu strukturieren und Beziehungen zwischen verschiedenen Objekten abzubilden (z. B. ein Spieler mit mehreren Trainingseinheiten oder Würfen). In Backend-Systemen sind Datenbanken besonders wichtig, weil sie die Grundlage dafür bilden, dass Anwendungsdaten wie Benutzer, Trainingsdaten oder Analyseergebnisse gespeichert und später für Auswertungen oder zur Anzeige im Frontend wieder abgerufen werden können.[@IBMDatabaseDefinition]
 
 ### Was sind Relationale Datenbanken
 
@@ -193,18 +192,35 @@ Relationale Datenbanken speichern Informationen in tabellarischer Form. Die Date
 
 Zur eindeutigen Identifikation eines Datensatzes wird in jeder Tabelle ein Primärschlüssel verwendet. Beziehungen zwischen verschiedenen Tabellen werden über Fremdschlüssel umgesetzt, indem ein Attribut einer Tabelle auf den Primärschlüssel einer anderen Tabelle verweist. Auf diese Weise lassen sich Daten logisch miteinander verknüpfen, ohne Informationen mehrfach speichern zu müssen. Dies reduziert Redundanzen, erhöht die Datenkonsistenz und erleichtert die Durchführung von Abfragen und statistischen Auswertungen, da Zusammenhänge zwischen Objekten (z. B. Spieler und Trainingseinheit und Würfe) klar modelliert werden können.
 
-Aufgrund dieser Eigenschaften eignet sich das relationale Datenbankmodell besonders gut für das vorliegende Projekt: Die aus der Videoanalyse entstehenden Daten müssen langfristig gespeichert, eindeutig einer Trainingseinheit bzw. einem Spieler zugeordnet und anschließend für Kennzahlen wie Trefferquoten, Durchschnittswerte oder Abweichungen zwischen Soll- und Ist-Flugbahn ausgewertet werden. Relationale Datenbanken bieten dafür eine stabile und strukturierte Grundlage.
+Aufgrund dieser Eigenschaften eignet sich das relationale Datenbankmodell besonders gut für das vorliegende Projekt: Die aus der Videoanalyse entstehenden Daten müssen langfristig gespeichert, eindeutig einer Trainingseinheit bzw. einem Spieler zugeordnet und anschließend für Kennzahlen wie Trefferquoten, Durchschnittswerte oder Abweichungen zwischen Soll- und Ist-Flugbahn ausgewertet werden. Relationale Datenbanken bieten dafür eine stabile und strukturierte Grundlage.[@OracleRelationalDatabase]
 
-## Java Persistand API (JPA)
-### Was ist JPA
-JPA (Java Persistence API) ist eine Java-Standard-Spezifikation für die objekt-relationalen Persistierung. Sie beschreibt, wie Java-Objekte (z. B. Player, TrainingSession) in einer relationalen Datenbank gespeichert, gelesen und verwaltet werden können. JPA legt dabei nur fest, wie diese Persistenz grundsätzlich funktionieren soll (z. B. über Annotationen wie @Entity, @Id, @OneToMany), stellt aber selbst keine konkrete Implementierung bereit.
+## H2 Datenbank
+Die H2-Datenbank ist ein leichtgewichtiges, relationales Datenbankmanagementsystem (DBMS), das in Java geschrieben wurde und besonders häufig für Entwicklung, Tests und Prototyping eingesetzt wird. Ein großer Vorteil von H2 ist, dass sie ohne aufwendige Installation verwendet werden kann und sich sehr einfach in Java- und Spring-Boot-Projekte integrieren lässt.
 
-Durch JPA kann die Datenbankarbeit auf einer höheren Ebene erfolgen: Statt SQL direkt zu schreiben, werden Objekte gespeichert und abgefragt, wodurch der Code meist übersichtlicher und besser wartbar wird.
+H2 kann in zwei typischen Betriebsarten genutzt werden:
 
-### Was sind Annotationen
-Annotationen sind spezielle Markierungen im Quellcode (in Java erkennbar am @-Symbol), mit denen zusätzliche Informationen über Klassen, Methoden oder Variablen angegeben werden. Sie verändern nicht direkt den Programmablauf, sondern dienen Frameworks und Tools als „Metadaten“, um bestimmtes Verhalten automatisch umzusetzen.
+- In-Memory-Modus: Die Datenbank läuft nur im Arbeitsspeicher und ist nach dem Beenden der Anwendung wieder leer. Das ist ideal für schnelle Tests, da keine Dateien verwaltet werden müssen.
 
-Im Backend mit Spring Boot und JPA werden Annotationen z. B. verwendet, um eine Klasse als Datenbank-Entität zu kennzeichnen (@Entity), Primärschlüssel festzulegen (@Id) oder REST-Endpunkte zu definieren (@RestController, @GetMapping). Dadurch wird Konfiguration in den Code verlagert, was die Struktur klarer macht und die Entwicklung vereinfacht.
+- File-Modus: Die Daten werden in einer Datei gespeichert und bleiben auch nach einem Neustart erhalten.
+
+In Spring Boot wird H2 oft als Entwicklungsdatenbank verwendet, weil sie schnell startbar ist und gut mit Spring Data JPA/Hibernate zusammenarbeitet. Zusätzlich bietet H2 eine integrierte Web-Konsole, über die Tabellen, Inhalte und SQL-Abfragen bequem im Browser angesehen werden können. Für produktive Systeme wird häufig später auf leistungsfähigere Datenbanken (z. B. PostgreSQL oder MySQL) umgestellt, während H2 weiterhin für Tests und lokale Entwicklung genutzt werden kann.[@H2DatabaseOverview]
+
+![H2 Datenbank Überblick](img/H2Datenbank_UEberblick.png)
+
+## MySQL
+MySQL ist ein weit verbreitetes relationales Datenbankmanagementsystem (RDBMS), das zur dauerhaften Speicherung und Verwaltung strukturierter Daten eingesetzt wird. Die Daten werden in Tabellen organisiert und können mithilfe von SQL (Structured Query Language) effizient abgefragt und bearbeitet werden. MySQL wird häufig in Web- und Backend-Anwendungen verwendet, weil es stabil, performant und für den produktiven Dauerbetrieb geeignet ist. Typische Einsatzbereiche sind Anwendungen mit Nutzer- und Trainingsdaten, Content-Systeme oder allgemeine Geschäftsanwendungen, bei denen Daten langfristig gespeichert und zuverlässig verwaltet werden müssen. In Spring-Boot-Projekten lässt sich MySQL über einen JDBC-Treiber anbinden und wird oft gemeinsam mit Spring Data JPA/Hibernate verwendet, um Datenbankzugriffe strukturiert über das Objektmodell umzusetzen.[@MySQLOverview]
+
+### Was ist der Unterschied zwischen H2 Datenbank und MySql
+Die H2-Datenbank und MySQL sind beide relationale Datenbanken, unterscheiden sich jedoch vor allem in ihrem Einsatzgebiet und ihrer Betriebsart:
+
+- **Einsatzbereich:** H2 wird meist für Entwicklung und Tests genutzt, während MySQL typischerweise in produktiven Systemen eingesetzt wird.
+
+- **Installation und Betrieb:** H2 ist sehr leichtgewichtig und kann ohne große Einrichtung direkt im Projekt laufen (z. B. In-Memory). MySQL benötigt in der Regel eine separate Installation und läuft als eigener Datenbankserver.
+
+- **Persistenz:** H2 kann im In-Memory-Modus betrieben werden (Daten gehen nach dem Beenden verloren) oder als Datei gespeichert werden. MySQL speichert Daten standardmäßig dauerhaft auf dem Server.
+
+- **Skalierbarkeit und Leistung:** MySQL ist für größere Datenmengen, mehrere Benutzer und dauerhafte Nutzung optimiert. H2 ist eher für kleinere lokale Umgebungen gedacht.[@BaeldungH2vsMySQL]
+
 
 ## Entity-Relationship-Modell
 
@@ -212,7 +228,7 @@ Relationale Datenbanken speichern Informationen in tabellarischer Form. Die Date
 
 Zur eindeutigen Identifikation eines Datensatzes wird in jeder Tabelle ein Primärschlüssel verwendet. Ein Primärschlüssel ist ein Attribut (oder eine Kombination mehrerer Attribute), dessen Wert in der Tabelle eindeutig ist und somit jeden Datensatz klar identifiziert, z. B. eine automatisch vergebene ID. Beziehungen zwischen verschiedenen Tabellen werden über Fremdschlüssel umgesetzt. Ein Fremdschlüssel ist ein Attribut in einer Tabelle, das auf den Primärschlüssel einer anderen Tabelle verweist. Dadurch kann beispielsweise ein Wurf einem bestimmten Spieler oder einer konkreten Trainingseinheit zugeordnet werden, ohne die Spielerdaten im Wurf-Datensatz erneut speichern zu müssen.
 
-Durch diese Verknüpfungen lassen sich Daten logisch miteinander verbinden, ohne Informationen mehrfach abzulegen. Mehrfach gespeicherte Informationen bezeichnet man als Redundanzen (z. B. wenn der Name eines Spielers in vielen Wurf-Datensätzen wiederholt gespeichert wird). Redundanzen erhöhen das Risiko von Fehlern, da Änderungen dann an mehreren Stellen durchgeführt werden müssten. Die Vermeidung solcher Redundanzen verbessert die Datenkonsistenz, also die Eigenschaft, dass Daten innerhalb der Datenbank widerspruchsfrei und korrekt bleiben (z. B. ein Spielername ist überall gleich und nicht in unterschiedlichen Varianten gespeichert). Zusätzlich erleichtert diese Struktur die Durchführung von Abfragen und statistischen Auswertungen, da Zusammenhänge zwischen Objekten (z. B. Spieler und Trainingseinheit und Würfe) klar modelliert und gezielt ausgewertet werden können.
+Durch diese Verknüpfungen lassen sich Daten logisch miteinander verbinden, ohne Informationen mehrfach abzulegen. Mehrfach gespeicherte Informationen bezeichnet man als Redundanzen (z. B. wenn der Name eines Spielers in vielen Wurf-Datensätzen wiederholt gespeichert wird). Redundanzen erhöhen das Risiko von Fehlern, da Änderungen dann an mehreren Stellen durchgeführt werden müssten. Die Vermeidung solcher Redundanzen verbessert die Datenkonsistenz, also die Eigenschaft, dass Daten innerhalb der Datenbank widerspruchsfrei und korrekt bleiben (z. B. ein Spielername ist überall gleich und nicht in unterschiedlichen Varianten gespeichert). Zusätzlich erleichtert diese Struktur die Durchführung von Abfragen und statistischen Auswertungen, da Zusammenhänge zwischen Objekten (z. B. Spieler und Trainingseinheit und Würfe) klar modelliert und gezielt ausgewertet werden können.[@IBMRelationalDatabase]
 
 ### Zentrale Begriffe des ER-Modells
 
@@ -223,12 +239,12 @@ Durch diese Verknüpfungen lassen sich Daten logisch miteinander verbinden, ohne
   Attribute beschreiben die Eigenschaften einer Entität und entsprechen den Spalten einer Tabelle. Beispiele hierfür sind der Name eines Spielers, der Zeitpunkt einer Trainingseinheit oder der Abwurfwinkel eines Wurfes.
 
 - **Beziehung**  
-  Beziehungen stellen die Verknüpfungen zwischen Entitäten dar. Sie definieren, wie Objekte zueinander in Beziehung stehen, etwa dass eine Spielerin mehrere Trainingseinheiten absolvieren kann oder dass eine Trainingseinheit aus mehreren Würfen besteht.
+  Beziehungen stellen die Verknüpfungen zwischen Entitäten dar. Sie definieren, wie Objekte zueinander in Beziehung stehen, etwa dass eine Spielerin mehrere Trainingseinheiten absolvieren kann oder dass eine Trainingseinheit aus mehreren Würfen besteht.[@LucidchartERModel]
 
 ### Unterschied zwischen Beziehungen und Kardinalitäten
 
 - **Beziehungen** beschreiben, dass zwei Entitäten miteinander verknüpft sind (z. B. Spieler hat Trainingseinheiten).
-- **Kardinalitäten** beschreiben, wie viele Objekte an dieser Beziehung beteiligt sein können (z. B. 1:n = ein Spieler kann viele Trainingseinheiten haben).
+- **Kardinalitäten** beschreiben, wie viele Objekte an dieser Beziehung beteiligt sein können (z. B. 1:n = ein Spieler kann viele Trainingseinheiten haben).[@LucidchartERRelationships]
 
 ### Was sind Kardinalitäten
 Neben Entitäten, Attributen und Beziehungen sind Kardinalitäten ein zentrales Element des ER-Modells. Sie beschreiben, wie viele Objekte einer Entität mit Objekten einer anderen Entität in Beziehung stehen können. Kardinalitäten helfen dabei, die Struktur einer Datenbank korrekt zu planen und später sauber in Tabellen und Fremdschlüssel-Beziehungen umzusetzen.
@@ -249,7 +265,7 @@ Neben Entitäten, Attributen und Beziehungen sind Kardinalitäten ein zentrales 
 
   Bei einer n:m-Beziehung können mehrere Objekte der ersten Entität mit mehreren Objekten der zweiten Entität verbunden sein.
   Beispiel: Studierende können mehrere Kurse besuchen und jeder Kurs hat mehrere Studierende.
-  In relationalen Datenbanken wird eine n:m-Beziehung üblicherweise über eine Zwischentabelle (Join-Tabelle) umgesetzt, die die Primärschlüssel beider Entitäten als Fremdschlüssel enthält.
+  In relationalen Datenbanken wird eine n:m-Beziehung üblicherweise über eine Zwischentabelle (Join-Tabelle) umgesetzt, die die Primärschlüssel beider Entitäten als Fremdschlüssel enthält.[@LucidchartCardinality]
 
 ## ER Diagramme
 ### Was ist ein ER Diagramm
@@ -270,46 +286,31 @@ Ein ER-Diagramm ist eine grafische Darstellung des Entity-Relationship-Modells u
 
 - **UML-Klassendiagramm (als alternative Darstellung)**
 
-  Zwar kein klassisches ER-Notation-System, aber häufig in objektorientierten Projekten genutzt. Klassen entsprechen dabei oft Entitäten, Attribute werden innerhalb der Klasse dargestellt, und Beziehungen werden als Assoziationen mit Multiplizitäten (z. B. 1..*, 0..1) angegeben. UML ist besonders praktisch, wenn Datenmodell und Code-Design eng zusammenhängen.
+  Zwar kein klassisches ER-Notation-System, aber häufig in objektorientierten Projekten genutzt. Klassen entsprechen dabei oft Entitäten, Attribute werden innerhalb der Klasse dargestellt, und Beziehungen werden als Assoziationen mit Multiplizitäten (z. B. 1..*, 0..1) angegeben. UML ist besonders praktisch, wenn Datenmodell und Code-Design eng zusammenhängen.[@LucidchartERDiagramNotation]
 
-## H2 Datenbank
-Die H2-Datenbank ist ein leichtgewichtiges, relationales Datenbankmanagementsystem (DBMS), das in Java geschrieben wurde und besonders häufig für Entwicklung, Tests und Prototyping eingesetzt wird. Ein großer Vorteil von H2 ist, dass sie ohne aufwendige Installation verwendet werden kann und sich sehr einfach in Java- und Spring-Boot-Projekte integrieren lässt.
+## Java Persistand API (JPA)
+### Was ist JPA
+JPA (Java Persistence API) ist eine Java-Standard-Spezifikation für die objekt-relationalen Persistierung. Sie beschreibt, wie Java-Objekte (z. B. Player, TrainingSession) in einer relationalen Datenbank gespeichert, gelesen und verwaltet werden können. JPA legt dabei nur fest, wie diese Persistenz grundsätzlich funktionieren soll (z. B. über Annotationen wie @Entity, @Id, @OneToMany), stellt aber selbst keine konkrete Implementierung bereit.
 
-H2 kann in zwei typischen Betriebsarten genutzt werden:
+Durch JPA kann die Datenbankarbeit auf einer höheren Ebene erfolgen: Statt SQL direkt zu schreiben, werden Objekte gespeichert und abgefragt, wodurch der Code meist übersichtlicher und besser wartbar wird.[@OracleJPAOverview]
 
-- In-Memory-Modus: Die Datenbank läuft nur im Arbeitsspeicher und ist nach dem Beenden der Anwendung wieder leer. Das ist ideal für schnelle Tests, da keine Dateien verwaltet werden müssen.
+### Was sind Annotationen
+Annotationen sind spezielle Markierungen im Quellcode (in Java erkennbar am @-Symbol), mit denen zusätzliche Informationen über Klassen, Methoden oder Variablen angegeben werden. Sie verändern nicht direkt den Programmablauf, sondern dienen Frameworks und Tools als „Metadaten“, um bestimmtes Verhalten automatisch umzusetzen.
 
-- File-Modus: Die Daten werden in einer Datei gespeichert und bleiben auch nach einem Neustart erhalten.
+Im Backend mit Spring Boot und JPA werden Annotationen z. B. verwendet, um eine Klasse als Datenbank-Entität zu kennzeichnen (@Entity), Primärschlüssel festzulegen (@Id) oder REST-Endpunkte zu definieren (@RestController, @GetMapping). Dadurch wird Konfiguration in den Code verlagert, was die Struktur klarer macht und die Entwicklung vereinfacht.[@OracleJavaAnnotations]
 
-In Spring Boot wird H2 oft als Entwicklungsdatenbank verwendet, weil sie schnell startbar ist und gut mit Spring Data JPA/Hibernate zusammenarbeitet. Zusätzlich bietet H2 eine integrierte Web-Konsole, über die Tabellen, Inhalte und SQL-Abfragen bequem im Browser angesehen werden können. Für produktive Systeme wird häufig später auf leistungsfähigere Datenbanken (z. B. PostgreSQL oder MySQL) umgestellt, während H2 weiterhin für Tests und lokale Entwicklung genutzt werden kann.
-
-![H2 Datenbank Überblick](img/H2Datenbank_UEberblick.png)
-
-## MySQL
-MySQL ist ein weit verbreitetes relationales Datenbankmanagementsystem (RDBMS), das zur dauerhaften Speicherung und Verwaltung strukturierter Daten eingesetzt wird. Die Daten werden in Tabellen organisiert und können mithilfe von SQL (Structured Query Language) effizient abgefragt und bearbeitet werden. MySQL wird häufig in Web- und Backend-Anwendungen verwendet, weil es stabil, performant und für den produktiven Dauerbetrieb geeignet ist. Typische Einsatzbereiche sind Anwendungen mit Nutzer- und Trainingsdaten, Content-Systeme oder allgemeine Geschäftsanwendungen, bei denen Daten langfristig gespeichert und zuverlässig verwaltet werden müssen. In Spring-Boot-Projekten lässt sich MySQL über einen JDBC-Treiber anbinden und wird oft gemeinsam mit Spring Data JPA/Hibernate verwendet, um Datenbankzugriffe strukturiert über das Objektmodell umzusetzen.
-
-### Was ist der Unterschied zwischen H2 Datenbank und MySql
-Die H2-Datenbank und MySQL sind beide relationale Datenbanken, unterscheiden sich jedoch vor allem in ihrem Einsatzgebiet und ihrer Betriebsart:
-
-- **Einsatzbereich:** H2 wird meist für Entwicklung und Tests genutzt, während MySQL typischerweise in produktiven Systemen eingesetzt wird.
-
-- **Installation und Betrieb:** H2 ist sehr leichtgewichtig und kann ohne große Einrichtung direkt im Projekt laufen (z. B. In-Memory). MySQL benötigt in der Regel eine separate Installation und läuft als eigener Datenbankserver.
-
-- **Persistenz:** H2 kann im In-Memory-Modus betrieben werden (Daten gehen nach dem Beenden verloren) oder als Datei gespeichert werden. MySQL speichert Daten standardmäßig dauerhaft auf dem Server.
-
-- **Skalierbarkeit und Leistung:** MySQL ist für größere Datenmengen, mehrere Benutzer und dauerhafte Nutzung optimiert. H2 ist eher für kleinere lokale Umgebungen gedacht.
 
 ## IntelJ IDA
 IntelliJ IDEA ist eine integrierte Entwicklungsumgebung (IDE) von JetBrains, die vor allem für die Entwicklung mit Java (und weiteren Sprachen) verwendet wird. Sie bietet eine zentrale Arbeitsumgebung, in der Quellcode geschrieben, strukturiert, getestet und ausgeführt werden kann. Durch Funktionen wie Code-Vervollständigung, Fehlererkennung in Echtzeit, Refactoring-Werkzeuge und Debugging unterstützt IntelliJ IDEA eine effiziente und saubere Softwareentwicklung.
 
-Im Backend-Kontext wird IntelliJ IDEA typischerweise genutzt, um Spring-Boot-Projekte zu erstellen und zu verwalten, Abhängigkeiten (z. B. über Maven) einzubinden, REST-Controller und Datenbankklassen zu entwickeln sowie die Anwendung lokal zu starten und zu testen. Dadurch erleichtert die IDE sowohl die Umsetzung als auch die Wartung des Backends erheblich.
+Im Backend-Kontext wird IntelliJ IDEA typischerweise genutzt, um Spring-Boot-Projekte zu erstellen und zu verwalten, Abhängigkeiten (z. B. über Maven) einzubinden, REST-Controller und Datenbankklassen zu entwickeln sowie die Anwendung lokal zu starten und zu testen. Dadurch erleichtert die IDE sowohl die Umsetzung als auch die Wartung des Backends erheblich.[JetBrainsIntelliJIDEA]
 
 ![Überblick IntelJ](img/IntelJ_UEberblick.png)
 
 ## Visual Studio Code
 Visual Studio Code (VS Code) ist ein leichter, plattformübergreifender Code-Editor von Microsoft, der sich durch hohe Erweiterbarkeit auszeichnet. Er unterstützt viele Programmiersprachen wie JavaScript, TypeScript, HTML/CSS, Python und auch Java über Erweiterungen. VS Code bietet Funktionen wie Syntax-Highlighting, Code-Vervollständigung, integriertes Terminal, Debugging sowie eine starke Git-Integration, wodurch die Entwicklung übersichtlich und effizient wird.
 
-VS Code wird häufig für die Frontend-Entwicklung eingesetzt, z. B. zum Erstellen von Weboberflächen mit JavaScript-Frameworks, und eignet sich durch Extensions auch für Backend-Aufgaben. Besonders praktisch ist die flexible Anpassbarkeit: Durch Plugins können zusätzliche Tools, Linter, Formatter oder Framework-Unterstützung eingebunden werden, sodass sich VS Code gut für moderne Webprojekte und die Arbeit im Team eignet.
+VS Code wird häufig für die Frontend-Entwicklung eingesetzt, z. B. zum Erstellen von Weboberflächen mit JavaScript-Frameworks, und eignet sich durch Extensions auch für Backend-Aufgaben. Besonders praktisch ist die flexible Anpassbarkeit: Durch Plugins können zusätzliche Tools, Linter, Formatter oder Framework-Unterstützung eingebunden werden, sodass sich VS Code gut für moderne Webprojekte und die Arbeit im Team eignet.[@MicrosoftVSCodeOverview]
 
 
 ## Praktische Arbeit
@@ -376,7 +377,7 @@ Konfiguration wird primär in application.properties vorgenommen (alternativ wä
 Das Projekt nutzt Java 21 als Zielversion.
 
 - Dependencies: H2 Database
-Für das Projekt H2-Datenbank als Abhängigkeit ausgewählt. Dadurch kann das Backend in der Entwicklungsphase eine integrierte, leichtgewichtige relationale Datenbank nutzen (inkl. optionaler H2-Console), ohne einen externen Datenbankserver installieren zu müssen.
+Für das Projekt H2-Datenbank als Abhängigkeit ausgewählt. Dadurch kann das Backend in der Entwicklungsphase eine integrierte, leichtgewichtige relationale Datenbank nutzen (inkl. optionaler H2-Console), ohne einen externen Datenbankserver installieren zu müssen.[@SpringBootMavenSetup]
 
 Nachdem alle gewünschten Angaben im Spring Initializr korrekt eingetragen und die benötigten Dependencies ausgewählt wurden, kann das Projekt über „Generate“ erstellt werden. Dabei wird ein fertiges Spring-Boot-Startprojekt als ZIP-Datei heruntergeladen, das bereits die grundlegende Ordnerstruktur, eine Startklasse sowie die Build-Konfiguration (bei Maven die pom.xml) enthält. Dieses Projekt wird anschließend entpackt und in der Entwicklungsumgebung (z. B. IntelliJ IDEA) importiert, sodass direkt mit der Implementierung des Backends begonnen werden kann.
 
@@ -412,8 +413,9 @@ Anschließend wurde über die H2-Console eine Verbindung mit dem H2-Treiber (org
 Nachdem die Funktion der H2-Dateidatenbank über die Console erfolgreich getestet wurde, wurde im nächsten Schritt die Datenbankverbindung direkt im Spring-Boot-Projekt eingerichtet. Ziel war es, dass das Backend beim Start automatisch eine Verbindung zur H2-Datenbank herstellt und alle Persistenzoperationen (Speichern, Lesen, Auswerten) über diese Verbindung durchführen kann.
 
 #### Schritt 1 : Einbindung der benötigten Bibiotheken (Dependencies) über Maven
-Im ersten Schritt wurde das Spring-Boot-Projekt um die notwendigen Bibliotheken zur Datenpersistenz erweitert. In einem Maven-Projekt werden diese Abhängigkeiten zentral in der Datei pom.xml definiert, wodurch Maven die benötigten Libraries automatisiert verwaltet und in den Build-Prozess integriert. Für den Zugriff auf relationale Datenbanken wurde spring-boot-starter-data-jpa eingebunden, welches die Persistenz über JPA ermöglicht und standardmäßig Hibernate als ORM-Implementierung verwendet. Als Entwicklungsdatenbank wurde die H2-Datenbank über die Dependency h2 integriert, wodurch lokale Tests ohne zusätzlichen Datenbankserver möglich sind. Zusätzlich wurde spring-boot-starter-web verwendet, um das Backend als Webservice mit REST-Endpunkten zu betreiben. Zur Reduktion von Boilerplate-Code kam Lombok zum Einsatz, wodurch insbesondere Daten- und Entity-Klassen übersichtlicher umgesetzt werden konnten.
+Im ersten Schritt wurde das Spring-Boot-Projekt um die notwendigen Bibliotheken zur Datenpersistenz erweitert. In einem Maven-Projekt werden diese Abhängigkeiten zentral in der Datei pom.xml definiert, wodurch Maven die benötigten Libraries automatisiert verwaltet und in den Build-Prozess integriert. Für den Zugriff auf relationale Datenbanken wurde spring-boot-starter-data-jpa eingebunden, welches die Persistenz über JPA ermöglicht und standardmäßig Hibernate als ORM-Implementierung verwendet. Als Entwicklungsdatenbank wurde die H2-Datenbank über die Dependency h2 integriert, wodurch lokale Tests ohne zusätzlichen Datenbankserver möglich sind. Zusätzlich wurde spring-boot-starter-web verwendet, um das Backend als Webservice mit REST-Endpunkten zu betreiben. Zur Reduktion von Boilerplate-Code kam Lombok zum Einsatz, wodurch insbesondere Daten- und Entity-Klassen übersichtlicher umgesetzt werden konnten.[@SpringDataJPAReference] [@SpringDataJPAProject] [@ProjectLombokData]
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="pom" .xml}
         <dependencies>
         <!-- Web / REST API -->
         <dependency>
@@ -454,14 +456,16 @@ Im ersten Schritt wurde das Spring-Boot-Projekt um die notwendigen Bibliotheken 
             <scope>test</scope>
         </dependency>
     </dependencies>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #### Schritt 2: Konfiguration der Datenbankverbindung in Springboot
 Nach der Einbindung der benötigten Bibliotheken (Dependencies) wurde im nächsten Schritt die Datenbankverbindung in Spring Boot eingerichtet. Die Konfiguration erfolgt zentral in der Datei src/main/resources/application.properties. Dort wird festgelegt, welche Datenbank verwendet wird und wie das Backend beim Start eine Verbindung zu dieser Datenbank herstellt.
 
 Für die Entwicklungsphase wurde eine H2-Datenbank im In-Memory-Modus konfiguriert. Dadurch wird die Datenbank beim Start der Anwendung automatisch im Arbeitsspeicher erstellt, was schnelle lokale Tests ermöglicht und keine zusätzliche Installation eines Datenbankservers erfordert. Die Verbindung wird über eine JDBC-URL (z. B. jdbc:h2:mem:da_basketball) sowie den H2-Treiber org.h2.Driver hergestellt. Als Standardzugang wird der Benutzer sa verwendet.
 
-Zusätzlich wurde JPA/Hibernate so eingestellt, dass das Datenbankschema anhand der im Projekt definierten Entities automatisch erstellt bzw. aktualisiert werden kann (spring.jpa.hibernate.ddl-auto=update). Dadurch musste das Schema nicht manuell per SQL gepflegt werden, sondern bleibt direkt mit dem Java-Datenmodell synchron. Um die Datenbank während der Entwicklung kontrollieren zu können, wurde außerdem die H2-Console aktiviert. Über den Pfad /h2-console können Tabellen und gespeicherte Daten im Browser eingesehen und geprüft werden.
+Zusätzlich wurde JPA/Hibernate so eingestellt, dass das Datenbankschema anhand der im Projekt definierten Entities automatisch erstellt bzw. aktualisiert werden kann (spring.jpa.hibernate.ddl-auto=update). Dadurch musste das Schema nicht manuell per SQL gepflegt werden, sondern bleibt direkt mit dem Java-Datenmodell synchron. Um die Datenbank während der Entwicklung kontrollieren zu können, wurde außerdem die H2-Console aktiviert. Über den Pfad /h2-console können Tabellen und gespeicherte Daten im Browser eingesehen und geprüft werden.[@SpringBootDatabaseConfiguration] [@SpringBootDataAccessHowTo] [@H2Features]
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="application" .properties}
       springapplicationname=DA_2526_Baskettball-Effizienssteigerung-durch-Videoanalyse
 
       Use an in-memory H2 database for local development to avoid file permission issues
@@ -478,7 +482,7 @@ Zusätzlich wurde JPA/Hibernate so eingestellt, dass das Datenbankschema anhand 
       H2 Console (fuer Entwicklung)
       spring.h2.console.enabled=true
       spring.h2.console.path=/h2-console
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Jetzt funktioniert einmal die Verbindung der Datenbank mit dem Projekt.
 
 ## Start der Implementierung
@@ -496,11 +500,76 @@ Im Backend wurden dabei folgende Schichten vorgesehen:
 
 - Entity-/Model-Schicht: Abbildung der Datenbanktabellen als Java-Entities inklusive Beziehungen.
 
-Um diese Architektur auch im Projekt klar sichtbar zu machen, wurde eine entsprechende Package-Struktur angelegt (z. B. controller, service, repository, entity/model). Durch diese vorbereitende Festlegung konnte die weitere Implementierung systematisch erfolgen und das Backend von Anfang an nach einem einheitlichen und professionellen Aufbau entwickelt werden.
+Um diese Architektur auch im Projekt klar sichtbar zu machen, wurde eine entsprechende Package-Struktur angelegt (z. B. controller, service, repository, entity/model). Durch diese vorbereitende Festlegung konnte die weitere Implementierung systematisch erfolgen und das Backend von Anfang an nach einem einheitlichen und professionellen Aufbau entwickelt werden.[@MicrosoftLayeredArchitecture]
 
 ![Layerd Achitecture](img/LayeredAchitecture.png)
 
 ## Projektstruktur 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Projektstruktur" .txt}
+Source/backend/src/main/java/at/htlle/backend/
+├── config/
+│   ├── CorsConfig.java
+│   └── WebConfig.java
+├── controller/
+│   ├── AnalysisImportController.java
+│   ├── DashboardController.java
+│   ├── PlayerController.java
+│   ├── StatsController.java
+│   └── TrainingSessionController.java
+├── Da2526BaskettballEffizienssteigerungDurchVideoanalyseApplication.java
+├── dto/
+│   ├── analysis/
+│   │   ├── AnalysisImportDTO.java
+│   │   ├── AnalysisImportResponseDTO.java
+│   │   ├── AnalysisPayload.java
+│   │   ├── ShotDTO.java
+│   │   └── SollDTO.java
+│   ├── dashboard/
+│   │   └── PlayerDashboardDTO.java
+│   ├── player/
+│   │   ├── ApiResponse.java
+│   │   ├── CreatePlayerDTO.java
+│   │   ├── LoginRequest.java
+│   │   ├── PlayerResponseDTO.java
+│   │   └── RegisterRequest.java
+│   ├── session/
+│   │   ├── CreateSessionDTO.java
+│   │   └── SessionResponseDTO.java
+│   └── stats/
+│       ├── PlayerStatsDTO.java
+│       ├── PlayerTrendItemDTO.java
+│       └── SessionStatsDTO.java
+├── exception/
+│   ├── GlobalExceptionHandler.java
+│   └── NotFoundException.java
+├── model/
+│   ├── Player.java
+│   ├── Shot.java
+│   ├── SollFlightData.java
+│   ├── TrainingSession.java
+│   └── Video.java
+├── repository/
+│   ├── PlayerRepository.java
+│   ├── ShotRepository.java
+│   ├── SollFlightDataRepository.java
+│   ├── TrainingSessionRepository.java
+│   └── VideoRepository.java
+├── service/
+│   ├── AnalysisImportService.java
+│   ├── DashboardService.java
+│   ├── PlayerService.java
+│   ├── StatsService.java
+│   └── TrainingSessionService.java
+└── Source/
+    └── backend/
+        └── src/
+            └── main/
+                └── java/
+                    └── at/
+                        └── htlle/
+                            └── backend/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 ### Implementirung der Entity Klassen
 
 Nach der Festlegung der Projektstruktur wurden die im ER-Diagramm definierten Tabellen als JPA-Entities in Java umgesetzt. Jede Entity entspricht dabei einer Datenbanktabelle, Attribute werden als Klassenfelder abgebildet und Beziehungen über JPA-Annotationen (z. B. @ManyToOne, @OneToMany, @OneToOne) modelliert. Dadurch kann Hibernate das Schema anhand der Entities automatisch erstellen bzw. aktualisieren.
@@ -508,7 +577,7 @@ Nach der Festlegung der Projektstruktur wurden die im ER-Diagramm definierten Ta
 - Entity: Player
 
   Die Entity Player speichert die Stammdaten einer Spieler*in (z. B. Vorname, Nachname, Geburtsdatum, Erstellungszeitpunkt). Ein Player kann mehrere Trainingseinheiten besitzen (1:n zu TrainingSession).
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Player" .java}
       package at.htlle.backend.model;
 
       import jakarta.persistence.*;
@@ -583,7 +652,7 @@ Nach der Festlegung der Projektstruktur wurden die im ER-Diagramm definierten Ta
 
 
       }
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Entity: TrainingSession
 
   Die Entity TrainingSession repräsentiert eine Trainingseinheit und enthält u. a. Datum und Startzeitpunkt. Jede Trainingseinheit ist genau einem Player zugeordnet (n:1) und enthält mehrere Würfe (1:n zu Shot). Zusätzlich ist eine Trainingseinheit mit einem Video verknüpft (1:1 zu Video).
@@ -610,6 +679,7 @@ Repositories in dem Projekt
 
   Zusätzlich wurden zwei projektspezifische Methoden ergänzt: findByEmail(String email) liefert optional einen Player anhand der E-Mail-Adresse zurück, während existsByEmail(String email) prüft, ob bereits ein Datensatz mit dieser E-Mail existiert. Diese Methoden werden von Spring Data JPA automatisch anhand des Methodennamens in passende Datenbankabfragen übersetzt. Die Annotation @Repository kennzeichnet die Klasse als Bestandteil der Persistenzschicht und ermöglicht die automatische Einbindung (Dependency Injection) in Services.
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="PlayerRepository" .java}
       package at.htlle.backend.repository;
 
       import at.htlle.backend.model.Player;
@@ -623,7 +693,7 @@ Repositories in dem Projekt
           Optional<Player> findByEmail(String email);
           boolean existsByEmail(String email);
       }
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - TrainingSessionRepository
 
 - ShotRepository
@@ -645,8 +715,9 @@ Für dein Projekt sind im Service-Package u. a. folgende Klassen vorhanden:
 
   Ein zentraler Bestandteil ist die Methode registerPlayer(...). Dabei wird die übergebene E-Mail-Adresse zunächst normalisiert (Trimmen und Umwandlung in Kleinbuchstaben), anschließend auf Leerwert und Format geprüft. Für die Formatprüfung wird ein vordefiniertes Regex-Muster (EMAIL_PATTERN) verwendet. Zusätzlich wird über das Repository geprüft, ob die E-Mail bereits existiert, um doppelte Accounts zu verhindern. Erst danach wird ein Player-Objekt erstellt und über playerRepository.save(player) in der Datenbank gespeichert.
 
-  Die Methode loginPlayer(...) implementiert eine einfache Login-Logik, indem ein Player über die E-Mail gesucht und das gespeicherte Passwort mit dem eingegebenen Passwort verglichen wird. Als Rückgabewert wird Optional<Player> verwendet, um sauber zwischen „gefunden“ und „nicht gefunden/ungültig“ zu unterscheiden. Ergänzend stellt getUserById(...) eine Zugriffsfunktion bereit, um Spieler*innen anhand der ID abzurufen.
+  Die Methode loginPlayer(...) implementiert eine einfache Login-Logik, indem ein Player über die E-Mail gesucht und das gespeicherte Passwort mit dem eingegebenen Passwort verglichen wird. Als Rückgabewert wird Optional<Player> verwendet, um sauber zwischen „gefunden“ und „nicht gefunden/ungültig“ zu unterscheiden. Ergänzend stellt getUserById(...) eine Zugriffsfunktion bereit, um Spieler*innen anhand der ID abzurufen.[@SpringFrameworkService] [@LombokRequiredArgsConstructor]
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="PlayerService" .java}
       package at.htlle.backend.service;
 
       import at.htlle.backend.model.Player;
@@ -704,6 +775,7 @@ Für dein Projekt sind im Service-Package u. a. folgende Klassen vorhanden:
           }
 
       }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - TrainingSessionService
   Enthält die Logik zur Verwaltung von Trainingseinheiten. Dazu gehören typischerweise das Anlegen neuer Sessions, das Abrufen vorhandener Sessions sowie das Verknüpfen einer Session mit einem bestimmten Player. Die Datenbankzugriffe erfolgen dabei über das TrainingSessionRepository.
 
@@ -738,6 +810,7 @@ In deinem Projekt gibt es unter anderem:
 
   Durch diese Umsetzung bleibt die Controller-Schicht auf die HTTP-Kommunikation und Response-Struktur fokussiert, während die eigentliche Logik (Validierung, Datenbankzugriff) im PlayerService gekapselt ist.
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="PlayerController" .java}
         package at.htlle.backend.controller;
 
         import at.htlle.backend.dto.player.ApiResponse;
@@ -792,7 +865,7 @@ In deinem Projekt gibt es unter anderem:
                 }
             }
         }
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - TrainingSessionController
   Stellt Endpunkte zur Verwaltung von Trainingseinheiten bereit. Dazu gehören typischerweise das Anlegen neuer Sessions, das Abrufen vorhandener Sessions sowie das Zuordnen von Sessions zu Spieler*innen. Die Verarbeitung erfolgt über den TrainingSessionService.
@@ -821,9 +894,9 @@ In dem Projekt sind die DTOs nach Funktionsbereichen unterteilt, z. B.:
 
   Die Klasse RegisterRequest ist ein Data Transfer Object (DTO) und dient dazu, Registrierungsdaten vom Frontend an das Backend zu übertragen. Sie enthält die benötigten Felder firstName, lastName, email und password, die beim Aufruf des Registrierungs-Endpunkts als JSON im Request-Body gesendet werden.
 
-  Durch die Trennung von DTO und Entity wird verhindert, dass direkt mit der Datenbankstruktur (Player Entity) gearbeitet werden muss. Dadurch bleibt die REST-Schnittstelle klar definiert und kann unabhängig vom internen Datenmodell angepasst werden. Die Lombok-Annotation @Data erzeugt automatisch Getter, Setter sowie weitere Standardmethoden, wodurch die Klasse kompakt und übersichtlich bleibt.
+  Durch die Trennung von DTO und Entity wird verhindert, dass direkt mit der Datenbankstruktur (Player Entity) gearbeitet werden muss. Dadurch bleibt die REST-Schnittstelle klar definiert und kann unabhängig vom internen Datenmodell angepasst werden. Die Lombok-Annotation @Data erzeugt automatisch Getter, Setter sowie weitere Standardmethoden, wodurch die Klasse kompakt und übersichtlich bleibt.[@FowlerDTO] [@ProjectLombokData]
 
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="RegisterRequest" .java}
         package at.htlle.backend.dto.player;
 
         import lombok.Data;
@@ -835,7 +908,7 @@ In dem Projekt sind die DTOs nach Funktionsbereichen unterteilt, z. B.:
             private String email;
             private String password;
         }
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - dto/session (CreateSession, SessionResponse)
 
@@ -847,7 +920,7 @@ In dem Projekt sind die DTOs nach Funktionsbereichen unterteilt, z. B.:
 
 ### Implementireung des config-Pageges
 
-Im Package config werden Klassen gesammelt, die technische Einstellungen für das Backend zentral definieren. Das betrifft vor allem Themen wie CORS, Web-Konfiguration und ggf. spätere Erweiterungen (z. B. Security, Interceptors). Der Vorteil ist, dass diese Einstellungen nicht in einzelnen Controllern verteilt sind, sondern an einer Stelle gebündelt werden.
+Im Package config werden Klassen gesammelt, die technische Einstellungen für das Backend zentral definieren. Das betrifft vor allem Themen wie CORS, Web-Konfiguration und ggf. spätere Erweiterungen (z. B. Security, Interceptors). Der Vorteil ist, dass diese Einstellungen nicht in einzelnen Controllern verteilt sind, sondern an einer Stelle gebündelt werden.[@SpringFrameworkCors] [SpringFrameworkWebMvcConfig]
 
 In deinem Projekt sind hier:
 
@@ -856,6 +929,6 @@ In deinem Projekt sind hier:
 - WebConfig.java
 
 ## Testing
-  Im Rahmen der Implementierung wurde jede neu erstellte Controller-Klasse unmittelbar nach der Entwicklung mit Postman getestet. Dabei wurden die zugehörigen Endpunkte (z. B. GET/POST-Anfragen) mit passenden Request-Bodys und Parametern aufgerufen und die Antworten anhand von Statuscodes sowie der zurückgegebenen JSON-Strukturen überprüft. Durch dieses fortlaufende Testen konnte sichergestellt werden, dass die Schnittstellen korrekt reagieren, die Daten wie vorgesehen verarbeitet werden und die Kommunikation zwischen Backend und späterem Frontend zuverlässig funktioniert. Alle getesteten Endpunkte verhielten sich dabei wie erwartet und konnten ohne Fehler verwendet werden.
+  Im Rahmen der Implementierung wurde jede neu erstellte Controller-Klasse unmittelbar nach der Entwicklung mit Postman getestet. Dabei wurden die zugehörigen Endpunkte (z. B. GET/POST-Anfragen) mit passenden Request-Bodys und Parametern aufgerufen und die Antworten anhand von Statuscodes sowie der zurückgegebenen JSON-Strukturen überprüft. Durch dieses fortlaufende Testen konnte sichergestellt werden, dass die Schnittstellen korrekt reagieren, die Daten wie vorgesehen verarbeitet werden und die Kommunikation zwischen Backend und späterem Frontend zuverlässig funktioniert. Alle getesteten Endpunkte verhielten sich dabei wie erwartet und konnten ohne Fehler verwendet werden.[@PostmanAPITesting]
 
   ![Getestet mit Postman](img/PostmanTesting.png)

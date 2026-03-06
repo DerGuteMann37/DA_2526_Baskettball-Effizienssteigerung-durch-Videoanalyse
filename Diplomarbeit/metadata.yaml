@@ -72,14 +72,16 @@ da-appendix:
   seiten: 53-73
 
 - abschnitt: Betreuungsprotokolle
-  pdf-file: betreuungsprotokolle.pdf    
+  pdf-file: HTL_DA_Betreuungsprot_ITSP_2025_Bacher_Dalipovic_Gutmann_Wolfgruber_ProtNr1.pdf 
+  pdf-file: HTL_DA_Betreuungsprot_ITSP_2025_Bacher_Dalipovic_Gutmann_Wolfgruber_ProtNr2.pdf
+  pdf-file: HTL_DA_Betreuungsprot_ITSP_2025_Bacher_Dalipovic_Gutmann_ProtNr3.pdf   
 
 # Diplomarbeitsvereinbarungen müssen zum Schluss sein 
 
 - abschnitt: Diplomatbeitsvereinbarung Englisch
-  pdf-file: HTL-DA-Doku-EN.pdf
+  pdf-file: HTL_DA_Doku_EN_ab2021_IT-B_Bacher_Dalipovic_Gutmann_Wolfgruber.pdf
 
 - abschnitt: Diplomatbeitsvereinbarung Deutsch
-  pdf-file: HTL-DA-Doku-DE.pdf
+  pdf-file: HTL_DA_Doku_DE_ab2021_IT-B_Bacher_Dalipovic_Gutmann_Wolfgruber.pdf
   
 ---
