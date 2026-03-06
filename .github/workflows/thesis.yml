@@ -1,9 +1,9 @@
 name: Build and send diploma thesis
 
-on: 
+on:
   push:
     branches:
-      - bach
+      - main
     paths:
       - Diplomarbeit/**
   workflow_dispatch:
@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Build And Send Diploma Thesis
-        uses: HTL-Leoben/da-base-template@main
-        # Uncomment following lines to enable email notification
-        #with:
-          #mail-address: ${{ secrets.MAIL }}
-          #mail-address-password: ${{ secrets.MAIL_PASSWORD }}
-          #smtp-server: ${{ secrets.SMTP_SERVER }}
-          #smtp-port: ${{ secrets.SMTP_PORT }}
-          #teams-mail: ${{ secrets.TEAMS_MAIL }}
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build And Send Diploma Thesis (template action)
+        uses: ./Diplomarbeit/da-base-template
+        with:
+          thesis-path: Diplomarbeit
+          dockerhub-username: bytebang
+          dockerhub-repository: htlle-da-builder
