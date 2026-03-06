@@ -455,9 +455,7 @@ Im folgenden Abschnitt wird ausschließlich die theoretische Sollflugbahn eines 
 
 Für die Modellierung werden die Parameter Abwurfhöhe $h_0$, Korbhöhe $h_K$, horizontale Distanz zum Korb $x_K$, Abwurfwinkel $\alpha$, Anfangsgeschwindigkeit $v_0$ und Erdbeschleunigung $g$ verwendet.
 
-**Listing 4.1: Definition der Modellparameter des Wurfmodells**
-
-```python
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Definition der Modellparameter des Wurfmodells" .python}
 import numpy as np
 
 h_0 = 1.95
@@ -467,7 +465,7 @@ g = 9.81
 alpha_deg = 52.0
 
 alpha = np.deg2rad(alpha_deg)
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Dieses Listing definiert die zentralen Parameter der Sollflugbahn und bereitet den Abwurfwinkel für die weitere Berechnung in Radiant auf.
 
