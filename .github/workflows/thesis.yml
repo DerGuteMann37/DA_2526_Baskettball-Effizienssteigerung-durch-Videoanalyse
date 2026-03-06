@@ -19,7 +19,16 @@ jobs:
       - name: Install prerequisites (pandoc, rsync, TeX Live xetex + language packs)
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends pandoc rsync texlive-xetex texlive-fonts-recommended texlive-latex-extra lmodern texlive-lang-german
+          sudo apt-get install -y pandoc rsync texlive-xetex texlive-fonts-recommended texlive-latex-extra lmodern texlive-lang-german
+
+      - name: Ensure `ulem.sty` is available
+        run: |
+          # Re-install texlive-latex-extra to be safe and update filename database
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-extra
+          sudo mktexlsr || true
+          echo "kpsewhich ulem.sty:"; kpsewhich ulem.sty || true
+          ls -l $(kpsewhich ulem.sty 2>/dev/null) || true
 
       - name: Build diploma thesis (local runner)
         working-directory: Diplomarbeit/da-base-template
