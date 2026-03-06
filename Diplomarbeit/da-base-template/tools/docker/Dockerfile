@@ -49,8 +49,6 @@ RUN apt-get update && \
         /lib/modules/* \
         /lib/udev \
         /tmp/* \
-        /usr/bin/lualatex \
-        /usr/bin/xelatex \
         /usr/share/X11/* \
         /usr/share/doc/* \
         /usr/share/doc-base/* \
