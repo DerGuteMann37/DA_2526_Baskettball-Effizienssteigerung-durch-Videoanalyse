@@ -411,27 +411,27 @@ Die ersten Prototypen umfassten das Extrahieren einzelner Frames aus Videosequen
 
 ![Manuelle Markierung der Ballposition über mehrere Frames zur ersten Rekonstruktion der Flugbahn.](img/p-2.png)
 
-Bereits in dieser frühen Phase zeigten sich typische Herausforderungen wie Bewegungsunschärfe, geringe Ballgröße, ähnliche Hintergrundstrukturen und perspektivische Verzerrungen. Diese Faktoren erschweren eine zuverlässige automatische Erkennung des Balls und mussten daher bei der weiteren Entwicklung berücksichtigt werden. Als Ergebnis der Startphase entstand ein erster belastbarer Proof-of-Concept mit strukturierter Datenablage und klar definierten nächsten Arbeitsschritten in Richtung Kalibrierung der Bilddaten sowie robuster Objekterkennung.
+Bereits in dieser frühen Phase zeigten sich typische Herausforderungen wie Bewegungsunschärfe, geringe Ballgröße, ähnliche Hintergrundstrukturen und perspektivische Verzerrungen. Diese Faktoren erschweren eine zuverlässige automatische Erkennung des Balls und mussten daher bei der weiteren Entwicklung berücksichtigt werden. Als Ergebnis der Startphase entstand ein erster belastbarer Proof-of-Concept mit strukturierter Datenablage und klar definierten nächsten Arbeitsschritten in Richtung Kalibrierung der Bilddaten sowie robuster Objekterkennung. [@Szeliski2010ComputerVision]
 
 ### Technischer Aufbau der Analysepipeline
 
 Aufbauend auf der in Kapitel 4.12.1 beschriebenen Startphase wurde im nächsten Entwicklungsschritt eine durchgängige Verarbeitungspipeline definiert, mit der aus Videoaufnahmen verwertbare Bewegungsdaten des Basketballs gewonnen werden können. Ziel dieser Pipeline ist es, den Weg von unstrukturierten Bilddaten bis zu einer quantitativ auswertbaren Trajektorie klar zu standardisieren. Dadurch wird sichergestellt, dass einzelne Würfe unter vergleichbaren Bedingungen verarbeitet und später systematisch gegenübergestellt werden können.
 
-Die technische Umsetzung basiert auf Python als zentraler Programmiersprache. Python wurde gewählt, da sich damit Bildverarbeitung, numerische Berechnung und Visualisierung in einer gemeinsamen Umgebung abbilden lassen. Für den Zugriff auf Videodaten und die frameweise Verarbeitung wird OpenCV verwendet. Numerische Operationen, etwa die Verarbeitung von Koordinatenreihen oder die Berechnung von Modellfunktionen, erfolgen mit NumPy. Für grafische Darstellungen und die visuelle Interpretation der Ergebnisse wird Matplotlib eingesetzt. Sofern eine automatische Objekterkennung integriert ist, kann zusätzlich ein YOLO-basiertes Modell zur Balllokalisierung genutzt werden; die Pipeline bleibt jedoch auch mit manueller oder halbautomatischer Punktzuweisung funktionsfähig.
+Die technische Umsetzung basiert auf Python als zentraler Programmiersprache. Python wurde gewählt, da sich damit Bildverarbeitung, numerische Berechnung und Visualisierung in einer gemeinsamen Umgebung abbilden lassen. Für den Zugriff auf Videodaten und die frameweise Verarbeitung wird OpenCV verwendet. Numerische Operationen, etwa die Verarbeitung von Koordinatenreihen oder die Berechnung von Modellfunktionen, erfolgen mit NumPy. Für grafische Darstellungen und die visuelle Interpretation der Ergebnisse wird Matplotlib eingesetzt. Sofern eine automatische Objekterkennung integriert ist, kann zusätzlich ein YOLO-basiertes Modell zur Balllokalisierung genutzt werden; die Pipeline bleibt jedoch auch mit manueller oder halbautomatischer Punktzuweisung funktionsfähig. [@PythonDocs]
 
 Der Ablauf beginnt mit dem Einlesen eines Wurfvideos und der Ermittlung grundlegender Metadaten wie Bildrate, Auflösung und Frameanzahl. Anschließend wird die Sequenz in einzelne Frames überführt beziehungsweise frameweise verarbeitet. Für jeden relevanten Frame wird die Ballposition bestimmt. Diese Positionsermittlung kann je nach Datenqualität und Ausbaustufe der Pipeline auf unterschiedlichen Wegen erfolgen: durch manuelle Markierung, durch regelbasierte Bildverarbeitung oder durch modellbasierte Objekterkennung. Unabhängig von der Methode wird als Ergebnis pro Frame mindestens eine zweidimensionale Koordinate des Ballzentrums gespeichert, ergänzt um den zugehörigen Zeitindex.
 
-Die so entstehende Punktfolge bildet die Grundlage für die Rekonstruktion der Ist-Trajektorie. Da reale Videodaten typischerweise Messrauschen, Ausreißer und einzelne Fehlmessungen enthalten, werden die Rohkoordinaten vor der weiteren Analyse validiert und geglättet. Dazu zählen beispielsweise die Prüfung auf zeitliche Konsistenz, das Entfernen unplausibler Sprünge sowie die Approximation durch eine kontinuierliche Kurve. In der Praxis ergibt sich dadurch eine robuste Näherung der Flugbahn, die den tatsächlichen Bewegungsverlauf besser repräsentiert als die ungefilterte Punktwolke.
+Die so entstehende Punktfolge bildet die Grundlage für die Rekonstruktion der Ist-Trajektorie. Da reale Videodaten typischerweise Messrauschen, Ausreißer und einzelne Fehlmessungen enthalten, werden die Rohkoordinaten vor der weiteren Analyse validiert und geglättet. Dazu zählen beispielsweise die Prüfung auf zeitliche Konsistenz, das Entfernen unplausibler Sprünge sowie die Approximation durch eine kontinuierliche Kurve. In der Praxis ergibt sich dadurch eine robuste Näherung der Flugbahn, die den tatsächlichen Bewegungsverlauf besser repräsentiert als die ungefilterte Punktwolke. [@Bradski2008OpenCV]
 
 Für den Vergleich mit dem physikalischen Modell wird die rekonstruierte Ist-Trajektorie in ein gemeinsames Bezugssystem überführt. Je nach Auswertungsziel kann dies in Pixelkoordinaten oder, nach Kalibrierung, in metrischen Einheiten erfolgen. Parallel dazu wird die Sollflugbahn mit dem Modell des schiefen Wurfs berechnet. Dieses Modell beschreibt den Zusammenhang zwischen Abwurfhöhe, Abwurfwinkel, Anfangsgeschwindigkeit und Zielpunkt. Durch die Gegenüberstellung beider Kurven lassen sich Abweichungen in Form, Höhe und Treffpunktlage quantitativ beschreiben. Typische Vergleichsgrößen sind unter anderem der vertikale Abstand zwischen Ist- und Sollkurve an definierten horizontalen Positionen, die Lage des Scheitelpunkts oder die Zielpunktabweichung im Korbbereich.
 
-Damit erfüllt die Pipeline zwei zentrale Anforderungen der Arbeit: Erstens wird der Übergang von visuellen Rohdaten zu reproduzierbaren Messdaten technisch nachvollziehbar umgesetzt. Zweitens entsteht eine belastbare Basis für die spätere Bewertung von Wurfqualität und Effizienz anhand eines konsistenten Soll-Ist-Vergleichs.
+Damit erfüllt die Pipeline zwei zentrale Anforderungen der Arbeit: Erstens wird der Übergang von visuellen Rohdaten zu reproduzierbaren Messdaten technisch nachvollziehbar umgesetzt. Zweitens entsteht eine belastbare Basis für die spätere Bewertung von Wurfqualität und Effizienz anhand eines konsistenten Soll-Ist-Vergleichs. [@LeifiPhysikSchieferWurf]
 
 ### Implementierung der Videoanalyse und Flugbahnrekonstruktion
 
 Aufbauend auf der in Kapitel 4.12.2 dargestellten Pipeline wurde die praktische Umsetzung als modular strukturierter Programmablauf in Python realisiert. Ziel dieser Implementierungsphase ist die reproduzierbare Gewinnung von Bewegungsdaten aus Videoaufnahmen von Basketballwürfen. Der Schwerpunkt liegt dabei auf der technischen Verarbeitung der Bilddaten, der Lokalisierung des Balls über mehrere Frames sowie der Rekonstruktion einer konsistenten Flugbahn. Die physikalische Sollflugbahn dient in diesem Zusammenhang als theoretische Grundlage des Modells, steht jedoch nicht als direkte Vergleichsauswertung im Zentrum dieses Arbeitsschritts.
 
-Die Verarbeitung beginnt mit dem Einlesen der Videodatei über OpenCV. Bereits zu diesem Zeitpunkt werden zentrale Metadaten wie Auflösung, Bildrate und Anzahl der Frames ausgelesen, da diese für die zeitliche Einordnung der Bewegung erforderlich sind. Anschließend wird ein relevanter Startbereich im Video festgelegt, um die Berechnung auf den tatsächlichen Wurfabschnitt zu begrenzen. Diese Eingrenzung reduziert die Rechenlast und verbessert die Stabilität der nachfolgenden Schritte, da nur Frames mit inhaltlicher Relevanz verarbeitet werden. Im folgenden Codeausschnitt ist das Einlesen der Videodatei sowie das Auslesen zentraler Metadaten (Bildrate und Frameanzahl) dargestellt.
+Die Verarbeitung beginnt mit dem Einlesen der Videodatei über OpenCV. Bereits zu diesem Zeitpunkt werden zentrale Metadaten wie Auflösung, Bildrate und Anzahl der Frames ausgelesen, da diese für die zeitliche Einordnung der Bewegung erforderlich sind. Anschließend wird ein relevanter Startbereich im Video festgelegt, um die Berechnung auf den tatsächlichen Wurfabschnitt zu begrenzen. Diese Eingrenzung reduziert die Rechenlast und verbessert die Stabilität der nachfolgenden Schritte, da nur Frames mit inhaltlicher Relevanz verarbeitet werden. Im folgenden Codeausschnitt ist das Einlesen der Videodatei sowie das Auslesen zentraler Metadaten (Bildrate und Frameanzahl) dargestellt. 
 
 ![Video einlesen und Metadaten](img/code1.png)
 
@@ -445,7 +445,7 @@ Die ermittelten Koordinaten werden während der Verarbeitung in geeigneten Daten
 
 Die Rekonstruktion der Flugbahn erfolgt auf Basis der sequenziellen Ballpositionen. Zunächst liegt eine diskrete Punktmenge vor, die den beobachteten Bewegungsverlauf beschreibt. Mit NumPy werden diese Daten für numerische Berechnungen aufbereitet, etwa für Glättung, Interpolation oder die Ableitung charakteristischer Bahnabschnitte. Auf diese Weise wird aus einzelnen Messpunkten eine zusammenhängende Trajektorie abgeleitet, die den Wurfverlauf im Bildraum konsistent repräsentiert. Für die visuelle Darstellung wird Matplotlib eingesetzt, um Kurvenverläufe, Punktreihen und zeitliche Abschnitte in einer wissenschaftlich klaren Form aufzubereiten.
 
-Damit bildet die Implementierung einen geschlossenen technischen Workflow von der Videoeingabe bis zur dokumentierten Flugbahnrekonstruktion. Die Kombination aus OpenCV für Bildverarbeitung, NumPy für numerische Verarbeitung und Matplotlib für Visualisierung ermöglicht eine methodisch saubere und reproduzierbare Analyse der Wurfbewegung.
+Damit bildet die Implementierung einen geschlossenen technischen Workflow von der Videoeingabe bis zur dokumentierten Flugbahnrekonstruktion. Die Kombination aus OpenCV für Bildverarbeitung, NumPy für numerische Verarbeitung und Matplotlib für Visualisierung ermöglicht eine methodisch saubere und reproduzierbare Analyse der Wurfbewegung. [@ComputerVisionIBM]
 
 ![Overlay der rekonstruierten Flugbahn](img/code4.png)
 
@@ -502,7 +502,7 @@ v_0 = \sqrt{\frac{g x_K^2}{2 \cos^2(\alpha)\,\bigl(h_0 + x_K \tan(\alpha) - h_K\
 $$
 
 **Listing 4.2: Berechnung der Anfangsgeschwindigkeit aus der Treffbedingung**
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Berechnung der Anfangsgeschwindigkeit aus der Treffbedingung" .py}
 ```python
 import numpy as np
 
@@ -524,6 +524,8 @@ h_0 + x_K \tan(\alpha) - h_K > 0
 $$
 
 Zur praktischen Berechnung wird der Bereich $x \in [0, x_K]$ in diskrete Stützstellen unterteilt. Für jede Stützstelle wird $y(x)$ ausgewertet, wodurch eine berechenbare Punktfolge entsteht, die Sollflugbahn repräsentiert.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 **Listing 4.3: Diskrete Berechnung der Sollflugbahn über $x$-Stützstellen**
 
@@ -552,6 +554,7 @@ Die Auswirkungen variierender Modellparameter auf die Form der Sollflugbahn sind
 Dieses Vorgehen ist reproduzierbar, numerisch stabil und für die Simulation verschiedener Wurfsituationen geeignet, da einzelne Parameter gezielt variiert werden können.
 
 Das Modell des schiefen Wurfs ist für diese Anwendung geeignet, weil es die wesentlichen kinematischen Zusammenhänge mit begrenzter Komplexität abbildet. Dadurch entsteht eine nachvollziehbare und technisch umsetzbare Grundlage für die Berechnung der theoretischen Sollflugbahn im Rahmen der Diplomarbeit.
+
 
 
 
