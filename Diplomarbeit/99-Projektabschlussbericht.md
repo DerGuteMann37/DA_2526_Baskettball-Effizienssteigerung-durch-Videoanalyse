@@ -1,4 +1,6 @@
 \newpage
+
+
 ## Projektabschlussbericht
 
 ### Erfolgsmessung
@@ -20,7 +22,7 @@ Ein Teilziel konnte jedoch nicht vollständig umgesetzt werden. Die **vollständ
 
 Trotz dieser Einschränkung konnte ein **funktionsfähiger Prototyp des Systems** erstellt werden, der die grundlegenden Konzepte und Funktionen demonstriert.
 
----
+
 
 #### Erreichung Terminziele
 
@@ -38,7 +40,7 @@ Im Projektverlauf kam es jedoch zu kleineren Verzögerungen, insbesondere bei de
 
 Um die gesetzten Termine trotzdem einhalten zu können, wurde entschieden, den Fokus auf die **Fertigstellung der Kernfunktionen des Systems** zu legen und die automatische Integration der Analysepipeline als zukünftige Erweiterung vorzusehen.
 
----
+
 
 #### Erreichung Kosten-/Aufwandsziele
 
@@ -48,7 +50,7 @@ Die einzigen direkten Kosten entstanden durch den **Druck der Diplomarbeit**, de
 
 Somit konnte das Projekt **innerhalb des geplanten Budgets umgesetzt werden**.
 
----
+
 
 ### Reflexion / Lessons Learned
 
@@ -60,7 +62,7 @@ Durch die Aufteilung der Aufgabenbereiche – Videoanalyse, Backend, Frontend un
 
 Gelegentlich kam es zu **Kommunikationsschwierigkeiten**, insbesondere wenn mehrere Teile des Systems gleichzeitig entwickelt wurden und Änderungen nicht sofort an alle Teammitglieder weitergegeben wurden. Diese Probleme konnten jedoch meist durch zusätzliche Abstimmungen und Gespräche im Team gelöst werden.
 
----
+
 
 #### Projektmanagement
 
@@ -74,7 +76,7 @@ Ein wichtiger Lernpunkt war, dass die **Integration verschiedener technischer Ko
 
 Für zukünftige Projekte wäre es sinnvoll, die Integration der einzelnen Komponenten bereits früher im Projekt zu testen, um mögliche Probleme rechtzeitig erkennen zu können.
 
----
+
 
 #### Sonstige Lernerfahrungen
 
@@ -90,7 +92,7 @@ Außerdem wurde erkannt, dass die **Aufteilung der Aufgaben im Team nicht immer 
 
 Insgesamt hat das Projekt jedoch gezeigt, wie wichtig **Teamarbeit, Planung und iterative Entwicklung** bei der Umsetzung komplexer Softwareprojekte sind.
 
----
+
 
 ### Nachhaltigkeitsanalyse
 
