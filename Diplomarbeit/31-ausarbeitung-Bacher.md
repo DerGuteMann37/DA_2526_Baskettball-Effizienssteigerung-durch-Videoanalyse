@@ -455,6 +455,7 @@ Im folgenden Abschnitt wird ausschließlich die theoretische Sollflugbahn eines 
 
 Für die Modellierung werden die Parameter Abwurfhöhe $h_0$, Korbhöhe $h_K$, horizontale Distanz zum Korb $x_K$, Abwurfwinkel $\alpha$, Anfangsgeschwindigkeit $v_0$ und Erdbeschleunigung $g$ verwendet.
 
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Definition der Modellparameter des Wurfmodells" .python}
 import numpy as np
 
@@ -499,8 +500,7 @@ $$
 v_0 = \sqrt{\frac{g x_K^2}{2 \cos^2(\alpha)\,\bigl(h_0 + x_K \tan(\alpha) - h_K\bigr)}}
 $$
 
-**Listing 4.2: Berechnung der Anfangsgeschwindigkeit aus der Treffbedingung**
-```python
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Berechnung der Anfangsgeschwindigkeit aus der Treffbedingung" .python}
 import numpy as np
 
 nenner = 2 * np.cos(alpha)**2 * (h_0 + x_K * np.tan(alpha) - h_K)
@@ -510,7 +510,8 @@ if nenner <= 0:
 
 v_0 = np.sqrt(g * x_K**2 / nenner)
 print(f"Erforderliche Anfangsgeschwindigkeit: {v_0:.2f} m/s")
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 Dieses Listing zeigt die direkte programmtechnische Umsetzung der Treffbedingung und die Berechnung von $v_0$.
 
@@ -523,25 +524,25 @@ $$
 Zur praktischen Berechnung wird der Bereich $x \in [0, x_K]$ in diskrete Stützstellen unterteilt. Für jede Stützstelle wird $y(x)$ ausgewertet, wodurch eine berechenbare Punktfolge entsteht, die Sollflugbahn repräsentiert.
 
 
-**Listing 4.3: Diskrete Berechnung der Sollflugbahn über $x$-Stützstellen**
-
-```python
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Diskrete Berechnung der Sollflugbahn über $x$-Stützstellen" .python}
 import numpy as np
 
 x = np.linspace(0, x_K, 200)
 y = h_0 + x * np.tan(alpha) - (g * x**2) / (2 * v_0**2 * np.cos(alpha)**2)
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Optional kann die berechnete Kurve mit Matplotlib visualisiert werden:
 
-```python
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Visualisierung der Sollflugbahn mit Matplotlib" .python}
 import matplotlib.pyplot as plt
 
 plt.plot(x, y, color="black", label="Sollflugbahn")
 plt.scatter([0, x_K], [h_0, h_K], color="black")
 plt.xlabel("x [m]"); plt.ylabel("y [m]")
 plt.grid(True, linestyle=":"); plt.legend(); plt.show()
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 
 Die Auswirkungen variierender Modellparameter auf die Form der Sollflugbahn sind in folgender Abbildung dargestellt. Die Kurven erfüllen jeweils die Treffbedingung am Korbpunkt.
 
@@ -560,9 +561,7 @@ Nach der mathematischen Bestimmung der Sollflugbahn folgt die grafische Darstell
 
 Eine kontinuierlich wirkende Flugkurve entsteht durch die feine Diskretisierung des Bereichs ($x \in [0, x_K]$). Für jeden Stützpunkt wird der entsprechende Höhenwert \(y(x)\) berechnet. Werden diese Punkte in aufsteigender Reihenfolge verbunden, ergibt sich eine glatte Parabel, die Sollflugbahn approximiert. Die Auflösung der Kurve hängt direkt von der Anzahl der gewählten Stützstellen ab.
 
-**Listing 4.4: Grunddarstellung der Sollflugbahn aus diskreten Stützpunkten**
-
-```python
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Grunddarstellung der Sollflugbahn aus diskreten Stützpunkten" .python}
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -576,7 +575,7 @@ plt.title("Berechnete Sollflugbahn")
 plt.grid(True, linestyle=":")
 plt.legend()
 plt.show()
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Das Listing zeigt die numerische Erzeugung und grafische Ausgabe der Sollkurve auf Basis bereits berechneter Modellparameter.
 
@@ -584,9 +583,7 @@ Für die wissenschaftliche Lesbarkeit müssen Diagramme einheitlich aufgebaut se
 
 Zur inhaltlichen Interpretation ist die Markierung charakteristischer Punkte wesentlich. Der Abwurfpunkt \((0, h_0)\) und die Korbposition \((x_K, h_K)\) können als Referenzpunkte direkt in die Grafik eingetragen werden. Dadurch wird die Treffbedingung visuell überprüfbar, da die Sollkurve den Zielpunkt erreicht.
 
-**Listing 4.5: Erweiterte Visualisierung mit markiertem Abwurfpunkt und Korbposition**
-
-```python
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Erweiterte Visualisierung mit markiertem Abwurfpunkt und Korbposition" .python}
 import matplotlib.pyplot as plt
 
 plt.plot(x, y, color="black", label="Sollflugbahn")
@@ -597,7 +594,9 @@ plt.xlabel("x [m]"); plt.ylabel("y [m]")
 plt.grid(True, linestyle=":")
 plt.legend()
 plt.show()
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 Die praktische Umsetzung der beschriebenen Visualisierung ist in Abbildung X als Overlay der berechneten Sollflugbahn auf einem Videoframe dargestellt.
 
 ![Overlay-Darstellung der berechneten Sollflugbahn mit markierter Abwurfposition](img/wurf1_soll_overlay.png)
@@ -612,9 +611,7 @@ Die berechnete Sollflugbahn hängt unmittelbar von den gewählten Modellparamete
 
 Der Abwurfwinkel beeinflusst vor allem die Krümmung und Gipfelhöhe der Flugkurve. Kleine Winkel erzeugen flachere Verläufe mit geringer Höhe, größere Winkel führen zu steileren und höheren Bahnen. Gleichzeitig bleibt die Treffbedingung am Zielpunkt nur für physikalisch zulässige Parameterkombinationen erfüllt. Die rechnerische Kopplung dieser Größen ist im Projekt in der Berechnung von \(v_0\) und der Bahnfunktion \(y(x)\) umgesetzt.
 
-**Listing 4.6: Berechnung von \(v_0\) und \(y(x)\) aus Modellparametern**
-
-```python
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Berechnung von \(v_0\) und \(y(x)\) aus Modellparametern" .python}
 def solve_v0_for_target(x_k: float, h0: float, h_k: float, alpha_deg: float, g: float = 9.81) -> float:
     alpha = math.radians(alpha_deg)
     denom = 2.0 * (math.cos(alpha) ** 2) * (h0 + x_k * math.tan(alpha) - h_k)
@@ -625,15 +622,13 @@ def solve_v0_for_target(x_k: float, h0: float, h_k: float, alpha_deg: float, g: 
 def y_of_x(x: np.ndarray, h0: float, alpha_deg: float, v0: float, g: float = 9.81) -> np.ndarray:
     alpha = math.radians(alpha_deg)
     return h0 + x * math.tan(alpha) - (g * x**2) / (2.0 * v0**2 * (math.cos(alpha) ** 2))
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Herkunft im Projekt:** Funktion `solve_v0_for_target` und Funktion `y_of_x` in create_sollflugbahn_figures.py (keine Klasse, Funktionsimplementierung auf Skriptebene).
 
 Die Anfangsgeschwindigkeit bestimmt die Reichweite der Flugkurve in horizontaler Richtung. Bei konstantem Winkel erhöht eine größere Geschwindigkeit die erreichbare Distanz, während zu geringe Werte dazu führen können, dass die Treffbedingung nicht erfüllt wird. Umgekehrt verschärft eine größere horizontale Distanz zum Korb die Anforderungen an \(v_0\) und den zulässigen Winkelbereich. Diese Abhängigkeit wird im Projekt durch eine systematische Suche über Winkelwerte mit physikalischer Gültigkeitsprüfung umgesetzt.
 
-**Listing 4.7: Parametersuche über Winkelbereich mit Gültigkeitsprüfung**
-
-```python
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Parametersuche über Winkelbereich mit Gültigkeitsprüfung" .python}
 for theta_deg in np.linspace(theta_min_deg, theta_max_deg, 500):
     theta = math.radians(theta_deg)
     cos_t = math.cos(theta)
@@ -648,15 +643,13 @@ for theta_deg in np.linspace(theta_min_deg, theta_max_deg, 500):
     if v0_sq <= 0:
         continue
     v0 = math.sqrt(v0_sq)
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Herkunft im Projekt:** Funktion `compute_soll_parabel` in soll_only.py (keine Klasse, Funktionsimplementierung auf Skriptebene).
 
 Für die eigentliche Kurvendarstellung wird die Flugbahn diskretisiert. Dazu wird der Bereich bis zum Zielpunkt in Stützstellen zerlegt und für jede Stützstelle die Höhe berechnet. Diese Punktfolge bildet die numerische Grundlage für die spätere Visualisierung und ermöglicht eine reproduzierbare Untersuchung verschiedener Parameterkombinationen.
 
-**Listing 4.8: Diskrete Erzeugung von Stützpunkten der Sollflugbahn**
-
-```python
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Diskrete Erzeugung von Stützpunkten der Sollflugbahn" .python}
 xs_m = np.linspace(0.0, dx_m, num_samples)
 for x_m in xs_m:
     t = x_m / (v0 * cos_t)
@@ -665,7 +658,7 @@ for x_m in xs_m:
     py = y0_px - (y_m / scale_m_per_px)
     pts.append((int(round(px)), int(round(py))))
 return pts
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Herkunft im Projekt:** Funktion `generate_soll_points` in soll_only.py (keine Klasse, Funktionsimplementierung auf Skriptebene).
 
