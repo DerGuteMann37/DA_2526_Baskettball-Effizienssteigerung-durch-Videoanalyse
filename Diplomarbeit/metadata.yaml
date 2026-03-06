@@ -17,16 +17,12 @@ da-author:
   ki-tools:
   - name: ChatGPT5.2
     zweck: Informationsbeschaffung
-  - name: Midjourney
-    zweck: Künstlerische Illustration
 
 - vorname: Nino 
   nachname: Dalipovic
   klasse: 5BHWIN
   thema: Frontend
   ki-tools:
-  - name: Github Copilot
-    zweck: Boilerplate codegenerierung, Codedokumentation
   - name: ChatGPT5.2
     zweck: Informationsbeschaffung
 
@@ -37,6 +33,8 @@ da-author:
   ki-tools:
   - name: ChatGPT5.2
     zweck: Informationsbeschaffung
+  - name: Github Copilot
+    zweck: Boilerplate codegenerierung, Codedokumentation
 
 - vorname: Bastian 
   nachname: Wolfgruber
@@ -45,11 +43,7 @@ da-author:
   ki-tools:
   - name: ChatGPT5.2
     zweck: Informationsbeschaffung
-  - name: Galileo AI
-    zweck: Setendesign sowie UI/UX Design der App
-  - name: Grammarly Go
-    zweck: Stilverbesserung sowie Rechtschreibkorrekturen
-
+    
 da-betreuer:
 - paraffe: jada
   name: DI Darko Jankovic
@@ -57,9 +51,24 @@ da-betreuer:
 - paraffe: hg
   name: Ing. DI(FH) Günther Hutter, Msc.
 
-da-kurzfassung-de: Hier kommt eine deutsche Kurzfassung hin.
+da-kurzfassung-de: Im Rahmen dieser Diplomarbeit wird ein System entwickelt, das Basketballwürfe 
+ mithilfe von Videoanalyse automatisch auswertet und Spieler*innen dabei unterstützt, ihre Wurftechnik
+ messbar zu verbessern. Ziel des Projekts ist es, eine kostengünstige und praxistaugliche Lösung zu schaffen, die insbesondere im Schul- und Amateurbereich eingesetzt werden kann. 
+ Das System analysiert Videoaufnahmen von Basketballwürfen und erkennt dabei wichtige Parameter wie Abwurfpunkt, Flugbahn, Geschwindigkeit und Winkel des Balles. 
+ Anschließend wird die reale Flugbahn (Ist-Flugbahn) mit einer berechneten optimalen Flugbahn (Soll-Flugbahn) verglichen. 
+ Auf Basis dieser Daten können Abweichungen erkannt und Verbesserungspotenziale identifiziert werden.
+ Die gewonnenen Daten werden in einer Datenbank gespeichert und durch ein Backend-System verarbeitet und statistisch ausgewertet. 
+ Über eine REST-Schnittstelle werden die Ergebnisse an ein Frontend übermittelt, in dem Spieler*innen ihre Trainingseinheiten verwalten, Würfe analysieren und statistische Auswertungen einsehen können.
+ Durch die Kombination von Videoanalyse, Datenverarbeitung und visueller Darstellung der Ergebnisse soll das System Trainerinnen und Spielerinnen objektives Feedback liefern und so langfristig zur Verbesserung der Wurftechnik beitragen.
 
-da-kurzfassung-en: Hier kommt eine englische Kurzfassung hin.
+da-kurzfassung-en: As part of this diploma thesis, a system is developed that automatically analyzes basketball shots using video analysis and helps players improve their shooting technique in a measurable way. 
+  The goal of the project is to create a cost-effective and practical solution that can be used especially in schools and amateur sports.
+  The system analyzes video recordings of basketball shots and detects important parameters such as the release point, ball trajectory, velocity, and shooting angle. 
+  The actual trajectory of the ball (actual trajectory) is then compared with a calculated optimal trajectory (ideal trajectory). 
+  Based on this comparison, deviations can be identified and areas for improvement can be determined.
+  The collected data is stored in a database and processed by a backend system where statistical evaluations are performed. 
+  Through a REST interface, the results are provided to a frontend application in which players can manage training sessions, analyze their shots, and view statistical evaluations.
+  By combining video analysis, data processing, and visual presentation of results, the system aims to provide objective feedback for players and coaches and thereby support the long-term improvement of shooting performance.
 
 
 da-kiquellen:
@@ -73,19 +82,19 @@ da-kiquellen:
 
 
 da-appendix:
-- abschnitt: Technische Dokumentation
-  pdf-file: pandoc-manual.pdf
-  seiten: 53-73
-
-- abschnitt: Betreuungsprotokolle
-  pdf-file: betreuungsprotokolle.pdf    
+- abschnitt: erstes Betreuungsprotokoll
+  pdf-file: erstesProtokoll.pdf 
+- abschnitt: zweites Betreuungsprotokoll
+  pdf-file: zweitesProtokoll.pdf
+- abschnitt: drittes Betreuungsprotokoll
+  pdf-file: drittesProtokoll.pdf   
 
 # Diplomarbeitsvereinbarungen müssen zum Schluss sein 
 
 - abschnitt: Diplomatbeitsvereinbarung Englisch
-  pdf-file: HTL-DA-Doku-EN.pdf
+  pdf-file: HTL-DA-Doku-EN-ab2021-IT-B-Bacher-Dalipovic-Gutmann-Wolfgruber.pdf
 
 - abschnitt: Diplomatbeitsvereinbarung Deutsch
-  pdf-file: HTL-DA-Doku-DE.pdf
+  pdf-file: HTL-DA-Doku-DE-ab2021-IT-B-Bacher-Dalipovic-Gutmann-Wolfgruber.pdf
   
 ---
