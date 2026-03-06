@@ -65,11 +65,13 @@ compile-output:
 
     # Builden mit pandoc. Als Basisverzeichnis springen wir ins staging. 
     # Damit sollten alle relativen Links stimmen
-		-@cd staging && pandoc "$(STAGINGDIR)"/*.md "$(STAGINGDIR)/style/"*.md *.yaml \
+		-@cd staging && \
+		ENGINE_OPT=$$(if command -v xelatex >/dev/null 2>&1; then echo "--pdf-engine=xelatex"; elif command -v lualatex >/dev/null 2>&1; then echo "--pdf-engine=lualatex"; else echo ""; fi); \
+		if [ -z "$$ENGINE_OPT" ]; then echo "WARNING: xelatex/lualatex not found; pandoc will use the default engine (may fail on Unicode)."; fi; \
+		pandoc "$(STAGINGDIR)"/*.md "$(STAGINGDIR)/style/"*.md *.yaml \
 		-o "$(OUTPUTFILE)" \
 		--template="$(STAGINGDIR)/style/template.tex" \
-		--bibliography="$(BIBFILE)" \
-		--latex-engine=xelatex 2>"$(LOGFILE)" \
+		--bibliography="$(BIBFILE)" $$ENGINE_OPT 2>"$(LOGFILE)" \
 		--csl="$(STAGINGDIR)/style/htlle-diplomarbeit.csl" \
 		--listings \
 		--metadata link-citations=true \
