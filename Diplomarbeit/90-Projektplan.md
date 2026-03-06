@@ -1,255 +1,205 @@
 # Projekthandbuch
-\textauthor{Schueler XY}
+\textauthor{Nino Dalipovic}
 
 ## Entwicklungsplan
 
 ### Projektauftrag
 
-Hier beschreiben Sie die allgemeinen Informationen zu Ihrem Maturaprojekt. Hier beschreiben sie den Projektkontext, nämlich die Ausgangssituation und Problembeschreibung
+Im Rahmen dieser Diplomarbeit wird ein System zur Analyse von Basketballwürfen entwickelt. Ziel des Projektes ist es, mithilfe von Videoanalyse, moderner Webtechnologie sowie statistischer Auswertung eine objektive Analyse der Wurftechnik zu ermöglichen.
 
+Im Basketball wird die Verbesserung der Wurftechnik üblicherweise durch wiederholtes Training und subjektives Feedback von Trainerinnen und Trainern erreicht. Diese Form der Analyse basiert jedoch hauptsächlich auf visueller Einschätzung und Erfahrung. Dadurch entstehen häufig ungenaue Bewertungen, da kleine Unterschiede in der Flugbahn des Balles oder im Abwurfwinkel nur schwer exakt wahrgenommen werden können.
 
-#### Projektziele
+Professionelle Systeme zur Bewegungsanalyse existieren zwar, sind jedoch meist sehr kostenintensiv oder erfordern spezielle Sensorik und Hardware. Diese Lösungen sind daher für Schulen oder Amateurvereine meist nicht praktikabel.
 
-Das Projektziel beschreibt den erwünschten Zustand (Sollzustand) nach dem erfolgreichen Abschluss des Projektes. Das Ziel wird wohlbedacht formuliert und durch aktives Handeln aller Projektbeteiligten erreicht. Projektziele sollten gemeinsam mit allen Projektbeteiligten erarbeitet werden.
+Das Ziel dieser Diplomarbeit besteht darin, ein softwarebasiertes System zu entwickeln, das Basketballwürfe automatisch analysieren kann. Dazu werden Videoaufnahmen von Würfen verwendet. Aus diesen Aufnahmen wird die tatsächliche Flugbahn des Basketballs ermittelt und anschließend mit einer berechneten idealen Flugbahn verglichen.
 
-#### Nicht-Ziele bzw. nicht Inhalte
+Das entwickelte System besteht aus mehreren Teilkomponenten:
 
-Nicht-Ziele sind aus mehreren Gründen wichtig. Erstens helfen sie beim Erwartungsmanagement. Zweitens schaffen sie Klarheit darüber, was erledigt werden soll. Und drittens erhöhen Nicht-Ziele die Transparenz. Denn wenn man schon früh im Projekt explizit die Bereiche definiert, die das Projekt nicht bearbeiten soll, kann dadurch eine Diskussion über genau diese Randbereiche entstehen. 
+* einer **Videoanalyse**, welche Ball und Korb erkennt und die reale Flugbahn des Basketballs rekonstruiert,
+* einem **Backend**, das Analyseergebnisse speichert und statistisch auswertet,
+* sowie einem **Frontend**, über das Benutzerinnen und Benutzer die Analyseergebnisse visualisieren können.
 
-#### Projektnutzen
+Die Architektur des Systems folgt dem Prinzip verteilter Webanwendungen, bei denen Präsentationsschicht, Logikschicht und Datenhaltung voneinander getrennt sind.
 
-Wie soll ein Außenstehender ein Projekt genehmigen, wenn nicht klar formuliert ist, WARUM das Projekt überhaupt durchgeführt werden soll? Auch hier ist es wichtig, möglichst konkret zu werden. Einen Projektnutzen z.B. mit „neueste Technik“ zu bezeichnen, ist nicht ausreichend.
+Während der Umsetzung des Projektes wurde ein funktionsfähiger Prototyp für die einzelnen Komponenten entwickelt. Die vollständige Integration der Videoanalyse in das Backend konnte jedoch nicht vollständig abgeschlossen werden, da die Analysepipeline noch keine ausreichend stabilen strukturierten Daten für eine automatisierte API-Kommunikation bereitstellt.
 
-#### Projektauftraggeber/in
+Dennoch konnte die grundlegende Systemarchitektur erfolgreich entworfen und implementiert werden.
 
-Hier beschreiben Sie wer der Projektauftraggeber ist. Falls es eine externe Firma ist können Sie hier eine kurze Beschreibung des Unternehmens (sofern Projektrelevant) einfügen.
+---
 
-#### Projekttermine
+### Projektziele
 
-Welche Termine sind Fixtermine und was sollte an diesen Terminen stattfinden ? Beispiele hierfür sind z.B: Präsentationen, Projektende, Zwischenabgaben, fest eingeplante Besprechungen / Reviews (die auch Projektrelevant sind) die auf keinen Fall vergessen werden dürfen
+Das zentrale Ziel des Projektes ist die Entwicklung eines Prototyps zur Analyse von Basketballwürfen bis zum Abschluss der Diplomarbeit im Schuljahr 2025/26.
 
+Das System soll folgende Funktionen ermöglichen:
 
+* Analyse von Basketballwürfen anhand von Videomaterial
+* Erkennung relevanter Objekte wie Basketball und Korb
+* Rekonstruktion der tatsächlichen Flugbahn des Balls (Ist-Flugbahn)
+* Berechnung einer theoretisch optimalen Flugbahn (Soll-Flugbahn)
+* Speicherung von Analyseergebnissen in einer Datenbank
+* Darstellung der Analyse im Webbrowser
 
-| Termin     | Inhalt                          |
-|-----------:|:--------------------------------|
-| 2020-12-24 | Weihnachten                     |
-| 20XX-12-24 | Projektstart                    |
-| 20XX-10-24 | Projektpräsentation             |
-| 20XX-10-24 | Erreichung Meilenstein I        |
-| 20XX-10-24 | Erste Zwischenpräsentation      |
-| 20XX-10-24 | Erreichung Meilenstein II       |
-| 20XX-10-24 | Erreichung Meilenstein III      |
-| 20XX-10-24 | Zweite Zwischenpräsentation     |
-| 20XX-10-24 | Abgabe Endversion an Betreuer   |
-| 20XX-10-24 | Abgabe Gebundene Version        |
-| 20XX-10-24 | ...                             |
+Langfristig soll ein System entstehen, das Spielerinnen und Spielern eine objektive Rückmeldung über ihre Wurftechnik gibt und dadurch gezielte Verbesserungen ermöglicht.
+
+Ein weiteres Ziel besteht darin, Trainingsdaten langfristig speichern und statistisch auswerten zu können. Dadurch können Entwicklungen über längere Trainingszeiträume hinweg analysiert werden.
+
+---
+
+### Nicht-Ziele bzw. nicht Inhalte
+
+Um den Projektumfang realistisch zu halten, wurden bestimmte Aspekte bewusst ausgeschlossen.
+
+Nicht Bestandteil dieser Diplomarbeit sind:
+
+* Entwicklung eines vollständig marktreifen Produkts
+* Integration von Echtzeittracking während eines Spiels
+* Entwicklung eigener Kamerahardware
+* Entwicklung einer mobilen Anwendung
+* vollständige Automatisierung der gesamten Analysepipeline
+
+Das Projekt konzentriert sich stattdessen auf die Entwicklung eines funktionalen Prototyps, der die grundlegenden Konzepte eines solchen Systems demonstriert.
+
+---
+
+### Projektnutzen
+
+Der Nutzen des Projektes liegt insbesondere in der objektiven Analyse sportlicher Bewegungsabläufe.
+
+Durch die automatische Auswertung von Basketballwürfen kann die Flugbahn eines Wurfes sichtbar gemacht werden. Spielerinnen und Spieler erhalten dadurch ein visuelles Feedback über die Qualität ihres Wurfes.
+
+Ein besonderer Vorteil besteht im Vergleich zwischen der tatsächlichen Flugbahn und einer berechneten idealen Flugbahn. Durch diesen Vergleich können Abweichungen erkannt werden, beispielsweise wenn ein Wurf zu flach oder zu steil ausgeführt wurde.
+
+Darüber hinaus ermöglicht das System eine langfristige Speicherung von Trainingsdaten. Dadurch können statistische Kennzahlen wie Trefferquoten oder Durchschnittswerte berechnet werden.
+
+Das entwickelte System kann insbesondere im Schul- und Amateurbereich eingesetzt werden, wo häufig keine professionellen Analysewerkzeuge verfügbar sind.
+
+---
+
+### Projektauftraggeber/in
+
+Der Auftraggeber dieser Diplomarbeit ist die HTL Leoben.
+
+HTL Leoben  
+Max Tendler-Straße 3  
+8700 Leoben  
+https://www.htl-leoben.at  
+
+Im Rahmen der praktischen Umsetzung wird außerdem mit dem Verein **Rollstuhlbasketball FlinkStones Graz** zusammengearbeitet.
+
+Der Verein unterstützt das Projekt insbesondere bei der Aufnahme von Videomaterial und stellt eine Trainingsumgebung für die Analyse von Basketballwürfen zur Verfügung.
+
+---
+
+### Projekttermine
+
+| Termin | Inhalt |
+|------:|:--------------------------------|
+| 16.06.2025 | Erster Videodrehtag im Raiffeisen Sportpark |
+| 15.10.2025 | Objekterkennung erfolgreich umgesetzt |
+| 31.10.2025 | Backend Grundstruktur implementiert |
+| 31.10.2025 | Frontend Prototyp erstellt |
+| 11.11.2025 | Erste Zwischenpräsentation |
+| 15.11.2025 | Darstellung der Ist-Flugbahn |
+| 01.12.2025 | Berechnung der Soll-Flugbahn |
+| 01.12.2025 | Vorbereitung der Backend-Frontend Verbindung |
+| 09.01.2026 | Erste Version der Diplomarbeit |
+| 06.03.2026 | Abgabe der Diplomarbeit |
 
 : Projektterminübersicht
 
+---
 
-#### Projektkosten
+### Projektkosten
 
-Hier dokumentieren Sie welche Kosten fallen Für Ihr Projekt an und wer kommt für diese Kosten auf ?
+| Meilenstein | Kostenart | Menge | Preis | Gesamtkosten | Deckung durch |
+|:-------------|:---------:|:------:|------:|-------------:|---------------|
+| Videoaufnahmen | Nutzung Sporthalle | 1 | 0 € | 0 € | Projektpartner |
+| Entwicklung | Arbeitszeit Schüler | 200 h | 0 € | 0 € | Schüler |
+| Druck Diplomarbeit | Druckkosten | 3 | 25 € | 75 € | Schüler |
 
-| Meilenstein  | Kostenart | Menge  | Preis   | Gesamtkosten | Deckung durch |
-|:-------------|:---------:|:------:|--------:|-------------:|---------------|
-| Prototyp     | Personal  |  10.00 |   15.00 | 150.00      | Schüler       |
-| Prototyp     | Hardware  |  1     |  254.00 | 254.00      | Projektpartner|
-| DA-Schreiben | Druck     |  3     |   26.00 |  53.00      | Schüler       |
+: Geplante Projektkosten
 
- : Geplante Projektkosten
- 
-Am ende sollten Sie eine Projektkostensumme ermitteln und hier angeben damit man sagen kann
-__Das Projekt kostet in Summe so und so viel Euro__. 
+Die Gesamtkosten des Projektes belaufen sich hauptsächlich auf die Druckkosten der Diplomarbeit.
 
+---
 
-Am Ende der Diplomarbeit fügen Sie hier noch eine Liste der tatsächlich angefallenen Kosten ein.
+### Projektrisiken
 
-#### Projektrisiken
-
-Hier geben Sie an welche Risiken auf Ohr Projekt zutreffen können, und auch wie wahrscheinlich es ist das dieses Risiko eintritt.
-Eine Übersicht über Risiken finden sie hier: https://projekte-leicht-gemacht.de/blog/pm-in-der-praxis/130-projektrisiken-beispiele/
-
-Hier ein Beispiel:
-
-| Risiko         | EW  | Auswirkungen     | Maßnahmen     |
-|:--------------:|:---:| :----------------|:--------------|
-| Überziehen der Kosten | 15% | Erhöhte Kosten für Schüler | Budgetierung |
-| Ungenaue Schätzungen | 30% | Ungenaue Schätzungen führen zu Problem bezüglich Terminen und Budget. | Schätzungen mit Fachkollegen absprechen|
-| Verzögerungen beim Aufbau von Hard- und Software | 10% | Prototyp wird nicht rechtzeitig zur Endpräsentation fertig | Früh genug anfangen |
+| Risiko | EW | Auswirkungen | Maßnahmen |
+|:--------------|:---:|:----------------|:--------------|
+| Videoqualität zu gering | 25% | Ball kann nicht zuverlässig erkannt werden | bessere Aufnahmebedingungen |
+| Tracking verliert Ball | 20% | Flugbahn kann nicht korrekt bestimmt werden | Anpassung der Trackingparameter |
+| Probleme bei Systemintegration | 20% | Backend und Analyse können nicht verbunden werden | Anpassung der Datenstruktur |
+| Zeitmangel | 15% | Projekt kann nicht vollständig integriert werden | Priorisierung der Kernfunktionen |
 
 : Projektrisiken
 
-### Projektorganisation
+---
 
-#### Projektbeteiligte
-Hier wird definiert wer (welche Personen) an diesem Projekt beteiligt im Prinzip beteiligt ist.
+## Projektorganisation
 
-| Vorname     | Nachname     | Organisation | Kontaktinfos      |
+### Projektbeteiligte
+
+| Vorname | Nachname | Organisation | Kontakt |
 |:------------|:-------------|:-------------|:------------------|
-| Joltawan    | Barodscheff  | HTL Leoben   | jb@htl-leoben.at  |
-| Frank       | Borland      | Firma XY     | frank@borla.nd    |
-| ...         | ...          | ...          | ...               |
+| Fabian | Bacher | HTL Leoben | Schüler |
+| Nino | Dalipovic | HTL Leoben | Schüler |
+| Florian | Gutmann | HTL Leoben | Schüler |
+| Bastian | Wolfgruber | HTL Leoben | Schüler |
+| Darko | Jankovic | FlinkStones Graz | Betreuer |
+| Guenther | Hutter | HTL Leoben | Betreuer |
+| Christian | Hofer | HTL Leoben | Direktion |
 
 : Projektbeteiligte
 
-Unter Kontaktinfos können neben der Emailadresse natürlich auch noch andere Informationen wie Telefonnunmmer, Postanschrift, usw. stehen. ... Im Prinzip alles was notwendig ist um die Person zu erreichen wenn es notwendig ist. 
+---
 
-#### Projektrollen
+### Projektrollen
 
-Hier werden den Kontakten von oben konkrete Rollen zuewiesen.
-
-| Projektrolle           | Rollenbeschreibung     | Name              |
+| Projektrolle | Rollenbeschreibung | Name |
 |------------------------|------------------------|-------------------|
-| Projektleiter | Verantwortlicher für Einhaltung des Projektrahmens | Joltawan Barodscheff |
-| Auftraggeber | Auftraggeber der internen Diplomarbeit | Frank Borland |
-| Betreuer | Schulischer Betreuer | G. Hutter |
-| Betreuer | Schulischer Betreuer | A. Poetscher |
+| Backend Entwicklung | Entwicklung der Serverlogik und Datenbank | Florian Gutmann |
+| Frontend Entwicklung | Entwicklung der Benutzeroberfläche | Nino Dalipovic |
+| Videoanalyse Ist-Flugbahn | Analyse der realen Flugbahn | Fabian Bacher |
+| Videoanalyse Soll-Flugbahn | Berechnung der optimalen Flugbahn | Bastian Wolfgruber |
 
 : Projektrollen
 
-Gerne können Sie hier auch noch zusätzlich eine Grafik oder ein Organisationsdiagramm einbauen.
-
-![Projektorganisationsdiagramm](img/projektorganisation.png){width=50%}
-
-### Vorgehen bei Änderungen
-
-Hier dokumentieren sie betreffend des Meilensteinplans oder der Anwendungsfälle: 
-
-* Wer wird informiert, 
-* wer muss zustimmen, 
-* wo werden die Änderungen wie vermerkt?
-
-Das dient in erster Linie dazu um ein einheitliches Vorgehen definiert zu haben.
+---
 
 ## Meilensteine
 
-Der Begriff taucht im Projektmanagement sehr häufig auf. Meilensteine sind wichtige Punkte im Projektverlauf. Oft werden sie auch als Prüfpunkte bezeichnet.
+### 16.06.2025: Videoaufnahmen durchgeführt
 
-Generell kann ein Meilenstein ein Ereignis sein, an dem
+* Aufnahme von Trainingswürfen im Raiffeisen Sportpark
+* Erstellung eines ersten Datensatzes von Basketballwürfen
 
-* etwas abgeschlossen ist,
-* etwas begonnen wird oder
-* über die weitere Vorgehensweise entschieden wird
+### 15.10.2025: Objekterkennung implementiert
 
-Meilensteine werden meist am Ende von Projektphasen definiert. Auch innerhalb von Phasen kann es zusätzliche Meilensteine geben.
+* Ball und Korb können im Video erkannt werden
+* erste Trackingversuche durchgeführt
 
-Meilensteine verlaufen nie über eine Zeitdauer. Nie. Sie sind lediglich Entscheidungspunkte
+### 31.10.2025: Backend und Frontend Prototyp erstellt
 
-Hier ein Beispiel wie die Meilensteine im Fall einer aussehen können
+* Backend Grundstruktur implementiert
+* Datenbankanbindung funktioniert
+* Frontend Benutzeroberfläche entwickelt
 
-### 2020-09-15: Projektmanagement abgeschlossen
+### 01.12.2025: Flugbahnberechnung umgesetzt
 
-- Projekthandbuch ist fertig
-- Serverinfrastruktur ist hergestellt
-- Bestellungen sind abgessendet
+* Ist-Flugbahn aus Videodaten rekonstruiert
+* Soll-Flugbahn mathematisch berechnet
 
-### 2020-11-01: Genehmigung der DA
+Die Integration zwischen Analyse, Backend und Frontend konnte jedoch nicht vollständig abgeschlossen werden, da die Videoanalyse noch keine stabile Datenstruktur für eine automatische Übergabe der Messwerte bereitstellt.
 
-- Einreichen des Antrags durch die Schüler/innen
-- DA Dokumentation wurde ausgefüllt und unterschrieben
+Die aktuell implementierte Analysepipeline liefert ihre Ergebnisse nur über einen manuellen Ausführungsschritt. Das bedeutet, dass die Analyse der Videodaten derzeit manuell gestartet und die erzeugten Ergebnisse ebenfalls manuell weiterverarbeitet werden müssen. Eine automatisierte Übergabe der Analyseergebnisse an das Backend über eine definierte Schnittstelle (z. B. eine REST-API) konnte daher nicht umgesetzt werden.
 
-### 2020-11-26: Literaturrecherche abgeschlossen
+Aufgrund dieser manuellen Ausführung (Manual Release) ist keine kontinuierliche Datenverarbeitung möglich. Das Backend erwartet jedoch strukturierte und automatisch übertragene Messdaten, um diese in der Datenbank zu speichern und für das Frontend bereitzustellen.
 
-- Literatur zum Thema XY gesucht und in bibtex vermerkt
-- Aktellen Stand der Forschung erhoben
-- Verschriftlichung des Literaturteils begonnen 
+Da diese automatische Schnittstelle zwischen Analysepipeline und Backend noch nicht implementiert werden konnte, wurde die direkte Anbindung von der Analyse an das Frontend im Rahmen dieser Diplomarbeit nicht fertiggestellt. Die grundlegende Architektur für die Integration wurde jedoch vorbereitet, sodass eine spätere Erweiterung des Systems möglich bleibt.
 
-### 2020-12-17: Prototyp ist funktionell
+### 06.03.2026: Diplomarbeit abgeschlossen
 
-- DB mit Tabelle für Benutzer.
-- DB Kommunikation zur Anwendung (inkl. Dokumentation)
-- Es gibt in der Anwendung einen /Admin/ Benutzer. Dieser Benutzer kann weitere Benutzer in den Rollen /Lehrende/ und bzw. oder /Studierende/ anlegen.
-      
-### 2021-01-10: Applikation fertiggestellt
-
-- Lehrende sind dazu in der Lage Tests anzulegen.
-- Studenten können einen ihnen zugewiesenen Test absolvieren.
-
-### 2021-01-10: Review und Überarbeitung fertig
-
-- Der Quellcode ist gemeinsam mit den Projektpartnern reviewt
-- Quellcodedokumentation abgeschlossen (Javadoc)
-- Projekt baut auf eigenem Buildserver (Continous Integration)
-
-### 2021-02-03: Diploarbeit fertig verschriftlicht 
-
-- Stilfehler sind behoben
-- DA Dokumentationsblatt ist unterschrieben, eingescannt und im Hauptdokument enthalten 
-- Praxisteil ist ebgeschlossen und verschriftlicht
-- Informationen sind im DA Portal eingegeben
-- Unterschriebene DA Betreuungsprotokolle sind in der DA enthalten
-- DA liegt dem Betreuer in ausgedruckter Form vor
-    
-
-## Anwendungsfälle
-
-Hier beschreiben Sie die Anwendungsfälle (=UseCases) Ihrer Anwendung / Diplomarbeit. Dabei sollte die Beschreibung auf hohem Niveau (also ohne implementierungsspezifische Details) erfolgen und typischerweise so benannt sein, wie die Ziele aus Sicht der Akteure heißen: Mitglied anmelden, Geld abheben, Auto zurückgeben.
-
-Jeder Anwendungsfall wird im selben Muster beschrieben. In den folgenden Absätzen ist zuerst eine allgemeine Beschreibung eines solchen Anwendungsfalls zu finden und dann ein Beispiel dazu.
-
-Damit man auch versteht wer mit welchem Anwendungsfall agiert bietet es sich an hier eine Übersichtsgrafik zu erstellen:
-
-![Übersicht Anwendungsfälle](img/anwendungsfalldiagramm.png){width=60%}
-
-\newpage
-### Anwendungsfallname
-Anwendungsfälle haben einen eindeutigen Namen aus dem man auf den Inhalt des Anwendungsfalls schließen kann. Wenn Sie agil arbeiten dann stellt ein Anwendungsfall eine UserStory dar welche im Backlog liegt und im Laufe des Projekts (in einem Sprint) abgearbeitet wird.
-
-#### Kurzbeschreibung
-Hier erfolgt eine kurze Beschreibung, was im Anwendungsfall passiert. Kurz bedeutet, dass es zwei oder drei Zeilen sind, selten mehr.
-      
-#### Trigger
-Der fachliche Grund bzw. die Gründe dafür, dass dieser Anwendungsfall ausgeführt 
-
-#### Vorbedingung
-Alle Bedingungen, die erfüllt sein müssen, damit dieser Anwendungsfall ausgeführt werden kann. Gibt es keine Vorbedingungen, so steht hier "keine".
-      
-#### Nachbedingung
-Der Zustand, der nach einem erfolgreichen Durchlauf des Anwendungsfalls erwartet wird.
-
-#### Akteure
-Akteure sind beteiligte Personen oder Systeme außerhalb (!) des beschriebenen Systems. Z. B. Anwender, angemeldeter Anwender, Kunde, System, Abrechnungsprozess.
-
-#### Standardablauf
-Hier wird das typische Szenario dargestellt, das leicht zu verstehen oder der am häufigsten vorkommende Fall ist. An seinem Ende steht die Zielerreichung des Primärakteurs. Die Ablaufschritte werden nummeriert und meist in strukturierter Sprache beschrieben. Ablaufpläne können jedoch ebenfalls benutzt werden, wenn es angebracht erscheint. Mittels der UML können diese Ablaufschritte in Aktivitätsdiagrammen oder Anwendungsfall-orientierten Sequenzdiagrammen dargestellt werden.
-
-#### Fehlersituationen
-Dies sind Szenarien, die sich außerhalb des Standardablaufs auch bei der (versuchten) Zielerreichung des Anwendungsfalls ereignen können. Sie werden meistens als konditionale Verzweigungen der normalen Ablaufschritte dargestellt. An ihrem Ende steht ein Misserfolg, die Zielerreichung des Primärakteurs oder eine Rückkehr zum Standardablauf.
-
-#### Systemzustand im Fehlerfall
-Der Zustand, der nach einem erfolglosen Durchlauf des Anwendungsfalls erwartet wird.
-
-
-\newpage
-### Benutzer Anlegen
-
-#### Kurzbeschreibung
-Der Benutzer "Admin" kann auf Anfrage einen neuen Benutzer als "Lehrende" und bzw. oder "Studierende" anlegen
-
-#### Trigger
-Admin legt auf Anfrage eines Benutzers einen neuen Account an
-
-#### Vorbedingung
-Benutzer als "Admin" angemeldet
-      
-#### Nachbedingung
-Es existiert ein Eintrag in der DB Benutzer Tabelle für den neu erstellten Benutzer. (Dieser kann sich anschließend in der Anwendung anmelden)
-
-#### Akteure
-* Admin
-
-#### Fehlersituationen
-Admin bricht die Aktion ab
-
-#### Systemzustand im Fehlerfall
-Benutzer wird nicht angelegt und wird verworfen
-
-#### Standardablauf:
-
-1. Admin drückt Button, um einen neuen Benutzer anzulegen
-2. Es öffnet sich ein Formular, indem die nötigen Benutzer-Informationen eingegeben werden (Name, Adresse, Telephonnummer, E-Mail, Geburtsdatum, Passwort-Hash, Rolle). Der neue Benutzer muss mindestens einer der Rollen "Lehrende" und "Studierende" angehören
-
-#### Alternativabläufe:
-
-* Admin drückt den Button, um die Aktion abzubrechen 
+* Dokumentation fertiggestellt
+* Systemprototyp demonstriert
