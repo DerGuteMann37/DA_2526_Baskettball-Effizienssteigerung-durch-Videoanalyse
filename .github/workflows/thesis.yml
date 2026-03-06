@@ -16,29 +16,9 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Install prerequisites (pandoc, rsync, TeX Live xetex + language packs)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc rsync texlive-xetex texlive-fonts-recommended texlive-latex-extra lmodern texlive-lang-german
-
-      - name: Ensure `ulem.sty` is available
-        run: |
-          # Re-install texlive-latex-extra to be safe and update filename database
-          sudo apt-get update
-          sudo apt-get install -y texlive-latex-extra
-          sudo mktexlsr || true
-          echo "kpsewhich ulem.sty:"; kpsewhich ulem.sty || true
-          ls -l $(kpsewhich ulem.sty 2>/dev/null) || true
-
-      - name: Build diploma thesis (local runner)
-        working-directory: Diplomarbeit/da-base-template
-        run: |
-          # Use the repository's Diplomarbeit folder as the source dir
-          make pdf SOURCEDIR=.. 
-
-      - name: Upload produced PDF (if any)
-        if: always()
-        uses: actions/upload-artifact@v4
+      - name: Build And Send Diploma Thesis (template action)
+        uses: ./Diplomarbeit/da-base-template
         with:
-          name: diplomarbeit-pdf
-          path: Diplomarbeit/da-base-template/staging/diplomarbeit.pdf
+          thesis-path: Diplomarbeit
+          dockerhub-username: bytebang
+          dockerhub-repository: htlle-da-builder
