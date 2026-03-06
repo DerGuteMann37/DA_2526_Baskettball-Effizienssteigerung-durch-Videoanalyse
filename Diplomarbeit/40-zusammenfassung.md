@@ -1,14 +1,13 @@
 # Zusammenfassung
 
-Hier schreiben Sie gemeinsam eine Zusammenfassung der gesamten Arbeit, in der sie auf einigen (wenigen) Seiten nochmals die Aufgabenstellung und die durch Ihre Diplomarbeit gefundenen Resultate beschreiben, wobei in der auch auf den Entstehungsprozess, persönliche Erfahrungen, Probleme bei der Durchführung,Verbesserungsmöglichkeiten, mögliche Erweiterungen usw. eingegangen werden kann.
-War das Thema richtig gewählt, was wurde konkret erreicht, welche Punkte bliebenoffen und wie könnte von hier aus weitergearbeitet werden?
+Ziel dieser Diplomarbeit war die Entwicklung eines Systems zur Effizienzsteigerung von Basketballwürfen durch Videoanalyse. Dafür wurden vier zentrale Bereiche bearbeitet: die theoretischen Grundlagen, die Analyse der Ist- und Soll-Flugbahn, das Backend sowie das Frontend. Gemeinsam bilden diese Teile ein Gesamtsystem, mit dem Würfe aus Videomaterial analysiert, gespeichert und übersichtlich dargestellt werden können.
 
-Dabei gehen Sie nicht ins Detail (dafür sind die Detailkapitel da) sondern beschreiben wie Ihre Teilaufgaben zur Lösung des Gesamtproblems beigetragen haben.
+Im theoretischen Teil wurden die fachlichen und technischen Grundlagen erarbeitet. Dazu gehören unter anderem Objekt-Tracking, Videoanalyse, Datenverarbeitung, REST-Schnittstellen, relationale Datenbanken und moderne Webentwicklung. Diese Inhalte bildeten die Grundlage für die praktische Umsetzung.
 
-Zum Schluss geben Sie noch einen Ausblick was die nächsten Schritte sein könnten und wo man bei Ihrer Arbeit anknüpfen könnte.
+Ein wesentlicher Teil der Arbeit war die Videoanalyse des Basketballwurfs. Dabei wurde die tatsächliche Flugbahn des Balls aus Videodaten ermittelt und als Ist-Flugbahn dargestellt. Zusätzlich wurde die gemeinsame Visualisierung von Ist- und Soll-Flugbahn umgesetzt, um Abweichungen direkt sichtbar zu machen. Da automatische Ballerkennung unter realen Bedingungen nicht zuverlässig genug funktionierte, wurde eine manuelle Initialisierung gewählt, um genauere Ergebnisse zu erreichen.
 
+Im Backend wurde ein Spring-Boot-System entwickelt, das Analyseergebnisse speichert, verarbeitet und über eine REST-Schnittstelle bereitstellt. Damit können Spieler-, Trainings- und Wurfdaten dauerhaft verwaltet und für statistische Auswertungen genutzt werden. Im Frontend wurde eine browserbasierte Anwendung umgesetzt, die Login, Dashboard, Video-Upload sowie Analyse- und Statistikansichten bietet. Dadurch wurde eine benutzerfreundliche Oberfläche für die spätere Gesamtnutzung geschaffen.
 
+Rückblickend war das Thema gut gewählt, da es einen praktischen Nutzen im Sportbereich mit mehreren technischen Disziplinen verbindet. Erreicht wurde ein funktionsfähiger Prototyp, bei dem die wichtigsten Komponenten bereits umgesetzt wurden. Herausforderungen ergaben sich vor allem bei der automatischen Objekterkennung, der Datenkopplung und der Abstimmung zwischen den Projektteilen.
 
-## Lesen und lesen lassen
-
-Wenn die Arbeit fertig ist, sollten Sie diese zunächst selbst nochmals vollständig undsorgfältig durchlesen, auch wenn man vielleicht das mühsam entstandene Produktlängst nicht mehr sehen möchte. Zusätzlich ist sehr zu empfehlen, auch einer weiterenPerson diese Arbeit anzutun – man wird erstaunt sein, wie viele Fehler man selbstüberlesen hat.
+Für die Zukunft bieten sich mehrere Erweiterungen an, etwa eine robustere automatische Ballerkennung, die vollständige Live-Anbindung aller Systemteile, zusätzliche Statistikfunktionen und eine weitere Optimierung des Frontends. Insgesamt entstand eine gute Grundlage, auf der zukünftige Arbeiten direkt aufbauen können.
