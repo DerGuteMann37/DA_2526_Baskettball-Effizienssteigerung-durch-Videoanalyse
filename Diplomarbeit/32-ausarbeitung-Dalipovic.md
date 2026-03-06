@@ -53,9 +53,9 @@ Gleichzeitig entsteht dadurch die Notwendigkeit zusätzlicher Mechanismen zur Ve
 
 Die klare Trennung von Client- und Serververantwortlichkeiten bildet die architektonische Grundlage moderner Webanwendungen und ermöglicht eine modulare Weiterentwicklung beider Systemseiten.
 
-![Client-Server-Kommunikation als Mehrschichtprinzip](img/threeTierArchitecture.jpg){ width=75% }
+![Client-Server-Kommunikation als Mehrschichtprinzip ](img/threeTierArchitecture.jpg){ width=85% }
 
-Abbildung: Vereinfachte Darstellung einer Webanwendung mit Präsentationsschicht (Client), Logikschicht (Server) und Datenhaltung (Datenbank).
+Abbildung: Vereinfachte Darstellung einer Webanwendung mit Präsentationsschicht (Client), Logikschicht (Server) und Datenhaltung (Datenbank). Quelle: \cite{algomaster-client-server}
 
 
 ### Strukturierung von Inhalten mit HTML
@@ -64,9 +64,9 @@ Die HyperText Markup Language (HTML) ist die standardisierte Auszeichnungssprach
 
 Ein HTML-Dokument besteht aus einer hierarchischen Baumstruktur von Elementen. Diese Struktur wird im Browser als sogenanntes Document Object Model (DOM) repräsentiert [@fowler2002]. Das DOM bildet das Dokument als Baum aus Knoten ab, wobei jedes HTML-Element einem Objekt im Speicher entspricht.
 
-![DOM-Struktur eines HTML-Dokuments](img/html_dom.jpg){ width=70% }
+![DOM-Struktur eines HTML-Dokuments](img/html_dom.jpg){ width=85% }
 
-Abbildung: Baumstruktur des Document Object Models (DOM) als interne Repräsentation eines HTML-Dokuments im Browser.
+Abbildung: Baumstruktur des Document Object Models (DOM) als interne Repräsentation eines HTML-Dokuments im Browser. Quelle: \cite{tutorialspoint-dom}
 
 Die semantische Strukturierung durch HTML-Elemente wie:
 
@@ -87,9 +87,9 @@ Cascading Style Sheets (CSS) dienen der visuellen Gestaltung von HTML-Dokumenten
 
 Grundlage der CSS-Darstellung ist das sogenannte Box-Modell [@w3c-box-2018]. Jedes HTML-Element wird als rechteckige Box interpretiert, bestehend aus:
 
-![CSS Box Model](img/cssBoxModel.png){ width=60% }
+![CSS Box Model](img/cssBoxModel.png){ width=80% }
 
-Abbildung: Darstellung des CSS Box Models mit Content, Padding, Border und Margin als Grundlage für Layout und Abstände.
+Abbildung: Darstellung des CSS Box Models mit Content, Padding, Border und Margin als Grundlage für Layout und Abstände. Quelle: \cite{gfg-css-box}
 
 - Content (Inhaltsbereich)
 - Padding (Innenabstand)
@@ -119,9 +119,9 @@ JavaScript besitzt Zugriff auf das DOM und kann somit:
 
 Das Ausführungsmodell von JavaScript basiert auf einem ereignisgesteuerten Paradigma mit einer Event-Loop-Mechanik [@mdn-execution-model-2023]. Ereignisse wie Mausklicks, Tastatureingaben oder Netzwerkantworten werden in einer Warteschlange verarbeitet. Dadurch können asynchrone Operationen ausgeführt werden, ohne die Benutzeroberfläche zu blockieren.
 
-![JavaScript Event Loop](img/Event-Loop-in-JavaScript.jpg){ width=80% }
+![JavaScript Event Loop](img/Event-Loop-in-JavaScript.jpg){ width=85% }
 
-Abbildung: JavaScript-Ausführungsmodell mit Call Stack, Web APIs, Callback Queue und Event Loop zur Verarbeitung asynchroner Aufgaben.
+Abbildung: JavaScript-Ausführungsmodell mit Call Stack, Web APIs, Callback Queue und Event Loop zur Verarbeitung asynchroner Aufgaben. Quelle: \cite{gfg-event-loop}
 
 Ein zentrales Konzept ist dabei die asynchrone Kommunikation mit Servern. Über HTTP-Anfragen können Daten abgerufen oder gesendet werden, ohne dass die gesamte Seite neu geladen werden muss. Diese Technik bildet die Grundlage moderner interaktiver Webanwendungen.
 
@@ -148,9 +148,9 @@ Eine Single Page Application (SPA) ist eine Webanwendung, die innerhalb eines ei
 
 SPAs verwenden asynchrone HTTP-Anfragen, um Daten vom Server abzurufen. Diese Daten werden anschließend in bestehende DOM-Strukturen eingebettet oder führen zu gezielten Benutzeroberflächen-Updates. Die wahrgenommene Performance verbessert sich, da vollständige Seitenneuladungen entfallen.
 
-![Grundprinzip einer Single Page Application](img/spaArchitecture.jpeg){ width=80% }
+![Grundprinzip einer Single Page Application](img/spaArchitecture.jpeg){ width=95% }
 
-Abbildung: SPA-Prinzip: initiales Laden der Anwendung und dynamische Aktualisierung von Inhalten über asynchrone Backend-Kommunikation.
+Abbildung: SPA-Prinzip: initiales Laden der Anwendung und dynamische Aktualisierung von Inhalten über asynchrone Backend-Kommunikation. Quelle: \cite{gfg-spa}
 
 Typische Merkmale einer SPA sind:
 
@@ -268,9 +268,9 @@ Besonders relevant ist die Zustandslosigkeit. Jede Anfrage enthält alle notwend
 
 Die einheitliche Schnittstelle sorgt dafür, dass Interaktionen standardisiert über HTTP-Methoden und klar definierte Ressourcen erfolgen. Dies erhöht die Interoperabilität zwischen Systemen.
 
-![REST-Kommunikation über HTTP](img/restApiDiagram.jpeg){ width=75% }
+![REST-Kommunikation über HTTP](img/restApiDiagram.jpeg){ width=85% }
 
-Abbildung: REST-Kommunikation zwischen Client und Server über HTTP-Methoden und strukturierte Datenaustauschformate (z. B. JSON).
+Abbildung: REST-Kommunikation zwischen Client und Server über HTTP-Methoden und strukturierte Datenaustauschformate (z. B. JSON). Quelle: \cite{medium-rest-api}
 
 ### Ressourcenorientierung und HTTP-Semantik
 
@@ -367,9 +367,9 @@ Monolithische Frontend-Architekturen können somit kurzfristig effizient sein, s
 
 Als Reaktion auf die Skalierungsprobleme monolithischer Ansätze etablierten sich komponentenbasierte Architekturen. In diesem Modell wird die Benutzeroberfläche in eigenständige, wiederverwendbare Bausteine unterteilt. Jede Komponente kapselt Struktur, Darstellung und häufig auch einen Teil der Logik.
 
-![Komponentenbasierte Struktur einer Anwendung](img/componentArchitecture.png){ width=80% }
+![Komponentenbasierte Struktur einer Anwendung](img/componentArchitecture.png){ width=95% }
 
-Abbildung: Komponentenbasierte Architektur: UI wird in modulare Bausteine zerlegt, die unabhängig entwickelt und wiederverwendet werden können.
+Abbildung: Komponentenbasierte Architektur: UI wird in modulare Bausteine zerlegt, die unabhängig entwickelt und wiederverwendet werden können. Quelle: \cite{sam-component-architecture}
 
 Die Vorteile dieses Ansatzes sind:
 
@@ -487,7 +487,7 @@ Technische Skalierbarkeit beschreibt die Fähigkeit eines Systems, mit steigende
 
   ![Beispiel einer skalierbaren Webarchitektur](img/Web_Application_Architecture_Diagram__diagram_.png){ width=95% }
 
-Abbildung: Beispielhafte skalierbare Webarchitektur mit Load Balancer, Services, Caching und Datenhaltung zur Verarbeitung hoher Last.
+Abbildung: Beispielhafte skalierbare Webarchitektur mit Load Balancer, Services, Caching und Datenhaltung zur Verarbeitung hoher Last. Quelle: \cite{litslink-web-architecture}
 
 Organisatorische Skalierbarkeit hingegen beschreibt die Fähigkeit eines Projekts, parallele Entwicklung durch mehrere Entwickler zu ermöglichen. Hier spielen klare Architekturprinzipien und modulare Strukturen eine zentrale Rolle.
 
@@ -538,9 +538,9 @@ In zustandslosen Architekturen wird Authentifizierung häufig über Token realis
 
 Ein JWT enthält strukturierte Claims über die Identität eines Benutzers und wird kryptographisch signiert. Der Client sendet dieses Token bei jeder Anfrage mit, wodurch der Server die Identität überprüfen kann, ohne einen Sitzungszustand speichern zu müssen.
 
-![JWT-Authentifizierungsablauf](img/JwtAuthenticationFlow.png){ width=85% }
+![JWT-Authentifizierungsablauf](img/JwtAuthenticationFlow.png){ width=95% }
 
-Abbildung: Token-basierte Authentifizierung mit JWT: Token-Ausstellung und Übermittlung bei weiteren Requests zur Identitätsprüfung.
+Abbildung: Token-basierte Authentifizierung mit JWT: Token-Ausstellung und Übermittlung bei weiteren Requests zur Identitätsprüfung. Quelle: \cite{ringcentral-jwt}
 
 Vorteile tokenbasierter Authentifizierung:
 
