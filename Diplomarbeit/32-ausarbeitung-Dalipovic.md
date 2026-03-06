@@ -586,10 +586,6 @@ Webanwendungen, die personenbezogene Daten verarbeiten, müssen diese Prinzipien
 
 
 
-
-
-
-
 ## Praxisteil – Frontend
 
 ### Überblick über die Umsetzung
@@ -636,7 +632,7 @@ Diese Aufteilung sorgt dafür, dass UI, Logik und Netzwerkkommunikation klar get
 
 Für das Design wird **Tailwind CSS** verwendet (Utility-First). Die Einbindung erfolgt direkt über ein CDN im HTML, wodurch kein zusätzlicher Build-Schritt nötig ist.
 
-Die folgende Konfiguration zeigt die Integration und Anpassung von Tailwind CSS innerhalb der Datei index.html. Dabei werden projektspezifische Farben, Schriftarten und Designparameter definiert, die im gesamten Frontend verwendet werden:
+Die folgende Konfiguration zeigt die Integration und Anpassung von Tailwind CSS innerhalb der Datei `index.html`. Dabei werden projektspezifische Farben, Schriftarten und Designparameter definiert, die im gesamten Frontend verwendet werden:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Tailwind Konfiguration im HTML" .html}
 <script id="tailwind-config">
@@ -668,15 +664,13 @@ tailwind.config = {
 </script>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
-In der Konfiguration werden u. a. festgelegt:
+In der Konfiguration werden unter anderem folgende Aspekte festgelegt:
 
 - Farbschema der Anwendung
-- Dark-Mode-Unterstützung
-- wiederverwendbare Design-Tokens (z. B. für Karten/Buttons)
+- Unterstützung für Dark Mode
+- wiederverwendbare Design-Tokens für Oberflächenelemente
 
-Dadurch entsteht ein konsistentes Erscheinungsbild über alle UI-Komponenten.
+Dadurch entsteht ein konsistentes Erscheinungsbild über alle UI-Komponenten hinweg.
 
 \newpage
 
@@ -726,8 +720,6 @@ Die Struktur der Authentifizierungsoberfläche ist im HTML-Dokument der Anwendun
 
 Der folgende HTML-Code zeigt die Struktur der Authentifizierungsformulare im Frontend. Dabei werden Eingabefelder für Benutzername bzw. E-Mail sowie Passwort bereitgestellt:
 
-Der folgende HTML-Code zeigt die Struktur der Authentifizierungsformulare im Frontend. Dabei werden Eingabefelder für Benutzername bzw. E-Mail sowie Passwort bereitgestellt:
-
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="HTML-Struktur der Auth-Formulare" .html}
 <div id="loginForm" class="space-y-4">
 
@@ -768,13 +760,6 @@ focus:border-primary">
 
 Die Formulare enthalten mehrere definierte Eingabeelemente sowie Buttons zur Ausführung der jeweiligen Aktionen. Über eindeutige Element-IDs können diese Elemente im JavaScript-Code angesprochen werden.
 
-Typische Elemente innerhalb der Struktur sind:
-
-- Textfelder zur Eingabe von Benutzerinformationen
-- Passwortfelder
-- Buttons zum Auslösen von Login oder Registrierung
-- Bereich zur Anzeige möglicher Fehlermeldungen
-
 Diese Struktur bildet die Grundlage für die spätere Interaktionslogik der Anwendung.
 
 \newpage
@@ -810,23 +795,6 @@ Die Anwendung besitzt zwei zentrale Zustände der Benutzeroberfläche:
 - **Hauptansicht der Anwendung** (Dashboard)
 
 Beim Start der Anwendung ist nur der Authentifizierungsbereich sichtbar. Nach erfolgreicher Anmeldung wird dieser ausgeblendet und das Dashboard angezeigt.
-
-Ein vereinfachter Codeausschnitt zeigt diese Logik:
-
-~~~javascript
-function showAuth() {
-  authSection.style.display = '';
-  appMain.style.display = 'none';
-  appMain.classList.add('hidden');
-}
-
-function showMain() {
-  authSection.style.display = 'none';
-  appMain.style.display = '';
-  appMain.classList.remove('hidden');
-  loadUserData();
-}
-~~~
 
 Durch diese Technik kann der Benutzer zwischen verschiedenen Bereichen wechseln, ohne dass eine neue Seite geladen werden muss.
 
@@ -873,18 +841,6 @@ Der Ablauf des Login-Prozesses besteht aus mehreren Schritten:
 4. Verarbeitung der Serverantwort  
 5. Aktualisierung der Benutzeroberfläche  
 
-Ein vereinfachter Codeausschnitt zeigt das Auslesen der Eingaben:
-
-~~~javascript
-const email = loginEmail.value.trim();
-const password = loginPassword.value.trim();
-
-if (!email || !password) {
-  showError("Please fill in all fields");
-  return;
-}
-~~~
-
 Erfolgt eine erfolgreiche Authentifizierung, wird der Benutzerzustand gespeichert und anschließend die Hauptansicht der Anwendung geladen.
 
 \newpage
@@ -928,23 +884,6 @@ currentUser = JSON.parse(raw);
 
 Beim Login wird das Benutzerobjekt zunächst im Arbeitsspeicher der Anwendung gespeichert und anschließend im `localStorage` abgelegt. Beim Start der Anwendung kann dieser gespeicherte Zustand wieder geladen werden.
 
-Ein vereinfachter Codeausschnitt zeigt dieses Prinzip:
-
-~~~javascript
-let currentUser = null;
-
-function saveUser(user) {
-  localStorage.setItem('currentUser', JSON.stringify(user));
-}
-
-function loadUser() {
-  const raw = localStorage.getItem('currentUser');
-  if (raw) {
-    currentUser = JSON.parse(raw);
-  }
-}
-~~~
-
 Durch diese Vorgehensweise bleibt der Benutzer auch nach einem erneuten Laden der Seite angemeldet, solange der gespeicherte Zustand im Browser vorhanden ist.
 
 \newpage
@@ -965,17 +904,6 @@ Der Logout-Prozess umfasst mehrere Schritte:
 - Zurücksetzen interner Zustandsvariablen
 - Wechsel der Benutzeroberfläche zur Authentifizierungsansicht
 
-Ein vereinfachter Codeausschnitt zeigt diesen Ablauf:
-
-~~~javascript
-function logout() {
-  localStorage.removeItem('currentUser');
-  currentUser = null;
-  history = [];
-  showAuth();
-}
-~~~
-
 Durch das Entfernen der gespeicherten Daten wird sichergestellt, dass kein vorheriger Sitzungszustand erhalten bleibt.
 
 \newpage
@@ -995,19 +923,6 @@ Die Profilanzeige befindet sich im oberen Bereich der Benutzeroberfläche und en
 - Zugriff auf weitere Benutzeraktionen  
 
 Die Daten werden dynamisch aus dem im Frontend gespeicherten Benutzerzustand geladen und anschließend im Dashboard dargestellt.
-
-Ein vereinfachter Codeausschnitt zeigt den Zugriff auf die gespeicherten Benutzerdaten:
-
-~~~javascript
-function loadUserData() {
-  if (!currentUser) return;
-
-  const usernameEl = document.getElementById('username');
-  if (usernameEl) {
-    usernameEl.textContent = currentUser.firstName;
-  }
-}
-~~~
 
 Durch diese dynamische Einbindung kann das Dashboard automatisch personalisiert werden, ohne dass zusätzliche Serveranfragen notwendig sind.
 
@@ -1093,15 +1008,15 @@ Nachdem ein Video ausgewählt wurde, erzeugt das Frontend automatisch eine Vorsc
 
 Die Vorschau wird mithilfe der Browserfunktion `URL.createObjectURL()` erstellt. Diese Funktion generiert eine temporäre URL für eine lokale Datei.
 
-Ein vereinfachter Codeausschnitt zeigt diesen Ablauf:
+Der folgende Code zeigt die Erstellung einer lokalen Videovorschau im Browser:
 
-~~~javascript
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Erstellung der Video-Vorschau im Browser" .javascript}
 const file = videoFileInput.files[0];
 const url = URL.createObjectURL(file);
 
 videoPreview.classList.remove('hidden');
 videoPreview.innerHTML = '<video controls src="' + url + '"></video>';
-~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Dieser Mechanismus bietet mehrere Vorteile:
 
@@ -1128,9 +1043,9 @@ Das Diagramm basiert auf einem Liniendiagramm, das mehrere Datensätze darstelle
 - eine Referenzkurve (Soll-Wert)  
 - eine gemessene Kurve (Ist-Wert)  
 
-Ein vereinfachter Codeausschnitt zeigt die Erstellung eines solchen Diagramms:
+Der folgende Codeausschnitt zeigt die Erstellung eines Diagramms mit Chart.js:
 
-~~~javascript
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Erstellung eines Analyse-Diagramms mit Chart.js" .javascript}
 chart = new Chart(ctx, {
   type: 'line',
   data: {
@@ -1141,7 +1056,7 @@ chart = new Chart(ctx, {
     ]
   }
 });
-~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Durch diese visuelle Darstellung kann der Benutzer Unterschiede zwischen idealer und tatsächlicher Wurfbewegung leichter erkennen.
 
@@ -1166,43 +1081,6 @@ Diese Darstellung zeigt, wie verschiedene Informationsquellen innerhalb einer Ob
 
 \newpage
 
-## Darstellung der Analyseergebnisse im Dashboard
-
-Nachdem eine Analyse durchgeführt wurde, werden die entsprechenden Werte im Dashboard aktualisiert. Die Benutzeroberfläche zeigt dem Benutzer sofort die wichtigsten Ergebnisse an.
-
-![Dashboard nach Analyse](img/dashboardNachAnalyse.jpeg){ width=80% }
-
-Abbildung: Dashboard nach Durchführung einer Analyse.
-
-Zu den dargestellten Informationen können gehören:
-
-- Effizienz des Wurfs  
-- Winkelwerte der Flugbahn  
-- qualitative Bewertung der Bewegung  
-- visuelles Feedback zur Wurfqualität  
-
-Die Analysewerte werden automatisch in der Benutzeroberfläche aktualisiert und ermöglichen eine schnelle Einschätzung der Trainingsleistung.
-
-\newpage
-
-## Zusammenfassung der Frontend-Implementierung
-
-Die entwickelte Frontend-Anwendung bildet die zentrale Benutzeroberfläche der Trainingsanalyseplattform. Sie ermöglicht die Interaktion zwischen Benutzer und System sowie die Darstellung verschiedener Analyseinformationen.
-
-Die wichtigsten Funktionen der Anwendung sind:
-
-- Benutzerregistrierung und Login  
-- Dashboard zur Anzeige von Analyseinformationen  
-- Auswahl und Vorschau von Trainingsvideos  
-- grafische Darstellung von Analysewerten  
-- Anzeige von Analysefeedback  
-
-Die Umsetzung erfolgte mit modernen Webtechnologien wie **HTML**, **CSS (Tailwind)** und **JavaScript**. Zusätzlich wurden Browser-APIs und Bibliotheken wie **Chart.js** verwendet, um Diagramme und interaktive Elemente darzustellen.
-
-Durch diese Struktur entsteht eine interaktive Webanwendung, die Trainingsdaten übersichtlich darstellen und analysierbar machen kann.
-
-Das Frontend bildet somit die zentrale Schnittstelle zwischen Benutzer und Analyseplattform und ermöglicht eine intuitive Nutzung der entwickelten Trainingsanalyse-Anwendung.
-
 ## Kommunikation mit dem Backend
 
 Neben der Darstellung der Benutzeroberfläche spielt auch die Kommunikation mit dem Backend eine wichtige Rolle. Das Frontend sendet HTTP-Anfragen an definierte API-Endpunkte, um Benutzerdaten zu übermitteln oder Analyseinformationen abzurufen.
@@ -1216,9 +1094,9 @@ Diese Kommunikation erfolgt über sogenannte **REST-Schnittstellen**. Dabei werd
 
 Im Frontend wird hierfür die JavaScript-Funktion `fetch()` verwendet. Diese ermöglicht es, HTTP-Anfragen direkt aus dem Browser heraus auszuführen.
 
-Ein vereinfachter Codeausschnitt zeigt eine typische Anfrage an einen API-Endpunkt:
+Der folgende Code zeigt eine generische Funktion zur Ausführung von API-Anfragen im Frontend:
 
-~~~javascript
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="API-Anfragefunktion im Frontend" .javascript}
 async function request(path, options = {}) {
   const response = await fetch('/api' + path, options);
 
@@ -1228,7 +1106,7 @@ async function request(path, options = {}) {
 
   return response.json();
 }
-~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Diese Funktion kapselt die grundlegende Logik für API-Anfragen und kann von verschiedenen Teilen des Frontends verwendet werden.
 
@@ -1238,9 +1116,9 @@ Diese Funktion kapselt die grundlegende Logik für API-Anfragen und kann von ver
 
 Für Login und Registrierung existieren im Frontend eigene Funktionen, die die Kommunikation mit dem Backend übernehmen. Diese Funktionen senden die eingegebenen Benutzerdaten als JSON-Objekt an die entsprechenden Endpunkte.
 
-Ein Beispiel für eine Login-Anfrage:
+Der folgende Code zeigt eine typische Login-Anfrage an das Backend:
 
-~~~javascript
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Login-Anfrage an das Backend" .javascript}
 async function login(email, password) {
   return request('/users/login', {
     method: 'POST',
@@ -1250,11 +1128,11 @@ async function login(email, password) {
     }
   });
 }
-~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Für die Registrierung wird ein ähnlicher Ablauf verwendet:
 
-~~~javascript
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Registrierungsanfrage an das Backend" .javascript}
 async function register(firstName, lastName, email, password) {
   return request('/users/register', {
     method: 'POST',
@@ -1264,7 +1142,7 @@ async function register(firstName, lastName, email, password) {
     }
   });
 }
-~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Durch diese Trennung zwischen Benutzeroberfläche und API-Kommunikation bleibt der Code übersichtlich und leichter wartbar.
 
@@ -1274,38 +1152,59 @@ Durch diese Trennung zwischen Benutzeroberfläche und API-Kommunikation bleibt d
 
 Im aktuellen Entwicklungsstand der Anwendung werden einige Analysewerte im Frontend als Demonstration generiert. Dies dient dazu, die Funktionsweise der Benutzeroberfläche zu testen, bevor eine vollständige Backend-Analyse integriert wird.
 
-![Analysemetriken und Feedback](img/appJsPrototypeAnalysisMetricsSpeechFeedback.png){ width=80% }
+Der folgende Codeausschnitt zeigt die Generierung von Analysewerten im Prototyp. Dabei werden zufällige Werte erzeugt, um die Darstellung der Analysemetriken im Dashboard sowie das Feedback-System zu testen:
 
-Abbildung: Generierung von Analysemetriken und Feedback im Frontend.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Analysemetriken und Feedback" .javascript}
+analyseVideoBtn.addEventListener('click', async () => {
+
+// generate some dummy metrics (replace with real backend results later)
+const efficiency = Math.floor(Math.random() * 100);
+const arc = Math.floor(Math.random() * 100);
+const feedback =
+feedbackOptions[Math.floor(Math.random() * feedbackOptions.length)];
+
+// new angle metric: 45–56 degrees (narrow test range)
+const angleVal = (45 + Math.random() * 11).toFixed(1);
+
+// shot quality score and status
+const score = Math.floor(70 + Math.random() * 21); // 70–90
+const statusText =
+score > 85 ? 'Excellent Mechanics' :
+score > 70 ? 'Good Mechanics' :
+'Needs Work';
+
+if (shootingValue) shootingValue.textContent = efficiency;
+if (arcValue) arcValue.textContent = arc;
+
+// update new fields
+const angleEl = document.getElementById('angle');
+if (angleEl) angleEl.textContent = angleVal + ' deg';
+
+const scoreEl = document.getElementById('shotScore');
+if (scoreEl) scoreEl.textContent = `${score} / 100`;
+
+const statusEl = document.getElementById('shotStatus');
+if (statusEl) statusEl.textContent = statusText;
+
+// spoken feedback remains handy
+const utter = new SpeechSynthesisUtterance(feedback);
+utter.lang = 'de-DE';
+utter.rate = 1.1;
+utter.pitch = 1.2;
+
+speechSynthesis.speak(utter);
+
+});
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Dabei werden zufällige Werte für verschiedene Kennzahlen erzeugt, beispielsweise:
 
 - Effizienz des Wurfs  
 - Konsistenz der Flugbahn  
 - Winkelwerte  
+- qualitative Bewertung der Wurfmechanik  
 
-Ein vereinfachter Codeausschnitt zeigt die Generierung solcher Werte:
-
-~~~javascript
-const efficiency = Math.floor(Math.random() * 100);
-const arc = Math.floor(Math.random() * 100);
-~~~
-
-Auf Basis dieser Werte wird anschließend eine qualitative Bewertung erzeugt.
-
-~~~javascript
-let feedback;
-
-if (efficiency > 85) {
-  feedback = "Excellent Mechanics";
-} else if (efficiency > 70) {
-  feedback = "Good Mechanics";
-} else {
-  feedback = "Needs Work";
-}
-~~~
-
-Diese Bewertung wird im Dashboard angezeigt und kann zusätzlich als Audiofeedback ausgegeben werden.
+Auf Basis dieser Werte wird anschließend eine Bewertung erzeugt und im Dashboard dargestellt. Zusätzlich kann ein sprachbasiertes Feedback ausgegeben werden.
 
 \newpage
 
@@ -1315,16 +1214,16 @@ Neben der visuellen Darstellung von Analysewerten bietet die Anwendung auch eine
 
 Diese Funktion basiert auf der **SpeechSynthesis API**, die in modernen Webbrowsern integriert ist.
 
-Ein vereinfachter Codeausschnitt zeigt die Umsetzung:
+Der folgende Code zeigt die Ausgabe eines textbasierten Feedbacks als Sprachausgabe im Browser:
 
-~~~javascript
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Audio-Feedback mit der SpeechSynthesis API" .javascript}
 const utter = new SpeechSynthesisUtterance(feedback);
 utter.lang = 'en-US';
 utter.rate = 1.1;
 utter.pitch = 1.2;
 
 speechSynthesis.speak(utter);
-~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Der Ablauf dieser Funktion ist wie folgt:
 
