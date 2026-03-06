@@ -49,11 +49,11 @@ Die Flugkurve, auch als Trajektorie bezeichnet, beschreibt den räumlichen Beweg
 
 Beobachtet man einen geworfenen Ball, so erkennt man, dass er keine geradlinige Bewegung ausführt, sondern eine gekrümmte Bahn beschreibt. Diese Krümmung entsteht durch die gleichzeitige Vorwärtsbewegung und die durch die Gravitation verursachte Beschleunigung in Richtung Boden.
 
-Die Form der Flugkurve wird vollständig durch die Bedingungen im Moment des Abwurfs festgelegt. Dazu zählen insbesondere die Anfangsgeschwindigkeit, die Abwurfrichtung sowie die Abwurfhöhe. Nach dem Loslassen kann die Flugbahn nicht mehr beeinflusst werden.
+Die Form der Flugkurve wird vollständig durch die Bedingungen im Moment des Abwurfs festgelegt. Dazu zählen insbesondere die Anfangsgeschwindigkeit, die Abwurfrichtung sowie die Abwurfhöhe. Nach dem Loslassen kann die Flugbahn nicht mehr beeinflusst werden. [@OpenStaxProjectileMotion]
 
 ### Warum ist die Flugkurve gekrümmt?
 
-Die gekrümmte Form der Flugbahn entsteht durch die Überlagerung zweier Bewegungen. Während sich der geworfene Körper in horizontaler Richtung mit annähernd konstanter Geschwindigkeit bewegt, wirkt in vertikaler Richtung die Erdanziehungskraft. Dadurch wird der Körper kontinuierlich nach unten beschleunigt. Die Kombination dieser beiden Bewegungen führt zu der charakteristischen bogenförmigen Flugbahn.
+Die gekrümmte Form der Flugbahn entsteht durch die Überlagerung zweier Bewegungen. Während sich der geworfene Körper in horizontaler Richtung mit annähernd konstanter Geschwindigkeit bewegt, wirkt in vertikaler Richtung die Erdanziehungskraft. Dadurch wird der Körper kontinuierlich nach unten beschleunigt. Die Kombination dieser beiden Bewegungen führt zu der charakteristischen bogenförmigen Flugbahn. [@OpenStaxProjectileMotion]
 
 
 ### Höchster Punkt der Flugbahn
@@ -63,7 +63,7 @@ Während des Fluges steigt der geworfene Körper zunächst an, bis er einen höc
 Der höchste Punkt entsteht dadurch, dass die anfängliche Aufwärtsbewegung durch die Erdanziehungskraft zunehmend abgebremst wird. Schließlich kommt die Aufwärtsbewegung vollständig zum Stillstand, bevor die Bewegung in eine Abwärtsbewegung übergeht.
 
 Dieser Punkt besitzt eine besondere Bedeutung, da er die maximale Flughöhe des Körpers darstellt und maßgeblich von der Anfangsgeschwindigkeit sowie dem Abwurfwinkel abhängt.
-![Höchster Punkt der Flugbahn](img/hoechster-punkt.png)
+![Höchster Punkt der Flugbahn](img/hoechster-punkt.png) [@OpenStaxProjectileMotion]
 
 
 ### Einfluss des Abwurfs auf die Flugbahn
@@ -72,7 +72,7 @@ Die genaue Form der Flugkurve wird bereits im Moment des Abwurfs festgelegt. Ent
 
 Ein flacher Wurf führt zu einer niedrigen und langen Flugbahn, während ein steiler Wurf eine höhere, jedoch kürzere Flugbahn erzeugt. Ebenso beeinflusst eine größere Anfangsgeschwindigkeit die Reichweite des Wurfes. Auch die Höhe des Abwurfpunktes verändert den Verlauf der Flugbahn, da der Körper länger in der Luft bleibt.
 
-Somit hängt das Treffen eines Zieles direkt von den Anfangsbedingungen des Wurfes ab. Bereits kleine Änderungen dieser Parameter können dazu führen, dass ein Ziel verfehlt wird.
+Somit hängt das Treffen eines Zieles direkt von den Anfangsbedingungen des Wurfes ab. Bereits kleine Änderungen dieser Parameter können dazu führen, dass ein Ziel verfehlt wird. [@OpenStaxProjectileMotion]
 
 
 ## Der schiefe Wurf als physikalisches Modell
@@ -84,7 +84,7 @@ Die zuvor beschriebene Flugkurve eines geworfenen Körpers lässt sich physikali
 
 Der Körper besitzt dabei sowohl eine horizontale als auch eine vertikale Bewegungsrichtung. Nach dem Abwurf wirken keine antreibenden Kräfte mehr, sondern ausschließlich die Gravitation. Diese beeinflusst jedoch nur die vertikale Bewegung, während die horizontale Bewegung – abgesehen vom geringen Luftwiderstand – gleichförmig bleibt.
 
-Der schiefe Wurf stellt somit ein vereinfachtes physikalisches Modell dar, mit dem sich reale Wurfbewegungen näherungsweise beschreiben und berechnen lassen.
+Der schiefe Wurf stellt somit ein vereinfachtes physikalisches Modell dar, mit dem sich reale Wurfbewegungen näherungsweise beschreiben und berechnen lassen. [@OpenStaxProjectileEquation]
 
 
 ### Zerlegung der Bewegung in zwei Richtungen
@@ -95,7 +95,7 @@ In horizontaler Richtung bewegt sich der Körper gleichförmig weiter, da in die
 
 In vertikaler Richtung hingegen wirkt die Erdanziehungskraft. Dadurch wird der Körper kontinuierlich nach unten beschleunigt. Zunächst steigt der Körper noch an, wird dabei jedoch immer langsamer, bis er seinen höchsten Punkt erreicht. Anschließend nimmt die Fallgeschwindigkeit wieder zu.
 
-Durch die Überlagerung dieser beiden Bewegungen ergibt sich die typische gekrümmte Flugbahn eines geworfenen Körpers.
+Durch die Überlagerung dieser beiden Bewegungen ergibt sich die typische gekrümmte Flugbahn eines geworfenen Körpers. [@OpenStaxProjectileEquation]
 
 ### Horizontale Bewegung
 Da in horizontaler Richtung keine beschleunigende Kraft wirkt, bleibt die Geschwindigkeit konstant. Es handelt sich somit um eine gleichförmige Bewegung. Der in horizontaler Richtung zurückgelegte Weg ergibt sich aus dem Produkt von Geschwindigkeit und Zeit.
@@ -104,7 +104,7 @@ Für die horizontale Bewegung gilt (unter der Annahme, dass der Luftwiderstand v
 
 $x(t) = v_0 \cdot \cos(\alpha) \cdot t$
 
-Dabei bezeichnet $x(t)$ die horizontale Entfernung vom Abwurfpunkt, $v_0$ die Anfangsgeschwindigkeit, $\alpha$ den Abwurfwinkel und $t$ die vergangene Zeit seit dem Abwurf.
+Dabei bezeichnet $x(t)$ die horizontale Entfernung vom Abwurfpunkt, $v_0$ die Anfangsgeschwindigkeit, $\alpha$ den Abwurfwinkel und $t$ die vergangene Zeit seit dem Abwurf. [@OpenStaxProjectileEquation]
 
 ### Vertikale Bewegung
 
@@ -114,7 +114,7 @@ Für die vertikale Bewegung gilt:
 
 $y(t) = h_0 + v_0 \cdot \sin(\alpha) \cdot t - \frac{1}{2} \cdot g \cdot t^2$
 
-Hierbei beschreibt $y(t)$ die Höhe des Körpers über dem Boden, $h_0$ die Abwurfhöhe und $g$ die Erdbeschleunigung ($g \approx 9{,}81\,\mathrm{m/s^2}$).
+Hierbei beschreibt $y(t)$ die Höhe des Körpers über dem Boden, $h_0$ die Abwurfhöhe und $g$ die Erdbeschleunigung ($g \approx 9{,}81\,\mathrm{m/s^2}$). [@OpenStaxProjectileEquation]
 
 ### Mathematische Berechnung
 
@@ -122,7 +122,7 @@ Um den schiefen Wurf berechnen zu können, müssen zunächst die grundlegenden G
 
 Der Winkel zwischen der Abwurfrichtung und der Horizontalen wird als Abwurfwinkel $\alpha$ bezeichnet. Abhängig von diesem Winkel wird die Anfangsgeschwindigkeit unterschiedlich stark auf die beiden Bewegungsrichtungen verteilt. Ein flacher Wurf besitzt einen kleinen Winkel, während ein steiler Wurf einen großen Winkel aufweist.
 
-Die Anfangsgeschwindigkeit kann daher in zwei Teilgeschwindigkeiten zerlegt werden. Eine Komponente wirkt in horizontaler Richtung, die andere in vertikaler Richtung. Die horizontale Komponente bestimmt, wie schnell sich der Körper nach vorne bewegt, während die vertikale Komponente bestimmt, wie hoch der Körper steigt.
+Die Anfangsgeschwindigkeit kann daher in zwei Teilgeschwindigkeiten zerlegt werden. Eine Komponente wirkt in horizontaler Richtung, die andere in vertikaler Richtung. Die horizontale Komponente bestimmt, wie schnell sich der Körper nach vorne bewegt, während die vertikale Komponente bestimmt, wie hoch der Körper steigt. [@OpenStaxProjectileEquation]
 
 
 ### Bahnkurve des schiefen Wurfs
@@ -137,7 +137,7 @@ Setzt man diesen Ausdruck für $t$ in die Gleichung der vertikalen Bewegung ein,
 
 $y(x) = h_0 + x \cdot \tan(\alpha) - \frac{g \cdot x^2}{2 \cdot v_0^2 \cdot \cos^2(\alpha)}$
 
-Diese Gleichung beschreibt die Flugbahn eines geworfenen Körpers in Abhängigkeit von der horizontalen Entfernung. Sie besitzt die mathematische Form einer quadratischen Funktion und stellt somit eine Parabel dar. Da die Gleichung ein Quadrat von $x$ enthält ($x^2$), handelt es sich um eine quadratische Funktion. Quadratische Funktionen werden grafisch als Parabel dargestellt. Damit ist mathematisch gezeigt, dass die Flugkurve eines geworfenen Körpers unter idealisierten Bedingungen parabelförmig verläuft.
+Diese Gleichung beschreibt die Flugbahn eines geworfenen Körpers in Abhängigkeit von der horizontalen Entfernung. Sie besitzt die mathematische Form einer quadratischen Funktion und stellt somit eine Parabel dar. Da die Gleichung ein Quadrat von $x$ enthält ($x^2$), handelt es sich um eine quadratische Funktion. Quadratische Funktionen werden grafisch als Parabel dargestellt. Damit ist mathematisch gezeigt, dass die Flugkurve eines geworfenen Körpers unter idealisierten Bedingungen parabelförmig verläuft. [@OpenStaxProjectileEquation]
 
 ## Einflussgrößen auf die Flugbahn
 
@@ -151,7 +151,7 @@ Wird der Abwurfwinkel vergrößert, steigt der Körper steiler nach oben. Die ma
 
 Erhöht man den Winkel weiter in Richtung 90°, nimmt die horizontale Reichweite wieder ab. Der Körper bewegt sich zunehmend senkrecht nach oben und fällt nahezu an derselben Stelle wieder herunter. Die maximale Höhe ist in diesem Fall zwar groß, die horizontale Distanz jedoch gering.
 
-Somit existiert für jede Wurfbedingung ein bestimmter Winkel, bei dem eine optimale Reichweite oder Treffgenauigkeit erreicht wird.
+Somit existiert für jede Wurfbedingung ein bestimmter Winkel, bei dem eine optimale Reichweite oder Treffgenauigkeit erreicht wird. [@DellaSchiava2016]
 
 ### Einfluss der Anfangsgeschwindigkeit
 
@@ -162,7 +162,7 @@ Eine größere Anfangsgeschwindigkeit führt dazu, dass der Körper länger in d
 Ist die Anfangsgeschwindigkeit zu gering, erreicht der Körper das Ziel möglicherweise nicht, selbst wenn der Abwurfwinkel optimal gewählt wurde. Umgekehrt kann eine zu hohe Geschwindigkeit dazu führen, dass das Ziel überschossen wird.
 
 Die Anfangsgeschwindigkeit ist daher eine entscheidende Größe für die Bestimmung einer Sollflugbahn.
-
+[@DellaSchiava2016]
 
 ### Einfluss der Abwurfhöhe
 
@@ -170,7 +170,7 @@ Die Abwurfhöhe $h_0$ beschreibt die vertikale Position des Körpers im Moment d
 
 Wird ein Körper aus einer größeren Höhe geworfen, bleibt er länger in der Luft, bevor er den Boden erreicht. Dadurch kann sich die horizontale Entfernung vergrößern. Gleichzeitig verändert sich jedoch auch die optimale Wahl des Abwurfwinkels.
 
-In realen Situationen, beispielsweise bei sportlichen Würfen, ist die Abwurfhöhe von der Körpergröße und der Wurfhaltung abhängig. Sie stellt somit einen individuellen Einflussfaktor dar, der bei der Bestimmung einer optimalen Flugbahn berücksichtigt werden muss.
+In realen Situationen, beispielsweise bei sportlichen Würfen, ist die Abwurfhöhe von der Körpergröße und der Wurfhaltung abhängig. Sie stellt somit einen individuellen Einflussfaktor dar, der bei der Bestimmung einer optimalen Flugbahn berücksichtigt werden muss. [@DellaSchiava2016]
 
 ### Einfluss der Zielentfernung
 
@@ -178,7 +178,7 @@ Die Entfernung zwischen Abwurfpunkt und Ziel bestimmt, welche Kombination aus Ab
 
 Ein nahe gelegenes Ziel kann sowohl mit einem flachen als auch mit einem steileren Wurf erreicht werden. Bei größeren Distanzen ist jedoch eine höhere Anfangsgeschwindigkeit oder ein optimal gewählter Winkel notwendig.
 
-Somit hängt die Sollflugbahn stets von der jeweiligen Zielentfernung ab. Eine universell gültige Flugbahn existiert nicht, sondern sie muss an die konkreten Bedingungen angepasst werden.
+Somit hängt die Sollflugbahn stets von der jeweiligen Zielentfernung ab. Eine universell gültige Flugbahn existiert nicht, sondern sie muss an die konkreten Bedingungen angepasst werden. [@DellaSchiava2016]
 
 
 ## Bestimmung der Sollflugbahn
@@ -191,7 +191,7 @@ Da die Flugbahn eines geworfenen Körpers vollständig durch die Anfangsbedingun
 
 Ziel dieses Kapitels ist es, auf Grundlage der zuvor hergeleiteten Bahnkurve jene Abwurfparameter zu bestimmen, die das Treffen eines definierten Zielpunktes ermöglichen.
 
-![Sollflugbahn](img/Sollflugbahn_foto.png)
+![Sollflugbahn](img/Sollflugbahn_foto.png) [@OpenStaxProjectileEquations]
 
 
 ### Mathematische Bedingung für das Treffen eines Zielpunktes
@@ -229,7 +229,7 @@ $$
 
 
 
-Diese Gleichung stellt die grundlegende Bedingung für das Treffen des Zielpunktes dar. Sie zeigt, dass zwischen Abwurfwinkel und Anfangsgeschwindigkeit ein direkter Zusammenhang besteht.
+Diese Gleichung stellt die grundlegende Bedingung für das Treffen des Zielpunktes dar. Sie zeigt, dass zwischen Abwurfwinkel und Anfangsgeschwindigkeit ein direkter Zusammenhang besteht. [@OpenStaxProjectileEquations]
 
 
 
@@ -252,7 +252,7 @@ $$
 h_0 + x_Z\tan(\alpha)-y_Z>0
 $$
 
-Ist diese Bedingung nicht erfüllt, reicht der gewählte Winkel nicht aus, um die notwendige Höhe zu erreichen.
+Ist diese Bedingung nicht erfüllt, reicht der gewählte Winkel nicht aus, um die notwendige Höhe zu erreichen. [@OpenStaxProjectileEquations]
 
 
 ### Mehrdeutigkeit möglicher Lösungen 
@@ -268,7 +268,7 @@ Für viele Zielkonstellationen existieren grundsätzlich zwei mögliche Flugbahn
 
 Beide Varianten erfüllen mathematisch die Treffbedingung, unterscheiden sich jedoch hinsichtlich maximaler Höhe, Einfallswinkel und Empfindlichkeit gegenüber kleinen Abweichungen der Abwurfparameter.
 
-In der Praxis wird häufig jene Flugbahn bevorzugt, die eine größere Toleranz gegenüber leichten Winkel- oder Geschwindigkeitsabweichungen aufweist. Eine solche Bahn kann als praktikablere Sollflugbahn angesehen werden.
+In der Praxis wird häufig jene Flugbahn bevorzugt, die eine größere Toleranz gegenüber leichten Winkel- oder Geschwindigkeitsabweichungen aufweist. Eine solche Bahn kann als praktikablere Sollflugbahn angesehen werden. [@OpenStaxProjectileEquations]
 
 ### Interpretation und Bedeutung der Sollflugbahn
 
@@ -282,7 +282,7 @@ Dabei wird deutlich, dass:
 
 - und beide Größen gemeinsam optimiert werden müssen.
 
-Die Sollflugbahn stellt somit die theoretisch ideale Lösung unter den getroffenen Modellannahmen dar. In realen Situationen können zusätzliche Einflüsse wie Luftwiderstand oder Rotationsbewegungen auftreten, die zu Abweichungen führen. Dennoch bietet das Modell des schiefen Wurfs eine fundierte Grundlage zur Beschreibung und Optimierung von Wurfbewegungen.
+Die Sollflugbahn stellt somit die theoretisch ideale Lösung unter den getroffenen Modellannahmen dar. In realen Situationen können zusätzliche Einflüsse wie Luftwiderstand oder Rotationsbewegungen auftreten, die zu Abweichungen führen. Dennoch bietet das Modell des schiefen Wurfs eine fundierte Grundlage zur Beschreibung und Optimierung von Wurfbewegungen. [@OpenStaxProjectileEquations]
 
 
 ### Geometrische Bedingungen beim Basketballwurf
@@ -297,7 +297,7 @@ Neben dem Einfallswinkel spielen auch weitere Faktoren eine wichtige Rolle für 
 
 Eine typische Situation, die häufig untersucht wird, ist der Freiwurf. Die Entfernung von der Freiwurflinie zur Korbmitte beträgt etwa 4,19 m. Da der Spieler in dieser Situation nicht durch Verteidiger gestört wird, lassen sich die physikalischen Bedingungen des Wurfs besonders gut analysieren. Untersuchungen zeigen, dass der optimale Abwurfwinkel bei einer typischen Abwurfhöhe eines Spielers in etwa im Bereich von 50° liegt.
 
-Ein größerer Einfallswinkel führt dazu, dass sich die effektive Trefferfläche des Korbs vergrößert. Dadurch können kleinere Abweichungen beim Abwurfwinkel oder bei der Abwurfgeschwindigkeit besser ausgeglichen werden. Aus diesem Grund wird beim Basketballwurf häufig eine eher steilere Flugbahn bevorzugt, da sie eine höhere Toleranz gegenüber kleinen Fehlern beim Abwurf bietet.
+Ein größerer Einfallswinkel führt dazu, dass sich die effektive Trefferfläche des Korbs vergrößert. Dadurch können kleinere Abweichungen beim Abwurfwinkel oder bei der Abwurfgeschwindigkeit besser ausgeglichen werden. Aus diesem Grund wird beim Basketballwurf häufig eine eher steilere Flugbahn bevorzugt, da sie eine höhere Toleranz gegenüber kleinen Fehlern beim Abwurf bietet. [@OpenStaxProjectileEquations]
 
 
 
@@ -313,11 +313,11 @@ Die konkrete Implementierung und der praktische Entwicklungsablauf werden im ans
 ## Programmiersprache Python
 
 ### Was ist Python?
-Python ist eine interpretierte, objektorientierte Programmiersprache, die sich durch eine klare und gut lesbare Syntax auszeichnet. Aufgrund ihrer Einfachheit sowie ihrer großen Anzahl an verfügbaren Bibliotheken wird sie häufig im wissenschaftlichen Bereich, in der Datenanalyse sowie in technischen Anwendungen eingesetzt. Besonders im mathematischen und ingenieurtechnischen Umfeld bietet Python zahlreiche Werkzeuge zur numerischen Berechnung, grafischen Darstellung und automatisierten Auswertung von Daten.
+Python ist eine interpretierte, objektorientierte Programmiersprache, die sich durch eine klare und gut lesbare Syntax auszeichnet. Aufgrund ihrer Einfachheit sowie ihrer großen Anzahl an verfügbaren Bibliotheken wird sie häufig im wissenschaftlichen Bereich, in der Datenanalyse sowie in technischen Anwendungen eingesetzt. Besonders im mathematischen und ingenieurtechnischen Umfeld bietet Python zahlreiche Werkzeuge zur numerischen Berechnung, grafischen Darstellung und automatisierten Auswertung von Daten. [@PythonDocs]
 
 ### Warum wurde Python gewählt?
 
-Für die Umsetzung der mathematischen Modelle wurde Python gewählt, da die Programmiersprache eine effiziente Durchführung umfangreicher Berechnungen ermöglicht. Insbesondere bei der wiederholten Berechnung von Flugbahnen mit variierenden Parametern bietet Python den Vorteil einer schnellen und reproduzierbaren Ausführung. Darüber hinaus erlaubt Python eine übersichtliche Strukturierung der Berechnungsschritte, wodurch die Nachvollziehbarkeit der mathematischen Herleitungen gewährleistet bleibt.
+Für die Umsetzung der mathematischen Modelle wurde Python gewählt, da die Programmiersprache eine effiziente Durchführung umfangreicher Berechnungen ermöglicht. Insbesondere bei der wiederholten Berechnung von Flugbahnen mit variierenden Parametern bietet Python den Vorteil einer schnellen und reproduzierbaren Ausführung. Darüber hinaus erlaubt Python eine übersichtliche Strukturierung der Berechnungsschritte, wodurch die Nachvollziehbarkeit der mathematischen Herleitungen gewährleistet bleibt. [@PythonDocs]
 
 ![Beispiel eines Python-Programmcodes](img/Python.png)
 
@@ -330,7 +330,7 @@ Im Rahmen dieser Arbeit bot Python folgende Vorteile:
 - Hohe Lesbarkeit und klare Strukturierung des Codes
 - Große Auswahl an wissenschaftlichen Bibliotheken
 
-Durch diese Eigenschaften stellte Python ein geeignetes Werkzeug zur praktischen Umsetzung der theoretischen Modelle dar.
+Durch diese Eigenschaften stellte Python ein geeignetes Werkzeug zur praktischen Umsetzung der theoretischen Modelle dar.[@PythonDocs]
 
 ## Entwicklungsumgebung Visual Studio Code
 
@@ -340,7 +340,7 @@ Visual Studio Code (VS Code) ist ein plattformübergreifender Quellcode-Editor, 
 
 VS Code bietet eine benutzerfreundliche Oberfläche und unterstützt durch zahlreiche Erweiterungen (Extensions) unterschiedliche Funktionen wie Syntaxhervorhebung, automatische Codevervollständigung, Fehleranalyse sowie Versionsverwaltung. Aufgrund seiner Flexibilität wird Visual Studio Code sowohl im professionellen Softwarebereich als auch im Bildungsbereich häufig verwendet.
 
-Obwohl es sich nicht um eine vollständige integrierte Entwicklungsumgebung (IDE) im klassischen Sinne handelt, kann VS Code durch Erweiterungen nahezu IDE-Funktionalität erreichen.
+Obwohl es sich nicht um eine vollständige integrierte Entwicklungsumgebung (IDE) im klassischen Sinne handelt, kann VS Code durch Erweiterungen nahezu IDE-Funktionalität erreichen.[@MicrosoftVSCode]
 
 ![Visual Studio Code](img/vs-code.png)
 
@@ -353,7 +353,7 @@ Die Entscheidung fiel auf VS Code, da das Programm eine übersichtliche Struktur
 
 Darüber hinaus bietet VS Code die Möglichkeit, verschiedene Dateiformate zu verwalten und Berechnungen nachvollziehbar zu dokumentieren. Durch die modulare Erweiterbarkeit konnte die Arbeitsumgebung an die individuellen Anforderungen der Diplomarbeit angepasst werden.
 
-Ein weiterer Vorteil liegt in der klaren Trennung von Berechnung, Dokumentation und Strukturierung, wodurch die Übersichtlichkeit der Arbeit verbessert wurde.
+Ein weiterer Vorteil liegt in der klaren Trennung von Berechnung, Dokumentation und Strukturierung, wodurch die Übersichtlichkeit der Arbeit verbessert wurde. [@MicrosoftVSCode]
 
 ### Vorteile von Visual Studio Code
 
@@ -363,7 +363,7 @@ Visual Studio Code bietet mehrere Vorteile, die für die Erstellung dieser Diplo
 - Erweiterbarkeit: Durch Extensions kann der Funktionsumfang individuell angepasst werden.
 - Plattformunabhängigkeit: VS Code ist auf verschiedenen Betriebssystemen einsetzbar.
 - Fehlererkennung: Syntax- und Strukturfehler können schnell erkannt werden.
-- Flexibilität: Der Editor eignet sich sowohl für einfache Textbearbeitung als auch für komplexere technische Dokumentationen.
+- Flexibilität: Der Editor eignet sich sowohl für einfache Textbearbeitung als auch für komplexere technische Dokumentationen. [@MicrosoftVSCode]
 
 ## Zentrale Bibliotheken
 
@@ -373,29 +373,29 @@ Für die praktische Umsetzung der theoretischen Modelle wurden ausgewählte Pyth
 
 NumPy ist eine Bibliothek zur numerischen Berechnung in Python. Sie ermöglicht die effiziente Durchführung mathematischer Operationen sowie die Verarbeitung von Vektoren und mehrdimensionalen Arrays.
 
-Im Rahmen dieser Arbeit wurde NumPy zur Implementierung der hergeleiteten Flugbahngleichungen verwendet. Durch die vektorbasierte Berechnung konnten unterschiedliche Parameterkombinationen, beispielsweise verschiedene Abwurfwinkel oder Anfangsgeschwindigkeiten, effizient ausgewertet werden. NumPy bildete somit die mathematische Grundlage für die Berechnung der Sollflugbahn.
+Im Rahmen dieser Arbeit wurde NumPy zur Implementierung der hergeleiteten Flugbahngleichungen verwendet. Durch die vektorbasierte Berechnung konnten unterschiedliche Parameterkombinationen, beispielsweise verschiedene Abwurfwinkel oder Anfangsgeschwindigkeiten, effizient ausgewertet werden. NumPy bildete somit die mathematische Grundlage für die Berechnung der Sollflugbahn. [@NumPyDocs]
 
 ### OpenCV
 
-OpenCV ist eine Bibliothek zur Verarbeitung von Bild- und Videodaten. Sie ermöglicht unter anderem das Einlesen von Videodateien, die Analyse einzelner Frames sowie die Weiterverarbeitung visueller Informationen. Im Projekt wurde OpenCV zur Verarbeitung der Videoaufnahmen eingesetzt. Die Bibliothek diente der Extraktion relevanter Bildinformationen und stellte damit die Grundlage für die Bestimmung der realen (Ist-)Trajektorie dar.
+OpenCV ist eine Bibliothek zur Verarbeitung von Bild- und Videodaten. Sie ermöglicht unter anderem das Einlesen von Videodateien, die Analyse einzelner Frames sowie die Weiterverarbeitung visueller Informationen. Im Projekt wurde OpenCV zur Verarbeitung der Videoaufnahmen eingesetzt. Die Bibliothek diente der Extraktion relevanter Bildinformationen und stellte damit die Grundlage für die Bestimmung der realen (Ist-)Trajektorie dar.[@OpenCVDocs]
 
 ### YOLO
 
 YOLO („You Only Look Once“) ist ein auf neuronalen Netzen basierendes Objekterkennungsmodell. Es ermöglicht die automatische Identifikation und Lokalisierung von Objekten innerhalb eines Bildes oder Videoframes.
 
-Im Rahmen dieser Arbeit wurde YOLO zur Detektion des Balls innerhalb der Videoaufnahmen verwendet. Die automatische Erkennung bildete die Basis für die Bestimmung der Positionsdaten, welche anschließend zur Analyse der realen Flugbahn herangezogen wurden.
+Im Rahmen dieser Arbeit wurde YOLO zur Detektion des Balls innerhalb der Videoaufnahmen verwendet. Die automatische Erkennung bildete die Basis für die Bestimmung der Positionsdaten, welche anschließend zur Analyse der realen Flugbahn herangezogen wurden. [@Redmon2016YOLO]
 
 
 ### SciPy
 
 
-SciPy ist eine wissenschaftliche Python-Bibliothek, die unter anderem Funktionen zur Signalverarbeitung bereitstellt. Da reale Messdaten Schwankungen oder Störsignale enthalten können, wurde SciPy zur Glättung der erfassten Positionsdaten eingesetzt. Dadurch konnte eine realitätsnahe und kontinuierliche Trajektorie bestimmt werden.
+SciPy ist eine wissenschaftliche Python-Bibliothek, die unter anderem Funktionen zur Signalverarbeitung bereitstellt. Da reale Messdaten Schwankungen oder Störsignale enthalten können, wurde SciPy zur Glättung der erfassten Positionsdaten eingesetzt. Dadurch konnte eine realitätsnahe und kontinuierliche Trajektorie bestimmt werden. [@SciPyDocs]
 
 ### Matplotlib
 
 Matplotlib ist eine Bibliothek zur grafischen Darstellung von Daten. Sie ermöglicht die Erstellung von Diagrammen und Kurvendarstellungen. Im Rahmen dieser Arbeit wurde Matplotlib verwendet, um sowohl die berechneten Sollflugbahnen als auch die aus den Videoaufnahmen extrahierten Ist-Trajektorien grafisch darzustellen. Durch die visuelle Gegenüberstellung konnten Unterschiede und Übereinstimmungen anschaulich analysiert werden.
 
-Weitere unterstützende Bibliotheken wurden für organisatorische oder technische Nebentätigkeiten verwendet. Diese sind für die physikalische Modellierung und Analyse nicht von zentraler Bedeutung und werden daher nicht im Detail erläutert.
+Weitere unterstützende Bibliotheken wurden für organisatorische oder technische Nebentätigkeiten verwendet. Diese sind für die physikalische Modellierung und Analyse nicht von zentraler Bedeutung und werden daher nicht im Detail erläutert. [@MatplotlibDocs]
 
 ## Praktische Arbeit
 
