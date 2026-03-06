@@ -2,7 +2,7 @@
 \textauthor{Nino Dalipovic}
 
 
-## Theorieteil - Frontend
+## Theorie
 
 
 ### Technischer Kontext und Zielsetzung des Frontend-Teils
@@ -586,7 +586,7 @@ Webanwendungen, die personenbezogene Daten verarbeiten, müssen diese Prinzipien
 
 
 
-## Praxisteil - Frontend
+## Praktische Arbeit
 
 ### Überblick über die Umsetzung
 
@@ -900,8 +900,7 @@ Abbildung: Anzeige des aktuell angemeldeten Benutzers im Dashboard der Anwendung
 Die Profilanzeige befindet sich im oberen Bereich der Benutzeroberfläche und enthält typischerweise:
 
 - den Namen des angemeldeten Benutzers  
-- ein Profil- oder Avatar-Symbol  
-- Zugriff auf weitere Benutzeraktionen  
+- ein Profil- oder Avatar-Symbol   
 
 Die Daten werden dynamisch aus dem im Frontend gespeicherten Benutzerzustand geladen und anschließend im Dashboard dargestellt.
 

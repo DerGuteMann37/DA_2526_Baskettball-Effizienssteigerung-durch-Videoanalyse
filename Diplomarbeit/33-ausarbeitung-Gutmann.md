@@ -5,16 +5,14 @@
 
 ### Einführung in den Backend-Teil
 
-Das Backend bildet die technische Grundlage für die Speicherung, Verarbeitung und Bereitstellung der im Projekt erhobenen Daten. Im Rahmen dieser Diplomarbeit entsteht ein System zur **Effizienzsteigerung von Basketballwürfen durch Videoanalyse**. Die Videoanalyse liefert dabei Messwerte und Parameter zu einzelnen Würfen (z. B. Abwurfpunkt, Korbposition, Geschwindigkeit, Winkel sowie Flugbahndaten). Damit diese Daten langfristig gespeichert, ausgewertet und für das Frontend nutzbar gemacht werden können, wird ein eigenständiges Backend entwickelt.
+Das Backend bildet die technische Grundlage für die Speicherung, Verarbeitung und Bereitstellung der im Projekt erhobenen Daten. Im Rahmen dieser Diplomarbeit entsteht ein System zur Effizienzsteigerung von Basketballwürfen durch Videoanalyse. Die Videoanalyse liefert dabei Messwerte und Parameter zu einzelnen Würfen (z. B. Abwurfpunkt, Korbposition, Geschwindigkeit, Winkel sowie Flugbahndaten). Damit diese Daten langfristig gespeichert, ausgewertet und für das Frontend nutzbar gemacht werden können, wird ein eigenständiges Backend entwickelt.
 
-Die zentrale Aufgabe des Backends besteht darin, die Daten aus den Analyseprozessen **strukturiert zu persistieren** und über definierte Schnittstellen bereitzustellen. Zusätzlich übernimmt das Backend die Berechnung statistischer Kennzahlen, die Trainingsfortschritte messbar machen. Dadurch entsteht eine objektive Grundlage, um Würfe nicht nur einzeln zu betrachten, sondern auch über längere Zeiträume zu vergleichen und Entwicklungen sichtbar zu machen.
-
-Technisch wird das Backend als Webservice umgesetzt, der über eine **REST-Schnittstelle** mit dem Frontend kommuniziert. Das Frontend kann dadurch Spieler*innen anlegen, Trainingseinheiten verwalten, Wurfdaten anzeigen und Statistik-Ergebnisse abrufen. Die Persistenz erfolgt in einer **relationalen Datenbank**, wobei in der Entwicklungsphase eine **H2-Datenbank** verwendet wird. Der Zugriff auf die Datenbank wird über **Object-Relational Mapping** realisiert, um Datenbanktabellen als Java-Objekte (Entities) abzubilden. Dafür werden **Java Persistence API (JPA)** sowie **Hibernate** als ORM-Framework eingesetzt.
-
-Durch diese Architektur entsteht eine klare Aufgabenteilung: Die Videoanalyse erzeugt Messdaten, das Backend speichert und verarbeitet diese Daten und stellt sie dem Frontend in einer einheitlichen Form zur Verfügung. Diese Trennung erhöht die Wartbarkeit und Erweiterbarkeit des Gesamtsystems, da einzelne Komponenten unabhängig voneinander weiterentwickelt oder ausgetauscht werden können.
+Die zentrale Aufgabe des Backends besteht darin, die Daten aus den Analyseprozessen strukturiert zu persistieren und über definierte Schnittstellen bereitzustellen. Zusätzlich übernimmt das Backend die Berechnung statistischer Kennzahlen, die Trainingsfortschritte messbar machen. Dadurch entsteht eine objektive Grundlage, um Würfe nicht nur einzeln zu betrachten, sondern auch über längere Zeiträume zu vergleichen und Entwicklungen sichtbar zu machen.
 
 ![Backend](img/Backend_hell.png)
+
 ## Backend
+
 ### Was ist überhaupt das Backend
 Unter dem Backend versteht man den serverseitigen Teil einer Softwareanwendung. Es ist jener Bereich, der für Nutzerinnen und Nutzer meist nicht direkt sichtbar ist, jedoch die zentrale technische Grundlage eines Systems bildet. Während das Frontend die grafische Oberfläche und Interaktionen bereitstellt, übernimmt das Backend die Verarbeitung von Daten und die Ausführung der eigentlichen Anwendungslogik.
 
@@ -33,26 +31,29 @@ Das Backend nimmt Anfragen von Clients (z. B. einer Webanwendung) entgegen, prü
 
 Im Kontext dieser Diplomarbeit ist das Backend besonders wichtig, da es die Analyseergebnisse aus der Videoverarbeitung entgegennimmt, in einer relationalen Datenbank speichert, statistisch auswertet und die daraus entstehenden Kennzahlen über eine REST-Schnittstelle dem Frontend zur Visualisierung zur Verfügung stellt. Dadurch fungiert das Backend als zentrale Logik- und Datenebene des gesamten Systems.[@MainagenturBackend]
 
-![Backend Übersicht in Zusammenhang mit den anderen Teilen](img/Zusammenhaenge_Projekt.png)
+![Backend kommuniziert mit jedem](img/Zusammenhaenge_Projekt.png)
 
 ## Spring Boot
+
 ### Was ist Spring Boot
 Spring Boot ist ein Java-basiertes Framework zur Entwicklung von serverseitigen Anwendungen. Es baut auf dem Spring Framework auf und erweitert dieses um Funktionen, die den Projektstart und die Konfiguration deutlich vereinfachen. Ziel ist es, schnell lauffähige und produktionsnahe Anwendungen zu erstellen, ohne dass umfangreiche manuelle Konfiguration notwendig ist.
+
+![Spring Boot nach dem Start der Application](img/SpringBoot.png)
 
 Ein zentrales Konzept ist dabei „Convention over Configuration“. Das bedeutet, dass Spring Boot für viele Standardfälle sinnvolle Voreinstellungen mitliefert. Zusätzlich enthält Spring Boot einen eingebetteten Webserver (z. B. Tomcat), wodurch Anwendungen direkt als eigenständiges Programm gestartet werden können, ohne einen externen Application-Server installieren zu müssen. Häufig verwendete Komponenten werden über sogenannte Starter-Abhängigkeiten (z. B. für Web, Datenbank oder Security) gebündelt eingebunden, was die Entwicklung weiter beschleunigt.[@SpringBootOverview]
 
 ### Wann soll man Spring Boot verwenden
 Spring Boot eignet sich besonders dann, wenn eine Anwendung als Backend-System oder Webservice entwickelt werden soll und dabei eine klare Struktur, Wartbarkeit und schnelle Umsetzung wichtig sind. Typische Einsatzbereiche sind:
 
-- REST-Backends für Web- oder Mobile-Anwendungen
+  - REST-Backends für Web- oder Mobile-Anwendungen
 
-- Anwendungen, die Datenbanken nutzen und Daten persistieren (z. B. über JPA/Hibernate)
+  - Anwendungen, die Datenbanken nutzen und Daten persistieren (z. B. über JPA/Hibernate)
 
-- Projekte, bei denen eine klare Schichtenarchitektur (Controller–Service–Repository) umgesetzt werden soll
+  - Projekte, bei denen eine klare Schichtenarchitektur (Controller–Service–Repository) umgesetzt werden soll
 
-- Systeme, die schnell startbar und einfach deploybar sein sollen (durch eingebetteten Server)
+  - Systeme, die schnell startbar und einfach deploybar sein sollen (durch eingebetteten Server)
 
-- Anwendungen, die später erweiterbar sein müssen, z. B. um zusätzliche Endpunkte, Logik oder Sicherheitsfunktionen
+  - Anwendungen, die später erweiterbar sein müssen, z. B. um zusätzliche Endpunkte, Logik oder Sicherheitsfunktionen
 
 In vielen Projekten ist Spring Boot eine gute Wahl, weil es die technische Basis bereitstellt, die Entwicklung beschleunigt und gleichzeitig professionelle Standards für größere Anwendungen unterstützt.[@SpringBootUseCases]
 
@@ -64,36 +65,36 @@ Die Datenübertragung erfolgt meist im JSON-Format. Ein Client kann beispielswei
 ### Wie ist die Funktionsweise von REST-API
 Die Funktionsweise einer REST-API basiert auf dem Prinzip, dass Daten als Ressourcen betrachtet werden, die über eindeutige URLs (Endpunkte) erreichbar sind. Jede Ressource wird über HTTP-Methoden angesprochen, wobei jede Methode eine bestimmte Bedeutung hat:
 
-- GET: Daten abrufen (z. B. alle Spieler anzeigen)
+  - GET: Daten abrufen (z. B. alle Spieler anzeigen)
 
-- POST: neue Daten anlegen (z. B. neuen Spieler erstellen)
+  - POST: neue Daten anlegen (z. B. neuen Spieler erstellen)
 
-- PUT / PATCH: bestehende Daten ändern (z. B. Trainingseinheit aktualisieren)
+  - PUT / PATCH: bestehende Daten ändern (z. B. Trainingseinheit aktualisieren)
 
-- DELETE: Daten löschen (z. B. Spieler entfernen)
+  - DELETE: Daten löschen (z. B. Spieler entfernen)
 
 Zusätzlich verwendet eine REST-API HTTP-Statuscodes, um das Ergebnis einer Anfrage zu beschreiben. Beispiele sind:
 
-- 200 (OK): Anfrage erfolgreich
+  - 200 (OK): Anfrage erfolgreich
 
-- 201 (Created): Ressource erfolgreich erstellt
+  - 201 (Created): Ressource erfolgreich erstellt
 
-- 400 (Bad Request): ungültige Anfrage
+  - 400 (Bad Request): ungültige Anfrage
 
-- 404 (Not Found): Ressource nicht gefunden
+  - 404 (Not Found): Ressource nicht gefunden
 
 Ein wesentliches Merkmal von REST ist außerdem Statelessness: Jede Anfrage enthält alle notwendigen Informationen, sodass der Server keinen Zustand zwischen zwei Anfragen speichern muss. Das macht Systeme oft besser skalierbar und einfacher wartbar.[@RedHatRESTPrinciples]
 
 ### Was versteht man unter CRUD?
 CRUD ist ein Grundkonzept der Datenverarbeitung und beschreibt die vier grundlegenden Operationen, die in fast jedem datenbasierten System vorkommen. CRUD steht für:
 
-- Create: Daten erstellen (z. B. neuen Spieler anlegen)
+  - Create: Daten erstellen (z. B. neuen Spieler anlegen)
 
-- Read: Daten lesen/abrufen (z. B. Spielerinformationen anzeigen)
+  - Read: Daten lesen/abrufen (z. B. Spielerinformationen anzeigen)
 
-- Update: Daten verändern (z. B. Trainingssession bearbeiten)
+  - Update: Daten verändern (z. B. Trainingssession bearbeiten)
 
-- Delete: Daten löschen (z. B. Wurfdatensatz entfernen)
+  - Delete: Daten löschen (z. B. Wurfdatensatz entfernen)
 
 Diese vier Operationen bilden die Basis für die Verwaltung von Daten in Datenbanken und werden in REST-APIs meist direkt durch HTTP-Methoden abgebildet: Create -> POST, Read -> GET, Update -> PUT/PATCH, Delete -> DELETE.[@IBMCRUD]
 
@@ -102,29 +103,30 @@ Der Spring Initializr ist ein webbasiertes Tool, das die Erstellung eines neuen 
 
 Dabei wählt man unter anderem:
 
-- Programmiersprache (meist Java)
+  - Programmiersprache (meist Java)
 
-- Build-Tool (Maven oder Gradle)
+  - Build-Tool (Maven oder Gradle)
 
-- Spring-Boot-Version
+  - Spring-Boot-Version
 
-- sowie die benötigten Dependencies (z. B. Spring Web, Spring Data JPA, H2 Database)
+  - sowie die benötigten Dependencies (z. B. Spring Web, Spring Data JPA, H2 Database)
 
 Auf Basis dieser Auswahl erstellt der Spring Initializr automatisch ein Projekt mit:
 
-- einer passenden Ordnerstruktur,
+  - einer passenden Ordnerstruktur,
 
-- einer Startklasse (Main Application),
+  - einer Startklasse (Main Application),
 
-- einer vorkonfigurierten Build-Datei (pom.xml bei Maven),
+  - einer vorkonfigurierten Build-Datei (pom.xml bei Maven),
 
-- und den notwendigen Grundeinstellungen für Spring Boot.
+  - und den notwendigen Grundeinstellungen für Spring Boot.
 
 Der Vorteil besteht darin, dass die grundlegende Projektkonfiguration schnell, standardisiert und fehlerarm erfolgt. Dadurch kann direkt mit der eigentlichen Entwicklung begonnen werden, ohne Zeit in manuelles Setup zu investieren.[@SpringInitializrDocs]
 
 ![Überblick Spring Initializer](img/SpringInitializer.png)
 
 ## Java / JavaScript
+
 ### Was ist Java?
 Java ist eine objektorientierte Programmiersprache, die ursprünglich mit dem Ziel entwickelt wurde, plattformunabhängige Anwendungen zu ermöglichen. Ein zentrales Prinzip von Java lautet „Write once, run anywhere“. Java-Programme werden dabei in Bytecode übersetzt und anschließend von der Java Virtual Machine (JVM) ausgeführt, wodurch dieselbe Anwendung auf unterschiedlichen Betriebssystemen laufen kann.
 
@@ -138,46 +140,46 @@ Heute wird JavaScript nicht nur im Browser, sondern auch serverseitig eingesetzt
 ### Wofür wird Java verwendet
 Java wird in vielen Bereichen eingesetzt, besonders dort, wo Stabilität, Struktur und Performance wichtig sind. Typische Anwendungsbereiche sind:
 
-- Backend-Entwicklung (z. B. REST-APIs mit Spring Boot)
+  - Backend-Entwicklung (z. B. REST-APIs mit Spring Boot)
 
-- Unternehmenssoftware (z. B. ERP-Systeme, Verwaltungssoftware)
+  - Unternehmenssoftware (z. B. ERP-Systeme, Verwaltungssoftware)
 
-- Android-App-Entwicklung (klassisch mit Java, heute oft Kotlin)
+  - Android-App-Entwicklung (klassisch mit Java, heute oft Kotlin)
 
-- Server- und Cloud-Anwendungen, bei denen Skalierbarkeit entscheidend ist
+  - Server- und Cloud-Anwendungen, bei denen Skalierbarkeit entscheidend ist
 
 In diesem Projekt ist Java vor allem relevant, weil damit das Backend umgesetzt wird und Spring Boot als Java-Framework darauf aufbaut.[@OracleJavaApplications]
 
 ### Wofür wird JavaScript verwendet
 JavaScript wird vor allem für Webentwicklung genutzt, insbesondere für alles, was im Browser interaktiv sein soll. Typische Einsatzbereiche sind:
 
-- Frontend-Entwicklung (Benutzeroberflächen, dynamische Inhalte)
+  - Frontend-Entwicklung (Benutzeroberflächen, dynamische Inhalte)
 
-- Web-Frameworks wie React, Vue oder Angular
+  - Web-Frameworks wie React, Vue oder Angular
 
-- Kommunikation mit Backends über APIs (z. B. REST-Aufrufe)
+  - Kommunikation mit Backends über APIs (z. B. REST-Aufrufe)
 
-- Backend-Entwicklung mit Node.js, wenn JavaScript auch serverseitig genutzt wird
+  - Backend-Entwicklung mit Node.js, wenn JavaScript auch serverseitig genutzt wird
 
 In vielen Projekten wird JavaScript eingesetzt, um das Frontend zu bauen, das dann über eine API mit dem Backend kommuniziert.[@MDNJavaScriptOverview]
 
 ### Unterschied zwischen Java und JavaScript
 Obwohl die Namen ähnlich klingen, sind Java und JavaScript zwei unterschiedliche Programmiersprachen mit unterschiedlichen Zielen und Eigenschaften:
 
-- **Syntax und Konzept:** Java ist objektorientiert und stark typisiert, während JavaScript dynamisch typisiert ist und flexibler verwendet werden kann.
+  - **Syntax und Konzept:** Java ist objektorientiert und stark typisiert, während JavaScript dynamisch typisiert ist und flexibler verwendet werden kann.
 
-- **Laufzeitumgebung:** Java läuft auf der JVM, JavaScript läuft primär im Browser oder serverseitig über Node.js.
+  - **Laufzeitumgebung:** Java läuft auf der JVM, JavaScript läuft primär im Browser oder serverseitig über Node.js.
 
-- **Einsatzgebiet:** Java wird häufig für Backend-Systeme, Unternehmenssoftware und große Anwendungen verwendet. JavaScript ist die Standardsprache für interaktive Webseiten und moderne Web-Frontends.
+  - **Einsatzgebiet:** Java wird häufig für Backend-Systeme, Unternehmenssoftware und große Anwendungen verwendet. JavaScript ist die Standardsprache für interaktive Webseiten und moderne Web-Frontends.
 
-- **Struktur:** Java ist in der Regel strenger strukturiert (Klassen, Typen, Compile-Time Checks), während JavaScript mehr Freiheit bietet, aber dadurch auch fehleranfälliger sein kann, wenn kein klarer Stil eingehalten wird.
+  - **Struktur:** Java ist in der Regel strenger strukturiert (Klassen, Typen, Compile-Time Checks), während JavaScript mehr Freiheit bietet, aber dadurch auch fehleranfälliger sein kann, wenn kein klarer Stil eingehalten wird.
 
 Java ist eine klassische Sprache für strukturierte, größere Anwendungen (z. B. Backends), während JavaScript vor allem für Webentwicklung und Interaktivität im Browser eingesetzt wird.[@MDNJavaScriptVsJava]
 
 ## Postman
 Postman ist ein Tool zur Entwicklung und zum Testen von REST-APIs. Es ermöglicht, HTTP-Anfragen wie GET, POST, PUT/PATCH und DELETE direkt an ein Backend zu senden, ohne dass dafür bereits ein fertiges Frontend notwendig ist. Dabei können Request-Details wie Header, Parameter und ein JSON-Body einfach eingestellt werden. Postman zeigt anschließend die Antwort des Servers übersichtlich an, inklusive Statuscode und Rückgabedaten. Dadurch eignet sich das Tool besonders gut, um API-Endpunkte während der Backend-Entwicklung zu prüfen, Fehler zu analysieren und die Funktionalität der Schnittstelle schrittweise zu verifizieren.[@PostmanOverview]
 
-![Postman Überblick](img/Postman.png)
+![Postman](img/Postman.png)
 
 ## Datenbank
 ### Was ist eine Datenbank?
@@ -199,13 +201,13 @@ Die H2-Datenbank ist ein leichtgewichtiges, relationales Datenbankmanagementsyst
 
 H2 kann in zwei typischen Betriebsarten genutzt werden:
 
-- In-Memory-Modus: Die Datenbank läuft nur im Arbeitsspeicher und ist nach dem Beenden der Anwendung wieder leer. Das ist ideal für schnelle Tests, da keine Dateien verwaltet werden müssen.
+  - In-Memory-Modus: Die Datenbank läuft nur im Arbeitsspeicher und ist nach dem Beenden der Anwendung wieder leer. Das ist ideal für schnelle Tests, da keine Dateien verwaltet werden müssen.
 
-- File-Modus: Die Daten werden in einer Datei gespeichert und bleiben auch nach einem Neustart erhalten.
+  - File-Modus: Die Daten werden in einer Datei gespeichert und bleiben auch nach einem Neustart erhalten.
 
 In Spring Boot wird H2 oft als Entwicklungsdatenbank verwendet, weil sie schnell startbar ist und gut mit Spring Data JPA/Hibernate zusammenarbeitet. Zusätzlich bietet H2 eine integrierte Web-Konsole, über die Tabellen, Inhalte und SQL-Abfragen bequem im Browser angesehen werden können. Für produktive Systeme wird häufig später auf leistungsfähigere Datenbanken (z. B. PostgreSQL oder MySQL) umgestellt, während H2 weiterhin für Tests und lokale Entwicklung genutzt werden kann.[@H2DatabaseOverview]
 
-![H2 Datenbank Überblick](img/H2Datenbank_UEberblick.png)
+![H2 Datenbank Überblick](img/H2DatenBankUeberblick.png)
 
 ## MySQL
 MySQL ist ein weit verbreitetes relationales Datenbankmanagementsystem (RDBMS), das zur dauerhaften Speicherung und Verwaltung strukturierter Daten eingesetzt wird. Die Daten werden in Tabellen organisiert und können mithilfe von SQL (Structured Query Language) effizient abgefragt und bearbeitet werden. MySQL wird häufig in Web- und Backend-Anwendungen verwendet, weil es stabil, performant und für den produktiven Dauerbetrieb geeignet ist. Typische Einsatzbereiche sind Anwendungen mit Nutzer- und Trainingsdaten, Content-Systeme oder allgemeine Geschäftsanwendungen, bei denen Daten langfristig gespeichert und zuverlässig verwaltet werden müssen. In Spring-Boot-Projekten lässt sich MySQL über einen JDBC-Treiber anbinden und wird oft gemeinsam mit Spring Data JPA/Hibernate verwendet, um Datenbankzugriffe strukturiert über das Objektmodell umzusetzen.[@MySQLOverview]
@@ -289,15 +291,16 @@ Ein ER-Diagramm ist eine grafische Darstellung des Entity-Relationship-Modells u
   Zwar kein klassisches ER-Notation-System, aber häufig in objektorientierten Projekten genutzt. Klassen entsprechen dabei oft Entitäten, Attribute werden innerhalb der Klasse dargestellt, und Beziehungen werden als Assoziationen mit Multiplizitäten (z. B. 1..*, 0..1) angegeben. UML ist besonders praktisch, wenn Datenmodell und Code-Design eng zusammenhängen.[@LucidchartERDiagramNotation]
 
 ## Java Persistand API (JPA)
+
 ### Was ist JPA
-JPA (Java Persistence API) ist eine Java-Standard-Spezifikation für die objekt-relationalen Persistierung. Sie beschreibt, wie Java-Objekte (z. B. Player, TrainingSession) in einer relationalen Datenbank gespeichert, gelesen und verwaltet werden können. JPA legt dabei nur fest, wie diese Persistenz grundsätzlich funktionieren soll (z. B. über Annotationen wie @Entity, @Id, @OneToMany), stellt aber selbst keine konkrete Implementierung bereit.
+JPA (Java Persistence API) ist eine Java-Standard-Spezifikation für die objekt-relationalen Persistierung. Sie beschreibt, wie Java-Objekte (z. B. Player, TrainingSession) in einer relationalen Datenbank gespeichert, gelesen und verwaltet werden können. JPA legt dabei nur fest, wie diese Persistenz grundsätzlich funktionieren soll (z. B. über Annotationen wie ```@Entity```, ```@Id```, ```@OneToMany```), stellt aber selbst keine konkrete Implementierung bereit.
 
 Durch JPA kann die Datenbankarbeit auf einer höheren Ebene erfolgen: Statt SQL direkt zu schreiben, werden Objekte gespeichert und abgefragt, wodurch der Code meist übersichtlicher und besser wartbar wird.[@OracleJPAOverview]
 
 ### Was sind Annotationen
 Annotationen sind spezielle Markierungen im Quellcode (in Java erkennbar am @-Symbol), mit denen zusätzliche Informationen über Klassen, Methoden oder Variablen angegeben werden. Sie verändern nicht direkt den Programmablauf, sondern dienen Frameworks und Tools als „Metadaten“, um bestimmtes Verhalten automatisch umzusetzen.
 
-Im Backend mit Spring Boot und JPA werden Annotationen z. B. verwendet, um eine Klasse als Datenbank-Entität zu kennzeichnen (@Entity), Primärschlüssel festzulegen (@Id) oder REST-Endpunkte zu definieren (@RestController, @GetMapping). Dadurch wird Konfiguration in den Code verlagert, was die Struktur klarer macht und die Entwicklung vereinfacht.[@OracleJavaAnnotations]
+Im Backend mit Spring Boot und JPA werden Annotationen z. B. verwendet, um eine Klasse als Datenbank-Entität zu kennzeichnen (```@Entity```), Primärschlüssel festzulegen (```@Id```) oder REST-Endpunkte zu definieren (```@RestController```, ```@GetMapping```). Dadurch wird Konfiguration in den Code verlagert, was die Struktur klarer macht und die Entwicklung vereinfacht.[@OracleJavaAnnotations]
 
 
 ## IntelJ IDA
@@ -305,14 +308,14 @@ IntelliJ IDEA ist eine integrierte Entwicklungsumgebung (IDE) von JetBrains, die
 
 Im Backend-Kontext wird IntelliJ IDEA typischerweise genutzt, um Spring-Boot-Projekte zu erstellen und zu verwalten, Abhängigkeiten (z. B. über Maven) einzubinden, REST-Controller und Datenbankklassen zu entwickeln sowie die Anwendung lokal zu starten und zu testen. Dadurch erleichtert die IDE sowohl die Umsetzung als auch die Wartung des Backends erheblich.[JetBrainsIntelliJIDEA]
 
-![Überblick IntelJ](img/IntelJ_UEberblick.png)
+![Überblick IntelJ](img/IntelJUEberblick.png)
 
 ## Visual Studio Code
 Visual Studio Code (VS Code) ist ein leichter, plattformübergreifender Code-Editor von Microsoft, der sich durch hohe Erweiterbarkeit auszeichnet. Er unterstützt viele Programmiersprachen wie JavaScript, TypeScript, HTML/CSS, Python und auch Java über Erweiterungen. VS Code bietet Funktionen wie Syntax-Highlighting, Code-Vervollständigung, integriertes Terminal, Debugging sowie eine starke Git-Integration, wodurch die Entwicklung übersichtlich und effizient wird.
 
 VS Code wird häufig für die Frontend-Entwicklung eingesetzt, z. B. zum Erstellen von Weboberflächen mit JavaScript-Frameworks, und eignet sich durch Extensions auch für Backend-Aufgaben. Besonders praktisch ist die flexible Anpassbarkeit: Durch Plugins können zusätzliche Tools, Linter, Formatter oder Framework-Unterstützung eingebunden werden, sodass sich VS Code gut für moderne Webprojekte und die Arbeit im Team eignet.[@MicrosoftVSCodeOverview]
 
-
+![Visual Studio Code](img/VisualStudioCodeUeberblick.png)
 ## Praktische Arbeit
 
 ### Vorbereitung
@@ -347,18 +350,18 @@ Die Erstellung des Projekts erfolgte über den Spring Initializr, wodurch eine s
  
  ![Erstellung des Spring Projekt mit Hilfe von Spring Initializer](img/ErstellungdesSpringProjekts.png)
 
- Erklärung der einzelnen Komponenten
+Erklärung der einzelnen Komponenten
 
-- Project: Maven
+  - Project: Maven
   Du hast Maven als Build- und Dependency-Management-Tool gewählt. Dadurch werden Bibliotheken (Dependencies) über die pom.xml verwaltet und das Projekt kann standardisiert gebaut/gestartet werden.
 
-- Language: Java
+  - Language: Java
   Die Programmiersprache des Backends ist Java.
 
-- Spring Boot Version (z. B. 3.5.11)
+  -  Spring Boot Version (z. B. 3.5.11)
   Hier legst du fest, welche Spring-Boot-Version verwendet wird. Im Hinweis oben sieht man, dass eine ursprünglich gewünschte Version nicht verfügbar war und daher automatisch eine verfügbare Version ausgewählt wurde.
 
-- Project Metadata
+  - Project Metadata
 
   Diese Angaben bestimmen Identität und Struktur des Projekts:
   - Group (z. B. at.htlle): „Namensraum“/Organisation, wird später Teil des     Package-Namens.
@@ -367,17 +370,17 @@ Die Erstellung des Projekts erfolgte über den Spring Initializr, wodurch eine s
   - Description: Kurze Beschreibung (wird z. B. in der pom.xml geführt).
   -  Package name (z. B. at.htlle.backend): Basis-Package, unter dem deine    Java-Klassen liegen (wichtig für saubere Struktur).
 
-- Packaging: Jar
-Das Projekt wird als JAR gebaut, also als eigenständig ausführbare Anwendung (typisch für Spring Boot).
+  - Packaging: Jar
+  Das Projekt wird als JAR gebaut, also als eigenständig ausführbare Anwendung (typisch für Spring Boot).
 
-- Configuration: Properties
-Konfiguration wird primär in application.properties vorgenommen (alternativ wäre YAML möglich).
+  - Configuration: Properties
+  Konfiguration wird primär in application.properties vorgenommen (alternativ wäre YAML möglich).
 
-- Java Version: 21
-Das Projekt nutzt Java 21 als Zielversion.
+  - Java Version: 21
+  Das Projekt nutzt Java 21 als Zielversion.
 
-- Dependencies: H2 Database
-Für das Projekt H2-Datenbank als Abhängigkeit ausgewählt. Dadurch kann das Backend in der Entwicklungsphase eine integrierte, leichtgewichtige relationale Datenbank nutzen (inkl. optionaler H2-Console), ohne einen externen Datenbankserver installieren zu müssen.[@SpringBootMavenSetup]
+  - Dependencies: H2 Database
+  Für das Projekt H2-Datenbank als Abhängigkeit ausgewählt. Dadurch kann das Backend in der Entwicklungsphase eine integrierte, leichtgewichtige relationale Datenbank nutzen (inkl. optionaler H2-Console), ohne einen externen Datenbankserver installieren zu müssen.[@SpringBootMavenSetup]
 
 Nachdem alle gewünschten Angaben im Spring Initializr korrekt eingetragen und die benötigten Dependencies ausgewählt wurden, kann das Projekt über „Generate“ erstellt werden. Dabei wird ein fertiges Spring-Boot-Startprojekt als ZIP-Datei heruntergeladen, das bereits die grundlegende Ordnerstruktur, eine Startklasse sowie die Build-Konfiguration (bei Maven die pom.xml) enthält. Dieses Projekt wird anschließend entpackt und in der Entwicklungsumgebung (z. B. IntelliJ IDEA) importiert, sodass direkt mit der Implementierung des Backends begonnen werden kann.
 
@@ -416,46 +419,46 @@ Nachdem die Funktion der H2-Dateidatenbank über die Console erfolgreich geteste
 Im ersten Schritt wurde das Spring-Boot-Projekt um die notwendigen Bibliotheken zur Datenpersistenz erweitert. In einem Maven-Projekt werden diese Abhängigkeiten zentral in der Datei pom.xml definiert, wodurch Maven die benötigten Libraries automatisiert verwaltet und in den Build-Prozess integriert. Für den Zugriff auf relationale Datenbanken wurde spring-boot-starter-data-jpa eingebunden, welches die Persistenz über JPA ermöglicht und standardmäßig Hibernate als ORM-Implementierung verwendet. Als Entwicklungsdatenbank wurde die H2-Datenbank über die Dependency h2 integriert, wodurch lokale Tests ohne zusätzlichen Datenbankserver möglich sind. Zusätzlich wurde spring-boot-starter-web verwendet, um das Backend als Webservice mit REST-Endpunkten zu betreiben. Zur Reduktion von Boilerplate-Code kam Lombok zum Einsatz, wodurch insbesondere Daten- und Entity-Klassen übersichtlicher umgesetzt werden konnten.[@SpringDataJPAReference] [@SpringDataJPAProject] [@ProjectLombokData]
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="pom" .xml}
-        <dependencies>
-        <!-- Web / REST API -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+<dependencies>
+    <!-- Web / REST API -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
 
-        <!-- Validation -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
+    <!-- Validation -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
 
-        <!-- JPA / Hibernate -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+    <!-- JPA / Hibernate -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
 
-        <!-- H2 Datenbank -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+    <!-- H2 Datenbank -->
+    <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <scope>runtime</scope>
+    </dependency>
 
-        <!-- Lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
+    <!-- Lombok -->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <optional>true</optional>
+    </dependency>
 
-        <!-- Tests -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <!-- Tests -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #### Schritt 2: Konfiguration der Datenbankverbindung in Springboot
@@ -492,13 +495,13 @@ Die Schichtenarchitektur teilt ein Backend in logisch getrennte Bereiche, wobei 
 
 Im Backend wurden dabei folgende Schichten vorgesehen:
 
-- Controller-Schicht: Bereitstellung der REST-Endpunkte, Annahme von HTTP-Anfragen und Rückgabe von  JSON-Responses.
+  - Controller-Schicht: Bereitstellung der REST-Endpunkte, Annahme von HTTP-Anfragen und Rückgabe von  JSON-Responses.
 
-- Service-Schicht: Umsetzung der Geschäftslogik, z. B. Import von Analyse-Daten, Validierungen und statistische Berechnungen.
+  - Service-Schicht: Umsetzung der Geschäftslogik, z. B. Import von Analyse-Daten, Validierungen und statistische Berechnungen.
 
-- Repository-Schicht: Datenzugriff über Spring Data JPA Repositories (CRUD und Abfragen).
+  - Repository-Schicht: Datenzugriff über Spring Data JPA Repositories (CRUD und Abfragen).
 
-- Entity-/Model-Schicht: Abbildung der Datenbanktabellen als Java-Entities inklusive Beziehungen.
+  - Entity-/Model-Schicht: Abbildung der Datenbanktabellen als Java-Entities inklusive Beziehungen.
 
 Um diese Architektur auch im Projekt klar sichtbar zu machen, wurde eine entsprechende Package-Struktur angelegt (z. B. controller, service, repository, entity/model). Durch diese vorbereitende Festlegung konnte die weitere Implementierung systematisch erfolgen und das Backend von Anfang an nach einem einheitlichen und professionellen Aufbau entwickelt werden.[@MicrosoftLayeredArchitecture]
 
@@ -572,9 +575,10 @@ Source/backend/src/main/java/at/htlle/backend/
 
 ### Implementirung des entity-Packages
 
-Nach der Festlegung der Projektstruktur wurden die im ER-Diagramm definierten Tabellen als JPA-Entities in Java umgesetzt. Jede Entity entspricht dabei einer Datenbanktabelle, Attribute werden als Klassenfelder abgebildet und Beziehungen über JPA-Annotationen (z. B. @ManyToOne, @OneToMany, @OneToOne) modelliert. Dadurch kann Hibernate das Schema anhand der Entities automatisch erstellen bzw. aktualisieren.
+Nach der Festlegung der Projektstruktur wurden die im ER-Diagramm definierten Tabellen als JPA-Entities in Java umgesetzt. Jede Entity entspricht dabei einer Datenbanktabelle, Attribute werden als Klassenfelder abgebildet und Beziehungen über JPA-Annotationen (z. B. ```@ManyToOne```, ```@OneToMany```, ```@OneToOne```) modelliert. Dadurch kann Hibernate das Schema anhand der Entities automatisch erstellen bzw. aktualisieren.
 
-- Entity: Player
+
+  - Entity: Player
 
   Die Entity Player speichert die Stammdaten einer Spieler*in (z. B. Vorname, Nachname, Geburtsdatum, Erstellungszeitpunkt). Ein Player kann mehrere Trainingseinheiten besitzen (1:n zu TrainingSession).
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Player" .java}
@@ -653,31 +657,32 @@ Nach der Festlegung der Projektstruktur wurden die im ER-Diagramm definierten Ta
 
       }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- Entity: TrainingSession
+  - Entity: TrainingSession
 
   Die Entity TrainingSession repräsentiert eine Trainingseinheit und enthält u. a. Datum und Startzeitpunkt. Jede Trainingseinheit ist genau einem Player zugeordnet (n:1) und enthält mehrere Würfe (1:n zu Shot). Zusätzlich ist eine Trainingseinheit mit einem Video verknüpft (1:1 zu Video).
 
-- Entity: Shot
+  - Entity: Shot
 
   Die Entity Shot beschreibt einen einzelnen Wurf innerhalb einer Trainingseinheit. Gespeichert werden z. B. Ergebnis und Zeitpunkt. Jeder Shot gehört zu genau einer Trainingseinheit (n:1) und besitzt zugehörige Analyse-/Flugdaten (1:1 zu FlightData).
 
-- Entity: Video
+  - Entity: Video
 
   Die Entity Video verwaltet die zur Trainingseinheit gehörige Videodatei (Dateipfad, Erstellungszeitpunkt). Das Video ist einer Trainingseinheit zugeordnet (1:1) und kann zusätzlich über FlightData referenziert werden.
 
-- Entity: FlightData
+  - Entity: FlightData
 
   Die Entity FlightData enthält die Analysewerte aus der Videoverarbeitung (z. B. Abwurfpunkt, Korbposition, Winkel, Geschwindigkeit und weitere Parameter). Die Daten sind eindeutig einem Shot zugeordnet (1:1) und zusätzlich mit einem Video verknüpft (Fremdschlüssel auf Video).
 
 ### Implementierung des repository-Packages
 Nach der Modellierung der Entities im Package model wurde die Repository-Schicht umgesetzt. Ziel dieser Schicht ist es, alle Datenbankzugriffe zentral zu kapseln, damit Controller und Services nicht direkt mit SQL oder EntityManager arbeiten müssen. Spring Data JPA stellt dafür Repository-Interfaces bereit, die bereits Standardfunktionen für CRUD-Operationen enthalten.
 
-Repositories in dem Projekt
-- PlayerRepository
+Repositories in dem Projekt: 
 
-  Für den Datenzugriff auf die Spieler*innen wurde das Interface PlayerRepository implementiert. Es erweitert JpaRepository<Player, Long> und erhält dadurch automatisch grundlegende CRUD-Funktionen wie save(), findById(), findAll() und deleteById(), ohne dass dafür eigener SQL-Code geschrieben werden muss.
+  - PlayerRepository
 
-  Zusätzlich wurden zwei projektspezifische Methoden ergänzt: findByEmail(String email) liefert optional einen Player anhand der E-Mail-Adresse zurück, während existsByEmail(String email) prüft, ob bereits ein Datensatz mit dieser E-Mail existiert. Diese Methoden werden von Spring Data JPA automatisch anhand des Methodennamens in passende Datenbankabfragen übersetzt. Die Annotation @Repository kennzeichnet die Klasse als Bestandteil der Persistenzschicht und ermöglicht die automatische Einbindung (Dependency Injection) in Services.
+    Für den Datenzugriff auf die Spieler*innen wurde das Interface PlayerRepository implementiert. Es erweitert JpaRepository<Player, Long> und erhält dadurch automatisch grundlegende CRUD-Funktionen wie save(), findById(), findAll() und deleteById(), ohne dass dafür eigener SQL-Code geschrieben werden muss.
+
+    Zusätzlich wurden zwei projektspezifische Methoden ergänzt: findByEmail(String email) liefert optional einen Player anhand der E-Mail-Adresse zurück, während existsByEmail(String email) prüft, ob bereits ein Datensatz mit dieser E-Mail existiert. Diese Methoden werden von Spring Data JPA automatisch anhand des Methodennamens in passende Datenbankabfragen übersetzt. Die Annotation @Repository kennzeichnet die Klasse als Bestandteil der Persistenzschicht und ermöglicht die automatische Einbindung (Dependency Injection) in Services.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="PlayerRepository" .java}
       package at.htlle.backend.repository;
@@ -694,13 +699,13 @@ Repositories in dem Projekt
           boolean existsByEmail(String email);
       }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- TrainingSessionRepository
+  - TrainingSessionRepository
 
-- ShotRepository
+  - ShotRepository
 
-- SollFlightDataRepository
+  - SollFlightDataRepository
 
-- VideoRepository
+  - VideoRepository
 
 Damit ist die Grundlage geschaffen, damit die Service-Schicht später sauber und wiederverwendbar auf Daten zugreifen kann.
 
@@ -709,192 +714,193 @@ Als nächstes folgt das Package service, das die Geschäftslogik des Backends ka
 
 Für dein Projekt sind im Service-Package u. a. folgende Klassen vorhanden:
 
-- PlayerService
+  - PlayerService
 
-  Die Klasse PlayerService bildet die Service-Schicht für Spieler*innen-Funktionen und kapselt die zugehörige Geschäftslogik. Sie ist mit @Service als Spring-Komponente gekennzeichnet und wird über @RequiredArgsConstructor (Lombok) automatisch mit dem benötigten PlayerRepository via Dependency Injection initialisiert.
+    Die Klasse PlayerService bildet die Service-Schicht für Spieler*innen-Funktionen und kapselt die zugehörige Geschäftslogik. Sie ist mit @Service als Spring-Komponente gekennzeichnet und wird über @RequiredArgsConstructor (Lombok) automatisch mit dem benötigten PlayerRepository via Dependency Injection initialisiert.
 
-  Ein zentraler Bestandteil ist die Methode registerPlayer(...). Dabei wird die übergebene E-Mail-Adresse zunächst normalisiert (Trimmen und Umwandlung in Kleinbuchstaben), anschließend auf Leerwert und Format geprüft. Für die Formatprüfung wird ein vordefiniertes Regex-Muster (EMAIL_PATTERN) verwendet. Zusätzlich wird über das Repository geprüft, ob die E-Mail bereits existiert, um doppelte Accounts zu verhindern. Erst danach wird ein Player-Objekt erstellt und über playerRepository.save(player) in der Datenbank gespeichert.
+    Ein zentraler Bestandteil ist die Methode registerPlayer(...). Dabei wird die übergebene E-Mail-Adresse zunächst normalisiert (Trimmen und Umwandlung in Kleinbuchstaben), anschließend auf Leerwert und Format geprüft. Für die Formatprüfung wird ein vordefiniertes Regex-Muster (EMAIL_PATTERN) verwendet. Zusätzlich wird über das Repository geprüft, ob die E-Mail bereits existiert, um doppelte Accounts zu verhindern. Erst danach wird ein Player-Objekt erstellt und über playerRepository.save(player) in der Datenbank gespeichert.
 
-  Die Methode loginPlayer(...) implementiert eine einfache Login-Logik, indem ein Player über die E-Mail gesucht und das gespeicherte Passwort mit dem eingegebenen Passwort verglichen wird. Als Rückgabewert wird Optional<Player> verwendet, um sauber zwischen „gefunden“ und „nicht gefunden/ungültig“ zu unterscheiden. Ergänzend stellt getUserById(...) eine Zugriffsfunktion bereit, um Spieler*innen anhand der ID abzurufen.[@SpringFrameworkService] [@LombokRequiredArgsConstructor]
+    Die Methode loginPlayer(...) implementiert eine einfache Login-Logik, indem ein Player über die E-Mail gesucht und das gespeicherte Passwort mit dem eingegebenen Passwort verglichen wird. Als Rückgabewert wird Optional<Player> verwendet, um sauber zwischen „gefunden“ und „nicht gefunden/ungültig“ zu unterscheiden. Ergänzend stellt getUserById(...) eine Zugriffsfunktion bereit, um Spieler*innen anhand der ID abzurufen.[@SpringFrameworkService] [@LombokRequiredArgsConstructor]
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="PlayerService" .java}
-      package at.htlle.backend.service;
+package at.htlle.backend.service;
 
-      import at.htlle.backend.model.Player;
-      import at.htlle.backend.repository.PlayerRepository;
-      import lombok.RequiredArgsConstructor;
-      import org.springframework.stereotype.Service;
+import at.htlle.backend.model.Player;
+import at.htlle.backend.repository.PlayerRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-      import java.util.Optional;
-      import java.util.regex.Pattern;
+import java.util.Optional;
+import java.util.regex.Pattern;
 
-      @Service
-      @RequiredArgsConstructor
-      public class PlayerService {
-          private final PlayerRepository playerRepository;
+@Service
+@RequiredArgsConstructor
+public class PlayerService {
+    private final PlayerRepository playerRepository;
 
-          private static final Pattern EMAIL_PATTERN = Pattern.compile(
-                  "^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
-          );
+    private static final Pattern EMAIL_PATTERN = Pattern.compile(
+            "^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+    );
 
-          public Player registerPlayer(String firstName,String lastName, String email, String password) {
+    public Player registerPlayer(String firstName,String lastName, String email, String password) {
 
-              String normalizedEmail = email == null ? "" : email.trim().toLowerCase();
+        String normalizedEmail = email == null ? "" : email.trim().toLowerCase();
 
-              if (normalizedEmail.isEmpty()) {
-                  throw new IllegalArgumentException("Email darf nicht leer sein");
-              }
+        if (normalizedEmail.isEmpty()) {
+            throw new IllegalArgumentException("Email darf nicht leer sein");
+        }
 
-              if (!EMAIL_PATTERN.matcher(normalizedEmail).matches()) {
-                  throw new IllegalArgumentException("Ungültiges Email-Format");
-              }
+        if (!EMAIL_PATTERN.matcher(normalizedEmail).matches()) {
+            throw new IllegalArgumentException("Ungültiges Email-Format");
+        }
 
-              if (playerRepository.findByEmail(normalizedEmail).isPresent()) {
-                  throw new IllegalArgumentException("Email bereits registriert");
-              }
+        if (playerRepository.findByEmail(normalizedEmail).isPresent()) {
+            throw new IllegalArgumentException("Email bereits registriert");
+        }
 
-              Player player = new Player();
-              player.setFirstName(firstName);
-              player.setLastName(lastName);
-              player.setEmail(normalizedEmail);
-              player.setPassword(password);
+        Player player = new Player();
+        player.setFirstName(firstName);
+        player.setLastName(lastName);
+        player.setEmail(normalizedEmail);
+        player.setPassword(password);
 
-              return playerRepository.save(player);
-          }
+        return playerRepository.save(player);
+    }
 
-          public Optional<Player> loginPlayer(String email, String password) {
-              Optional<Player> player = playerRepository.findByEmail(email);
-              if (player.isPresent() && player.get().getPassword().equals(password)) {
-                  return player;
-              }
-              return Optional.empty();
-          }
+    public Optional<Player> loginPlayer(String email, String password) {
+        Optional<Player> player = playerRepository.findByEmail(email);
+        if (player.isPresent() && player.get().getPassword().equals(password)) {
+            return player;
+        }
+        return Optional.empty();
+    }
 
-          public Optional<Player> getUserById(Long id) {
-              return playerRepository.findById(id);
-          }
+    public Optional<Player> getUserById(Long id) {
+        return playerRepository.findById(id);
+    }
 
-      }
+}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- TrainingSessionService
-  Enthält die Logik zur Verwaltung von Trainingseinheiten. Dazu gehören typischerweise das Anlegen neuer Sessions, das Abrufen vorhandener Sessions sowie das Verknüpfen einer Session mit einem bestimmten Player. Die Datenbankzugriffe erfolgen dabei über das TrainingSessionRepository.
+  - TrainingSessionService
+   Enthält die Logik zur Verwaltung von Trainingseinheiten. Dazu gehören typischerweise das Anlegen neuer Sessions, das Abrufen vorhandener Sessions sowie das Verknüpfen einer Session mit einem bestimmten Player. Die Datenbankzugriffe erfolgen dabei über das TrainingSessionRepository.
 
-- AnalysisImportService
-  Diese Klasse übernimmt den Import der Analyse-Daten aus der Videoverarbeitung. Sie verarbeitet die eingehenden JSON-Daten, validiert sie und überführt sie in die entsprechenden Entities (z. B. Shots und Soll-/Flugdaten). Anschließend werden die Daten korrekt mit der passenden Trainingseinheit verknüpft und in der Datenbank gespeichert.
+  - AnalysisImportService
+    Diese Klasse übernimmt den Import der Analyse-Daten aus der Videoverarbeitung. Sie verarbeitet die eingehenden JSON-Daten, validiert sie und überführt sie in die entsprechenden Entities (z. B. Shots und Soll-/Flugdaten). Anschließend werden die Daten korrekt mit der passenden Trainingseinheit verknüpft und in der Datenbank gespeichert.
 
-- StatsService
-  Zuständig für die Berechnung und Bereitstellung statistischer Kennzahlen. Dazu zählen z. B. Trefferquoten, Durchschnittswerte von Winkel und Geschwindigkeit sowie weitere aggregierte Auswertungen pro Spieler oder pro Trainingseinheit. Die Ergebnisse werden in DTOs verpackt und an die Controller-Schicht weitergegeben.
+  - StatsService
+    Zuständig für die Berechnung und Bereitstellung statistischer Kennzahlen. Dazu zählen z. B. Trefferquoten, Durchschnittswerte von Winkel und Geschwindigkeit sowie weitere aggregierte Auswertungen pro Spieler oder pro Trainingseinheit. Die Ergebnisse werden in DTOs verpackt und an die Controller-Schicht weitergegeben.
 
-- DashboardService
-  Bündelt Daten für eine kompakte Übersicht im Frontend (Dashboard). Typischerweise werden hierfür verschiedene Informationen kombiniert, z. B. aktuelle Session-Zusammenfassungen, Trenddaten oder die wichtigsten Kennzahlen eines Spielers, um sie in einer einzigen Antwort bereitstellen zu können.
+  - DashboardService
+    Bündelt Daten für eine kompakte Übersicht im Frontend (Dashboard). Typischerweise werden hierfür verschiedene Informationen kombiniert, z. B. aktuelle Session-Zusammenfassungen, Trenddaten oder die wichtigsten Kennzahlen eines Spielers, um sie in einer einzigen Antwort bereitstellen zu können.
 
 ### Implementierung des contoller-Packages
 Im Package controller wurden die REST-Endpunkte des Backends umgesetzt. Controller bilden die Schnittstelle zwischen Frontend und Backend: Sie nehmen HTTP-Anfragen entgegen (z. B. GET/POST), lesen Parameter oder JSON-Request-Bodies aus, rufen die passende Geschäftslogik in der Service-Schicht auf und geben das Ergebnis als JSON-Response zurück. Dadurch bleibt die Controller-Schicht schlank, während die eigentliche Logik in Services gekapselt ist.
 
 In deinem Projekt gibt es unter anderem:
 
-- PlayerController
+  - PlayerController
 
-  Der PlayerController stellt die REST-Schnittstelle für Benutzerfunktionen bereit und ist über @RestController als Controller in Spring Boot registriert. Mit @RequestMapping("/api/users") wird ein gemeinsamer Basispfad für alle Endpunkte definiert. Über @RequiredArgsConstructor (Lombok) wird der PlayerService automatisch per Dependency Injection eingebunden. Die Annotation @CrossOrigin(origins = "*") erlaubt während der Entwicklung Cross-Origin-Anfragen vom Frontend.
+    Der PlayerController stellt die REST-Schnittstelle für Benutzerfunktionen bereit und ist über @RestController als Controller in Spring Boot registriert. Mit @RequestMapping("/api/users") wird ein gemeinsamer Basispfad für alle Endpunkte definiert. Über @RequiredArgsConstructor (Lombok) wird der PlayerService automatisch per Dependency Injection eingebunden. Die Annotation @CrossOrigin(origins = "*") erlaubt während der Entwicklung Cross-Origin-Anfragen vom Frontend.
 
-  Der Controller implementiert drei zentrale Endpunkte:
+    Der Controller implementiert drei zentrale Endpunkte:
 
-  - POST /api/users/register
-  Nimmt Registrierungsdaten als JSON (RegisterRequest) entgegen und ruft playerService.registerPlayer(...) auf. Bei Erfolg wird eine strukturierte Antwort über ApiResponse zurückgegeben. Validierungsfehler werden als 400 Bad Request behandelt.
+    - POST /api/users/register
+    Nimmt Registrierungsdaten als JSON (RegisterRequest) entgegen und ruft playerService.registerPlayer(...) auf. Bei Erfolg wird eine strukturierte Antwort über ApiResponse zurückgegeben. Validierungsfehler werden als 400 Bad Request behandelt.
 
-  - POST /api/users/login
-  Prüft Anmeldedaten (LoginRequest). Wenn ein passender Benutzer gefunden wird, wird 200 OK zurückgegeben, andernfalls 401 Unauthorized.
+    - POST /api/users/login
+    Prüft Anmeldedaten (LoginRequest). Wenn ein passender Benutzer gefunden wird, wird 200 OK zurückgegeben, andernfalls 401 Unauthorized.
 
-  - GET /api/users/{playerId}
-  Liefert einen Benutzer anhand der ID. Wird kein Datensatz gefunden, antwortet der Controller mit 404 Not Found.
+   - GET /api/users/{playerId}
+    Liefert einen Benutzer anhand der ID. Wird kein Datensatz gefunden, antwortet der Controller mit 404 Not Found.
 
-  Durch diese Umsetzung bleibt die Controller-Schicht auf die HTTP-Kommunikation und Response-Struktur fokussiert, während die eigentliche Logik (Validierung, Datenbankzugriff) im PlayerService gekapselt ist.
+    Durch diese Umsetzung bleibt die Controller-Schicht auf die HTTP-Kommunikation und Response-Struktur fokussiert, während die eigentliche Logik (Validierung, Datenbankzugriff) im PlayerService gekapselt ist.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="PlayerController" .java}
-        package at.htlle.backend.controller;
+package at.htlle.backend.controller;
 
-        import at.htlle.backend.dto.player.ApiResponse;
-        import at.htlle.backend.dto.player.LoginRequest;
-        import at.htlle.backend.dto.player.RegisterRequest;
-        import at.htlle.backend.model.Player;
-        import at.htlle.backend.service.PlayerService;
-        import org.springframework.http.HttpStatus;
-        import org.springframework.http.ResponseEntity;
-        import org.springframework.web.bind.annotation.*;
-        import lombok.RequiredArgsConstructor;
+import at.htlle.backend.dto.player.ApiResponse;
+import at.htlle.backend.dto.player.LoginRequest;
+import at.htlle.backend.dto.player.RegisterRequest;
+import at.htlle.backend.model.Player;
+import at.htlle.backend.service.PlayerService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import lombok.RequiredArgsConstructor;
 
-        import java.util.Optional;
+import java.util.Optional;
 
-        @RestController
-        @RequestMapping("/api/users")
-        @RequiredArgsConstructor
-        @CrossOrigin(origins = "*")
-        public class PlayerController {
-            private final PlayerService playerService;
+@RestController
+@RequestMapping("/api/users")
+@RequiredArgsConstructor
+@CrossOrigin(origins = "*")
+public class PlayerController {
+    private final PlayerService playerService;
 
-            @PostMapping("/register")
-            public ResponseEntity<ApiResponse> register(@RequestBody RegisterRequest request) {
-                try {
-                    Player player = playerService.registerPlayer(request.getFirstName(),request.getLastName(), request.getEmail(), request.getPassword());
-                    return ResponseEntity.ok(new ApiResponse(true, "Registrierung erfolgreich", player));
-                } catch (IllegalArgumentException e) {
-                    return ResponseEntity.badRequest().body(new ApiResponse(false, e.getMessage(), null));
-                }
-            }
-
-            @PostMapping("/login")
-            public ResponseEntity<ApiResponse> login(@RequestBody LoginRequest request) {
-                Optional<Player> player = playerService.loginPlayer(request.getEmail(), request.getPassword());
-                if (player.isPresent()) {
-                    return ResponseEntity.ok(new ApiResponse(true, "Login erfolgreich", player.get()));
-                } else {
-                    return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                            .body(new ApiResponse(false, "Ungültige Anmeldedaten", null));
-                }
-            }
-
-
-
-            @GetMapping("/{playerId}")
-            public ResponseEntity<ApiResponse> getPlayer(@PathVariable Long playerId) {
-                Optional<Player> player = playerService.getUserById(playerId);
-                if (player.isPresent()) {
-                    return ResponseEntity.ok(new ApiResponse(true, "Benutzer gefunden", player.get()));
-                } else {
-                    return ResponseEntity.notFound().build();
-                }
-            }
+    @PostMapping("/register")
+    public ResponseEntity<ApiResponse> register(@RequestBody RegisterRequest request) {
+        try {
+            Player player = playerService.registerPlayer(request.getFirstName(),request.getLastName(), request.getEmail(), request.getPassword());
+            return ResponseEntity.ok(new ApiResponse(true, "Registrierung erfolgreich", player));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(new ApiResponse(false, e.getMessage(), null));
         }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<ApiResponse> login(@RequestBody LoginRequest request) {
+        Optional<Player> player = playerService.loginPlayer(request.getEmail(), request.getPassword());
+        if (player.isPresent()) {
+            return ResponseEntity.ok(new ApiResponse(true, "Login erfolgreich", player.get()));
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(new ApiResponse(false, "Ungültige Anmeldedaten", null));
+        }
+    }
+
+
+
+    @GetMapping("/{playerId}")
+    public ResponseEntity<ApiResponse> getPlayer(@PathVariable Long playerId) {
+        Optional<Player> player = playerService.getUserById(playerId);
+        if (player.isPresent()) {
+            return ResponseEntity.ok(new ApiResponse(true, "Benutzer gefunden", player.get()));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+}
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- TrainingSessionController
-  Stellt Endpunkte zur Verwaltung von Trainingseinheiten bereit. Dazu gehören typischerweise das Anlegen neuer Sessions, das Abrufen vorhandener Sessions sowie das Zuordnen von Sessions zu Spieler*innen. Die Verarbeitung erfolgt über den TrainingSessionService.
+  - TrainingSessionController
+   Stellt Endpunkte zur Verwaltung von Trainingseinheiten bereit. Dazu gehören typischerweise das Anlegen neuer Sessions, das Abrufen vorhandener Sessions sowie das Zuordnen von Sessions zu Spieler*innen. Die Verarbeitung erfolgt über den TrainingSessionService.
 
-- AnalysisImportController
-  Dieser Controller bildet die Schnittstelle für den Import der Analyse-Daten aus der Videoverarbeitung. Er nimmt die übermittelten JSON-Daten entgegen und startet den Importprozess über den AnalysisImportService, wodurch Shots und zugehörige Analyse-/Flugdaten gespeichert und mit einer Trainingseinheit verknüpft werden.
+  - AnalysisImportController
+    Dieser Controller bildet die Schnittstelle für den Import der Analyse-Daten aus der Videoverarbeitung. Er nimmt die übermittelten JSON-Daten entgegen und startet den Importprozess über den AnalysisImportService, wodurch Shots und zugehörige Analyse-/Flugdaten gespeichert und mit einer Trainingseinheit verknüpft werden.
 
-- StatsController
-  Stellt Endpunkte zur Verfügung, über die statistische Kennzahlen abgerufen werden können (z. B. Trefferquote, Durchschnittswerte, Session-Statistiken oder Trenddaten). Die Berechnung und Aggregation erfolgt im StatsService, der Controller liefert die Ergebnisse als JSON an das Frontend zurück.
+  - StatsController
+    Stellt Endpunkte zur Verfügung, über die statistische Kennzahlen abgerufen werden können (z. B. Trefferquote, Durchschnittswerte, Session-Statistiken oder Trenddaten). Die Berechnung und Aggregation erfolgt im StatsService, der Controller liefert die Ergebnisse als JSON an das Frontend zurück.
 
-- DashboardController
-  Dient zur Bereitstellung einer kompakten Übersicht für das Frontend-Dashboard. Hier werden mehrere Informationen zusammengeführt (z. B. letzte Sessions, wichtigste Kennzahlen, Trends) und in einer gebündelten Response ausgegeben, um die Darstellung im Frontend zu vereinfachen.
+  - DashboardController
+    Dient zur Bereitstellung einer kompakten Übersicht für das Frontend-Dashboard. Hier werden mehrere Informationen zusammengeführt (z. B. letzte Sessions, wichtigste Kennzahlen, Trends) und in einer gebündelten Response ausgegeben, um die Darstellung im Frontend zu vereinfachen.
 
 ### Implementireung des dto-Package
 Im Package dto wurden Data Transfer Objects (DTOs) umgesetzt. DTOs sind einfache Klassen, die ausschließlich dafür verwendet werden, Daten strukturiert zwischen Client (Frontend) und Server (Backend) zu übertragen. Sie trennen damit externe API-Datenmodelle von internen Datenbank-Entities (model). Dadurch werden:
 
-- die REST-Schnittstellen klarer und stabiler,
+  - die REST-Schnittstellen klarer und stabiler,
 
-- unnötige Felder (z. B. interne IDs oder Passwörter) nicht versehentlich   ausgegeben,
+  - unnötige Felder (z. B. interne IDs oder Passwörter) nicht versehentlich   ausgegeben,
 
-- und Eingaben/Antworten unabhängig vom Datenbankschema versionier- und anpassbar.
+  - und Eingaben/Antworten unabhängig vom Datenbankschema versionier- und anpassbar.
 
-In dem Projekt sind die DTOs nach Funktionsbereichen unterteilt, z. B.:
+  In dem Projekt sind die DTOs nach Funktionsbereichen unterteilt, z. B.:
 
-- dto/player (Register, Login, Response)
+  - dto/player (Register, Login, Response)
 
-  Die Klasse RegisterRequest ist ein Data Transfer Object (DTO) und dient dazu, Registrierungsdaten vom Frontend an das Backend zu übertragen. Sie enthält die benötigten Felder firstName, lastName, email und password, die beim Aufruf des Registrierungs-Endpunkts als JSON im Request-Body gesendet werden.
+    Die Klasse RegisterRequest ist ein Data Transfer Object (DTO) und dient dazu, Registrierungsdaten vom Frontend an das Backend zu übertragen. Sie enthält die benötigten Felder firstName, lastName, email und password, die beim Aufruf des Registrierungs-Endpunkts als JSON im Request-Body gesendet werden.
 
-  Durch die Trennung von DTO und Entity wird verhindert, dass direkt mit der Datenbankstruktur (Player Entity) gearbeitet werden muss. Dadurch bleibt die REST-Schnittstelle klar definiert und kann unabhängig vom internen Datenmodell angepasst werden. Die Lombok-Annotation @Data erzeugt automatisch Getter, Setter sowie weitere Standardmethoden, wodurch die Klasse kompakt und übersichtlich bleibt.[@FowlerDTO] [@ProjectLombokData]
+    Durch die Trennung von DTO und Entity wird verhindert, dass direkt mit der Datenbankstruktur (Player Entity) gearbeitet werden muss. Dadurch bleibt die REST-Schnittstelle klar definiert und kann unabhängig vom internen Datenmodell angepasst werden. Die Lombok-Annotation @Data erzeugt automatisch Getter, Setter sowie weitere Standardmethoden, wodurch die Klasse kompakt und übersichtlich bleibt.[@FowlerDTO] [@ProjectLombokData]
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="RegisterRequest" .java}
         package at.htlle.backend.dto.player;
@@ -910,13 +916,13 @@ In dem Projekt sind die DTOs nach Funktionsbereichen unterteilt, z. B.:
         }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- dto/session (CreateSession, SessionResponse)
+  - dto/session (CreateSession, SessionResponse)
 
-- dto/analysis (Import-Payloads, ShotDTO, SollDTO)
+  - dto/analysis (Import-Payloads, ShotDTO, SollDTO)
 
-- dto/stats (PlayerStats, SessionStats, Trend-Items)
+  - dto/stats (PlayerStats, SessionStats, Trend-Items)
 
-- dto/dashboard (Dashboard-Übersicht)
+  - dto/dashboard (Dashboard-Übersicht)
 
 ### Implementireung des config-Pageges
 
@@ -924,9 +930,9 @@ Im Package config werden Klassen gesammelt, die technische Einstellungen für da
 
 In deinem Projekt sind hier:
 
-- CorsConfig.java
+  - CorsConfig.java
 
-- WebConfig.java
+  - WebConfig.java
 
 ## Testing
   Im Rahmen der Implementierung wurde jede neu erstellte Controller-Klasse unmittelbar nach der Entwicklung mit Postman getestet. Dabei wurden die zugehörigen Endpunkte (z. B. GET/POST-Anfragen) mit passenden Request-Bodys und Parametern aufgerufen und die Antworten anhand von Statuscodes sowie der zurückgegebenen JSON-Strukturen überprüft. Durch dieses fortlaufende Testen konnte sichergestellt werden, dass die Schnittstellen korrekt reagieren, die Daten wie vorgesehen verarbeitet werden und die Kommunikation zwischen Backend und späterem Frontend zuverlässig funktioniert. Alle getesteten Endpunkte verhielten sich dabei wie erwartet und konnten ohne Fehler verwendet werden.[@PostmanAPITesting]

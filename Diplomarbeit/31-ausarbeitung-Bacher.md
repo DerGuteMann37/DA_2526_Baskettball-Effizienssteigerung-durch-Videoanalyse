@@ -16,6 +16,8 @@ Aufbauend auf diesen Grundlagen wird anschließend versucht, eine optimale Flugb
 
 ![Wurf eines Basketballspielers](img/wmbi-schusss.jpg)
 
+Abbildung: Basketballspieler beim Korbwurf während eines Spiels. Quelle: [@getty-basketball-shot]
+
 Wurfbewegungen treten in vielen Bereichen des täglichen Lebens auf. Besonders deutlich sind sie in zahlreichen Sportarten zu beobachten. Beispiele dafür sind der Korbwurf im Basketball, der Torwurf im Handball, ein Einwurf im Fußball oder das gezielte Werfen eines Gegenstandes auf ein bestimmtes Ziel. Die verschiedenen Sportarten unterscheiden sich dabei unter anderem in der Wurfentfernung, der Höhe des Ziels und der Art der Bewegung. Während beim Handball beispielsweise mit hoher Geschwindigkeit auf ein Tor geworfen wird, steht beim Basketball das präzise Treffen eines erhöhten Korbes im Vordergrund.
 
 Im Rahmen dieser Arbeit wird daher der Korbwurf im Basketball betrachtet. Diese Sportart eignet sich besonders gut für eine physikalische Analyse, da der Ball auf ein fest definiertes Ziel in einer bestimmten Höhe geworfen wird. Dadurch lässt sich die Flugbahn des Balls gut mit den physikalischen Modellen der Wurfbewegung beschreiben.
