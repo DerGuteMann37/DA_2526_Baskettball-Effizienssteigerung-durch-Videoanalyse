@@ -502,7 +502,7 @@ v_0 = \sqrt{\frac{g x_K^2}{2 \cos^2(\alpha)\,\bigl(h_0 + x_K \tan(\alpha) - h_K\
 $$
 
 **Listing 4.2: Berechnung der Anfangsgeschwindigkeit aus der Treffbedingung**
-~~~{.python caption="Berechnung der Anfangsgeschwindigkeit aus der Treffbedingung"}
+```python
 import numpy as np
 
 nenner = 2 * np.cos(alpha)**2 * (h_0 + x_K * np.tan(alpha) - h_K)
@@ -512,7 +512,7 @@ if nenner <= 0:
 
 v_0 = np.sqrt(g * x_K**2 / nenner)
 print(f"Erforderliche Anfangsgeschwindigkeit: {v_0:.2f} m/s")
-~~~
+```
 
 Dieses Listing zeigt die direkte programmtechnische Umsetzung der Treffbedingung und die Berechnung von $v_0$.
 
