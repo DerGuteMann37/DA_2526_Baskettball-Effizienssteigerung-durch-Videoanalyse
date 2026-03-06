@@ -502,8 +502,7 @@ v_0 = \sqrt{\frac{g x_K^2}{2 \cos^2(\alpha)\,\bigl(h_0 + x_K \tan(\alpha) - h_K\
 $$
 
 **Listing 4.2: Berechnung der Anfangsgeschwindigkeit aus der Treffbedingung**
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Berechnung der Anfangsgeschwindigkeit aus der Treffbedingung" .py}
-```python
+~~~{.python caption="Berechnung der Anfangsgeschwindigkeit aus der Treffbedingung"}
 import numpy as np
 
 nenner = 2 * np.cos(alpha)**2 * (h_0 + x_K * np.tan(alpha) - h_K)
@@ -513,7 +512,7 @@ if nenner <= 0:
 
 v_0 = np.sqrt(g * x_K**2 / nenner)
 print(f"Erforderliche Anfangsgeschwindigkeit: {v_0:.2f} m/s")
-```
+~~~
 
 Dieses Listing zeigt die direkte programmtechnische Umsetzung der Treffbedingung und die Berechnung von $v_0$.
 
@@ -524,7 +523,6 @@ h_0 + x_K \tan(\alpha) - h_K > 0
 $$
 
 Zur praktischen Berechnung wird der Bereich $x \in [0, x_K]$ in diskrete Stützstellen unterteilt. Für jede Stützstelle wird $y(x)$ ausgewertet, wodurch eine berechenbare Punktfolge entsteht, die Sollflugbahn repräsentiert.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 **Listing 4.3: Diskrete Berechnung der Sollflugbahn über $x$-Stützstellen**
