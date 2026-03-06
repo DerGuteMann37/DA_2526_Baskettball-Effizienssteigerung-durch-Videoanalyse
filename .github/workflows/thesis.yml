@@ -13,12 +13,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Build And Send Diploma Thesis
-        uses: HTL-Leoben/da-base-template@main
-        # Uncomment following lines to enable email notification
-        #with:
-          #mail-address: ${{ secrets.MAIL }}
-          #mail-address-password: ${{ secrets.MAIL_PASSWORD }}
-          #smtp-server: ${{ secrets.SMTP_SERVER }}
-          #smtp-port: ${{ secrets.SMTP_PORT }}
-          #teams-mail: ${{ secrets.TEAMS_MAIL }}
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install prerequisites (pandoc, rsync, TeX Live xetex)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends pandoc rsync texlive-xetex texlive-fonts-recommended texlive-latex-extra lmodern
+
+      - name: Build diploma thesis (local runner)
+        working-directory: Diplomarbeit/da-base-template
+        run: |
+          # Use the repository's Diplomarbeit folder as the source dir
+          make pdf SOURCEDIR=.. 
+
+      - name: Upload produced PDF (if any)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: diplomarbeit-pdf
+          path: Diplomarbeit/da-base-template/staging/diplomarbeit.pdf

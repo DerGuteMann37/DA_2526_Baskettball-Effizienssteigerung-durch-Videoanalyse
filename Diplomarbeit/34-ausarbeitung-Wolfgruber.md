@@ -984,7 +984,7 @@ for (cx, cy) in positions_px:
 
     # Wenn mehrere Frames unterhalb -> Treffer
     if frames_below_rim >= threshold_frames:
-        print("Korberfolg erkannt – Tracking wird beendet")
+        print("Korberfolg erkannt - Tracking wird beendet")
         break
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Nachfolgende Bewegungen des Balls, etwa beim Aufprall auf dem Boden
