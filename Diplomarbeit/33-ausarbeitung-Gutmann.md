@@ -570,7 +570,7 @@ Source/backend/src/main/java/at/htlle/backend/
                             └── backend/
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-### Implementirung der Entity Klassen
+### Implementirung des entity-Packages
 
 Nach der Festlegung der Projektstruktur wurden die im ER-Diagramm definierten Tabellen als JPA-Entities in Java umgesetzt. Jede Entity entspricht dabei einer Datenbanktabelle, Attribute werden als Klassenfelder abgebildet und Beziehungen über JPA-Annotationen (z. B. @ManyToOne, @OneToMany, @OneToOne) modelliert. Dadurch kann Hibernate das Schema anhand der Entities automatisch erstellen bzw. aktualisieren.
 
@@ -669,7 +669,7 @@ Nach der Festlegung der Projektstruktur wurden die im ER-Diagramm definierten Ta
 
   Die Entity FlightData enthält die Analysewerte aus der Videoverarbeitung (z. B. Abwurfpunkt, Korbposition, Winkel, Geschwindigkeit und weitere Parameter). Die Daten sind eindeutig einem Shot zugeordnet (1:1) und zusätzlich mit einem Video verknüpft (Fremdschlüssel auf Video).
 
-### Implementierung des repository-Package
+### Implementierung des repository-Packages
 Nach der Modellierung der Entities im Package model wurde die Repository-Schicht umgesetzt. Ziel dieser Schicht ist es, alle Datenbankzugriffe zentral zu kapseln, damit Controller und Services nicht direkt mit SQL oder EntityManager arbeiten müssen. Spring Data JPA stellt dafür Repository-Interfaces bereit, die bereits Standardfunktionen für CRUD-Operationen enthalten.
 
 Repositories in dem Projekt
@@ -704,7 +704,7 @@ Repositories in dem Projekt
 
 Damit ist die Grundlage geschaffen, damit die Service-Schicht später sauber und wiederverwendbar auf Daten zugreifen kann.
 
-### Implementireung des service-Package
+### Implementireung des service-Packages
 Als nächstes folgt das Package service, das die Geschäftslogik des Backends kapselt. Während Controller lediglich HTTP-Anfragen annehmen und Responses zurückgeben, übernimmt die Service-Schicht die eigentliche Verarbeitung: z. B. das Validieren von Eingaben, das Speichern und Verknüpfen von Entities über Repositories, sowie die Berechnung von Statistiken oder das Importieren von Analyse-Daten. Dadurch bleibt die Logik zentral gebündelt, wiederverwendbar und leichter testbar.
 
 Für dein Projekt sind im Service-Package u. a. folgende Klassen vorhanden:
@@ -788,7 +788,7 @@ Für dein Projekt sind im Service-Package u. a. folgende Klassen vorhanden:
 - DashboardService
   Bündelt Daten für eine kompakte Übersicht im Frontend (Dashboard). Typischerweise werden hierfür verschiedene Informationen kombiniert, z. B. aktuelle Session-Zusammenfassungen, Trenddaten oder die wichtigsten Kennzahlen eines Spielers, um sie in einer einzigen Antwort bereitstellen zu können.
 
-### Implementierung des contoller Packages
+### Implementierung des contoller-Packages
 Im Package controller wurden die REST-Endpunkte des Backends umgesetzt. Controller bilden die Schnittstelle zwischen Frontend und Backend: Sie nehmen HTTP-Anfragen entgegen (z. B. GET/POST), lesen Parameter oder JSON-Request-Bodies aus, rufen die passende Geschäftslogik in der Service-Schicht auf und geben das Ergebnis als JSON-Response zurück. Dadurch bleibt die Controller-Schicht schlank, während die eigentliche Logik in Services gekapselt ist.
 
 In deinem Projekt gibt es unter anderem:
