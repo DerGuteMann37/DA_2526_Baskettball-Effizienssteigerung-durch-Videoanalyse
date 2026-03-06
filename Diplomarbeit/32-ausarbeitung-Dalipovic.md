@@ -55,7 +55,7 @@ Die klare Trennung von Client- und Serververantwortlichkeiten bildet die archite
 
 ![Client-Server-Kommunikation als Mehrschichtprinzip ](img/threeTierArchitecture.jpg){ width=85% }
 
-Abbildung: Vereinfachte Darstellung einer Webanwendung mit Präsentationsschicht (Client), Logikschicht (Server) und Datenhaltung (Datenbank). Quelle: \cite{algomaster-client-server}
+Abbildung: Vereinfachte Darstellung einer Webanwendung mit Präsentationsschicht (Client), Logikschicht (Server) und Datenhaltung (Datenbank). Quelle: [@algomaster-client-server]
 
 
 ### Strukturierung von Inhalten mit HTML
@@ -66,7 +66,7 @@ Ein HTML-Dokument besteht aus einer hierarchischen Baumstruktur von Elementen. D
 
 ![DOM-Struktur eines HTML-Dokuments](img/html_dom.jpg){ width=85% }
 
-Abbildung: Baumstruktur des Document Object Models (DOM) als interne Repräsentation eines HTML-Dokuments im Browser. Quelle: \cite{tutorialspoint-dom}
+Abbildung: Baumstruktur des Document Object Models (DOM) als interne Repräsentation eines HTML-Dokuments im Browser. Quelle: [@tutorialspoint-dom]
 
 Die semantische Strukturierung durch HTML-Elemente wie:
 
@@ -89,7 +89,7 @@ Grundlage der CSS-Darstellung ist das sogenannte Box-Modell [@w3c-box-2018]. Jed
 
 ![CSS Box Model](img/cssBoxModel.png){ width=80% }
 
-Abbildung: Darstellung des CSS Box Models mit Content, Padding, Border und Margin als Grundlage für Layout und Abstände. Quelle: \cite{gfg-css-box}
+Abbildung: Darstellung des CSS Box Models mit Content, Padding, Border und Margin als Grundlage für Layout und Abstände. Quelle: [@gfg-css-box]
 
 - Content (Inhaltsbereich)
 - Padding (Innenabstand)
@@ -121,7 +121,7 @@ Das Ausführungsmodell von JavaScript basiert auf einem ereignisgesteuerten Para
 
 ![JavaScript Event Loop](img/Event-Loop-in-JavaScript.jpg){ width=85% }
 
-Abbildung: JavaScript-Ausführungsmodell mit Call Stack, Web APIs, Callback Queue und Event Loop zur Verarbeitung asynchroner Aufgaben. Quelle: \cite{gfg-event-loop}
+Abbildung: JavaScript-Ausführungsmodell mit Call Stack, Web APIs, Callback Queue und Event Loop zur Verarbeitung asynchroner Aufgaben. Quelle: [@gfg-event-loop]
 
 Ein zentrales Konzept ist dabei die asynchrone Kommunikation mit Servern. Über HTTP-Anfragen können Daten abgerufen oder gesendet werden, ohne dass die gesamte Seite neu geladen werden muss. Diese Technik bildet die Grundlage moderner interaktiver Webanwendungen.
 
@@ -150,7 +150,7 @@ SPAs verwenden asynchrone HTTP-Anfragen, um Daten vom Server abzurufen. Diese Da
 
 ![Grundprinzip einer Single Page Application](img/spaArchitecture.jpeg){ width=100% }
 
-Abbildung: SPA-Prinzip: initiales Laden der Anwendung und dynamische Aktualisierung von Inhalten über asynchrone Backend-Kommunikation. Quelle: \cite{gfg-spa}
+Abbildung: SPA-Prinzip: initiales Laden der Anwendung und dynamische Aktualisierung von Inhalten über asynchrone Backend-Kommunikation. Quelle: [@gfg-spa]
 
 Typische Merkmale einer SPA sind:
 
@@ -270,7 +270,7 @@ Die einheitliche Schnittstelle sorgt dafür, dass Interaktionen standardisiert �
 
 ![REST-Kommunikation über HTTP](img/restApiDiagram.jpeg){ width=100% }
 
-Abbildung: REST-Kommunikation zwischen Client und Server über HTTP-Methoden und strukturierte Datenaustauschformate (z. B. JSON). Quelle: \cite{medium-rest-api}
+Abbildung: REST-Kommunikation zwischen Client und Server über HTTP-Methoden und strukturierte Datenaustauschformate (z. B. JSON). Quelle: [@medium-rest-api]
 
 ### Ressourcenorientierung und HTTP-Semantik
 
@@ -369,7 +369,7 @@ Als Reaktion auf die Skalierungsprobleme monolithischer Ansätze etablierten sic
 
 ![Komponentenbasierte Struktur einer Anwendung](img/componentArchitecture.png){ width=100% }
 
-Abbildung: Komponentenbasierte Architektur: UI wird in modulare Bausteine zerlegt, die unabhängig entwickelt und wiederverwendet werden können. Quelle: \cite{sam-component-architecture}
+Abbildung: Komponentenbasierte Architektur: UI wird in modulare Bausteine zerlegt, die unabhängig entwickelt und wiederverwendet werden können. Quelle: [@sam-component-architecture]
 
 Die Vorteile dieses Ansatzes sind:
 
@@ -487,7 +487,7 @@ Technische Skalierbarkeit beschreibt die Fähigkeit eines Systems, mit steigende
 
   ![Beispiel einer skalierbaren Webarchitektur](img/Web_Application_Architecture_Diagram__diagram_.png){ width=95% }
 
-Abbildung: Beispielhafte skalierbare Webarchitektur mit Load Balancer, Services, Caching und Datenhaltung zur Verarbeitung hoher Last. Quelle: \cite{litslink-web-architecture}
+Abbildung: Beispielhafte skalierbare Webarchitektur mit Load Balancer, Services, Caching und Datenhaltung zur Verarbeitung hoher Last. Quelle: [@litslink-web-architecture]
 
 Organisatorische Skalierbarkeit hingegen beschreibt die Fähigkeit eines Projekts, parallele Entwicklung durch mehrere Entwickler zu ermöglichen. Hier spielen klare Architekturprinzipien und modulare Strukturen eine zentrale Rolle.
 
@@ -540,7 +540,7 @@ Ein JWT enthält strukturierte Claims über die Identität eines Benutzers und w
 
 ![JWT-Authentifizierungsablauf](img/JwtAuthenticationFlow.png){ width=95% }
 
-Abbildung: Token-basierte Authentifizierung mit JWT: Token-Ausstellung und Übermittlung bei weiteren Requests zur Identitätsprüfung. Quelle: \cite{ringcentral-jwt}
+Abbildung: Token-basierte Authentifizierung mit JWT: Token-Ausstellung und Übermittlung bei weiteren Requests zur Identitätsprüfung. Quelle: [@ringcentral-jwt]
 
 Vorteile tokenbasierter Authentifizierung:
 
