@@ -82,12 +82,12 @@ da-kiquellen:
 
 
 da-appendix:
-- abschnitt: Betreuungsprotokolle
-  pdf-file: HTL_DA_Betreuungsprot_ITSP_2025_Bacher_Dalipovic_Gutmann_Wolfgruber_ProtNr1.pdf 
-- abschnitt: Betreuungsprotokolle
-  pdf-file: HTL_DA_Betreuungsprot_ITSP_2025_Bacher_Dalipovic_Gutmann_Wolfgruber_ProtNr2.pdf
-- abschnitt: Betreuungsprotokolle
-  pdf-file: HTL_DA_Betreuungsprot_ITSP_2025_Bacher_Dalipovic_Gutmann_ProtNr3.pdf   
+- abschnitt: erstes Betreuungsprotokoll
+  pdf-file: erstesProtokoll.pdf 
+- abschnitt: zweites Betreuungsprotokoll
+  pdf-file: zweitesProtokoll.pdf
+- abschnitt: drittes Betreuungsprotokoll
+  pdf-file: drittesProtokoll.pdf   
 
 # Diplomarbeitsvereinbarungen müssen zum Schluss sein 
 
