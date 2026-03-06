@@ -447,7 +447,7 @@ Die Rekonstruktion der Flugbahn erfolgt auf Basis der sequenziellen Ballposition
 
 Damit bildet die Implementierung einen geschlossenen technischen Workflow von der Videoeingabe bis zur dokumentierten Flugbahnrekonstruktion. Die Kombination aus OpenCV für Bildverarbeitung, NumPy für numerische Verarbeitung und Matplotlib für Visualisierung ermöglicht eine methodisch saubere und reproduzierbare Analyse der Wurfbewegung. [@ComputerVisionIBM]
 
-![Overlay der rekonstruierten Flugbahn](img/code4.png)
+
 
 ### Physikalische Modellierung und Berechnung der Sollflugbahn
 
@@ -524,7 +524,7 @@ $$
 Zur praktischen Berechnung wird der Bereich $x \in [0, x_K]$ in diskrete Stützstellen unterteilt. Für jede Stützstelle wird $y(x)$ ausgewertet, wodurch eine berechenbare Punktfolge entsteht, die Sollflugbahn repräsentiert.
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Diskrete Berechnung der Sollflugbahn über $x$-Stützstellen" .python}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Diskrete Berechnung der Sollflugbahn über x-Stützstellen" .python}
 import numpy as np
 
 x = np.linspace(0, x_K, 200)
@@ -611,7 +611,7 @@ Die berechnete Sollflugbahn hängt unmittelbar von den gewählten Modellparamete
 
 Der Abwurfwinkel beeinflusst vor allem die Krümmung und Gipfelhöhe der Flugkurve. Kleine Winkel erzeugen flachere Verläufe mit geringer Höhe, größere Winkel führen zu steileren und höheren Bahnen. Gleichzeitig bleibt die Treffbedingung am Zielpunkt nur für physikalisch zulässige Parameterkombinationen erfüllt. Die rechnerische Kopplung dieser Größen ist im Projekt in der Berechnung von \(v_0\) und der Bahnfunktion \(y(x)\) umgesetzt.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Berechnung von \(v_0\) und \(y(x)\) aus Modellparametern" .python}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Berechnung von v0 und y(x) aus Modellparametern" .python}
 def solve_v0_for_target(x_k: float, h0: float, h_k: float, alpha_deg: float, g: float = 9.81) -> float:
     alpha = math.radians(alpha_deg)
     denom = 2.0 * (math.cos(alpha) ** 2) * (h0 + x_k * math.tan(alpha) - h_k)
