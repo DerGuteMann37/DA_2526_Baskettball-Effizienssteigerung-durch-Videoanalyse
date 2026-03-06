@@ -2,7 +2,7 @@
 \textauthor{Nino Dalipovic}
 
 
-## Theorieteil – Frontend
+## Theorieteil - Frontend
 
 
 ### Technischer Kontext und Zielsetzung des Frontend-Teils
@@ -287,10 +287,10 @@ Idempotenz bedeutet, dass die wiederholte Ausführung derselben Anfrage zum glei
 
 HTTP unterscheidet Statuscodes in verschiedene Klassen:
 
-- 2xx – erfolgreiche Verarbeitung
-- 3xx – Weiterleitungen
-- 4xx – Client-Fehler
-- 5xx – Server-Fehler
+- 2xx - erfolgreiche Verarbeitung
+- 3xx - Weiterleitungen
+- 4xx - Client-Fehler
+- 5xx - Server-Fehler
 
 Diese standardisierte Statuskommunikation ermöglicht eine strukturierte Fehlerbehandlung auf Client-Seite.
 
@@ -434,7 +434,7 @@ Die Wahl einer Rendering-Strategie ist somit eine grundlegende Architekturentsch
 
 ## Nichtfunktionale Anforderungen und Sicherheitsaspekte
 
-Neben funktionalen Anforderungen – also den konkret umgesetzten Fähigkeiten einer Anwendung – spielen nichtfunktionale Anforderungen eine zentrale Rolle in der Architektur moderner Softwaresysteme. Nichtfunktionale Anforderungen beschreiben Qualitätsmerkmale, die das Verhalten und die Eigenschaften eines Systems betreffen [@bass2012].
+Neben funktionalen Anforderungen - also den konkret umgesetzten Fähigkeiten einer Anwendung - spielen nichtfunktionale Anforderungen eine zentrale Rolle in der Architektur moderner Softwaresysteme. Nichtfunktionale Anforderungen beschreiben Qualitätsmerkmale, die das Verhalten und die Eigenschaften eines Systems betreffen [@bass2012].
 
 Im Kontext von Webanwendungen sind insbesondere Wartbarkeit, Erweiterbarkeit, Skalierbarkeit, Performance und Sicherheit von Bedeutung.
 
@@ -586,7 +586,7 @@ Webanwendungen, die personenbezogene Daten verarbeiten, müssen diese Prinzipien
 
 
 
-## Praxisteil – Frontend
+## Praxisteil - Frontend
 
 ### Überblick über die Umsetzung
 
@@ -617,12 +617,12 @@ Die Frontend-Anwendung befindet sich im Projektordner `Source/frontend`. Die Str
 
 Wichtige Dateien und Ordner:
 
-- `index.html` – Struktur der Benutzeroberfläche (Auth + Dashboard)
-- `app.js` – zentrale Interaktionslogik und View-Steuerung
-- `charts.html` – Darstellungskomponenten für Diagramme
-- `src/api/` – Funktionen für HTTP-Kommunikation (API-Module)
-- `src/styles/` – Layout und Styling (ergänzend zu Tailwind)
-- `src/utils/` – Hilfsfunktionen
+- `index.html` - Struktur der Benutzeroberfläche (Auth + Dashboard)
+- `app.js` - zentrale Interaktionslogik und View-Steuerung
+- `charts.html` - Darstellungskomponenten für Diagramme
+- `src/api/` - Funktionen für HTTP-Kommunikation (API-Module)
+- `src/styles/` - Layout und Styling (ergänzend zu Tailwind)
+- `src/utils/` - Hilfsfunktionen
 
 Diese Aufteilung sorgt dafür, dass UI, Logik und Netzwerkkommunikation klar getrennt bleiben.
 
@@ -1087,10 +1087,10 @@ Neben der Darstellung der Benutzeroberfläche spielt auch die Kommunikation mit 
 
 Diese Kommunikation erfolgt über sogenannte **REST-Schnittstellen**. Dabei werden standardisierte HTTP-Methoden verwendet, zum Beispiel:
 
-- `GET` – zum Abrufen von Daten  
-- `POST` – zum Senden neuer Daten  
-- `PUT` – zum Aktualisieren bestehender Daten  
-- `DELETE` – zum Löschen von Daten  
+- `GET` - zum Abrufen von Daten  
+- `POST` - zum Senden neuer Daten  
+- `PUT` - zum Aktualisieren bestehender Daten  
+- `DELETE` - zum Löschen von Daten  
 
 Im Frontend wird hierfür die JavaScript-Funktion `fetch()` verwendet. Diese ermöglicht es, HTTP-Anfragen direkt aus dem Browser heraus auszuführen.
 
@@ -1167,7 +1167,7 @@ feedbackOptions[Math.floor(Math.random() * feedbackOptions.length)];
 const angleVal = (45 + Math.random() * 11).toFixed(1);
 
 // shot quality score and status
-const score = Math.floor(70 + Math.random() * 21); // 70–90
+const score = Math.floor(70 + Math.random() * 21); // 70-90
 const statusText =
 score > 85 ? 'Excellent Mechanics' :
 score > 70 ? 'Good Mechanics' :
