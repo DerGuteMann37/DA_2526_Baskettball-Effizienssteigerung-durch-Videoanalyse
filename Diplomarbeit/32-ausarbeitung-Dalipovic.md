@@ -148,7 +148,7 @@ Eine Single Page Application (SPA) ist eine Webanwendung, die innerhalb eines ei
 
 SPAs verwenden asynchrone HTTP-Anfragen, um Daten vom Server abzurufen. Diese Daten werden anschließend in bestehende DOM-Strukturen eingebettet oder führen zu gezielten Benutzeroberflächen-Updates. Die wahrgenommene Performance verbessert sich, da vollständige Seitenneuladungen entfallen.
 
-![Grundprinzip einer Single Page Application](img/spaArchitecture.jpeg){ width=95% }
+![Grundprinzip einer Single Page Application](img/spaArchitecture.jpeg){ width=100% }
 
 Abbildung: SPA-Prinzip: initiales Laden der Anwendung und dynamische Aktualisierung von Inhalten über asynchrone Backend-Kommunikation. Quelle: \cite{gfg-spa}
 
@@ -268,7 +268,7 @@ Besonders relevant ist die Zustandslosigkeit. Jede Anfrage enthält alle notwend
 
 Die einheitliche Schnittstelle sorgt dafür, dass Interaktionen standardisiert über HTTP-Methoden und klar definierte Ressourcen erfolgen. Dies erhöht die Interoperabilität zwischen Systemen.
 
-![REST-Kommunikation über HTTP](img/restApiDiagram.jpeg){ width=85% }
+![REST-Kommunikation über HTTP](img/restApiDiagram.jpeg){ width=100% }
 
 Abbildung: REST-Kommunikation zwischen Client und Server über HTTP-Methoden und strukturierte Datenaustauschformate (z. B. JSON). Quelle: \cite{medium-rest-api}
 
@@ -367,7 +367,7 @@ Monolithische Frontend-Architekturen können somit kurzfristig effizient sein, s
 
 Als Reaktion auf die Skalierungsprobleme monolithischer Ansätze etablierten sich komponentenbasierte Architekturen. In diesem Modell wird die Benutzeroberfläche in eigenständige, wiederverwendbare Bausteine unterteilt. Jede Komponente kapselt Struktur, Darstellung und häufig auch einen Teil der Logik.
 
-![Komponentenbasierte Struktur einer Anwendung](img/componentArchitecture.png){ width=95% }
+![Komponentenbasierte Struktur einer Anwendung](img/componentArchitecture.png){ width=100% }
 
 Abbildung: Komponentenbasierte Architektur: UI wird in modulare Bausteine zerlegt, die unabhängig entwickelt und wiederverwendet werden können. Quelle: \cite{sam-component-architecture}
 
