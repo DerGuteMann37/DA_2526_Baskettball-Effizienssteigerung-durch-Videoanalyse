@@ -31,12 +31,13 @@ Der Gesamtstatus beschreibt den Fortschritt des Projekts im Berichtszeitraum.
 
 **Teammitglieder und Tätigkeiten:**
 
-| Person | Tätigkeiten | Aufwand |
-|------|------|------|
-| Fabian Bacher | Entwicklung der Videoanalyse zur Rekonstruktion der Ist-Flugbahn, Balltracking im Video | ca. 40 h |
-| Bastian Wolfgruber | Mathematische Berechnung der Soll-Flugbahn und physikalisches Modell der Flugkurve | ca. 35 h |
-| Florian Gutmann | Entwicklung des Backends mit REST-API und Datenbankanbindung | ca. 45 h |
-| Nino Dalipovic | Entwicklung der Weboberfläche und Implementierung der Benutzerinteraktion | ca. 40 h |
+- **Fabian Bacher** übernahm die Entwicklung der Videoanalyse zur Rekonstruktion der Ist-Flugbahn sowie das Balltracking im Video.
+
+- **Bastian Wolfgruber** war für die mathematische Berechnung der Soll-Flugbahn sowie für das physikalische Modell der Flugkurve verantwortlich.
+
+- **Florian Gutmann** entwickelte das Backend mit REST-API und Datenbankanbindung. 
+
+- **Nino Dalipovic** war für die Entwicklung der Weboberfläche sowie für die Implementierung der Benutzerinteraktion zuständig.
 
 **Zusätzlich gemeinsam durchgeführt:**  
  Durchführung von Videoaufnahmen im Raiffeisen Sportpark  

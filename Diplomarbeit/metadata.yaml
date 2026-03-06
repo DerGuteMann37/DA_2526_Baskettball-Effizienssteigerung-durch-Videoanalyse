@@ -72,13 +72,6 @@ da-kurzfassung-en: As part of this diploma thesis, a system is developed that au
 
 
 da-kiquellen:
-- ki: ChatGPT5.2
-  short-prompt: Erklärung Pandoc
-  pdf-file: gpt-pandoc.pdf
-
-- ki: ChatGPT5.2
-  short-prompt: Aufbau eines Atoms
-  pdf-file: gpt-atom.pdf
 
 
 da-appendix:
