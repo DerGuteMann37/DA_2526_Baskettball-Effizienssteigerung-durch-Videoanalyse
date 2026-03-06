@@ -308,7 +308,9 @@ IntelliJ IDEA ist eine integrierte Entwicklungsumgebung (IDE) von JetBrains, die
 
 Im Backend-Kontext wird IntelliJ IDEA typischerweise genutzt, um Spring-Boot-Projekte zu erstellen und zu verwalten, Abhängigkeiten (z. B. über Maven) einzubinden, REST-Controller und Datenbankklassen zu entwickeln sowie die Anwendung lokal zu starten und zu testen. Dadurch erleichtert die IDE sowohl die Umsetzung als auch die Wartung des Backends erheblich.[JetBrainsIntelliJIDEA]
 
-![Überblick IntelJ](img/IntelJUEberblick.png)
+
+![Ansicht IntelJ](img/IntelJUeberblick.png)
+
 
 ## Visual Studio Code
 Visual Studio Code (VS Code) ist ein leichter, plattformübergreifender Code-Editor von Microsoft, der sich durch hohe Erweiterbarkeit auszeichnet. Er unterstützt viele Programmiersprachen wie JavaScript, TypeScript, HTML/CSS, Python und auch Java über Erweiterungen. VS Code bietet Funktionen wie Syntax-Highlighting, Code-Vervollständigung, integriertes Terminal, Debugging sowie eine starke Git-Integration, wodurch die Entwicklung übersichtlich und effizient wird.
@@ -316,6 +318,8 @@ Visual Studio Code (VS Code) ist ein leichter, plattformübergreifender Code-Edi
 VS Code wird häufig für die Frontend-Entwicklung eingesetzt, z. B. zum Erstellen von Weboberflächen mit JavaScript-Frameworks, und eignet sich durch Extensions auch für Backend-Aufgaben. Besonders praktisch ist die flexible Anpassbarkeit: Durch Plugins können zusätzliche Tools, Linter, Formatter oder Framework-Unterstützung eingebunden werden, sodass sich VS Code gut für moderne Webprojekte und die Arbeit im Team eignet.[@MicrosoftVSCodeOverview]
 
 ![Visual Studio Code](img/VisualStudioCodeUeberblick.png)
+
+
 ## Praktische Arbeit
 
 ### Vorbereitung
