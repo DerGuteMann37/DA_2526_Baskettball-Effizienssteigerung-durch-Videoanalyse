@@ -84,7 +84,7 @@ Die zuvor beschriebene Flugkurve eines geworfenen Körpers lässt sich physikali
 
 Der Körper besitzt dabei sowohl eine horizontale als auch eine vertikale Bewegungsrichtung. Nach dem Abwurf wirken keine antreibenden Kräfte mehr, sondern ausschließlich die Gravitation. Diese beeinflusst jedoch nur die vertikale Bewegung, während die horizontale Bewegung – abgesehen vom geringen Luftwiderstand – gleichförmig bleibt.
 
-Der schiefe Wurf stellt somit ein vereinfachtes physikalisches Modell dar, mit dem sich reale Wurfbewegungen näherungsweise beschreiben und berechnen lassen. [@OpenStaxProjectileEquation]
+Der schiefe Wurf stellt somit ein vereinfachtes physikalisches Modell dar, mit dem sich reale Wurfbewegungen näherungsweise beschreiben und berechnen lassen. [@OpenStaxProjectileEquations]
 
 
 ### Zerlegung der Bewegung in zwei Richtungen
@@ -95,7 +95,7 @@ In horizontaler Richtung bewegt sich der Körper gleichförmig weiter, da in die
 
 In vertikaler Richtung hingegen wirkt die Erdanziehungskraft. Dadurch wird der Körper kontinuierlich nach unten beschleunigt. Zunächst steigt der Körper noch an, wird dabei jedoch immer langsamer, bis er seinen höchsten Punkt erreicht. Anschließend nimmt die Fallgeschwindigkeit wieder zu.
 
-Durch die Überlagerung dieser beiden Bewegungen ergibt sich die typische gekrümmte Flugbahn eines geworfenen Körpers. [@OpenStaxProjectileEquation]
+Durch die Überlagerung dieser beiden Bewegungen ergibt sich die typische gekrümmte Flugbahn eines geworfenen Körpers. [@OpenStaxProjectileEquations]
 
 ### Horizontale Bewegung
 Da in horizontaler Richtung keine beschleunigende Kraft wirkt, bleibt die Geschwindigkeit konstant. Es handelt sich somit um eine gleichförmige Bewegung. Der in horizontaler Richtung zurückgelegte Weg ergibt sich aus dem Produkt von Geschwindigkeit und Zeit.
@@ -104,7 +104,7 @@ Für die horizontale Bewegung gilt (unter der Annahme, dass der Luftwiderstand v
 
 $x(t) = v_0 \cdot \cos(\alpha) \cdot t$
 
-Dabei bezeichnet $x(t)$ die horizontale Entfernung vom Abwurfpunkt, $v_0$ die Anfangsgeschwindigkeit, $\alpha$ den Abwurfwinkel und $t$ die vergangene Zeit seit dem Abwurf. [@OpenStaxProjectileEquation]
+Dabei bezeichnet $x(t)$ die horizontale Entfernung vom Abwurfpunkt, $v_0$ die Anfangsgeschwindigkeit, $\alpha$ den Abwurfwinkel und $t$ die vergangene Zeit seit dem Abwurf. [@OpenStaxProjectileEquations]
 
 ### Vertikale Bewegung
 
@@ -114,7 +114,7 @@ Für die vertikale Bewegung gilt:
 
 $y(t) = h_0 + v_0 \cdot \sin(\alpha) \cdot t - \frac{1}{2} \cdot g \cdot t^2$
 
-Hierbei beschreibt $y(t)$ die Höhe des Körpers über dem Boden, $h_0$ die Abwurfhöhe und $g$ die Erdbeschleunigung ($g \approx 9{,}81\,\mathrm{m/s^2}$). [@OpenStaxProjectileEquation]
+Hierbei beschreibt $y(t)$ die Höhe des Körpers über dem Boden, $h_0$ die Abwurfhöhe und $g$ die Erdbeschleunigung ($g \approx 9{,}81\,\mathrm{m/s^2}$). [@OpenStaxProjectileEquations]
 
 ### Mathematische Berechnung
 
@@ -122,7 +122,7 @@ Um den schiefen Wurf berechnen zu können, müssen zunächst die grundlegenden G
 
 Der Winkel zwischen der Abwurfrichtung und der Horizontalen wird als Abwurfwinkel $\alpha$ bezeichnet. Abhängig von diesem Winkel wird die Anfangsgeschwindigkeit unterschiedlich stark auf die beiden Bewegungsrichtungen verteilt. Ein flacher Wurf besitzt einen kleinen Winkel, während ein steiler Wurf einen großen Winkel aufweist.
 
-Die Anfangsgeschwindigkeit kann daher in zwei Teilgeschwindigkeiten zerlegt werden. Eine Komponente wirkt in horizontaler Richtung, die andere in vertikaler Richtung. Die horizontale Komponente bestimmt, wie schnell sich der Körper nach vorne bewegt, während die vertikale Komponente bestimmt, wie hoch der Körper steigt. [@OpenStaxProjectileEquation]
+Die Anfangsgeschwindigkeit kann daher in zwei Teilgeschwindigkeiten zerlegt werden. Eine Komponente wirkt in horizontaler Richtung, die andere in vertikaler Richtung. Die horizontale Komponente bestimmt, wie schnell sich der Körper nach vorne bewegt, während die vertikale Komponente bestimmt, wie hoch der Körper steigt. [@OpenStaxProjectileEquations]
 
 
 ### Bahnkurve des schiefen Wurfs
@@ -137,7 +137,7 @@ Setzt man diesen Ausdruck für $t$ in die Gleichung der vertikalen Bewegung ein,
 
 $y(x) = h_0 + x \cdot \tan(\alpha) - \frac{g \cdot x^2}{2 \cdot v_0^2 \cdot \cos^2(\alpha)}$
 
-Diese Gleichung beschreibt die Flugbahn eines geworfenen Körpers in Abhängigkeit von der horizontalen Entfernung. Sie besitzt die mathematische Form einer quadratischen Funktion und stellt somit eine Parabel dar. Da die Gleichung ein Quadrat von $x$ enthält ($x^2$), handelt es sich um eine quadratische Funktion. Quadratische Funktionen werden grafisch als Parabel dargestellt. Damit ist mathematisch gezeigt, dass die Flugkurve eines geworfenen Körpers unter idealisierten Bedingungen parabelförmig verläuft. [@OpenStaxProjectileEquation]
+Diese Gleichung beschreibt die Flugbahn eines geworfenen Körpers in Abhängigkeit von der horizontalen Entfernung. Sie besitzt die mathematische Form einer quadratischen Funktion und stellt somit eine Parabel dar. Da die Gleichung ein Quadrat von $x$ enthält ($x^2$), handelt es sich um eine quadratische Funktion. Quadratische Funktionen werden grafisch als Parabel dargestellt. Damit ist mathematisch gezeigt, dass die Flugkurve eines geworfenen Körpers unter idealisierten Bedingungen parabelförmig verläuft. [@OpenStaxProjectileEquations]
 
 ## Einflussgrößen auf die Flugbahn
 
@@ -690,7 +690,7 @@ Eine erste Herausforderung betraf die Verarbeitung der Videoaufnahmen selbst. In
 
 Eng damit verbunden war die Stabilität der Ballpositionen über mehrere Frames. Bei schnellen Bewegungen oder schwacher Sichtbarkeit können positionsbasierte Verfahren abrupte Sprünge erzeugen, die nicht mehr mit einem physikalisch plausiblen Flugverlauf vereinbar sind. Solche Sprünge wirken sich unmittelbar auf abgeleitete Größen wie Geschwindigkeit oder Krümmung aus und können die weitere Auswertung verfälschen. Als Gegenmaßnahme wurden Plausibilitätsgrenzen und Konsistenzprüfungen eingesetzt, sodass unphysikalische Verläufe frühzeitig erkannt und der Arbeitsablauf kontrolliert angepasst werden konnte.
 
-Ein besonders wichtiger Punkt war die Release-Erkennung in neuen Clips. Technisch funktionierte die Erkennungslogik korrekt, jedoch fehlte bei mehreren Aufnahmen der notwendige zeitliche Vorlauf vor dem eigentlichen Wurf. Teilweise standen nur etwa 0,3 bis 0,5 Sekunden Pre-Context zur Verfügung. Für eine mathematisch stabile Abgrenzung des Release-Zeitpunkts wird jedoch ein deutlich längerer Vorlauf benötigt (typisch etwa 2 Sekunden), um eine belastbare Bewegungsbaseline zu bestimmen und Krümmungs- bzw. Peak-Kriterien sauber anzuwenden. Die resultierenden Abbrüche mit „insufficient_context“ sind daher als korrektes Verhalten zu bewerten. Die Ursache lag nicht in der Algorithmik, sondern in der Aufnahmeplanung; als Lösung wurde ein angepasstes Aufnahmeprotokoll mit ausreichendem Vorlauf definiert.
+Ein besonders wichtiger Punkt war die Release-Erkennung in neuen Clips. Technisch funktionierte die Erkennungslogik korrekt, jedoch fehlte bei mehreren Aufnahmen der notwendige zeitliche Vorlauf vor dem eigentlichen Wurf. Teilweise standen nur etwa 0,3 bis 0,5 Sekunden Pre-Context zur Verfügung. Für eine mathematisch stabile Abgrenzung des Release-Zeitpunkts wird jedoch ein deutlich längerer Vorlauf benötigt (typisch etwa 2 Sekunden), um eine belastbare Bewegungsbaseline zu bestimmen und Krümmungs- bzw. Peak-Kriterien sauber anzuwenden. Die resultierenden Abbrüche mit `insufficient_context` sind daher als korrektes Verhalten zu bewerten. Die Ursache lag nicht in der Algorithmik, sondern in der Aufnahmeplanung; als Lösung wurde ein angepasstes Aufnahmeprotokoll mit ausreichendem Vorlauf definiert.
 
 Zusätzlich wirkte sich die Framerate einzelner Smartphone-Aufnahmen limitierend aus. Bei 28 bis 30 fps entspricht die kritische Release-Phase (ca. 40–60 ms) oft nur 1 bis 2 Frames. Für differenzielle Merkmale, insbesondere zweite Ableitungen, ist diese zeitliche Auflösung grenzwertig. Die Folge ist eine höhere Unsicherheit beim exakten Release-Frame. Daraus wurde abgeleitet, dass bei sensiblen Auswertungsschritten entweder höherfrequente Aufnahmen oder sorgfältig zugeschnittene Clips mit stabilem Kontext verwendet werden sollten. Das Framework selbst zeigte bei ausreichendem Kontext und geeigneter Framerate konsistente Ergebnisse.
 
