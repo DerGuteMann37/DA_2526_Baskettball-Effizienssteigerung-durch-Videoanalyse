@@ -65,15 +65,15 @@ compile-output:
 
     # Builden mit pandoc. Als Basisverzeichnis springen wir ins staging. 
     # Damit sollten alle relativen Links stimmen
-	-@cd staging && pandoc "$(STAGINGDIR)"/*.md "$(STAGINGDIR)/style/"*.md *.yaml \
-	-o "$(OUTPUTFILE)" \
-	--template="$(STAGINGDIR)/style/template.tex" \
-    --bibliography="$(BIBFILE)" 2>"$(LOGFILE)" \
-	--csl="$(STAGINGDIR)/style/htlle-diplomarbeit.csl" \
-	--highlight-style=pygments \
-	--listings \
-	--metadata link-citations=true \
-	-N 
+		-@cd staging && pandoc "$(STAGINGDIR)"/*.md "$(STAGINGDIR)/style/"*.md *.yaml \
+		-o "$(OUTPUTFILE)" \
+		--template="$(STAGINGDIR)/style/template.tex" \
+		--bibliography="$(BIBFILE)" \
+		--pdf-engine=xelatex 2>"$(LOGFILE)" \
+		--csl="$(STAGINGDIR)/style/htlle-diplomarbeit.csl" \
+		--listings \
+		--metadata link-citations=true \
+		-N 
 
     # Ausgabe der Warnungen 
 	@cat $(LOGFILE)
