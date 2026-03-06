@@ -3,7 +3,9 @@ name: Build and send diploma thesis
 on:
   push:
     branches:
-      - wolf
+      - main
+    paths:
+      - Diplomarbeit/**
   workflow_dispatch:
 
 jobs:
