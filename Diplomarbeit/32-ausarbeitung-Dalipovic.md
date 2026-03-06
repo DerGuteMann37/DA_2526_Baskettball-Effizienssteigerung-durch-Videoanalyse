@@ -636,9 +636,39 @@ Diese Aufteilung sorgt dafür, dass UI, Logik und Netzwerkkommunikation klar get
 
 Für das Design wird **Tailwind CSS** verwendet (Utility-First). Die Einbindung erfolgt direkt über ein CDN im HTML, wodurch kein zusätzlicher Build-Schritt nötig ist.
 
-![Tailwind Konfiguration im HTML](img/indexHtmlTailwindConfig.png){ width=80% }
+Die folgende Konfiguration zeigt die Integration und Anpassung von Tailwind CSS innerhalb der Datei index.html. Dabei werden projektspezifische Farben, Schriftarten und Designparameter definiert, die im gesamten Frontend verwendet werden:
 
-Abbildung: Tailwind-Konfiguration im `index.html` zur Definition projektspezifischer Designparameter.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Tailwind Konfiguration im HTML" .html}
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#00f2ff",
+        "secondary": "#ff6b00",
+        "navy-deep": "#050a18",
+        "navy-card": "#0d152b",
+        "accent-orange": "#f97316",
+        "background-light": "#f6f6f8",
+        "background-dark": "#101622"
+      },
+      fontFamily: {
+        "display": ["Lexend"]
+      },
+      borderRadius: {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      }
+    }
+  }
+}
+</script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 
 In der Konfiguration werden u. a. festgelegt:
 
@@ -694,9 +724,47 @@ Nach Eingabe dieser Daten wird eine Anfrage an den Registrierungsendpunkt des Ba
 
 Die Struktur der Authentifizierungsoberfläche ist im HTML-Dokument der Anwendung definiert. Sowohl Login- als auch Registrierungsformular befinden sich innerhalb desselben Dokuments und werden dynamisch ein- bzw. ausgeblendet.
 
-![HTML-Struktur der Auth-Formulare](img/indexHtmlAuthLoginRegisterForms.png){ width=80% }
+Der folgende HTML-Code zeigt die Struktur der Authentifizierungsformulare im Frontend. Dabei werden Eingabefelder für Benutzername bzw. E-Mail sowie Passwort bereitgestellt:
 
-Abbildung: HTML-Struktur der Login- und Registrierungsformulare innerhalb des `index.html` Dokuments.
+Der folgende HTML-Code zeigt die Struktur der Authentifizierungsformulare im Frontend. Dabei werden Eingabefelder für Benutzername bzw. E-Mail sowie Passwort bereitgestellt:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="HTML-Struktur der Auth-Formulare" .html}
+<div id="loginForm" class="space-y-4">
+
+<div class="relative">
+<label class="sr-only">Username or Email</label>
+
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 text-xl">
+alternate_email
+</span>
+</div>
+
+<input id="loginEmail"
+class="glass-panel w-full rounded-xl h-14 pl-12 pr-4
+placeholder:text-slate-500 focus:ring-2 focus:ring-primary/50
+focus:border-primary">
+
+</div>
+
+<div class="relative">
+<label class="sr-only">Password</label>
+
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 text-xl">
+lock
+</span>
+</div>
+
+<input id="loginPassword"
+class="glass-panel w-full rounded-xl h-14 pl-12 pr-4
+placeholder:text-slate-500 focus:ring-2 focus:ring-primary/50
+focus:border-primary">
+
+</div>
+
+</div>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Die Formulare enthalten mehrere definierte Eingabeelemente sowie Buttons zur Ausführung der jeweiligen Aktionen. Über eindeutige Element-IDs können diese Elemente im JavaScript-Code angesprochen werden.
 
@@ -717,9 +785,24 @@ Da die Anwendung als **Single Page Application (SPA)** umgesetzt wurde, erfolgt 
 
 Die Steuerung erfolgt über JavaScript-Funktionen innerhalb von `app.js`.
 
-![View-Steuerung im Frontend](img/appJsViewSwitchingShowAuthShowMain.png){ width=80% }
+Die folgenden JavaScript-Funktionen übernehmen die Steuerung der sichtbaren Benutzeroberflächenbereiche und ermöglichen den Wechsel zwischen Authentifizierungsbereich und Hauptanwendung:
 
-Abbildung: JavaScript-Funktionen zur Steuerung der sichtbaren Benutzeroberflächenbereiche.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="View-Steuerung im Frontend" .javascript}
+function showAuth() {
+document.getElementById("auth").classList.remove("hidden");
+document.getElementById("app").classList.add("hidden");
+}
+
+function showApp() {
+document.getElementById("auth").classList.add("hidden");
+document.getElementById("app").classList.remove("hidden");
+}
+
+function logoutHandler() {
+localStorage.removeItem("currentUser");
+showAuth();
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Die Anwendung besitzt zwei zentrale Zustände der Benutzeroberfläche:
 
@@ -753,9 +836,34 @@ Durch diese Technik kann der Benutzer zwischen verschiedenen Bereichen wechseln,
 
 Der Login-Prozess wird vollständig im Frontend gestartet. Sobald der Benutzer den Login-Button betätigt, wird ein Event-Handler ausgeführt.
 
-![Login Handler im JavaScript](img/appJsLoginHandlerAuthFlow.png){ width=80% }
+Der folgende Codeausschnitt zeigt die Implementierung des Login-Handlers, der die Eingaben des Benutzers verarbeitet und eine Authentifizierungsanfrage an das Backend sendet:
 
-Abbildung: Login-Handler innerhalb von `app.js`, der die Benutzereingaben verarbeitet und eine Authentifizierungsanfrage ausführt.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Login Handler im JavaScript" .javascript}
+async function loginHandler() {
+
+const email = document.getElementById("loginEmail").value;
+const password = document.getElementById("loginPassword").value;
+
+const response = await fetch("/api/login", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+email: email,
+password: password
+})
+});
+
+const data = await response.json();
+
+if (data.success) {
+saveUser(data.user);
+showApp();
+}
+
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Der Ablauf des Login-Prozesses besteht aus mehreren Schritten:
 
@@ -787,9 +895,36 @@ Nach erfolgreicher Authentifizierung wird der Zustand des aktuell angemeldeten B
 
 Für diese Speicherung wird die **Web Storage API** des Browsers verwendet. Konkret kommt der sogenannte `localStorage` zum Einsatz. Dieser ermöglicht es, Daten dauerhaft im Browser zu speichern. Die gespeicherten Daten bleiben auch nach einem Neuladen der Seite erhalten.
 
-![Speicherung des Benutzerzustands](img/appJsStateLocalStorage.png){ width=80% }
+Der folgende Code zeigt die Implementierung zur Speicherung und Wiederherstellung des Benutzerzustands im Browser mithilfe des `localStorage`:
 
-Abbildung: Speicherung und Wiederherstellung des Benutzerzustands über den `localStorage`.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Speicherung des Benutzerzustands" .javascript}
+let history = [];
+let currentUser = null;
+
+// chart instance will be created lazily when user opens the overlay
+let chart;
+
+const userName = document.getElementById('userName');
+const logoutBtn = document.getElementById('logoutBtn');
+
+if (logoutBtn) logoutBtn.addEventListener('click', logoutHandler);
+
+function saveUser(user) {
+localStorage.setItem('currentUser', JSON.stringify(user));
+}
+
+function loadUser() {
+
+const raw = localStorage.getItem('currentUser');
+
+if (raw) {
+try {
+currentUser = JSON.parse(raw);
+} catch {}
+}
+
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Beim Login wird das Benutzerobjekt zunächst im Arbeitsspeicher der Anwendung gespeichert und anschließend im `localStorage` abgelegt. Beim Start der Anwendung kann dieser gespeicherte Zustand wieder geladen werden.
 
@@ -1205,9 +1340,30 @@ Diese zusätzliche Rückmeldung verbessert die Benutzerinteraktion und ermöglic
 
 Die zentrale Benutzeroberfläche der Anwendung wird im Dokument `index.html` definiert. Neben dem Authentifizierungsbereich enthält dieses Dokument auch die Struktur des Dashboards, das nach erfolgreicher Anmeldung angezeigt wird.
 
-![HTML Dashboard Layout](img/indexHtmlDashboardMainLayout.png){ width=80% }
+Der folgende HTML-Code zeigt die grundlegende Struktur des Dashboards innerhalb der Hauptanwendung:
 
-Abbildung: Grundstruktur des Dashboards innerhalb der Datei `index.html`.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="HTML Dashboard Layout" .html}
+<div id="dashboard" class="p-6">
+
+<header class="flex justify-between items-center mb-6">
+
+<h1 class="text-3xl font-display">
+Dashboard
+</h1>
+
+<button id="logoutBtn"
+class="bg-accent-orange text-white px-4 py-2 rounded-lg">
+Logout
+</button>
+
+</header>
+
+<div id="kpiContainer" class="grid grid-cols-3 gap-6"></div>
+
+<div id="recentShots" class="mt-8"></div>
+
+</div>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Das Dashboard besteht aus mehreren strukturellen Bereichen. Diese sind innerhalb von HTML-Containern organisiert und bilden gemeinsam die Hauptoberfläche der Anwendung.
 
@@ -1225,9 +1381,28 @@ Durch diese klare Struktur können einzelne Komponenten der Benutzeroberfläche 
 
 Im oberen Bereich des Dashboards werden zentrale Analysewerte in sogenannten **KPI-Karten** dargestellt. KPI steht für *Key Performance Indicator* und bezeichnet wichtige Kennzahlen einer Analyse.
 
-![KPI Cards im Dashboard](img/indexHtmlKpiCards.png){ width=80% }
+Der folgende Code zeigt die Darstellung zentraler Analysewerte in Form von KPI-Karten innerhalb des Dashboards:
 
-Abbildung: Darstellung wichtiger Analysewerte in KPI-Karten innerhalb des Dashboards.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="KPI Cards im Dashboard" .html}
+<div class="grid grid-cols-3 gap-6">
+
+<div class="glass-panel p-6 rounded-xl">
+<h3 class="text-sm text-slate-400">Trefferquote</h3>
+<p class="text-3xl font-bold text-primary">78%</p>
+</div>
+
+<div class="glass-panel p-6 rounded-xl">
+<h3 class="text-sm text-slate-400">Analysierte Würfe</h3>
+<p class="text-3xl font-bold text-primary">124</p>
+</div>
+
+<div class="glass-panel p-6 rounded-xl">
+<h3 class="text-sm text-slate-400">Durchschnittswinkel</h3>
+<p class="text-3xl font-bold text-primary">46°</p>
+</div>
+
+</div>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Diese Karten zeigen wichtige Informationen auf einen Blick. Typische Werte sind beispielsweise:
 
@@ -1244,9 +1419,28 @@ Die visuelle Darstellung über Karten erleichtert es dem Benutzer, wichtige Anal
 
 Zusätzlich zu den KPI-Werten enthält das Dashboard eine Liste der zuletzt analysierten Würfe. Diese Liste ermöglicht es dem Benutzer, vergangene Analysen nachzuvollziehen.
 
-![Liste der letzten Würfe](img/indexHtmlRecentThrowsList.png){ width=80% }
+Der folgende HTML-Code zeigt eine Übersicht der zuletzt analysierten Würfe im Dashboard:
 
-Abbildung: Übersicht der zuletzt analysierten Würfe im Dashboard.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Liste der letzten Würfe" .html}
+<ul id="recentShots" class="space-y-3">
+
+<li class="glass-panel p-4 rounded-lg flex justify-between">
+<span>Wurf 1</span>
+<span class="text-primary">Treffer</span>
+</li>
+
+<li class="glass-panel p-4 rounded-lg flex justify-between">
+<span>Wurf 2</span>
+<span class="text-red-400">Fehlwurf</span>
+</li>
+
+<li class="glass-panel p-4 rounded-lg flex justify-between">
+<span>Wurf 3</span>
+<span class="text-primary">Treffer</span>
+</li>
+
+</ul>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Jeder Eintrag in dieser Liste kann mehrere Informationen enthalten, beispielsweise:
 
@@ -1262,9 +1456,23 @@ Durch diese Übersicht kann der Benutzer seinen Trainingsfortschritt über mehre
 
 Damit eine Analyse durchgeführt werden kann, muss zunächst ein Trainingsvideo ausgewählt werden. Diese Funktion wird über ein Datei-Eingabeelement im HTML-Dokument bereitgestellt.
 
-![Video Upload Input](img/indexHtmlVideoUploadInput.png){ width=80% }
+Der folgende HTML-Code zeigt die Implementierung eines Datei-Inputs zum Hochladen von Trainingsvideos für die Analyse:
 
-Abbildung: HTML-Dateieingabe zur Auswahl eines Trainingsvideos.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Video Upload Input" .html}
+<div class="mt-8">
+
+<label class="block text-sm font-medium text-slate-300 mb-2">
+Trainingsvideo auswählen
+</label>
+
+<input
+type="file"
+id="videoUpload"
+accept="video/*"
+class="glass-panel w-full p-4 rounded-xl">
+
+</div>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Das Eingabefeld erlaubt es dem Benutzer, eine Videodatei aus seinem lokalen Dateisystem auszuwählen. Nach Auswahl der Datei wird das Video im Frontend verarbeitet und als Vorschau dargestellt.
 
