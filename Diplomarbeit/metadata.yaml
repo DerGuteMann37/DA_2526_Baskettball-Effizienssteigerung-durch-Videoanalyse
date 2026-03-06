@@ -7,7 +7,7 @@ da-keywords: HTLLE, Basketball, Videoanalyse, System
 
 #lang: english
 
-bibliography: [literatur_clean.bib]
+bibliography: [literatur.bib]
 
 da-author:
 - vorname: Fabian 

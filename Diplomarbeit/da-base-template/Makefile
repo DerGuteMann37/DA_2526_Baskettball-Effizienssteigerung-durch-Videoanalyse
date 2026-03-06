@@ -6,7 +6,7 @@ STAGINGDIR=$(CURDIR)/staging
 INPUTDIR=$(STAGINGDIR)
 OUTPUTDIR=$(STAGINGDIR)
 
-BIBFILE=$(INPUTDIR)/literatur_clean.bib
+BIBFILE=$(INPUTDIR)/literatur.bib
 METADATAFILE = $(INPUTDIR)/metadata.yaml
 OUTPUTFILE = $(OUTPUTDIR)/diplomarbeit.pdf
 LOGFILE = $(OUTPUTFILE).log
