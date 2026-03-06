@@ -20,7 +20,7 @@ Wurfbewegungen treten in vielen Bereichen des täglichen Lebens auf. Besonders d
 
 Im Rahmen dieser Arbeit wird daher der Korbwurf im Basketball betrachtet. Diese Sportart eignet sich besonders gut für eine physikalische Analyse, da der Ball auf ein fest definiertes Ziel in einer bestimmten Höhe geworfen wird. Dadurch lässt sich die Flugbahn des Balls gut mit den physikalischen Modellen der Wurfbewegung beschreiben.
 
-Unabhängig von der jeweiligen Situation lässt sich beobachten, dass ein geworfener Körper nicht geradlinig fliegt, sondern stets eine gekrümmte Bahn beschreibt. Die Flugbahn hängt dabei davon ab, wie der Körper geworfen wird. Bereits kleine Änderungen in der Wurfbewegung können dazu führen, dass ein Ziel verfehlt wird.
+Unabhängig von der jeweiligen Situation lässt sich beobachten, dass ein geworfener Körper nicht geradlinig fliegt, sondern stets eine gekrümmte Bahn beschreibt. Die Flugbahn hängt dabei davon ab, wie der Körper geworfen wird. Bereits kleine Änderungen in der Wurfbewegung können dazu führen, dass ein Ziel verfehlt wird. [@LernhelferWurf]
 
 
 ## Bewegung geworfener Körper
@@ -29,7 +29,7 @@ Unabhängig von der jeweiligen Situation lässt sich beobachten, dass ein geworf
 
 Unter der Bewegung eines geworfenen Körpers versteht man den Bewegungsablauf eines Gegenstandes ab dem Zeitpunkt, an dem er die Hand des Werfers verlässt. Während des Abwurfs erhält der Körper eine Anfangsgeschwindigkeit. Nach dem Loslassen wirkt jedoch keine vom Werfer erzeugte Kraft mehr auf ihn. Die weitere Bewegung erfolgt daher ausschließlich unter dem Einfluss äußerer Kräfte. Die dominierende Kraft ist dabei die Erdanziehungskraft, welche den Körper ständig in Richtung Boden beschleunigt. Zusätzlich wirkt ein geringer Luftwiderstand, der die Bewegung leicht abbremst.
 
-Da nach dem Abwurf keine Korrektur mehr möglich ist, wird der gesamte weitere Bewegungsverlauf bereits im Moment des Loslassens festgelegt. Sowohl die Anfangsgeschwindigkeit als auch der Abwurfwinkel bestimmen dabei maßgeblich die spätere Flugbahn des Körpers.
+Da nach dem Abwurf keine Korrektur mehr möglich ist, wird der gesamte weitere Bewegungsverlauf bereits im Moment des Loslassens festgelegt. Sowohl die Anfangsgeschwindigkeit als auch der Abwurfwinkel bestimmen dabei maßgeblich die spätere Flugbahn des Körpers. [@LeifiPhysikWurfbewegung]
 
 ### Kräfte, die auf einen geworfenen Körper wirken
 
@@ -39,7 +39,7 @@ Die Erdanziehungskraft ist dabei die dominierende Kraft. Sie wirkt ständig nach
 
 Zusätzlich wirkt der Luftwiderstand. Dieser entsteht durch die Bewegung des Körpers durch die Luft und wirkt der Bewegungsrichtung entgegen. Im Vergleich zur Gravitation ist sein Einfluss bei üblichen Wurfgeschwindigkeiten jedoch deutlich geringer. Aus diesem Grund wird der Luftwiderstand in vielen physikalischen Betrachtungen vereinfacht vernachlässigt.
 
-Durch die Wirkung der Gravitation wird der Körper während des Fluges kontinuierlich nach unten gezogen, während seine Vorwärtsbewegung zunächst erhalten bleibt. Die Kombination dieser beiden Effekte führt dazu, dass ein geworfener Körper keine geradlinige Bahn beschreibt, sondern eine gekrümmte Flugbahn entsteht.
+Durch die Wirkung der Gravitation wird der Körper während des Fluges kontinuierlich nach unten gezogen, während seine Vorwärtsbewegung zunächst erhalten bleibt. Die Kombination dieser beiden Effekte führt dazu, dass ein geworfener Körper keine geradlinige Bahn beschreibt, sondern eine gekrümmte Flugbahn entsteht. [@HyperPhysicsProjectile]
 
 ## Flugkurve (Trajektorie)
 
@@ -737,4 +737,3 @@ Gleichzeitig haben die praktischen Arbeiten gezeigt, dass die Modellgüte wesent
 Die Grenzen des Systems ergeben sich aus der bewussten Vereinfachung des physikalischen Modells. Das Verfahren berücksichtigt weder Luftwiderstand noch Spin und betrachtet die Bewegung in einer zweidimensionalen Ebene bei konstanter Erdbeschleunigung. Dadurch lassen sich die grundlegenden kinematischen Zusammenhänge klar analysieren, jedoch nicht alle realen Einflüsse eines tatsächlichen Basketballwurfs vollständig abbilden. Zusätzlich können praktische Rahmenbedingungen der Videoaufnahmen und Datenqualität die Aussagekraft einzelner Auswertungen begrenzen.
 
 Insgesamt stellt das entwickelte System eine belastbare methodische Grundlage für die theoretische Analyse und Simulation von Wurfszenarien dar. Es ermöglicht reproduzierbare Untersuchungen der Parameterwirkungen und unterstützt eine strukturierte Interpretation der Sollflugbahn. Gleichzeitig ist die Lösung als idealisiertes Modell einzuordnen: Sie liefert fundierte theoretische Referenzen, ersetzt aber keine vollständige realphysikalische Beschreibung aller dynamischen Prozesse eines realen Wurfs.
-
