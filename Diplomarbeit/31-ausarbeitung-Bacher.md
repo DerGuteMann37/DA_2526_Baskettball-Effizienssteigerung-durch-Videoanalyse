@@ -62,8 +62,10 @@ Während des Fluges steigt der geworfene Körper zunächst an, bis er einen höc
 
 Der höchste Punkt entsteht dadurch, dass die anfängliche Aufwärtsbewegung durch die Erdanziehungskraft zunehmend abgebremst wird. Schließlich kommt die Aufwärtsbewegung vollständig zum Stillstand, bevor die Bewegung in eine Abwärtsbewegung übergeht.
 
-Dieser Punkt besitzt eine besondere Bedeutung, da er die maximale Flughöhe des Körpers darstellt und maßgeblich von der Anfangsgeschwindigkeit sowie dem Abwurfwinkel abhängt.
-![Höchster Punkt der Flugbahn](img/hoechster-punkt.png) [@OpenStaxProjectileMotion]
+Dieser Punkt besitzt eine besondere Bedeutung, da er die maximale Flughöhe des Körpers darstellt und maßgeblich von der Anfangsgeschwindigkeit sowie dem Abwurfwinkel abhängt. [@OpenStaxProjectileMotion]
+
+
+![Höchster Punkt der Flugbahn](img/hoechster-punkt.png) 
 
 
 ### Einfluss des Abwurfs auf die Flugbahn
@@ -189,9 +191,9 @@ Unter einer Sollflugbahn wird jene Flugkurve verstanden, die unter gegebenen Ran
 
 Da die Flugbahn eines geworfenen Körpers vollständig durch die Anfangsbedingungen bestimmt wird, kann eine Sollflugbahn nur in Bezug auf eine konkrete Situation definiert werden. Maßgeblich sind dabei insbesondere die horizontale Entfernung zum Ziel, die Höhe des Zielpunktes sowie die Abwurfhöhe. Eine allgemeingültige Sollflugbahn existiert daher nicht, sondern sie ist stets an die jeweiligen Bedingungen angepasst.
 
-Ziel dieses Kapitels ist es, auf Grundlage der zuvor hergeleiteten Bahnkurve jene Abwurfparameter zu bestimmen, die das Treffen eines definierten Zielpunktes ermöglichen.
+Ziel dieses Kapitels ist es, auf Grundlage der zuvor hergeleiteten Bahnkurve jene Abwurfparameter zu bestimmen, die das Treffen eines definierten Zielpunktes ermöglichen. [@OpenStaxProjectileEquations]
 
-![Sollflugbahn](img/Sollflugbahn_foto.png) [@OpenStaxProjectileEquations]
+![Sollflugbahn](img/Sollflugbahn_foto.png) 
 
 
 ### Mathematische Bedingung für das Treffen eines Zielpunktes
