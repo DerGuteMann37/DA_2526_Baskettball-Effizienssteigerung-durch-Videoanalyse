@@ -1163,7 +1163,7 @@ const arc = Math.floor(Math.random() * 100);
 const feedback =
 feedbackOptions[Math.floor(Math.random() * feedbackOptions.length)];
 
-// new angle metric: 45–56 degrees (narrow test range)
+// new angle metric: 45-56 degrees (narrow test range)
 const angleVal = (45 + Math.random() * 11).toFixed(1);
 
 // shot quality score and status
