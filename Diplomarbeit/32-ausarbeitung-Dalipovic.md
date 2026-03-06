@@ -723,37 +723,18 @@ Der folgende HTML-Code zeigt die Struktur der Authentifizierungsformulare im Fro
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="HTML-Struktur der Auth-Formulare" .html}
 <div id="loginForm" class="space-y-4">
 
-<div class="relative">
-<label class="sr-only">Username or Email</label>
+  <div class="relative">
+    <label class="sr-only">Username or Email</label>
+    <input id="loginEmail"
+      class="glass-panel w-full rounded-xl h-14 pl-4 pr-4">
+  </div>
 
-<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-<span class="material-symbols-outlined text-slate-400 text-xl">
-alternate_email
-</span>
-</div>
-
-<input id="loginEmail"
-class="glass-panel w-full rounded-xl h-14 pl-12 pr-4
-placeholder:text-slate-500 focus:ring-2 focus:ring-primary/50
-focus:border-primary">
-
-</div>
-
-<div class="relative">
-<label class="sr-only">Password</label>
-
-<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-<span class="material-symbols-outlined text-slate-400 text-xl">
-lock
-</span>
-</div>
-
-<input id="loginPassword"
-class="glass-panel w-full rounded-xl h-14 pl-12 pr-4
-placeholder:text-slate-500 focus:ring-2 focus:ring-primary/50
-focus:border-primary">
-
-</div>
+  <div class="relative">
+    <label class="sr-only">Password</label>
+    <input id="loginPassword"
+      type="password"
+      class="glass-panel w-full rounded-xl h-14 pl-4 pr-4">
+  </div>
 
 </div>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1154,45 +1135,22 @@ Im aktuellen Entwicklungsstand der Anwendung werden einige Analysewerte im Front
 
 Der folgende Codeausschnitt zeigt die Generierung von Analysewerten im Prototyp. Dabei werden zufällige Werte erzeugt, um die Darstellung der Analysemetriken im Dashboard sowie das Feedback-System zu testen:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Analysemetriken und Feedback" .javascript}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Generierung von Analysemetriken im Prototyp" .javascript}
 analyseVideoBtn.addEventListener('click', async () => {
 
-// generate some dummy metrics (replace with real backend results later)
-const efficiency = Math.floor(Math.random() * 100);
-const arc = Math.floor(Math.random() * 100);
-const feedback =
-feedbackOptions[Math.floor(Math.random() * feedbackOptions.length)];
+  const efficiency = Math.floor(Math.random() * 100);
+  const arc = Math.floor(Math.random() * 100);
+  const angleVal = (45 + Math.random() * 11).toFixed(1);
 
-// new angle metric: 45-56 degrees (narrow test range)
-const angleVal = (45 + Math.random() * 11).toFixed(1);
+  const score = Math.floor(70 + Math.random() * 21);
+  const statusText =
+    score > 85 ? 'Excellent Mechanics' :
+    score > 70 ? 'Good Mechanics' :
+    'Needs Work';
 
-// shot quality score and status
-const score = Math.floor(70 + Math.random() * 21); // 70-90
-const statusText =
-score > 85 ? 'Excellent Mechanics' :
-score > 70 ? 'Good Mechanics' :
-'Needs Work';
-
-if (shootingValue) shootingValue.textContent = efficiency;
-if (arcValue) arcValue.textContent = arc;
-
-// update new fields
-const angleEl = document.getElementById('angle');
-if (angleEl) angleEl.textContent = angleVal + ' deg';
-
-const scoreEl = document.getElementById('shotScore');
-if (scoreEl) scoreEl.textContent = `${score} / 100`;
-
-const statusEl = document.getElementById('shotStatus');
-if (statusEl) statusEl.textContent = statusText;
-
-// spoken feedback remains handy
-const utter = new SpeechSynthesisUtterance(feedback);
-utter.lang = 'de-DE';
-utter.rate = 1.1;
-utter.pitch = 1.2;
-
-speechSynthesis.speak(utter);
+  document.getElementById('angle').textContent = angleVal + ' deg';
+  document.getElementById('shotScore').textContent = `${score} / 100`;
+  document.getElementById('shotStatus').textContent = statusText;
 
 });
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
