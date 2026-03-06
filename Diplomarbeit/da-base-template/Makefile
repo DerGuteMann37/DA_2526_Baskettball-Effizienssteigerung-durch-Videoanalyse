@@ -69,7 +69,7 @@ compile-output:
 		-o "$(OUTPUTFILE)" \
 		--template="$(STAGINGDIR)/style/template.tex" \
 		--bibliography="$(BIBFILE)" \
-		--pdf-engine=xelatex 2>"$(LOGFILE)" \
+		--latex-engine=xelatex 2>"$(LOGFILE)" \
 		--csl="$(STAGINGDIR)/style/htlle-diplomarbeit.csl" \
 		--listings \
 		--metadata link-citations=true \
