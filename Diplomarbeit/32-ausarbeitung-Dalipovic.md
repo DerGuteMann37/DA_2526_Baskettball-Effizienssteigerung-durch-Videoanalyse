@@ -1398,7 +1398,7 @@ Der folgende Code zeigt die Darstellung zentraler Analysewerte in Form von KPI-K
 
 <div class="glass-panel p-6 rounded-xl">
 <h3 class="text-sm text-slate-400">Durchschnittswinkel</h3>
-<p class="text-3xl font-bold text-primary">46°</p>
+<p class="text-3xl font-bold text-primary">46 deg</p>
 </div>
 
 </div>
