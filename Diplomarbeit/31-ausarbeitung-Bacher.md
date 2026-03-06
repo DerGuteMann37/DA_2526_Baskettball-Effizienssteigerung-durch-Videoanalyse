@@ -65,9 +65,6 @@ Der höchste Punkt entsteht dadurch, dass die anfängliche Aufwärtsbewegung dur
 Dieser Punkt besitzt eine besondere Bedeutung, da er die maximale Flughöhe des Körpers darstellt und maßgeblich von der Anfangsgeschwindigkeit sowie dem Abwurfwinkel abhängt. [@OpenStaxProjectileMotion]
 
 
-![Höchster Punkt der Flugbahn](img/hoechster-punkt.png) 
-
-
 ### Einfluss des Abwurfs auf die Flugbahn
 
 Die genaue Form der Flugkurve wird bereits im Moment des Abwurfs festgelegt. Entscheidend ist dabei, mit welcher Geschwindigkeit, in welcher Richtung und aus welcher Höhe der Körper geworfen wird.
@@ -195,6 +192,7 @@ Ziel dieses Kapitels ist es, auf Grundlage der zuvor hergeleiteten Bahnkurve jen
 
 ![Sollflugbahn](img/Sollflugbahn_foto.png) 
 
+Abbildung: Einfluss des Wurfbogens auf die Trefferwahrscheinlichkeit beim Basketballwurf. Quelle: [@noah-shooting-arc]
 
 ### Mathematische Bedingung für das Treffen eines Zielpunktes
 
@@ -267,6 +265,8 @@ Für viele Zielkonstellationen existieren grundsätzlich zwei mögliche Flugbahn
 - eine steilere Flugbahn mit größerem Winkel.
 
 ![optimaler Einfallswinkel](img/einfallswinkel.jpeg)
+
+Abbildung: Zusammenhang zwischen Einfallswinkel des Basketballs und der effektiven Trefferfläche des Rings. Quelle: [@researchgate-entry-angle]
 
 Beide Varianten erfüllen mathematisch die Treffbedingung, unterscheiden sich jedoch hinsichtlich maximaler Höhe, Einfallswinkel und Empfindlichkeit gegenüber kleinen Abweichungen der Abwurfparameter.
 
@@ -433,11 +433,11 @@ Damit erfüllt die Pipeline zwei zentrale Anforderungen der Arbeit: Erstens wird
 
 Aufbauend auf der in Kapitel 4.12.2 dargestellten Pipeline wurde die praktische Umsetzung als modular strukturierter Programmablauf in Python realisiert. Ziel dieser Implementierungsphase ist die reproduzierbare Gewinnung von Bewegungsdaten aus Videoaufnahmen von Basketballwürfen. Der Schwerpunkt liegt dabei auf der technischen Verarbeitung der Bilddaten, der Lokalisierung des Balls über mehrere Frames sowie der Rekonstruktion einer konsistenten Flugbahn. Die physikalische Sollflugbahn dient in diesem Zusammenhang als theoretische Grundlage des Modells, steht jedoch nicht als direkte Vergleichsauswertung im Zentrum dieses Arbeitsschritts.
 
-Die Verarbeitung beginnt mit dem Einlesen der Videodatei über OpenCV. Bereits zu diesem Zeitpunkt werden zentrale Metadaten wie Auflösung, Bildrate und Anzahl der Frames ausgelesen, da diese für die zeitliche Einordnung der Bewegung erforderlich sind. Anschließend wird ein relevanter Startbereich im Video festgelegt, um die Berechnung auf den tatsächlichen Wurfabschnitt zu begrenzen. Diese Eingrenzung reduziert die Rechenlast und verbessert die Stabilität der nachfolgenden Schritte, da nur Frames mit inhaltlicher Relevanz verarbeitet werden. Im folgenden Codeausschnitt ist das Einlesen der Videodatei sowie das Auslesen zentraler Metadaten (Bildrate und Frameanzahl) dargestellt. 
+Die Verarbeitung beginnt mit dem Einlesen der Videodatei über OpenCV. Bereits zu diesem Zeitpunkt werden zentrale Metadaten wie Auflösung, Bildrate und Anzahl der Frames ausgelesen, da diese für die zeitliche Einordnung der Bewegung erforderlich sind. Anschließend wird ein relevanter Startbereich im Video festgelegt, um die Berechnung auf den tatsächlichen Wurfabschnitt zu begrenzen. Diese Eingrenzung reduziert die Rechenlast und verbessert die Stabilität der nachfolgenden Schritte, da nur Frames mit inhaltlicher Relevanz verarbeitet werden. Im folgenden Codeausschnitt ist das Einlesen der Videodatei sowie das Auslesen zentraler Metadaten (Bildrate und Frameanzahl) dargestellt. [@OpenCVDocs]
 
 ![Video einlesen und Metadaten](img/code1.png)
 
-Die eigentliche Analyse erfolgt in einer Frame-Schleife. Für jedes Bild wird die Position des Basketballs bestimmt, je nach verfügbarer Konfiguration manuell initialisiert und danach verfolgt oder automatisch über geeignete Erkennungsverfahren lokalisiert. In der praktischen Umsetzung kommen dafür OpenCV-basierte Methoden sowie modellgestützte Verfahren zum Einsatz. Wird ein Tracking-Ansatz verwendet, liefert das Programm pro Frame eine Bounding Box; aus deren Mittelpunkt werden die Ballkoordinaten im Bildraum berechnet. Zusätzlich werden Plausibilitätsprüfungen angewendet, um fehlerhafte Sprünge oder Ausreißer zu erkennen und instabile Messpunkte zu reduzieren. Dadurch entsteht eine robuste und zeitlich geordnete Punktfolge der Ballzentren. Der Ablauf der frameweisen Verarbeitung und die Berechnung der Ballkoordinaten aus einer Bounding Box sind in einem Codeausschnitt exemplarisch gezeigt.
+Die eigentliche Analyse erfolgt in einer Frame-Schleife. Für jedes Bild wird die Position des Basketballs bestimmt, je nach verfügbarer Konfiguration manuell initialisiert und danach verfolgt oder automatisch über geeignete Erkennungsverfahren lokalisiert. In der praktischen Umsetzung kommen dafür OpenCV-basierte Methoden sowie modellgestützte Verfahren zum Einsatz. Wird ein Tracking-Ansatz verwendet, liefert das Programm pro Frame eine Bounding Box; aus deren Mittelpunkt werden die Ballkoordinaten im Bildraum berechnet. Zusätzlich werden Plausibilitätsprüfungen angewendet, um fehlerhafte Sprünge oder Ausreißer zu erkennen und instabile Messpunkte zu reduzieren. Dadurch entsteht eine robuste und zeitlich geordnete Punktfolge der Ballzentren. Der Ablauf der frameweisen Verarbeitung und die Berechnung der Ballkoordinaten aus einer Bounding Box sind in einem Codeausschnitt exemplarisch gezeigt.[@IBMBoundingBox]
 
 ![Frame-Schleife & Ballkoordinaten](img/code2.png)
 
