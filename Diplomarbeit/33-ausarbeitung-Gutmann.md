@@ -507,67 +507,67 @@ Um diese Architektur auch im Projekt klar sichtbar zu machen, wurde eine entspre
 ## Projektstruktur 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Projektstruktur" .txt}
 Source/backend/src/main/java/at/htlle/backend/
-├── config/
-│   ├── CorsConfig.java
-│   └── WebConfig.java
-├── controller/
-│   ├── AnalysisImportController.java
-│   ├── DashboardController.java
-│   ├── PlayerController.java
-│   ├── StatsController.java
-│   └── TrainingSessionController.java
-├── Da2526BaskettballEffizienssteigerungDurchVideoanalyseApplication.java
-├── dto/
-│   ├── analysis/
-│   │   ├── AnalysisImportDTO.java
-│   │   ├── AnalysisImportResponseDTO.java
-│   │   ├── AnalysisPayload.java
-│   │   ├── ShotDTO.java
-│   │   └── SollDTO.java
-│   ├── dashboard/
-│   │   └── PlayerDashboardDTO.java
-│   ├── player/
-│   │   ├── ApiResponse.java
-│   │   ├── CreatePlayerDTO.java
-│   │   ├── LoginRequest.java
-│   │   ├── PlayerResponseDTO.java
-│   │   └── RegisterRequest.java
-│   ├── session/
-│   │   ├── CreateSessionDTO.java
-│   │   └── SessionResponseDTO.java
-│   └── stats/
-│       ├── PlayerStatsDTO.java
-│       ├── PlayerTrendItemDTO.java
-│       └── SessionStatsDTO.java
-├── exception/
-│   ├── GlobalExceptionHandler.java
-│   └── NotFoundException.java
-├── model/
-│   ├── Player.java
-│   ├── Shot.java
-│   ├── SollFlightData.java
-│   ├── TrainingSession.java
-│   └── Video.java
-├── repository/
-│   ├── PlayerRepository.java
-│   ├── ShotRepository.java
-│   ├── SollFlightDataRepository.java
-│   ├── TrainingSessionRepository.java
-│   └── VideoRepository.java
-├── service/
-│   ├── AnalysisImportService.java
-│   ├── DashboardService.java
-│   ├── PlayerService.java
-│   ├── StatsService.java
-│   └── TrainingSessionService.java
-└── Source/
-    └── backend/
-        └── src/
-            └── main/
-                └── java/
-                    └── at/
-                        └── htlle/
-                            └── backend/
+|-- config/
+|   |-- CorsConfig.java
+|   `-- WebConfig.java
+|-- controller/
+|   |-- AnalysisImportController.java
+|   |-- DashboardController.java
+|   |-- PlayerController.java
+|   |-- StatsController.java
+|   `-- TrainingSessionController.java
+|-- Da2526BaskettballEffizienssteigerungDurchVideoanalyseApplication.java
+|-- dto/
+|   |-- analysis/
+|   |   |-- AnalysisImportDTO.java
+|   |   |-- AnalysisImportResponseDTO.java
+|   |   |-- AnalysisPayload.java
+|   |   |-- ShotDTO.java
+|   |   `-- SollDTO.java
+|   |-- dashboard/
+|   |   `-- PlayerDashboardDTO.java
+|   |-- player/
+|   |   |-- ApiResponse.java
+|   |   |-- CreatePlayerDTO.java
+|   |   |-- LoginRequest.java
+|   |   |-- PlayerResponseDTO.java
+|   |   `-- RegisterRequest.java
+|   |-- session/
+|   |   |-- CreateSessionDTO.java
+|   |   `-- SessionResponseDTO.java
+|   `-- stats/
+|       |-- PlayerStatsDTO.java
+|       |-- PlayerTrendItemDTO.java
+|       `-- SessionStatsDTO.java
+|-- exception/
+|   |-- GlobalExceptionHandler.java
+|   `-- NotFoundException.java
+|-- model/
+|   |-- Player.java
+|   |-- Shot.java
+|   |-- SollFlightData.java
+|   |-- TrainingSession.java
+|   `-- Video.java
+|-- repository/
+|   |-- PlayerRepository.java
+|   |-- ShotRepository.java
+|   |-- SollFlightDataRepository.java
+|   |-- TrainingSessionRepository.java
+|   `-- VideoRepository.java
+|-- service/
+|   |-- AnalysisImportService.java
+|   |-- DashboardService.java
+|   |-- PlayerService.java
+|   |-- StatsService.java
+|   `-- TrainingSessionService.java
+`-- Source/
+    `-- backend/
+        `-- src/
+            `-- main/
+                `-- java/
+                    `-- at/
+                        `-- htlle/
+                            `-- backend/
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Implementirung des entity-Packages
