@@ -1158,7 +1158,7 @@ Flugbahn exakt auf dem zugehörigen Videoframe dargestellt wird.
 [@szeliski_computer_2022]
 #### Ergebnis der Optimierungen
 
-![Overlay nach Anpassungen](img/Wurf2_combined.png){ width=1200px }
+![Overlay nach Anpassungen](img/wurf2_combined.png){ width=1200px }
 
 Durch die beschriebenen Anpassungen konnte eine stabile und visuell konsistente
 Overlay-Darstellung erreicht werden. Die Ist- und Soll-Flugbahn lassen sich nun
