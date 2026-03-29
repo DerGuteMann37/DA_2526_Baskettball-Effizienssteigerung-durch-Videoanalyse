@@ -1,8 +1,9 @@
 # Teilaufgabe Wolfgruber Bastian
 \textauthor{Wolfgruber Bastian} 
 
-## Theorie
 
+
+## Theorie
 Diese Teilaufgabe beschäftigt sich mit der Analyse von Basketballwürfen
 auf Basis von Videoaufnahmen. Ziel der Arbeit ist es, den tatsächlichen
 Flugweg eines Basketballs aus Videomaterial zu rekonstruieren und
