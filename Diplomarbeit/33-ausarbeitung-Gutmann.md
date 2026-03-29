@@ -390,11 +390,14 @@ Nachdem alle gewünschten Angaben im Spring Initializr korrekt eingetragen und d
 
 ## Erstellung eines ER-Diagrammsa
 
-Bevor die Datenbank technisch angebunden und im Backend umgesetzt wurde, wurde das Datenmodell zunächst in Form eines ER-Diagramms grafisch dargestellt. Dafür wurde das Tool Draw.io verwendet, da es eine einfache und übersichtliche Modellierung von Entitäten, Attributen und Beziehungen ermöglicht.
+Bevor die Datenbank technisch angebunden und im Backend umgesetzt wurde, wurde das Datenmodell zunächst mithilfe eines ER-Diagramms in Draw.io grafisch modelliert. Dadurch konnten Entitäten, Attribute und Beziehungen frühzeitig strukturiert dargestellt und vor der Implementierung fachlich überprüft werden.
 
-Im ER-Diagramm wurden die zentralen Entitäten des Projekts definiert, darunter Player, TrainingSession, Shot, SollFlightData und Video. Zusätzlich wurden die wichtigsten Attribute (z. B. Identifikations-IDs, Zeitpunkte, Winkel, Geschwindigkeiten) sowie die Beziehungen zwischen den Entitäten festgelegt. Besonders relevant war dabei die korrekte Abbildung der Kardinalitäten, beispielsweise dass ein Spieler mehrere Trainingseinheiten haben kann und eine Trainingseinheit aus mehreren Würfen besteht.
+Im ER-Diagramm wurden die zentralen Entitäten Player, TrainingSession, Shot, FlightData und Video definiert. Zusätzlich wurden die zugehörigen Attribute, wie Identifikationsnummern, Zeitstempel sowie analyserelevante Parameter wie Winkel, Geschwindigkeiten und Positionswerte, festgelegt.
+Die Kardinalitäten wurden dabei wie folgt modelliert: Ein Player kann mehrere TrainingSessions besitzen, jede TrainingSession ist jedoch genau einem Player zugeordnet (1:n). Eine TrainingSession besteht aus mehreren Shots, wobei jeder Shot genau zu einer TrainingSession gehört (1:n). Im aktuellen Modell ist einer TrainingSession genau ein Video zugeordnet, und jedes Video gehört genau zu einer TrainingSession (1:1). Für jeden erkannten Wurf wird ein Datensatz in FlightData gespeichert, der die berechneten Flugparameter enthält.
 
-Durch diese grafische Modellierung konnte das Datenbankschema bereits vor der Implementierung logisch überprüft werden. Das ER-Diagramm diente anschließend als Grundlage für die Umsetzung der Datenbankstruktur im Backend mit JPA/Hibernate und half dabei, die spätere Implementierung konsistent und nachvollziehbar durchzuführen.
+Die eigentliche Videodatei wird dabei nicht direkt in der relationalen Datenbank gespeichert. In der Entität Video werden lediglich Metadaten wie die videoID, die zugehörige training_sessionID sowie der Dateipfad abgelegt. Diese Lösung ist sinnvoll, da Videodateien große Datenmengen umfassen und eine direkte Speicherung in der Datenbank die Performance und Wartbarkeit negativ beeinflussen würde.
+
+Der Ablauf ist so gestaltet, dass das Frontend das Video über eine REST-Schnittstelle an das Backend übermittelt. Dort wird die Datei gespeichert beziehungsweise für die Analyse bereitgestellt. Anschließend verarbeitet die Analysekomponente das Video, erkennt die Würfe und berechnet die zugehörigen Flugparameter. Die daraus entstehenden Ergebnisse werden danach in den Tabellen Shot und FlightData gespeichert. Das ER-Diagramm bildete somit die fachliche Grundlage für die spätere Umsetzung mit JPA/Hibernate und trug zu einer konsistenten und nachvollziehbaren Implementierung des Datenbankschemas bei.
 
 ![ER-Diagramm](img/ER-DIAGRAMM_hell.png)
 
@@ -405,13 +408,13 @@ Nach der Erstellung des ER-Diagramms wurde im nächsten Schritt die Datenbankanb
 
 Um die korrekte Datenbankanbindung frühzeitig zu überprüfen, wurde zunächst eine H2-Dateidatenbank manuell angelegt. Dafür wurde im Ordner
 
-```C:Users\flori\_SCHULE\5BIT\Diplomarbeit\DA_2526_Baskettball-Effizienssteigerung-durch-Videoanalyse\Source\backend\src\main\resources```
+```\Source\backend\src\main\resources```
 
 eine Datenbankdatei mit dem Namen da_basketball.mv.db erstellt. Diese Vorgehensweise diente dazu, die Verbindung zu einer persistenten, dateibasierten H2-Datenbank zu testen (im Gegensatz zum reinen In-Memory-Betrieb).
 
 Anschließend wurde über die H2-Console eine Verbindung mit dem H2-Treiber (org.h2.Driver) und der entsprechenden JDBC-URL hergestellt. Über die Funktionen „Verbindung testen“ und „Verbinden“ konnte überprüft werden, ob das Backend bzw. die Console korrekt auf die Datenbankdatei zugreifen kann. Damit war sichergestellt, dass die Datenbankkonfiguration grundsätzlich funktioniert und Daten persistent in einer lokalen Datei gespeichert werden können.
 
-![Datenbank Verbindung](img/H2_Datenbank_Verbindung.png)
+![Überblick der H2 Datenbank Verbindung](img/H2_Datenbank_Verbindung.png)
 
 ### Datenbankverbindung im Projekt (Springboot + H2)
 
@@ -420,7 +423,7 @@ Nachdem die Funktion der H2-Dateidatenbank über die Console erfolgreich geteste
 #### Schritt 1 : Einbindung der benötigten Bibiotheken (Dependencies) über Maven
 Im ersten Schritt wurde das Spring-Boot-Projekt um die notwendigen Bibliotheken zur Datenpersistenz erweitert. In einem Maven-Projekt werden diese Abhängigkeiten zentral in der Datei pom.xml definiert, wodurch Maven die benötigten Libraries automatisiert verwaltet und in den Build-Prozess integriert. Für den Zugriff auf relationale Datenbanken wurde spring-boot-starter-data-jpa eingebunden, welches die Persistenz über JPA ermöglicht und standardmäßig Hibernate als ORM-Implementierung verwendet. Als Entwicklungsdatenbank wurde die H2-Datenbank über die Dependency h2 integriert, wodurch lokale Tests ohne zusätzlichen Datenbankserver möglich sind. Zusätzlich wurde spring-boot-starter-web verwendet, um das Backend als Webservice mit REST-Endpunkten zu betreiben. Zur Reduktion von Boilerplate-Code kam Lombok zum Einsatz, wodurch insbesondere Daten- und Entity-Klassen übersichtlicher umgesetzt werden konnten.[@SpringDataJPAReference] [@SpringDataJPAProject] [@ProjectLombokData]
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="pom" .xml}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Überblick pom.xml" .xml}
 <dependencies>
     <!-- Web / REST API -->
     <dependency>
@@ -463,12 +466,13 @@ Im ersten Schritt wurde das Spring-Boot-Projekt um die notwendigen Bibliotheken 
 </dependencies>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#### Schritt 2: Konfiguration der Datenbankverbindung in Springboot
+#### Schritt 2: Konfiguration der Datenbankverbindung in Spring Boot
+
 Nach der Einbindung der benötigten Bibliotheken (Dependencies) wurde im nächsten Schritt die Datenbankverbindung in Spring Boot eingerichtet. Die Konfiguration erfolgt zentral in der Datei src/main/resources/application.properties. Dort wird festgelegt, welche Datenbank verwendet wird und wie das Backend beim Start eine Verbindung zu dieser Datenbank herstellt.
 
 Für die Entwicklungsphase wurde eine H2-Datenbank im In-Memory-Modus konfiguriert. Dadurch wird die Datenbank beim Start der Anwendung automatisch im Arbeitsspeicher erstellt, was schnelle lokale Tests ermöglicht und keine zusätzliche Installation eines Datenbankservers erfordert. Die Verbindung wird über eine JDBC-URL (z. B. jdbc:h2:mem:da_basketball) sowie den H2-Treiber org.h2.Driver hergestellt. Als Standardzugang wird der Benutzer sa verwendet.
 
-Zusätzlich wurde JPA/Hibernate so eingestellt, dass das Datenbankschema anhand der im Projekt definierten Entities automatisch erstellt bzw. aktualisiert werden kann (spring.jpa.hibernate.ddl-auto=update). Dadurch musste das Schema nicht manuell per SQL gepflegt werden, sondern bleibt direkt mit dem Java-Datenmodell synchron. Um die Datenbank während der Entwicklung kontrollieren zu können, wurde außerdem die H2-Console aktiviert. Über den Pfad /h2-console können Tabellen und gespeicherte Daten im Browser eingesehen und geprüft werden.[@SpringBootDatabaseConfiguration] [@SpringBootDataAccessHowTo] [@H2Features]
+Zusätzlich wurde JPA/Hibernate so konfiguriert, dass das Datenbankschema anhand der im Projekt definierten Entities automatisch erstellt bzw. aktualisiert werden kann (spring.jpa.hibernate.ddl-auto=update). Dadurch musste das Schema nicht manuell per SQL gepflegt werden, sondern blieb direkt mit dem Java-Datenmodell synchron. Um die Datenbank während der Entwicklung kontrollieren zu können, wurde außerdem die H2-Console aktiviert. Über den Pfad /h2-console konnten Tabellen und gespeicherte Daten im Browser eingesehen und geprüft werden.[@SpringBootDatabaseConfiguration] [@SpringBootDataAccessHowTo] [@H2Features]
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="application" .properties}
       springapplicationname=DA_2526_Baskettball-Effizienssteigerung-durch-Videoanalyse
@@ -488,7 +492,7 @@ Zusätzlich wurde JPA/Hibernate so eingestellt, dass das Datenbankschema anhand 
       spring.h2.console.enabled=true
       spring.h2.console.path=/h2-console
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Jetzt funktioniert einmal die Verbindung der Datenbank mit dem Projekt.
+Der erfolgreiche Aufbau der Datenbankverbindung wurde daran erkannt, dass die Spring-Boot-Anwendung ohne Fehlermeldung gestartet werden konnte, die H2-Console erreichbar war und die durch JPA/Hibernate erzeugten Tabellen dort sichtbar waren. Zusätzlich konnte durch erste Lese- und Schreibzugriffe überprüft werden, dass die Verbindung zwischen Backend und Datenbank korrekt funktionierte.
 
 ## Start der Implementierung
 Bevor mit der eigentlichen Programmierung (z. B. dem Erstellen der Entity-Klassen) begonnen wurde, wurde zunächst die grundlegende Architektur des Backends festgelegt. Ziel war es, von Beginn an eine klare Struktur zu schaffen, damit der Code übersichtlich, wartbar und langfristig erweiterbar bleibt. Aus diesem Grund wurde eine klassische Schichtenarchitektur (Layered Architecture) verwendet.
@@ -583,7 +587,7 @@ Nach der Festlegung der Projektstruktur wurden die im ER-Diagramm definierten Ta
   - Entity: Player
 
   Die Entity Player speichert die Stammdaten einer Spieler*in (z. B. Vorname, Nachname, Geburtsdatum, Erstellungszeitpunkt). Ein Player kann mehrere Trainingseinheiten besitzen (1:n zu TrainingSession).
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Player" .java}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Player Entity" .java}
       package at.htlle.backend.model;
 
       import jakarta.persistence.*;
