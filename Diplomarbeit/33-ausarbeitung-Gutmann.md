@@ -2,8 +2,8 @@
 \textauthor{Gutmann Florian} 
 
 
-
 ## Theorie
+
 Das Backend bildet die technische Grundlage für die Speicherung, Verarbeitung und Bereitstellung der im Projekt erhobenen Daten. Im Rahmen dieser Diplomarbeit wurde ein System zur Effizienzsteigerung von Basketballwürfen durch Videoanalyse entwickelt. Die Videoanalyse liefert dabei Messwerte und Parameter zu einzelnen Würfen, beispielsweise den Abwurfpunkt, die Korbposition, die Geschwindigkeit, den Abwurfwinkel sowie Daten zur Flugbahn des Balls. Damit diese Informationen langfristig gespeichert, ausgewertet und für das Frontend nutzbar gemacht werden können, wurde ein eigenständiges Backend entwickelt.
 
 Die zentrale Aufgabe des Backends besteht darin, die aus den Analyseprozessen entstehenden Daten strukturiert zu persistieren und über definierte Schnittstellen bereitzustellen. Zusätzlich übernimmt das Backend die Berechnung statistischer Kennzahlen, die Trainingsfortschritte messbar machen. Dadurch entsteht eine objektive Grundlage, um Würfe nicht nur einzeln zu betrachten, sondern auch über längere Zeiträume hinweg zu vergleichen und Entwicklungen sichtbar zu machen.
