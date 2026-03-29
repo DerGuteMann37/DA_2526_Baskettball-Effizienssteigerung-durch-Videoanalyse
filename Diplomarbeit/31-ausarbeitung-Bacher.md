@@ -377,11 +377,14 @@ Das primäre Ziel dieser Arbeit ist eine nachvollziehbare und reproduzierbare An
 Eine Echtzeitverarbeitung ist grundsätzlich möglich, erfordert jedoch stabile Hardwareleistung, niedrige Latenz in der Objekterkennung und robuste Online-Validierung der Positionsdaten. Im Projekt wird diese Perspektive als Ausbaurichtung betrachtet; der hier dokumentierte Schwerpunkt liegt auf der methodisch sauberen Offline-Auswertung.
 
 
+
+
+
 ## Praktische Arbeit
 
 ### Beginn der Entwicklung
 
-Zu Projektbeginn lag die zentrale Ausgangslage darin, dass für die Bewertung von Basketballwürfen zwar Videoaufnahmen vorhanden waren, jedoch noch kein verlässlicher technischer Ablauf zur quantitativen Auswertung existierte. Als übergeordnetes Ziel wurde definiert, aus realen Würfen zunächst verwertbare Bilddaten zu gewinnen und damit die Voraussetzungen für spätere Schritte wie automatische Erkennung, Trajektorienanalyse und Soll-Ist-Vergleich zu schaffen. In der Startphase stand daher zunächst nicht die vollständige Automatisierung im Vordergrund, sondern die schrittweise Vorbereitung der Datenerfassung und der späteren Auswertung. Inhaltlich orientierte sich die Auswertung dabei konsequent an den theoretisch hergeleiteten Zielgrößen \(\alpha\), \(v_0\), Releasepunkt und Zieltreffbedingung.
+Zu Projektbeginn lag die zentrale Ausgangslage darin, dass für die Bewertung von Basketballwürfen zwar Videoaufnahmen vorhanden waren, jedoch noch kein verlässlicher technischer Ablauf zur quantitativen Auswertung existierte. Als übergeordnetes Ziel wurde definiert, aus realen Würfen zunächst verwertbare Bilddaten zu gewinnen und damit die Voraussetzungen für spätere Schritte wie automatische Erkennung, Trajektorienanalyse und Soll-Ist-Vergleich zu schaffen. In der Startphase stand daher zunächst nicht die vollständige Automatisierung im Vordergrund, sondern die schrittweise Vorbereitung der Datenerfassung und der späteren Auswertung. Inhaltlich orientierte sich die Auswertung dabei konsequent an den theoretisch hergeleiteten Zielgrößen $/alpha/$, $v_0$, Releasepunkt und Zieltreffbedingung.
 
 Als erste Materialien wurden mehrere Beispielvideos mit unterschiedlichen Kamerapositionen, Perspektiven und Beleuchtungssituationen gesammelt. Dabei wurden insbesondere Auflösung, Bildrate, sichtbarer Korbbereich und die relative Größe des Balls im Bild dokumentiert, da diese Faktoren die spätere Erkennbarkeit maßgeblich beeinflussen. Auf Grundlage dieser Beobachtungen wurden frühe Anforderungen festgelegt: Der Ball muss in aufeinanderfolgenden Frames eindeutig lokalisierbar sein, der Korb muss im relevanten Bildausschnitt sichtbar bleiben, und die Verarbeitung muss reproduzierbar über mehrere Clips hinweg durchgeführt werden können. Ein exemplarischer Frame einer solchen Videoaufnahme mit markiertem Ball und Korbbereich ist in Abbildung 6 dargestellt.
 
