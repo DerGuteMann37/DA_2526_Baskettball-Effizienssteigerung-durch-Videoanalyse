@@ -661,17 +661,7 @@ Basketballs.
 
 ## Technische Umsetzung der Ist-Flugbahn
 
-Video laden
-      ↓
-Startframe wählen
-      ↓
-ROI definieren
-      ↓
-Tracker starten
-      ↓
-Position speichern
-      ↓
-Flugbahn visualisieren
+Video laden -> Startframe wählen -> ROI definieren -> Tracker starten -> Position speichern -> Flugbahn visualisieren
 
 Die Berechnung der Ist-Flugbahn erfolgt durch eine Videoanalyse des
 Basketballwurfs. Ziel dieses Verarbeitungsschrittes ist es, den
