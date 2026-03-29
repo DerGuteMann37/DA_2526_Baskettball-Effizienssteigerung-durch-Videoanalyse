@@ -663,6 +663,7 @@ Nach der Festlegung der Projektstruktur wurden die im ER-Diagramm definierten Ta
 
       }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   - Entity: TrainingSession
 
   Die Entity TrainingSession repräsentiert eine Trainingseinheit und enthält u. a. Datum und Startzeitpunkt. Jede Trainingseinheit ist genau einem Player zugeordnet (n:1) und enthält mehrere Würfe (1:n zu Shot). Zusätzlich ist eine Trainingseinheit mit einem Video verknüpft (1:1 zu Video).
@@ -713,10 +714,10 @@ Repositories in dem Projekt:
 
   - VideoRepository
 
-Damit ist die Grundlage geschaffen, damit die Service-Schicht später sauber und wiederverwendbar auf Daten zugreifen kann.
+Jetzt ist die Grundlage geschaffen, damit die Service-Schicht später sauber und wiederverwendbar auf Daten zugreifen kann.
 
 ### Implementireung des service-Packages
-Als nächstes folgt das Package service, das die Geschäftslogik des Backends kapselt. Während Controller lediglich HTTP-Anfragen annehmen und Responses zurückgeben, übernimmt die Service-Schicht die eigentliche Verarbeitung: z. B. das Validieren von Eingaben, das Speichern und Verknüpfen von Entities über Repositories, sowie die Berechnung von Statistiken oder das Importieren von Analyse-Daten. Dadurch bleibt die Logik zentral gebündelt, wiederverwendbar und leichter testbar.
+Ein weiterer zetraler Bestandteil der Backend-Struktur ist das Package service, das die Geschäftslogik des Backends kapselt. Während Controller lediglich HTTP-Anfragen annehmen und Responses zurückgeben, übernimmt die Service-Schicht die eigentliche Verarbeitung: beispielsweise das Validieren von Eingaben, das Speichern und Verknüpfen von Entities über Repositories sowie die Berechnung von Statistiken oder das Importieren von Analysedaten. Dadurch bleibt die Logik zentral gebündelt, wiederverwendbar und leichter testbar.
 
 Für dein Projekt sind im Service-Package u. a. folgende Klassen vorhanden:
 
@@ -930,7 +931,7 @@ Im Package dto wurden Data Transfer Objects (DTOs) umgesetzt. DTOs sind einfache
 
   - dto/dashboard (Dashboard-Übersicht)
 
-### Implementireung des config-Pageges
+### Implementireung des config-Package
 
 Im Package config werden Klassen gesammelt, die technische Einstellungen für das Backend zentral definieren. Das betrifft vor allem Themen wie CORS, Web-Konfiguration und ggf. spätere Erweiterungen (z. B. Security, Interceptors). Der Vorteil ist, dass diese Einstellungen nicht in einzelnen Controllern verteilt sind, sondern an einer Stelle gebündelt werden.[@SpringFrameworkCors] [SpringFrameworkWebMvcConfig]
 
