@@ -1,12 +1,105 @@
+Der GuteMann
+flooo1709
+Online
+
+Der GuteMann — 06.03.2026 11:57
+# Teilaufgabe Gutmann Florian
+\textauthor{Gutmann Florian}
+
+## Theorie
+
+### Einführung in den Backend-Teil... (23 kB verbleibend)
+
+message.txt
+73 kB
+rrrobertt — 06.03.2026 11:57
+# Teilaufgabe Bacher Fabian
+\textauthor{Bacher Fabian} 
+
+
+### Aufgabenstellung Soll-Flugbahn
+Im Alltag sowie in vielen Sportarten spielt das Werfen eines Körpers eine zentrale Rolle. Ob beim Werfen eines Balls, beim Korbwurf im Basketball oder beim gezielten Treffen eines Ziels – häufig gelingt ein Wurf nicht zufällig, sondern folgt bestimmten Gesetzmäßigkeiten. Für den Beobachter erscheint die Flugbahn zunächst schwer vorhersehbar, tatsächlich wird sie jedoch durch physikalische Zusammenhänge bestimmt.... (20 kB verbleibend)
+
+message.txt
+70 kB
+ShishaCroft — 06.03.2026 12:29
+# Projekthandbuch – Diplomarbeit
+\textauthor{Nino Dalipovic}
+
+
+## Basketball-Effizienzsteigerung durch Videoanalyse
+**Stand:** 06. März 2026
+
+message.txt
+7 kB
+ShishaCroft — 06.03.2026 13:47
+# Teilaufgabe Dalipovic Nino
+\textauthor{Nino Dalipovic}
+
+
+## Theorieteil - Frontend
+... (20 kB verbleibend)
+
+Teilaufgabe Dalipovic Nino.txt
+70 kB
+basti — 06.03.2026 13:55
+\newpage
+## Dokumentation
+
+### Projektfortschritt 16. Juni 2025 bis 06. März 2026
+
+#### Gesamtstatus
+
+Projektdokumentation.txt
+4 kB
+basti — 06.03.2026 19:24
+Ka wegen die bilder des is scho so vorgegeben des format
+Dateityp des Anhangs: document
+HTL-DA_Digitale_PosterVorlage_Basketball-Effizienzsteigerung.pptx
+3.34 MB
+rrrobertt — 06.03.2026 21:56
+\newpage
+## Projektabschlussbericht
+
+### Erfolgsmessung
+
+#### Erreichung Leistungs-/Qualitätsziele
+
+abschlussbericht.txt
+8 kB
+ShishaCroft — 20:55
+# Teilaufgabe Dalipovic Nino
+\textauthor{Nino Dalipovic}
+
+
+## Technischer Kontext und Zielsetzung des Frontend-Teils
+... (21 kB verbleibend)
+
+Teilaufgabe Dalipovic Nino3.txt
+71 kB
+basti — 23:38
 
 # Teilaufgabe Wolfgruber Bastian
 \textauthor{Wolfgruber Bastian}
 
 ## Theorie
 
+
+Diese Teilaufgabe beschäftigt sich mit der Analyse von Basketballwürfen
+auf Basis von Videoaufnahmen. Ziel der Arbeit ist es, den tatsächlichen
+Flugweg eines Basketballs aus Videomaterial zu rekonstruieren und
+visuell darzustellen.
+
+Auf Grundlage dieser rekonstruierten Ist-Flugbahn soll ein Vergleich
+mit einer theoretisch berechneten Soll-Flugbahn ermöglicht werden.
+Durch diesen Vergleich können Abweichungen zwischen dem realen
+Wurfverlauf und einer idealen Flugbahn erkannt werden. Diese
+Informationen bilden die Grundlage für eine objektive Analyse der
+Wurfbahn.
+
 ## Begriffserklärung: Ist-Flugbahn
 
-Die Ist-Flugbahn beschreibt die tatsächlich ausgeführte Fluglinie des Basketballs
+Die Ist-Flugbahn beschreibt die tatsächlich ausgeführte Flugkurve des Basketballs
 während eines realen Wurfes. Sie basiert auf der Analyse von Videomaterial und stellt
 somit die reale Bewegung des Balls dar. Im Gegensatz zur Soll-Flugbahn handelt es sich
 bei der Ist-Flugbahn nicht um ein theoretisches Modell, sondern um gemessene Daten,
@@ -18,30 +111,39 @@ Soll-Flugbahn vergleichen zu können.
 
 ### Bedeutung der Ist-Flugbahn für die Analyse von Würfen
 
-Die Analyse der Ist-Flugbahn ermöglicht eine objektive Bewertung eines
-Basketballwurfes. Während Spielerinnen und Spieler den eigenen Wurf häufig
-nur subjektiv wahrnehmen, liefert die Videoanalyse eine messbare und
-reproduzierbare Darstellung des tatsächlichen Bewegungsverlaufs.
+Die Analyse der Ist-Flugbahn ermöglicht eine objektive Bewertung
+konkreter Eigenschaften eines Basketballwurfes. Dazu gehören
+beispielsweise die maximale Höhe der Flugbahn und die Position des Balls
+beim Erreichen der Korbebene. Während Spielerinnen und Spieler
+den eigenen Wurf häufig nur subjektiv wahrnehmen, liefert die
+Videoanalyse eine messbare und reproduzierbare Darstellung des
+tatsächlichen Bewegungsverlaufs.
 
-Durch die Rekonstruktion der Ist-Flugbahn können verschiedene Eigenschaften
-eines Wurfes untersucht werden. Dazu gehören beispielsweise die Höhe der
-Flugbahn, der seitliche Verlauf des Balls sowie mögliche Abweichungen vom
-idealen Zielpunkt.
-
-Diese Informationen können genutzt werden, um Unterschiede zwischen
-verschiedenen Würfen zu analysieren und gezielt Verbesserungsmöglichkeiten
-für die Wurftechnik abzuleiten.
+Durch die Rekonstruktion der Ist-Flugbahn können verschiedene
+Eigenschaften eines Wurfes systematisch untersucht werden.
+Diese Informationen können genutzt werden, um Unterschiede
+zwischen verschiedenen Würfen zu analysieren. Besonders relevant
+sind dabei Abweichungen in der Flughöhe und der Winkel indem der Ball in den Korb entritt. 
+Auf Basis dieser Abweichungen können gezielt Verbesserungsmöglichkeiten für die Flugbahn
+abgeleitet werden, beispielsweise eine Anpassung des Abwurfwinkels
+oder der Wurfrichtung.
 
 ## Tracking des Basketballs
 
-Das Tracking des Basketballs dient in dieser Arbeit nicht nur der technischen
-Erfassung von Bewegungsdaten, sondern bildet die Grundlage für ein visuelles
-Feedback, das den Schützen bei der Analyse und Verbesserung seines Wurfes
-unterstützt.
+Das Tracking des Basketballs dient in dieser Arbeit nicht nur der
+technischen Erfassung von Bewegungsdaten, sondern stellt die
+Ausgangsbasis für die Rekonstruktion der Ist-Flugbahn dar.
+Die während des Trackings ermittelten Positionsdaten bilden
+die Grundlage für die spätere Visualisierung des tatsächlichen
+Flugverlaufs sowie für den Vergleich mit der berechneten
+Soll-Flugbahn.
 
-Durch das kontinuierliche Verfolgen des Balls über mehrere Frames hinweg
-kann der tatsächliche Flugweg des Basketballs rekonstruiert und sichtbar
-gemacht werden.
+Durch das kontinuierliche Verfolgen des Balls über mehrere Frames
+hinweg kann der tatsächliche Flugweg des Basketballs rekonstruiert
+und sichtbar gemacht werden. Die dabei entstehenden Positionsdaten
+werden gespeichert und anschließend zu einer durchgehenden
+Flugkurve verbunden, welche den realen Bewegungsverlauf des
+Basketballs beschreibt.
 
 ### Funktionsprinzip des Balltrackings
 
@@ -54,7 +156,218 @@ Durch die kontinuierliche Bestimmung dieser Koordinaten entsteht eine
 Abfolge von Positionspunkten, die den Bewegungsverlauf des Balls im
 Videobild beschreiben.
 
-Werden diese Punkte miteinander verbunden, ergibt sich eine Linie, die
+Werden diese Punkte miteinander verbunden, ergibt sich eine Parabel, die
+den tatsächlichen Flugweg des Basketballs repräsentiert. [@cao_automatic_2021]
+
+## Architektur der Videoanalyse-Pipeline
+
+In der Videoanalyse werden komplexe Auswertungen häufig als
+datengetriebene Pipeline modelliert. Eine solche Pipeline beschreibt
+eine Abfolge klar definierter Verarbeitungsschritte, bei denen Rohdaten
+schrittweise in strukturierte Analyseergebnisse überführt werden. [@szeliski_computer_2022]
+
+### Aufbau einer Analysepipeline
+
+Ausgangspunkt einer Videoanalyse-Pipeline sind Rohvideos, welche visuelle
+Informationen in Form von Bildsequenzen enthalten.
+
+Diese Rohdaten werden in mehreren aufeinanderfolgenden Schritten
+verarbeitet. Typische Verarbeitungsschritte sind beispielsweise:
+
+- Vorverarbeitung der Videodaten  
+- Erkennung und Tracking relevanter Objekte  
+- Speicherung der ermittelten Positionsdaten  
+- Visualisierung der Analyseergebnisse  ... (10 kB verbleibend)
+
+34-ausarbeitung-Wolfgruber.md
+60 kB
+Dateityp des Anhangs: archive
+imgneu.zip
+1.16 MB
+rrrobertt — 23:46
+# Teilaufgabe Bacher Fabian
+\textauthor{Bacher Fabian} 
+
+
+## Aufgabenstellung Soll-Flugbahn
+Im Alltag sowie in vielen Sportarten spielt das Werfen eines Körpers eine zentrale Rolle. Ob beim Werfen eines Balls, beim Korbwurf im Basketball oder beim gezielten Treffen eines Ziels – häufig gelingt ein Wurf nicht zufällig, sondern folgt bestimmten Gesetzmäßigkeiten. Für den Beobachter erscheint die Flugbahn zunächst schwer vorhersehbar, tatsächlich wird sie jedoch durch physikalische Zusammenhänge bestimmt.
+
+In diesem Teil wird untersucht, wie sich ein geworfener Körper nach dem Abwurf bewegt und welche Faktoren seine Flugbahn beeinflussen. Dabei wird betrachtet, welche Rolle unter anderem Abwurfwinkel, Geschwindigkeit und Abwurfhöhe spielen und wie sich Veränderungen dieser Größen auf das Treffen eines Zielpunktes auswirken.
+
+Aufbauend auf diesen Grundlagen wird anschließend versucht, eine optimale Flugbahn – eine sogenannte Sollflugbahn – zu bestimmen. Ziel ist es, jene Bedingungen zu ermitteln, unter denen ein vorgegebenes Ziel möglichst zuverlässig erreicht werden kann.
+
+
+## Theorie
+
+Dieses Kapitel behandelt die theoretischen Grundlagen der Arbeit. Im Fokus stehen die Bewegung geworfener Körper, die Flugkurve, der schiefe Wurf und die für die Sollflugbahn relevanten Einflussgrößen.
+
+## Wurfbewegungen in Alltag und Sport
+
+![Wurf eines Basketballspielers](img/wmbi-schusss.jpg)
+
+Abbildung: Basketballspieler beim Korbwurf während eines Spiels. Quelle: [@getty-basketball-shot]
+
+Wurfbewegungen treten in vielen Bereichen des täglichen Lebens auf und sind besonders im Sport gut zu beobachten. Je nach Sportart unterscheiden sich Wurfentfernung, Zielhöhe und Bewegungsablauf. Für diese Arbeit ist vor allem der Basketball relevant, da dort das präzise Treffen eines erhöhten Korbes im Vordergrund steht.
+
+Im Rahmen dieser Arbeit wird daher der Korbwurf im Basketball betrachtet. Diese Sportart eignet sich besonders gut für eine physikalische Analyse, da der Ball auf ein fest definiertes Ziel in einer bestimmten Höhe geworfen wird. Dadurch lässt sich die Flugbahn des Balls gut mit den physikalischen Modellen der Wurfbewegung beschreiben.
+
+Unabhängig von der jeweiligen Situation lässt sich beobachten, dass ein geworfener Körper nicht geradlinig fliegt, sondern stets eine gekrümmte Bahn beschreibt. Die Flugbahn hängt von den Abwurfbedingungen (insbesondere Anfangsgeschwindigkeit, Abwurfwinkel und Abwurfhöhe) sowie von äußeren Einflüssen wie Gravitation und Luftwiderstand ab. Bereits kleine Änderungen dieser Größen können dazu führen, dass ein Ziel verfehlt wird. [@LernhelferWurf]
+
+
+## Bewegung geworfener Körper
+
+### Was versteht man unter der Bewegung eines geworfenen Körpers?
+
+Unter der Bewegung eines geworfenen Körpers versteht man den Bewegungsablauf eines Gegenstandes ab dem Zeitpunkt, an dem er die Hand des Werfers verlässt. Beim Abwurf erhält der Körper eine Anfangsgeschwindigkeit. Nach dem Loslassen wirkt keine vom Werfer erzeugte Kraft mehr auf ihn; die weitere Bewegung wird durch äußere Kräfte bestimmt. Maßgeblich sind dabei die Erdanziehungskraft und in geringerem Ausmaß der Luftwiderstand.
+
+Da nach dem Abwurf keine Korrektur mehr möglich ist, wird der weitere Bewegungsverlauf bereits im Moment des Loslassens festgelegt. Dabei bestimmen insbesondere Anfangsgeschwindigkeit, Abwurfwinkel und Abwurfhöhe die spätere Flugbahn des Körpers. [@LeifiPhysikWurfbewegung]
+
+### Kräfte, die auf einen geworfenen Körper wirken
+
+Auf einen geworfenen Körper wirken während seiner Flugphase hauptsächlich zwei Kräfte: die Erdanziehungskraft (Gravitation) und der Luftwiderstand.
+
+Die Erdanziehungskraft ist in der Regel die dominierende Kraft. Sie wirkt ständig nach unten in Richtung Erdmittelpunkt und sorgt dafür, dass der Körper kontinuierlich zum Boden beschleunigt wird. Dadurch entsteht die charakteristische gekrümmte Flugbahn eines geworfenen Körpers.
+
+Zusätzlich wirkt der Luftwiderstand. Dieser entsteht durch die Bewegung des Körpers durch die Luft und wirkt der Bewegungsrichtung entgegen. Im Vergleich zur Gravitation ist sein Einfluss bei üblichen Wurfgeschwindigkeiten jedoch deutlich geringer. Aus diesem Grund wird der Luftwiderstand in physikalischen Betrachtungen oft vernachlässigt. [@HyperPhysicsProjectile]
+
+## Flugkurve (Trajektorie)
+
+### Was versteht man unter einer Flugkurve?
+
+Die Flugkurve, auch als Trajektorie bezeichnet, beschreibt den räumlichen Bewegungsverlauf eines Körpers während seines Fluges. Sie stellt die Bahn dar, die ein geworfener Körper vom Zeitpunkt des Abwurfs bis zum Auftreffen auf dem Boden oder am Ziel zurücklegt. [@OpenStaxProjectileMotion]
+
+### Warum ist die Flugkurve gekrümmt?
+
+Die gekrümmte Form der Flugbahn entsteht durch die Überlagerung zweier Bewegungen. In horizontaler Richtung bleibt die Geschwindigkeit näherungsweise konstant, in vertikaler Richtung wirkt die Erdanziehungskraft und verändert die vertikale Geschwindigkeit fortlaufend. Durch diese Überlagerung entsteht die gekrümmte Flugbahn. [@OpenStaxProjectileMotion]
+
+
+### Höchster Punkt der Flugbahn
+
+Während des Fluges steigt der geworfene Körper zunächst an, bis er einen höchsten Punkt erreicht. In diesem Punkt ist die vertikale Geschwindigkeit des Körpers für einen kurzen Moment gleich null. Anschließend beginnt der Körper wieder zu fallen.
+
+Der höchste Punkt entsteht dadurch, dass die anfängliche Aufwärtsbewegung durch die Erdanziehungskraft zunehmend abgebremst wird. Schließlich kommt die Aufwärtsbewegung vollständig zum Stillstand, bevor die Bewegung in eine Abwärtsbewegung übergeht.
+
+Dieser Punkt besitzt eine besondere Bedeutung, da er die maximale Flughöhe des Körpers darstellt und maßgeblich von der Anfangsgeschwindigkeit sowie dem Abwurfwinkel abhängt. [@OpenStaxProjectileMotion]
+
+
+### Einfluss des Abwurfs auf die Flugbahn
+
+Die genaue Form der Flugkurve wird bereits im Moment des Abwurfs festgelegt. Entscheidend ist dabei, mit welcher Geschwindigkeit, in welcher Richtung und aus welcher Höhe der Körper geworfen wird.
+
+Ein flacher Wurf führt zu einer niedrigen und langen Flugbahn, während ein steiler Wurf eine höhere, jedoch kürzere Flugbahn erzeugt. Ebenso beeinflusst eine größere Anfangsgeschwindigkeit die Reichweite des Wurfes. Auch die Höhe des Abwurfpunktes verändert den Verlauf der Flugbahn, da der Körper länger in der Luft bleibt.
+
+Somit hängt das Treffen eines Ziels direkt von den Anfangsbedingungen des Wurfes ab. Bereits kleine Änderungen dieser Parameter können dazu führen, dass ein Ziel verfehlt wird. [@OpenStaxProjectileMotion]
+
+
+## Der schiefe Wurf als physikalisches Modell
+
+
+### Begriffserklärung
+
+Die zuvor beschriebene Flugkurve eines geworfenen Körpers lässt sich mathematisch mit dem sogenannten schiefen Wurf beschreiben. Darunter versteht man die Bewegung eines Körpers, der mit einer Anfangsgeschwindigkeit unter einem bestimmten Winkel zur Horizontalen in die Luft geworfen wird.
+
+Der Körper besitzt dabei sowohl eine horizontale als auch eine vertikale Bewegungsrichtung. Nach dem Abwurf wirken keine antreibenden Kräfte mehr, sondern ausschließlich die Gravitation. Diese beeinflusst jedoch nur die vertikale Bewegung, während die horizontale Bewegung – abgesehen vom geringen Luftwiderstand – gleichförmig bleibt.
+
+Der schiefe Wurf stellt somit ein mathematisches Modell dar, mit dem sich reale Wurfbewegungen näherungsweise berechnen lassen. [@OpenStaxProjectileEquations]
+
+
+### Zerlegung der Bewegung in zwei Richtungen
+
+Die Anfangsgeschwindigkeit wird in eine horizontale und eine vertikale Komponente zerlegt:
+
+$v_{0x} = v_0 \cdot \cos(\alpha)$
+
+$v_{0y} = v_0 \cdot \sin(\alpha)$
+
+Diese beiden Komponenten beschreiben die Bewegung in horizontaler bzw. vertikaler Richtung getrennt voneinander. [@OpenStaxProjectileEquations]
+
+### Horizontale Bewegung
+Da in horizontaler Richtung keine beschleunigende Kraft wirkt, bleibt die horizontale Geschwindigkeitskomponente konstant. Es handelt sich somit um eine gleichförmige Bewegung. Der in horizontaler Richtung zurückgelegte Weg ergibt sich aus dem Produkt von horizontaler Geschwindigkeit und Zeit.
+
+Für die horizontale Bewegung gilt (unter der Annahme, dass der Luftwiderstand vernachlässigt wird):... (18 kB verbleibend)
+
+message.txt
+68 kB
+﻿
+
+# Teilaufgabe Wolfgruber Bastian
+\textauthor{Wolfgruber Bastian}
+
+## Theorie
+
+
+Diese Teilaufgabe beschäftigt sich mit der Analyse von Basketballwürfen
+auf Basis von Videoaufnahmen. Ziel der Arbeit ist es, den tatsächlichen
+Flugweg eines Basketballs aus Videomaterial zu rekonstruieren und
+visuell darzustellen.
+
+Auf Grundlage dieser rekonstruierten Ist-Flugbahn soll ein Vergleich
+mit einer theoretisch berechneten Soll-Flugbahn ermöglicht werden.
+Durch diesen Vergleich können Abweichungen zwischen dem realen
+Wurfverlauf und einer idealen Flugbahn erkannt werden. Diese
+Informationen bilden die Grundlage für eine objektive Analyse der
+Wurfbahn.
+
+## Begriffserklärung: Ist-Flugbahn
+
+Die Ist-Flugbahn beschreibt die tatsächlich ausgeführte Flugkurve des Basketballs
+während eines realen Wurfes. Sie basiert auf der Analyse von Videomaterial und stellt
+somit die reale Bewegung des Balls dar. Im Gegensatz zur Soll-Flugbahn handelt es sich
+bei der Ist-Flugbahn nicht um ein theoretisches Modell, sondern um gemessene Daten,
+die direkt aus dem Video gewonnen werden.
+
+Ziel der Ist-Flugbahn ist es, den realen Bewegungsverlauf des Basketballs möglichst
+präzise zu erfassen und visuell darzustellen, um diesen später mit der berechneten
+Soll-Flugbahn vergleichen zu können.
+
+### Bedeutung der Ist-Flugbahn für die Analyse von Würfen
+
+Die Analyse der Ist-Flugbahn ermöglicht eine objektive Bewertung
+konkreter Eigenschaften eines Basketballwurfes. Dazu gehören
+beispielsweise die maximale Höhe der Flugbahn und die Position des Balls
+beim Erreichen der Korbebene. Während Spielerinnen und Spieler
+den eigenen Wurf häufig nur subjektiv wahrnehmen, liefert die
+Videoanalyse eine messbare und reproduzierbare Darstellung des
+tatsächlichen Bewegungsverlaufs.
+
+Durch die Rekonstruktion der Ist-Flugbahn können verschiedene
+Eigenschaften eines Wurfes systematisch untersucht werden.
+Diese Informationen können genutzt werden, um Unterschiede
+zwischen verschiedenen Würfen zu analysieren. Besonders relevant
+sind dabei Abweichungen in der Flughöhe und der Winkel indem der Ball in den Korb entritt. 
+Auf Basis dieser Abweichungen können gezielt Verbesserungsmöglichkeiten für die Flugbahn
+abgeleitet werden, beispielsweise eine Anpassung des Abwurfwinkels
+oder der Wurfrichtung.
+
+## Tracking des Basketballs
+
+Das Tracking des Basketballs dient in dieser Arbeit nicht nur der
+technischen Erfassung von Bewegungsdaten, sondern stellt die
+Ausgangsbasis für die Rekonstruktion der Ist-Flugbahn dar.
+Die während des Trackings ermittelten Positionsdaten bilden
+die Grundlage für die spätere Visualisierung des tatsächlichen
+Flugverlaufs sowie für den Vergleich mit der berechneten
+Soll-Flugbahn.
+
+Durch das kontinuierliche Verfolgen des Balls über mehrere Frames
+hinweg kann der tatsächliche Flugweg des Basketballs rekonstruiert
+und sichtbar gemacht werden. Die dabei entstehenden Positionsdaten
+werden gespeichert und anschließend zu einer durchgehenden
+Flugkurve verbunden, welche den realen Bewegungsverlauf des
+Basketballs beschreibt.
+
+### Funktionsprinzip des Balltrackings
+
+Beim Tracking wird der Basketball als Zielobjekt definiert, dessen Position
+in jedem einzelnen Frame des Videos bestimmt wird. Die Position des Balls
+wird dabei typischerweise durch Koordinaten im zweidimensionalen
+Bildkoordinatensystem beschrieben.
+
+Durch die kontinuierliche Bestimmung dieser Koordinaten entsteht eine
+Abfolge von Positionspunkten, die den Bewegungsverlauf des Balls im
+Videobild beschreiben.
+
+Werden diese Punkte miteinander verbunden, ergibt sich eine Parabel, die
 den tatsächlichen Flugweg des Basketballs repräsentiert. [@cao_automatic_2021]
 
 ## Architektur der Videoanalyse-Pipeline
@@ -113,12 +426,6 @@ und daraus dessen Bewegungsverlauf abzuleiten. [@opencv_library_2015]
 
 ### Beispiele für Tracking-Verfahren
 
-In der Videoanalyse existieren verschiedene Verfahren zur
-Verfolgung von Objekten über mehrere Frames hinweg. Diese
-Tracking-Algorithmen unterscheiden sich insbesondere in ihrer
-Genauigkeit, Geschwindigkeit und Robustheit gegenüber
-Veränderungen im Bild. [@lukezic_discriminative_2018]
-
 #### CSRT-Tracker
 
 Der CSRT-Tracker (Discriminative Correlation Filter with Channel and Spatial Reliability)
@@ -168,7 +475,7 @@ verfolgen. [@opencv_library_2015]
 
 ### Herausforderungen beim Objekt-Tracking
 
-In realen Videosequenzen treten häufig Situationen auf, die das
+In realen Videosequenzen treten, schon theoretisch, häufig Situationen auf, die das
 Tracking erschweren.
 
 Dazu gehören unter anderem:
@@ -181,7 +488,7 @@ Dazu gehören unter anderem:
 Diese Faktoren können dazu führen, dass ein Tracker das Zielobjekt
 verliert oder ein falsches Objekt verfolgt. [@lukezic_discriminative_2018]
 
-## Fehlerquellen und Unsicherheiten beim Tracking
+### Fehlerquellen und Unsicherheiten beim Tracking
 
 Beim Objekt-Tracking können verschiedene Fehlerquellen auftreten,
 welche die Genauigkeit der ermittelten Objektpositionen beeinflussen.
@@ -249,7 +556,7 @@ Wenn der Ball nicht vollständig sichtbar ist, fehlen dem
 Tracking-Algorithmus wichtige visuelle Informationen wie Form,
 Farbe oder Konturen. Dadurch kann es passieren, dass der
 Algorithmus das Objekt nicht mehr eindeutig erkennt und das
-Tracking verliert.
+Tracking verliert. [@lukezic_discriminative_2018]
 
 Ein weiteres Problem entsteht durch visuell ähnliche Objekte im
 Bild. Tracking-Algorithmen identifizieren ein Objekt häufig anhand
@@ -291,7 +598,7 @@ verändert.
 
 In solchen Situationen kann ein Tracking-Algorithmus Schwierigkeiten
 haben, das Zielobjekt korrekt wiederzuerkennen oder seine Position
-genau zu bestimmen.
+genau zu bestimmen. [@lukezic_discriminative_2018]
 
 Darüber hinaus können manche Tracking-Verfahren empfindlich auf
 starke Bewegungen oder abrupte Richtungsänderungen reagieren.
@@ -304,6 +611,8 @@ Tracking-Ergebnisse in realen Anwendungen immer mit einer
 gewissen Unsicherheit behaftet sind. [@opencv_library_2015]
 
 ## Region of Interest (ROI)
+
+![Darstellung einer Region of Interest (ROI)](img/ROIWhat.png){width=\textwidth}
 
 Eine Region of Interest (ROI) bezeichnet einen definierten Bildbereich
 innerhalb eines Frames, der für eine weitere Analyse ausgewählt wird.
@@ -486,7 +795,7 @@ und bildet eine zentrale Grundlage für viele Computer-Vision-Systeme.
 - Trackingverfahren können empfindlich auf Verdeckungen oder schwierige Lichtverhältnisse reagieren [@opencv_library_2015]
 
 
-### NumPy (`numpy`)
+#### NumPy (`numpy`)
 
 NumPy ist eine zentrale Bibliothek für numerische Berechnungen in Python.
 Sie stellt effiziente Datenstrukturen für große Mengen numerischer Daten
@@ -510,7 +819,7 @@ Datenmengen analysiert oder verarbeitet werden müssen.
 - Höherer Speicherbedarf bei sehr großen Datenmengen  
 [@harris_numpy_2020]
 
-### JSON und Dateisystem (`json`, `os`)
+#### JSON und Dateisystem (`json`, `os`)
 
 Für die strukturierte Speicherung von Konfigurations- und
 Metadaten wird häufig das JSON-Format (JavaScript Object Notation)
@@ -542,7 +851,7 @@ in strukturierter Form zu speichern.
 
 ### Entwicklungsumgebung: Visual Studio Code
 
-![Entwicklungsumgebung: Visual Studio Code](img/vscode.png){width=\textwidth}
+![Entwicklungsumgebung: Visual Studio Code](img/VSCodeProject.png){width=\textwidth}
 
 Für die Implementierung der Analysealgorithmen wurde die
 Entwicklungsumgebung Visual Studio Code verwendet.
@@ -588,6 +897,10 @@ Videomaterial mit konstanter Qualität und stabilen Exportformaten
 zu rendern. Dadurch konnten einheitliche Videodateien erzeugt werden,
 die als standardisierte Eingabedaten für die anschließende
 Videoanalyse verwendet werden konnten. [@blackmagic_resolve_2026]
+
+
+
+
 
 ## Praktische Arbeit
 
