@@ -610,6 +610,18 @@ Videoanalyse verwendet werden konnten. [@blackmagic_resolve_2026]
 
 ## Praktische Arbeit
 
+Im Rahmen der praktischen Arbeit wurde ein System zur Analyse
+von Basketballwürfen auf Basis von Videoaufnahmen entwickelt.
+Ziel war es, den Bewegungsverlauf des Basketballs aus realem
+Videomaterial zu erfassen, die Ist-Flugbahn zu rekonstruieren
+und diese visuell darzustellen.
+
+Die praktische Umsetzung umfasst mehrere Verarbeitungsschritte,
+beginnend bei der Vorbereitung des Videomaterials über das
+Tracking des Basketballs bis hin zur Visualisierung der
+ermittelten Flugbahnen. Die folgenden Abschnitte beschreiben
+die einzelnen Arbeitsschritte sowie deren technische Umsetzung.
+
 ## Ausgangsmaterial und Videovorbereitung
 
 ### Rohmaterial der Videoaufnahmen
@@ -627,25 +639,39 @@ aus dem Rohmaterial herausgefiltert werden.
 
 ### Videobearbeitung mit DaVinci Resolve
 
-Um eine gezielte Analyse einzelner Würfe zu ermöglichen, wurde das Rohmaterial
-in mehrere kurze Videoclips aufgeteilt, wobei jeder Clip genau einen Wurf enthält.
-Diese Clips wurden separat gerendert und dienen als standardisierte Eingabedaten
-für die weitere Verarbeitung.
+Um eine gezielte Analyse einzelner Würfe zu ermöglichen,
+wurde das Rohmaterial in mehrere kurze Videoclips
+aufgeteilt, wobei jeder Clip genau einen Wurf enthält.
+Insgesamt wurden 10 einzelne Wurfsequenzen aus dem
+Rohmaterial extrahiert und als separate Videodateien
+gespeichert.
 
-Für das Schneiden und Vorbereiten der Videos wurde die Videoschnittsoftware
-DaVinci Resolve verwendet. Die Software ermöglicht es, Videomaterial präzise zu
-bearbeiten, einzelne Sequenzen zu extrahieren und in einem geeigneten Format
-zu exportieren.
+Für das Schneiden und Vorbereiten der Videos wurde
+die Videoschnittsoftware DaVinci Resolve verwendet.
+Die Software ermöglicht es, Videomaterial präzise zu
+bearbeiten, einzelne Sequenzen zu extrahieren und in
+einem geeigneten Format zu exportieren.
 
-Durch die Aufteilung in einzelne Wurfsequenzen konnte sichergestellt werden,
-dass jede Analyse auf einem klar definierten Bewegungsablauf basiert.
-Gleichzeitig sorgt der Export der Clips für eine gleichbleibende Qualität
-und ein einheitliches Format der Eingabedaten.
-
-Diese vorbereiteten Videodateien bilden die Grundlage für die anschließende
-Videoanalyse sowie für das Tracking des Basketballs.
+Durch die Aufteilung in einzelne Wurfsequenzen konnte
+sichergestellt werden, dass jede Analyse auf einem klar
+definierten Bewegungsablauf basiert. Die exportierten
+Clips bilden die standardisierten Eingabedaten für die
+anschließende Videoanalyse sowie für das Tracking des
+Basketballs.
 
 ## Technische Umsetzung der Ist-Flugbahn
+
+Video laden
+      ↓
+Startframe wählen
+      ↓
+ROI definieren
+      ↓
+Tracker starten
+      ↓
+Position speichern
+      ↓
+Flugbahn visualisieren
 
 Die Berechnung der Ist-Flugbahn erfolgt durch eine Videoanalyse des
 Basketballwurfs. Ziel dieses Verarbeitungsschrittes ist es, den
@@ -765,24 +791,39 @@ da hier der Übergang vom Abwurf zur Flugbewegung stattfindet. [@yilmaz_object_2
 
 ### Unterschiedliche Ballgrößen im Bild
 
-Die Größe des Basketballs im Bild verändert sich abhängig von seiner Entfernung
-zur Kamera. Während der Ball sich durch den Raum bewegt, kann sein projizierter
-Durchmesser im Bild variieren.
+![Falsche Initialisierung des Balles](img/ROIzuklein.png){width=100%}
 
-Viele Detektionsverfahren benötigen jedoch eine ungefähre Erwartung über die
-Größe des zu erkennenden Objekts. Wird dieser Bereich zu eng gewählt, wird der
-Ball in manchen Frames nicht erkannt. Wird er zu groß gewählt, steigt die
-Wahrscheinlichkeit für Fehlklassifikationen. [@yilmaz_object_2006]
+Die Größe des Basketballs im Bild verändert sich
+abhängig von seiner Entfernung zur Kamera. Während
+sich der Ball durch den Raum bewegt, kann sein
+projizierter Durchmesser im Bild variieren.
+
+Auch unter der Voraussetzung einer definierten
+Region of Interest (ROI) stellt diese Größenänderung
+eine Herausforderung dar. Die initial festgelegte ROI
+orientiert sich an der sichtbaren Größe des Balls im
+Startframe. Während der weiteren Bewegung kann sich
+der Ball jedoch verkleinern oder vergrößern, wodurch
+sich seine Darstellung innerhalb der Bounding Box
+verändert.
+
+Verändert sich die Ballgröße im Bild deutlich,
+kann dies die Genauigkeit des Trackings beeinflussen,
+da sich Form und Ausdehnung des Zielobjekts relativ
+zur ursprünglichen ROI ändern. In ungünstigen Fällen
+kann dies zu ungenauen Positionsbestimmungen oder
+zum Verlust des Trackings führen. [@yilmaz_object_2006]
 
 ### Verwechslung mit anderen Objekten im Bild
 
-![Falsches Objekt getracked](img/qualitatsverlust.png){width=100%}
+![Fehlverfolgung eines Körperteils des Schützen anstelle des Basketballs](img/qualitatsverlust.png){width=100%}
 
-Ein weiteres Problem der automatischen Ballerkennung bestand darin, dass der
-Algorithmus in einigen Situationen nicht den Basketball selbst, sondern andere
-Bildobjekte als Ziel identifizierte. Besonders häufig trat dieses Problem in der
-Phase unmittelbar vor dem Abwurf auf, wenn sich der Ball sehr nahe an der Hand
-des Spielers befindet.
+Ein weiteres Problem der automatischen Ballerkennung
+bestand darin, dass der verwendete Tracking-Algorithmus, 
+je nach verfügbarer OpenCV-Version der CSRT-Tracker
+oder der MOSSE-Tracker, in einigen Situationen nicht
+den Basketball selbst, sondern andere Bildobjekte als
+Ziel identifizierte.
 
 Da Hand und Ball in dieser Situation räumlich eng beieinander liegen und sich
 gleichzeitig bewegen, können automatische Verfahren Schwierigkeiten haben, das
@@ -860,6 +901,22 @@ tracker.init(frame, (x, y, w, h))
 print("ROI gesetzt:", roi)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+Die manuelle Initialisierung der Region of Interest (ROI)
+stellt eine stabile und zuverlässig funktionierende
+Lösung für die vorliegenden Videoaufnahmen dar.
+Dieser Ansatz ermöglicht es, den Basketball eindeutig
+als Zielobjekt zu definieren und dadurch Fehlverfolgungen
+zu vermeiden.
+
+Allerdings handelt es sich bei der manuellen ROI-Auswahl
+nicht um eine langfristig vollständig automatisierbare
+oder echtzeitfähige Lösung, da eine Benutzerinteraktion
+erforderlich ist. Für Anwendungen mit hohen
+Automatisierungsanforderungen oder Echtzeitverarbeitung
+wären daher weiterführende Verfahren zur automatischen
+Objekterkennung notwendig.
+
 ### Manuelle Auswahl des Korbrings (Rim)
 
 ![Manuelle Rim-Auswahl](img/rim_auswahl.png){width=\textwidth}
@@ -904,16 +961,17 @@ anderen visuellen Störeinflüssen eindeutig festgelegt ist.
 
 ## Visualisierung der Flugbahnen
 
-Die visuelle Darstellung der berechneten Flugbahnen stellt einen wichtigen
-Bestandteil der Videoanalyse dar. Durch die grafische Aufbereitung der
-ermittelten Positionsdaten wird der Bewegungsverlauf des Basketballs für
-Beobachter*innen leicht nachvollziehbar.
+Die visuelle Darstellung der berechneten Flugbahnen
+stellt einen wichtigen Bestandteil der Videoanalyse dar.
+Durch die grafische Aufbereitung der ermittelten
+Positionsdaten kann der Bewegungsverlauf des
+Basketballs direkt im Kontext der ursprünglichen
+Videoaufnahme dargestellt und nachvollzogen werden.
 
-Die Visualisierung ermöglicht es, die Bewegung des Balls nicht nur
-numerisch auszuwerten, sondern auch direkt im Kontext der ursprünglichen
-Videoaufnahme zu betrachten. Dadurch können charakteristische Eigenschaften
-des Wurfes, wie beispielsweise die Höhe der Flugbahn oder seitliche
-Abweichungen, intuitiv erkannt werden. [@opencv_drawing_2026]
+Dadurch lassen sich charakteristische Eigenschaften
+des Wurfes, wie beispielsweise die Höhe der Flugbahn
+oder seitliche Abweichungen, visuell erkennen und
+analysieren. [@opencv_drawing_2026]
 
 ### Visualisierung der Ist-Flugbahn
 
@@ -922,9 +980,13 @@ ermittelten Ballpositionen verwendet. Für jedes Videoframe wird die
 Position des Basketballs im Bildkoordinatensystem bestimmt und als
 Punkt gespeichert.
 
-Diese einzelnen Punkte werden anschließend in zeitlicher Reihenfolge
-miteinander verbunden. Dadurch entsteht eine Linie, welche den
-tatsächlichen Flugweg des Basketballs im Video darstellt.
+Diese einzelnen Punkte werden anschließend in
+zeitlicher Reihenfolge linear miteinander verbunden.
+Dabei werden jeweils aufeinanderfolgende Positionen
+durch gerade Liniensegmente verknüpft. Dadurch
+entsteht eine durchgehende Linie, welche den
+tatsächlichen Flugweg des Basketballs im Video
+darstellt.
 
 Die Darstellung erfolgt als Overlay direkt über dem Videobild,
 sodass der Bewegungsverlauf des Balls im Kontext der ursprünglichen
@@ -967,7 +1029,8 @@ Das Listing zeigt vereinfacht, wie aus den während des Trackings ermittelten Ba
 Bei einem erfolgreichen Wurf fällt der Basketball durch den Korb
 und verlässt anschließend den relevanten Bereich des Wurfverlaufs.
 Um diesen Moment automatisiert zu erkennen, wird die zuvor manuell
-definierte Position des Korbrings (Rim) als Referenzpunkt verwendet.
+definierte Position des Korbrings (Rim), wie in Abbildung 54
+dargestellt, als Referenzpunkt verwendet.
 
 Der Rim wird zu Beginn der Analyse einmal im Bild markiert und seine
 Position im Bildkoordinatensystem gespeichert. Während des Trackings
@@ -1010,6 +1073,19 @@ des Korbs, in die Analyse der Ist-Flugbahn einfließt.
 Nachfolgende Bewegungen des Balls, etwa beim Aufprall auf dem Boden
 oder beim Kontakt mit dem Netz, werden nicht mehr in die
 Flugbahnberechnung aufgenommen.
+
+In Situationen, in denen sich der Ball seitlich
+neben dem Korb befindet oder nur in dessen Nähe
+vorbeifliegt, kann es theoretisch zu
+Fehlinterpretationen kommen. Um solche Fälle zu
+reduzieren, wird nicht nur ein einzelnes Frame,
+sondern eine Folge mehrerer aufeinanderfolgender
+Frames unterhalb der Rim-Position ausgewertet.
+
+Durch diese Mehrfachprüfung wird verhindert,
+dass kurzfristige Positionsänderungen oder
+seitliche Bewegungen des Balls fälschlicherweise
+als Korberfolg interpretiert werden.
 
 #### Fehlwurf
 
@@ -1064,147 +1140,11 @@ for i in range(1, len(soll_traj_px)):
 cv2.imwrite("wurf_combined_overlay.png", overlay)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Die gleichzeitige Darstellung beider Flugbahnen bildet die Grundlage für
-eine visuelle Analyse des Wurfes und ermöglicht es, dem Spieler ein
-direktes Feedback über mögliche Verbesserungen seiner Wurftechnik zu geben.
-
-### Export der Trackingdaten als CSV-Datei
-
-![Wichtige Daten in der CSV-Datei](img/csv_daten.png){width=100%}
-
-Neben der grafischen Darstellung der Flugbahn werden die während des Trackings
-ermittelten Positionsdaten des Basketballs zusätzlich in einer CSV-Datei
-gespeichert.
-
-In dieser Datei wird für jedes verarbeitete Frame die entsprechende
-Position des Balls im Bildkoordinatensystem abgelegt. Typischerweise enthält
-die Datei dabei Informationen wie die Frame-Nummer sowie die X- und
-Y-Koordinaten des Basketballs.
-
-Der Export der Daten in das CSV-Format hat mehrere Vorteile. Zum einen
-ermöglicht das Format eine einfache und standardisierte Speicherung der
-Trackingdaten. CSV-Dateien können von vielen Programmen und
-Programmiersprachen problemlos gelesen und weiterverarbeitet werden.
-
-Zum anderen dient die CSV-Datei als Schnittstelle zwischen verschiedenen
-Systemkomponenten der Anwendung. Die im Analyseprozess erzeugten Daten
-können dadurch sowohl im Backend weiterverarbeitet als auch an ein
-Frontend-System übergeben werden.
-
-Im Backend können die gespeicherten Daten beispielsweise für zusätzliche
-Berechnungen, statistische Analysen oder zur Generierung weiterer
-Visualisierungen genutzt werden. Im Frontend können die Koordinaten
-verwendet werden, um die Flugbahn dynamisch darzustellen oder interaktive
-Visualisierungen für Nutzer*innen bereitzustellen.
-
-Durch die strukturierte Speicherung der Trackingdaten wird somit
-sichergestellt, dass die Ergebnisse der Videoanalyse nicht nur visuell
-verfügbar sind, sondern auch flexibel in anderen Komponenten des
-Systems weiterverwendet werden können.
-
-## Technische Herausforderungen bei der Erstellung des Overlays
-
-Nach der erfolgreichen Ermittlung der Ist- und Soll-Flugbahn bestand der nächste
-Schritt darin, beide Flugbahnen gemeinsam über das ursprüngliche Videomaterial zu
-legen. Ziel dieser Darstellung ist es, den realen Bewegungsverlauf des Basketballs
-und die berechnete ideale Flugbahn gleichzeitig sichtbar zu machen.
-
-Durch diese kombinierte Visualisierung können Abweichungen zwischen dem
-tatsächlichen Wurf und dem theoretisch optimalen Verlauf unmittelbar erkannt
-werden.
-
-Bei der Umsetzung dieser Overlay-Darstellung traten jedoch mehrere technische
-Probleme auf, die zunächst zu fehlerhaften oder qualitativ unzureichenden
-Ergebnissen führten.
-
-### Falsche Skalierung des Overlays
-
-Ein erstes Problem bestand in der falschen Skalierung der erzeugten Visualisierung.
-In einigen Fällen wurde die berechnete Flugbahn auf eine Bildgröße gerendert, die
-nicht exakt der Auflösung des Originalvideos entsprach.
-
-Dadurch erschien das Overlay entweder zu groß oder verschoben im Verhältnis zum
-Videobild. Die eingezeichnete Flugbahn lag somit nicht exakt auf der tatsächlichen
-Position des Balls.
-
-Dieses Problem trat insbesondere dann auf, wenn unterschiedliche Auflösungen
-zwischen Eingabebild, internen Verarbeitungsstrukturen und dem final gerenderten
-Ausgabebild verwendet wurden.
-
-Um eine korrekte Darstellung zu gewährleisten, musste sichergestellt werden,
-dass alle Verarbeitungsschritte im gleichen Koordinatensystem und mit identischer
-Bildauflösung arbeiten. [@opencv_docs_2026]
-
-### Qualitätsverluste im gerenderten Bild
-
-![Qualitätsverlust nach dem Tracking](img/schlechte_quali.png){width=110%}
-
-
-Ein weiteres Problem war eine teilweise reduzierte Bildqualität im finalen
-Overlay. Während der Verarbeitung kam es zu mehreren Konvertierungen der
-Bilddaten sowie zu erneuten Encoding-Schritten bei der Videoausgabe.
-
-Diese mehrfachen Verarbeitungsschritte führten teilweise zu sichtbaren
-Qualitätsverlusten im Vergleich zum ursprünglichen Videomaterial.
-
-Die Qualitätsverluste äußerten sich unter anderem in unscharfen Linien der
-Flugbahn oder einer insgesamt reduzierten Bildschärfe.
-
-Zur Verbesserung der Darstellung wurden die Renderparameter angepasst und
-darauf geachtet, dass möglichst wenige verlustbehaftete Konvertierungsschritte
-durchgeführt werden. [@opencv_docs_2026]
-
-### Synchronisationsprobleme zwischen Flugbahn und Videoframe
-
-![Falscher Frame für das Tracking ausgewählt](img/Wurf_falscher_Frame.png){width=110%}
-
-Zusätzlich traten in frühen Versionen der Visualisierung Probleme bei der
-zeitlichen Synchronisation zwischen Trackingdaten und Videoframes auf.
-
-In einigen Fällen wurde die Flugbahn nicht exakt auf dem Frame dargestellt,
-zu dem die ermittelte Ballposition gehörte. Dadurch konnte eine leichte
-Verschiebung zwischen der tatsächlichen Ballposition im Video und der
-eingezeichneten Flugbahn entstehen.
-
-Die Ursache lag darin, dass die gespeicherten Trackingpunkte zunächst nicht
-immer eindeutig mit der Frame-Nummer des Originalvideos verknüpft waren.
-
-Um dieses Problem zu lösen, wurde eine klare Zuordnung zwischen Trackingdaten
-und Frame-Nummern eingeführt. Jeder ermittelte Ballpunkt wird dabei direkt
-mit dem entsprechenden Frame des Videos gespeichert.
-
-Dadurch kann bei der Visualisierung sichergestellt werden, dass die
-Flugbahn exakt auf dem zugehörigen Videoframe dargestellt wird.
-[@szeliski_computer_2022]
-
-
-### Ergebnis der Optimierungen
-
-![Overlay nach Anpassungen](img/wurf2_combined.png){width=110%}
-
-Durch die beschriebenen Anpassungen konnte eine stabile und visuell konsistente
-Overlay-Darstellung erreicht werden. Die Ist- und Soll-Flugbahn lassen sich nun
-korrekt skaliert und zeitlich synchron über dem Videomaterial darstellen.
-
-Der Bewegungsverlauf des Basketballs wird dadurch klar nachvollziehbar und
-kann direkt mit der idealen Flugbahn verglichen werden.
-
-Diese Darstellung bildet die Grundlage für die anschließende Analyse des
-Wurfverlaufs und ermöglicht es, Abweichungen zwischen realer und idealer
-Flugbahn unmittelbar zu erkennen.
-
-## Ausblick
-
-Das entwickelte System zur Analyse von Basketballwürfen stellt eine funktionsfähige Grundlage für die visuelle Auswertung von Wurfbewegungen dar. Durch die Kombination aus Videoanalyse, Balltracking und der Visualisierung von Ist- und Soll-Flugbahn kann der Bewegungsverlauf eines Wurfes nachvollziehbar dargestellt und analysiert werden.
-
-Trotz der erfolgreichen Umsetzung bestehen verschiedene Möglichkeiten zur Weiterentwicklung des Systems. Ein möglicher nächster Schritt besteht in der Verbesserung der automatischen Objekterkennung. Der derzeitige Ansatz basiert auf einer manuellen Initialisierung des Balltrackings, um Fehlklassifikationen zu vermeiden. In zukünftigen Versionen könnte ein erweitertes Verfahren zur automatischen Objekterkennung integriert werden, beispielsweise durch den Einsatz moderner Machine-Learning- oder Deep-Learning-Modelle. Dadurch ließe sich der Analyseprozess weiter automatisieren.
-
-Ein weiterer Ansatzpunkt liegt in der Erweiterung der physikalischen Analyse der Flugbahn. Der Vergleich zwischen Ist- und Soll-Flugbahn könnte um zusätzliche Kennwerte ergänzt werden, etwa den Abwurfwinkel, die Anfangsgeschwindigkeit des Balls oder den Eintrittswinkel am Korb. Solche Parameter könnten eine noch genauere Bewertung der Wurftechnik ermöglichen.
-
-Darüber hinaus wäre eine Integration der Analyse in ein interaktives Frontend denkbar. Die ermittelten Trackingdaten werden bereits strukturiert gespeichert und könnten in einer grafischen Benutzeroberfläche genutzt werden, um Würfe interaktiv darzustellen, zu vergleichen oder statistisch auszuwerten.
-
-Langfristig könnte das System zudem auf andere Sportarten oder Bewegungsanalysen übertragen werden. Die grundlegende Methode der Videoanalyse und Objektverfolgung eignet sich prinzipiell auch für andere Szenarien, in denen Bewegungsabläufe untersucht werden sollen.
-
-Insgesamt zeigt die entwickelte Anwendung, dass sich durch den Einsatz moderner Computer-Vision-Verfahren eine anschauliche und objektive Analyse von Basketballwürfen realisieren lässt. Die vorgestellte Implementierung bildet damit eine solide Grundlage für zukünftige Erweiterungen und weiterführende Anwendungen im Bereich der sportwissenschaftlichen Videoanalyse.
+Durch die gemeinsame Darstellung von Ist- und
+Soll-Flugbahn kann die Qualität eines Wurfes
+visuell bewertet werden. Ein Wurf kann als
+„gut“ bewertet werden, wenn die Ist-Flugbahn
+in ihrem Verlauf weitgehend mit der berechneten
+Soll-Flugbahn übereinstimmt und der... (10 kB verbleibend)
 
  
