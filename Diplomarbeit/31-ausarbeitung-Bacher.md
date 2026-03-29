@@ -384,7 +384,7 @@ Eine Echtzeitverarbeitung ist grundsätzlich möglich, erfordert jedoch stabile 
 
 ### Beginn der Entwicklung
 
-Zu Projektbeginn lag die zentrale Ausgangslage darin, dass für die Bewertung von Basketballwürfen zwar Videoaufnahmen vorhanden waren, jedoch noch kein verlässlicher technischer Ablauf zur quantitativen Auswertung existierte. Als übergeordnetes Ziel wurde definiert, aus realen Würfen zunächst verwertbare Bilddaten zu gewinnen und damit die Voraussetzungen für spätere Schritte wie automatische Erkennung, Trajektorienanalyse und Soll-Ist-Vergleich zu schaffen. In der Startphase stand daher zunächst nicht die vollständige Automatisierung im Vordergrund, sondern die schrittweise Vorbereitung der Datenerfassung und der späteren Auswertung. Inhaltlich orientierte sich die Auswertung dabei konsequent an den theoretisch hergeleiteten Zielgrößen $/alpha/$, $v_0$, Releasepunkt und Zieltreffbedingung.
+Zu Projektbeginn lag die zentrale Ausgangslage darin, dass für die Bewertung von Basketballwürfen zwar Videoaufnahmen vorhanden waren, jedoch noch kein verlässlicher technischer Ablauf zur quantitativen Auswertung existierte. Als übergeordnetes Ziel wurde definiert, aus realen Würfen zunächst verwertbare Bilddaten zu gewinnen und damit die Voraussetzungen für spätere Schritte wie automatische Erkennung, Trajektorienanalyse und Soll-Ist-Vergleich zu schaffen. In der Startphase stand daher zunächst nicht die vollständige Automatisierung im Vordergrund, sondern die schrittweise Vorbereitung der Datenerfassung und der späteren Auswertung. Inhaltlich orientierte sich die Auswertung dabei konsequent an den theoretisch hergeleiteten Zielgrößen $\alpha$, $v_0$, Releasepunkt und Zieltreffbedingung.
 
 Als erste Materialien wurden mehrere Beispielvideos mit unterschiedlichen Kamerapositionen, Perspektiven und Beleuchtungssituationen gesammelt. Dabei wurden insbesondere Auflösung, Bildrate, sichtbarer Korbbereich und die relative Größe des Balls im Bild dokumentiert, da diese Faktoren die spätere Erkennbarkeit maßgeblich beeinflussen. Auf Grundlage dieser Beobachtungen wurden frühe Anforderungen festgelegt: Der Ball muss in aufeinanderfolgenden Frames eindeutig lokalisierbar sein, der Korb muss im relevanten Bildausschnitt sichtbar bleiben, und die Verarbeitung muss reproduzierbar über mehrere Clips hinweg durchgeführt werden können. Ein exemplarischer Frame einer solchen Videoaufnahme mit markiertem Ball und Korbbereich ist in Abbildung 6 dargestellt.
 
@@ -402,7 +402,7 @@ Bereits in dieser frühen Phase zeigten sich typische Herausforderungen wie Bewe
 
 Aufbauend auf der in Kapitel 4.12.1 beschriebenen Startphase wurde im nächsten Entwicklungsschritt eine durchgängige Verarbeitungspipeline definiert, mit der aus Videoaufnahmen verwertbare Bewegungsdaten des Basketballs gewonnen werden können. Ziel dieser Pipeline ist es, den Weg von unstrukturierten Bilddaten bis zu einer quantitativ auswertbaren Trajektorie klar zu standardisieren. Dadurch wird sichergestellt, dass einzelne Würfe unter vergleichbaren Bedingungen verarbeitet und später systematisch gegenübergestellt werden können.
 
-Die technische Umsetzung basiert auf Python als zentraler Programmiersprache, da sich damit Bildverarbeitung, numerische Berechnung und Visualisierung in einer gemeinsamen Umgebung abbilden lassen. Für den Zugriff auf Videodaten und die frameweise Verarbeitung wird OpenCV verwendet. Numerische Operationen, etwa die Verarbeitung von Koordinatenreihen oder die Berechnung von Modellfunktionen, erfolgen mit NumPy. Für grafische Darstellungen und die visuelle Interpretation der Ergebnisse wird Matplotlib eingesetzt. Sofern eine automatische Objekterkennung integriert ist, kann zusätzlich ein YOLO-basiertes Modell zur Balllokalisierung genutzt werden; die Pipeline bleibt jedoch auch mit manueller oder halbautomatischer Punktzuweisung funktionsfähig. [@PythonDocs; @OpenCVDocs; @NumPyDocs; @MatplotlibDocs; @Redmon2016YOLO]
+Die technische Umsetzung basiert auf Python als zentraler Programmiersprache, da sich damit Bildverarbeitung, numerische Berechnung und Visualisierung in einer gemeinsamen Umgebung abbilden lassen. Für den Zugriff auf Videodaten und die frameweise Verarbeitung wird OpenCV verwendet. Numerische Operationen, etwa die Verarbeitung von Koordinatenreihen oder die Berechnung von Modellfunktionen, erfolgen mit NumPy. Für grafische Darstellungen und die visuelle Interpretation der Ergebnisse wird Matplotlib eingesetzt. Sofern eine automatische Objekterkennung integriert ist, kann zusätzlich ein YOLO-basiertes Modell zur Balllokalisierung genutzt werden; die Pipeline bleibt jedoch auch mit manueller oder halbautomatischer Punktzuweisung funktionsfähig.[@PythonDocs] [@OpenCVDocs] [@NumPyDocs] [@MatplotlibDocs] [@Redmon2016YOLO]
 
 Der Ablauf beginnt mit dem Einlesen eines Wurfvideos und der Ermittlung grundlegender Metadaten wie Bildrate, Auflösung und Frameanzahl. Anschließend wird die Sequenz in einzelne Frames überführt beziehungsweise frameweise verarbeitet. Für jeden relevanten Frame wird die Ballposition bestimmt. Diese Positionsermittlung kann je nach Datenqualität und Ausbaustufe der Pipeline auf unterschiedlichen Wegen erfolgen: durch manuelle Markierung, durch regelbasierte Bildverarbeitung oder durch modellbasierte Objekterkennung. Unabhängig von der Methode wird als Ergebnis pro Frame mindestens eine zweidimensionale Koordinate des Ballzentrums gespeichert, ergänzt um den zugehörigen Zeitindex (siehe Abbildung 8).
 
@@ -484,7 +484,7 @@ $$
 gesetzt. Durch Umstellen ergibt sich die notwendige Anfangsgeschwindigkeit für einen gewählten Winkel $\alpha$:
 
 $$
-v_0 = /sqrt{/frac{g x_K^2}{2 /cos^2(/alpha)/,/bigl(h_0 + x_K /tan(/alpha) - h_K/bigr)}}
+v_0 = \sqrt{\frac{g x_K^2}{2 \cos^2(\alpha)\,\bigl(h_0 + x_K \tan(\alpha) - h_K\bigr)}}
 $$
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Berechnung der Anfangsgeschwindigkeit aus der Treffbedingung" .python}
@@ -507,7 +507,7 @@ Dieses Listing zeigt die direkte programmtechnische Umsetzung der Treffbedingung
 Eine physikalisch sinnvolle Lösung existiert nur, wenn der Nenner positiv ist:
 
 $$
-h_0 + x_K /tan(\alpha) - h_K > 0
+h_0 + x_K \tan(\alpha) - h_K > 0
 $$
 
 Zur praktischen Berechnung wird der Bereich $x \in [0, x_K]$ in diskrete Stützstellen unterteilt. Für jede Stützstelle wird $y(x)$ ausgewertet, wodurch eine berechnete Punktfolge entsteht, die die Sollflugbahn repräsentiert.
@@ -570,7 +570,7 @@ plt.legend()
 plt.show()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Listing 5 zeigt die grundlegende grafische Ausgabe der Sollkurve auf Basis bereits berechneter Modellparameter $h_0$, $x_K$, $/alpha$, $v_0$ und $g\$.
+Listing 5 zeigt die grundlegende grafische Ausgabe der Sollkurve auf Basis bereits berechneter Modellparameter $h_0$, $x_K$, $\alpha$, $v_0$ und $g$.
 
 **Herkunft im Projekt:** Dokumentationslisting in dieser Ausarbeitung zur Grunddarstellung der Sollflugbahn; im aktuellen Arbeitsstand liegt dafür keine separate Python-Datei im Repository vor.
 
@@ -681,7 +681,7 @@ Die gezielte Verschiebung des Releasepunkts verändert die berechneten Abwurfpar
 ![Direkter Vergleich der Sollflugbahnen (Referenz vs. manipulierte Releaseposition)](img/abbildung_soll_wurf5_referenz_vs_manipuliert.png)
 
 
-Die Gegenüberstellung zeigt konkret, dass die Verschiebung des Releasepunkts zu einer veränderten Kombination aus Abwurfwinkel $/alpha/$ und Anfangsgeschwindigkeit $v_0$ führt und dadurch die Form der Sollflugbahn sichtbar verändert.
+Die Gegenüberstellung zeigt konkret, dass die Verschiebung des Releasepunkts zu einer veränderten Kombination aus Abwurfwinkel $\alpha$ und Anfangsgeschwindigkeit $v_0$ führt und dadurch die Form der Sollflugbahn sichtbar verändert.
 
 Fazit der Sensitivitätsanalyse: Für belastbare Ergebnisse ist eine präzise Bestimmung des Releasepunkts entscheidend, da bereits kleine Lageabweichungen die berechneten Modellparameter und damit den gesamten Kurvenverlauf spürbar beeinflussen.
 
@@ -724,7 +724,7 @@ Der praktische Teil beantwortet die eingangs formulierten Leitfragen in einer ge
 
 Was ist das Ziel? Ziel war die Berechnung und Bewertung einer Sollflugbahn als theoretische Referenz für Basketballwürfe.
 
-Wie wurde das umgesetzt? Die Umsetzung erfolgte über eine kombinierte Video- und Modellpipeline: Erkennung von Ball und Korb, Aufbereitung der Punktdaten, Berechnung von $/alpha/$, $v_0$ und $y(x)/$ sowie grafische Darstellung.
+Wie wurde das umgesetzt? Die Umsetzung erfolgte über eine kombinierte Video- und Modellpipeline: Erkennung von Ball und Korb, Aufbereitung der Punktdaten, Berechnung von $\alpha$, $v_0$ und $y(x)$ sowie grafische Darstellung.
 
 Welche Einflüsse wurden betrachtet? Untersucht wurden insbesondere Releasepunkt, Abwurfwinkel, Anfangsgeschwindigkeit und Distanz zum Ziel.
 
