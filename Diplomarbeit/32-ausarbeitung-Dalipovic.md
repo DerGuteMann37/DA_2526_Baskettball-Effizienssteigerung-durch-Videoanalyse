@@ -5,7 +5,7 @@
 ## Theorie
 
 
-### Technischer Kontext und Zielsetzung des Frontend-Teils
+## Technischer Kontext und Zielsetzung des Frontend-Teils
 
 Diese Arbeit befasst sich mit der Konzeption und Umsetzung einer webbasierten Benutzeroberfläche im Kontext einer sportbezogenen Trainingsanwendung. Der Fokus liegt dabei ausschließlich auf der clientseitigen Anwendung, die im Webbrowser ausgeführt wird und als Interaktionsschnittstelle zwischen Benutzer und serverseitiger Systemlogik fungiert.
 
@@ -28,7 +28,7 @@ Der folgende Theorieteil schafft die technische und architektonische Grundlage, 
 
 Durch diese strukturierte theoretische Fundierung wird gewährleistet, dass die praktische Umsetzung nicht isoliert betrachtet wird, sondern im Kontext etablierter Konzepte und Standards der Webarchitektur analysiert werden kann.
 
-\newpage
+
 
 ## Grundlagen von Webanwendungen
 
@@ -51,22 +51,20 @@ Ein zentrales Merkmal von HTTP ist seine Zustandslosigkeit (Statelessness). Jede
 
 Gleichzeitig entsteht dadurch die Notwendigkeit zusätzlicher Mechanismen zur Verwaltung von Benutzersitzungen, etwa durch Cookies oder tokenbasierte Authentifizierungsverfahren.
 
-Die klare Trennung von Client- und Serververantwortlichkeiten bildet die architektonische Grundlage moderner Webanwendungen und ermöglicht eine modulare Weiterentwicklung beider Systemseiten.
+Die klare Trennung von Client- und Serververantwortlichkeiten bildet die architektonische Grundlage moderner Webanwendungen und ermöglicht eine modulare Weiterentwicklung beider Systemseiten. Die folgende Abbildung zeigt diese Mehrschichtarchitektur am Beispiel einer typischen Webanwendung.
 
-![Client-Server-Kommunikation als Mehrschichtprinzip ](img/threeTierArchitecture.jpg){ width=85% }
+![Client-Server-Kommunikation als Mehrschichtprinzip. Quelle: [@algomaster-client-server]](img/threeTierArchitecture.jpg){ width=85% }
 
-Abbildung: Vereinfachte Darstellung einer Webanwendung mit Präsentationsschicht (Client), Logikschicht (Server) und Datenhaltung (Datenbank). Quelle: [@algomaster-client-server]
 
 
 ### Strukturierung von Inhalten mit HTML
 
 Die HyperText Markup Language (HTML) ist die standardisierte Auszeichnungssprache zur Strukturierung von Webdokumenten [@fielding2000]. Sie definiert die logische Gliederung von Inhalten und beschreibt, wie Informationen semantisch ausgezeichnet werden.
 
-Ein HTML-Dokument besteht aus einer hierarchischen Baumstruktur von Elementen. Diese Struktur wird im Browser als sogenanntes Document Object Model (DOM) repräsentiert [@fowler2002]. Das DOM bildet das Dokument als Baum aus Knoten ab, wobei jedes HTML-Element einem Objekt im Speicher entspricht.
+Ein HTML-Dokument besteht aus einer hierarchischen Baumstruktur von Elementen. Diese Struktur wird im Browser als sogenanntes Document Object Model (DOM) repräsentiert [@fowler2002]. Das DOM bildet das Dokument als Baum aus Knoten ab, wobei jedes HTML-Element einem Objekt im Speicher entspricht. Die folgende Abbildung verdeutlicht diese hierarchische Baumstruktur.
 
-![DOM-Struktur eines HTML-Dokuments](img/html_dom.jpg){ width=85% }
+![DOM-Struktur eines HTML-Dokuments. Quelle: [@tutorialspoint-dom]](img/html_dom.jpg){ width=85% }
 
-Abbildung: Baumstruktur des Document Object Models (DOM) als interne Repräsentation eines HTML-Dokuments im Browser. Quelle: [@tutorialspoint-dom]
 
 Die semantische Strukturierung durch HTML-Elemente wie:
 
@@ -85,11 +83,10 @@ HTML selbst enthält keine Informationen über Layout oder visuelles Design. Es 
 
 Cascading Style Sheets (CSS) dienen der visuellen Gestaltung von HTML-Dokumenten. Während HTML die Struktur definiert, legt CSS fest, wie diese Struktur dargestellt wird.
 
-Grundlage der CSS-Darstellung ist das sogenannte Box-Modell [@w3c-box-2018]. Jedes HTML-Element wird als rechteckige Box interpretiert, bestehend aus:
+Grundlage der CSS-Darstellung ist das sogenannte Box-Modell [@w3c-box-2018]. Jedes HTML-Element wird als rechteckige Box interpretiert. Die folgende Abbildung illustriert dieses Box-Modell mit seinen vier Schichten, bestehend aus:
 
-![CSS Box Model](img/cssBoxModel.png){ width=80% }
+![CSS Box Model mit Content, Padding, Border und Margin. Quelle: [@gfg-css-box]](img/cssBoxModel.png){ width=80% }
 
-Abbildung: Darstellung des CSS Box Models mit Content, Padding, Border und Margin als Grundlage für Layout und Abstände. Quelle: [@gfg-css-box]
 
 - Content (Inhaltsbereich)
 - Padding (Innenabstand)
@@ -119,15 +116,14 @@ JavaScript besitzt Zugriff auf das DOM und kann somit:
 
 Das Ausführungsmodell von JavaScript basiert auf einem ereignisgesteuerten Paradigma mit einer Event-Loop-Mechanik [@mdn-execution-model-2023]. Ereignisse wie Mausklicks, Tastatureingaben oder Netzwerkantworten werden in einer Warteschlange verarbeitet. Dadurch können asynchrone Operationen ausgeführt werden, ohne die Benutzeroberfläche zu blockieren.
 
-![JavaScript Event Loop](img/Event-Loop-in-JavaScript.jpg){ width=85% }
+![JavaScript-Ausführungsmodell mit Call Stack, Web APIs und Event Loop. Quelle: [@gfg-event-loop]](img/Event-Loop-in-JavaScript.jpg){ width=85% }
 
-Abbildung: JavaScript-Ausführungsmodell mit Call Stack, Web APIs, Callback Queue und Event Loop zur Verarbeitung asynchroner Aufgaben. Quelle: [@gfg-event-loop]
 
 Ein zentrales Konzept ist dabei die asynchrone Kommunikation mit Servern. Über HTTP-Anfragen können Daten abgerufen oder gesendet werden, ohne dass die gesamte Seite neu geladen werden muss. Diese Technik bildet die Grundlage moderner interaktiver Webanwendungen.
 
 Die Kombination aus HTML (Struktur), CSS (Gestaltung) und JavaScript (Logik und Interaktion) bildet somit das fundamentale technologische Dreieck der Frontend-Entwicklung.
 
-\newpage
+
 
 ## Moderne Frontend-Entwicklung
 
@@ -148,9 +144,8 @@ Eine Single Page Application (SPA) ist eine Webanwendung, die innerhalb eines ei
 
 SPAs verwenden asynchrone HTTP-Anfragen, um Daten vom Server abzurufen. Diese Daten werden anschließend in bestehende DOM-Strukturen eingebettet oder führen zu gezielten Benutzeroberflächen-Updates. Die wahrgenommene Performance verbessert sich, da vollständige Seitenneuladungen entfallen.
 
-![Grundprinzip einer Single Page Application](img/spaArchitecture.jpeg){ width=100% }
+![Grundprinzip einer Single Page Application: initiales Laden und dynamische Aktualisierung. Quelle: [@gfg-spa]](img/spaArchitecture.jpeg){ width=100% }
 
-Abbildung: SPA-Prinzip: initiales Laden der Anwendung und dynamische Aktualisierung von Inhalten über asynchrone Backend-Kommunikation. Quelle: [@gfg-spa]
 
 Typische Merkmale einer SPA sind:
 
@@ -229,7 +224,7 @@ Diese Mechanismen ermöglichen die Umsetzung komplexer Anwendungen direkt im Bro
 
 Mit der steigenden Funktionalität des Clients wächst jedoch auch die Verantwortung hinsichtlich Sicherheitskonzepten, Datenschutz und kontrollierter Zustandsverwaltung. Die Architektur moderner Frontend-Anwendungen muss diese Aspekte systematisch berücksichtigen.
 
-\newpage
+
 
 ## Client-Server-Architektur und REST-basierte Kommunikation
 
@@ -266,11 +261,10 @@ Die Einhaltung dieser Constraints führt zu Systemen mit hoher Skalierbarkeit, M
 
 Besonders relevant ist die Zustandslosigkeit. Jede Anfrage enthält alle notwendigen Informationen zur Verarbeitung. Der Server speichert keinen impliziten Sitzungszustand zwischen einzelnen Requests. Dadurch wird horizontale Skalierung erleichtert, da Anfragen unabhängig voneinander verarbeitet werden können.
 
-Die einheitliche Schnittstelle sorgt dafür, dass Interaktionen standardisiert über HTTP-Methoden und klar definierte Ressourcen erfolgen. Dies erhöht die Interoperabilität zwischen Systemen.
+Die einheitliche Schnittstelle sorgt dafür, dass Interaktionen standardisiert über HTTP-Methoden und klar definierte Ressourcen erfolgen. Dies erhöht die Interoperabilität zwischen Systemen. Die folgende Abbildung veranschaulicht dieses Kommunikationsmuster.
 
-![REST-Kommunikation über HTTP](img/restApiDiagram.jpeg){ width=100% }
+![REST-Kommunikation zwischen Client und Server über HTTP und JSON. Quelle: [@medium-rest-api]](img/restApiDiagram.jpeg){ width=100% }
 
-Abbildung: REST-Kommunikation zwischen Client und Server über HTTP-Methoden und strukturierte Datenaustauschformate (z. B. JSON). Quelle: [@medium-rest-api]
 
 ### Ressourcenorientierung und HTTP-Semantik
 
@@ -343,7 +337,7 @@ Uneinheitliche oder unstrukturierte Fehlermeldungen erhöhen hingegen die Komple
 
 Fehlermanagement ist daher kein Nebenaspekt, sondern ein integraler Bestandteil der API-Architektur.
 
-\newpage
+
 
 ## Architekturprinzipien im Frontend
 
@@ -367,9 +361,8 @@ Monolithische Frontend-Architekturen können somit kurzfristig effizient sein, s
 
 Als Reaktion auf die Skalierungsprobleme monolithischer Ansätze etablierten sich komponentenbasierte Architekturen. In diesem Modell wird die Benutzeroberfläche in eigenständige, wiederverwendbare Bausteine unterteilt. Jede Komponente kapselt Struktur, Darstellung und häufig auch einen Teil der Logik.
 
-![Komponentenbasierte Struktur einer Anwendung](img/componentArchitecture.png){ width=100% }
+![Komponentenbasierte Architektur: UI als modulare, wiederverwendbare Bausteine. Quelle: [@sam-component-architecture]](img/componentArchitecture.png){ width=100% }
 
-Abbildung: Komponentenbasierte Architektur: UI wird in modulare Bausteine zerlegt, die unabhängig entwickelt und wiederverwendet werden können. Quelle: [@sam-component-architecture]
 
 Die Vorteile dieses Ansatzes sind:
 
@@ -430,7 +423,7 @@ Imperative Modelle bieten direkte Kontrolle, erfordern jedoch sorgfältige Verwa
 
 Die Wahl einer Rendering-Strategie ist somit eine grundlegende Architekturentscheidung, die Auswirkungen auf Performance, Wartbarkeit und Entwicklungsaufwand hat.
 
-\newpage
+
 
 ## Nichtfunktionale Anforderungen und Sicherheitsaspekte
 
@@ -485,9 +478,8 @@ Technische Skalierbarkeit beschreibt die Fähigkeit eines Systems, mit steigende
 - optimierte Netzwerkanfragen
 - Caching-Mechanismen
 
-  ![Beispiel einer skalierbaren Webarchitektur](img/Web_Application_Architecture_Diagram__diagram_.png){ width=95% }
+  ![Skalierbare Webarchitektur mit Load Balancer, Services, Caching und Datenhaltung. Quelle: [@litslink-web-architecture]](img/Web_Application_Architecture_Diagram__diagram_.png){ width=95% }
 
-Abbildung: Beispielhafte skalierbare Webarchitektur mit Load Balancer, Services, Caching und Datenhaltung zur Verarbeitung hoher Last. Quelle: [@litslink-web-architecture]
 
 Organisatorische Skalierbarkeit hingegen beschreibt die Fähigkeit eines Projekts, parallele Entwicklung durch mehrere Entwickler zu ermöglichen. Hier spielen klare Architekturprinzipien und modulare Strukturen eine zentrale Rolle.
 
@@ -538,9 +530,8 @@ In zustandslosen Architekturen wird Authentifizierung häufig über Token realis
 
 Ein JWT enthält strukturierte Claims über die Identität eines Benutzers und wird kryptographisch signiert. Der Client sendet dieses Token bei jeder Anfrage mit, wodurch der Server die Identität überprüfen kann, ohne einen Sitzungszustand speichern zu müssen.
 
-![JWT-Authentifizierungsablauf](img/JwtAuthenticationFlow.png){ width=95% }
+![Token-basierte Authentifizierung: JWT-Ausstellung und Übermittlung bei Folge-Requests. Quelle: [@ringcentral-jwt]](img/JwtAuthenticationFlow.png){ width=95% }
 
-Abbildung: Token-basierte Authentifizierung mit JWT: Token-Ausstellung und Übermittlung bei weiteren Requests zur Identitätsprüfung. Quelle: [@ringcentral-jwt]
 
 Vorteile tokenbasierter Authentifizierung:
 
@@ -582,7 +573,10 @@ Technische Prinzipien umfassen:
 
 Webanwendungen, die personenbezogene Daten verarbeiten, müssen diese Prinzipien frühzeitig in Architekturentscheidungen integrieren, um rechtliche und ethische Anforderungen zu erfüllen.
 
-\newpage
+
+
+
+
 
 
 
