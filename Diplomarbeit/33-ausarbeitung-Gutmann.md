@@ -120,7 +120,7 @@ Auf Basis dieser Auswahl erstellt der Spring Initializr automatisch ein Projekt 
 
 Der Vorteil besteht darin, dass die grundlegende Projektkonfiguration schnell, standardisiert und fehlerarm erfolgt. Dadurch kann direkt mit der eigentlichen Entwicklung begonnen werden, ohne Zeit in manuelles Setup zu investieren.[@SpringInitializrDocs]
 
-![Überblick Spring Initializer](img/SpringInitializer.png)
+![Überblick Spring Initializer, zur Erstellung des Projekts](img/SpringInitializer.png)
 
 ## Java / JavaScript
 
@@ -176,7 +176,7 @@ Java ist eine klassische Sprache für strukturierte, größere Anwendungen (z. B
 ## Postman
 Postman ist ein Tool zur Entwicklung und zum Testen von REST-APIs. Es ermöglicht, HTTP-Anfragen wie GET, POST, PUT/PATCH und DELETE direkt an ein Backend zu senden, ohne dass dafür bereits ein fertiges Frontend notwendig ist. Dabei können Request-Details wie Header, Parameter und ein JSON-Body einfach eingestellt werden. Postman zeigt anschließend die Antwort des Servers übersichtlich an, inklusive Statuscode und Rückgabedaten. Dadurch eignet sich das Tool besonders gut, um API-Endpunkte während der Backend-Entwicklung zu prüfen, Fehler zu analysieren und die Funktionalität der Schnittstelle schrittweise zu verifizieren.[@PostmanOverview]
 
-![Postman](img/Postman.png)
+![Überblick Postman, zur Testung von REST-APIs](img/Postman.png)
 
 ## Datenbank
 ### Was ist eine Datenbank?
@@ -193,7 +193,7 @@ Zur eindeutigen Identifikation eines Datensatzes wird in jeder Tabelle ein Prim�
 
 Aufgrund dieser Eigenschaften eignet sich das relationale Datenbankmodell besonders gut für das vorliegende Projekt: Die aus der Videoanalyse entstehenden Daten müssen langfristig gespeichert, eindeutig einer Trainingseinheit bzw. einem Spieler zugeordnet und anschließend für Kennzahlen wie Trefferquoten, Durchschnittswerte oder Abweichungen zwischen Soll- und Ist-Flugbahn ausgewertet werden. Relationale Datenbanken bieten dafür eine stabile und strukturierte Grundlage.[@OracleRelationalDatabase]
 
-## H2 Datenbank
+### H2 Datenbank
 Die H2-Datenbank ist ein leichtgewichtiges, relationales Datenbankmanagementsystem (DBMS), das in Java geschrieben wurde und besonders häufig für Entwicklung, Tests und Prototyping eingesetzt wird. Ein großer Vorteil von H2 ist, dass sie ohne aufwendige Installation verwendet werden kann und sich sehr einfach in Java- und Spring-Boot-Projekte integrieren lässt.
 
 H2 kann in zwei typischen Betriebsarten genutzt werden:
@@ -206,10 +206,10 @@ In Spring Boot wird H2 oft als Entwicklungsdatenbank verwendet, weil sie schnell
 
 ![H2 Datenbank Überblick](img/H2DatenBankUeberblick.png)
 
-## MySQL
+### MySQL
 MySQL ist ein weit verbreitetes relationales Datenbankmanagementsystem (RDBMS), das zur dauerhaften Speicherung und Verwaltung strukturierter Daten eingesetzt wird. Die Daten werden in Tabellen organisiert und können mithilfe von SQL (Structured Query Language) effizient abgefragt und bearbeitet werden. MySQL wird häufig in Web- und Backend-Anwendungen verwendet, weil es stabil, performant und für den produktiven Dauerbetrieb geeignet ist. Typische Einsatzbereiche sind Anwendungen mit Nutzer- und Trainingsdaten, Content-Systeme oder allgemeine Geschäftsanwendungen, bei denen Daten langfristig gespeichert und zuverlässig verwaltet werden müssen. In Spring-Boot-Projekten lässt sich MySQL über einen JDBC-Treiber anbinden und wird oft gemeinsam mit Spring Data JPA/Hibernate verwendet, um Datenbankzugriffe strukturiert über das Objektmodell umzusetzen.[@MySQLOverview]
 
-### Was ist der Unterschied zwischen H2 Datenbank und MySql
+#### Was ist der Unterschied zwischen H2 Datenbank und MySql
 Die H2-Datenbank und MySQL sind beide relationale Datenbanken, unterscheiden sich jedoch vor allem in ihrem Einsatzgebiet und ihrer Betriebsart:
 
 - **Einsatzbereich:** H2 wird meist für Entwicklung und Tests genutzt, während MySQL typischerweise in produktiven Systemen eingesetzt wird.
@@ -267,10 +267,11 @@ Neben Entitäten, Attributen und Beziehungen sind Kardinalitäten ein zentrales 
   In relationalen Datenbanken wird eine n:m-Beziehung üblicherweise über eine Zwischentabelle (Join-Tabelle) umgesetzt, die die Primärschlüssel beider Entitäten als Fremdschlüssel enthält.[@LucidchartCardinality]
 
 ## ER Diagramme
-### Was ist ein ER Diagramm
+
 Ein ER-Diagramm ist eine grafische Darstellung des Entity-Relationship-Modells und wird verwendet, um die Struktur einer Datenbank übersichtlich zu planen. Es zeigt, welche Entitäten im System vorkommen, welche Attribute diese besitzen und wie die Entitäten miteinander in Beziehung stehen. Dadurch eignet sich ein ER-Diagramm besonders gut, um komplexe Datenmodelle verständlich zu visualisieren, bevor diese in einer relationalen Datenbank umgesetzt werden.
 
-### Verschiedene Notationsformen
+### Notationsformen von ER-Diagrammen
+
 - **Chen-Notation**
 
   Eine klassische Darstellung des ER-Modells: Entitäten werden als Rechtecke, Beziehungen als Rauten und Attribute als Ovale dargestellt. Kardinalitäten werden an den Beziehungslinien angegeben. Diese Notation ist sehr anschaulich, wird aber in der Praxis bei großen Modellen schnell unübersichtlich.
@@ -314,7 +315,7 @@ Visual Studio Code (VS Code) ist ein leichter, plattformübergreifender Code-Edi
 
 VS Code wird häufig für die Frontend-Entwicklung eingesetzt, z. B. zum Erstellen von Weboberflächen mit JavaScript-Frameworks, und eignet sich durch Extensions auch für Backend-Aufgaben. Besonders praktisch ist die flexible Anpassbarkeit: Durch Plugins können zusätzliche Tools, Linter, Formatter oder Framework-Unterstützung eingebunden werden, sodass sich VS Code gut für moderne Webprojekte und die Arbeit im Team eignet.[@MicrosoftVSCodeOverview]
 
-![Visual Studio Code](img/VisualStudioCodeUeberblick.png)
+![Überblick Visual Studio Code](img/VisualStudioCodeUeberblick.png)
 
 
 ## Praktische Arbeit
