@@ -889,3 +889,7 @@ Im Rahmen der Implementierung wurde jede neu erstellte Controller-Klasse unmitte
 Durch dieses fortlaufende Testen konnte sichergestellt werden, dass die Schnittstellen korrekt reagieren, die Daten wie vorgesehen verarbeitet werden und die Kommunikation zwischen Backend und Frontend zuverlässig funktioniert. Auf diese Weise konnten Fehler in der Request-Verarbeitung, Validierung oder Datenpersistenz frühzeitig erkannt und behoben werden.[@PostmanAPITesting]
 
 ![Getestet mit Postman](img/PostmanTesting.png)
+
+
+## Ausblick
+Als nächster Schritt wäre die vollständige Anbindung der Analyse-Komponente an das Backend und anschließend an das Frontend vorgesehen gewesen. Ziel wäre es, die von der Soll- und Ist-Analyse erzeugten Ergebnisse automatisiert an das Backend zu übergeben, dort zu speichern und über die REST-Schnittstelle für das Frontend bereitzustellen. Diese Integration konnte jedoch nicht mehr abgeschlossen werden, da der Analyse-Teil zum Zeitpunkt der Fertigstellung noch nicht vollständig implementiert war. Sobald die Analyse abgeschlossen ist, könnten darauf aufbauend sowohl das Backend (z. B. Importlogik, Validierungen, Auswertungen) als auch das Frontend (z. B. Visualisierung, Benutzerführung, Detailansichten) weiter verbessert und an reale Analyse-Daten angepasst werden.
