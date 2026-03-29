@@ -3,64 +3,44 @@
 
 ## Theorie
 
-Das Backend bildet die technische Grundlage für die Speicherung, Verarbeitung und Bereitstellung der im Projekt erhobenen Daten. Im Rahmen dieser Diplomarbeit entsteht ein System zur Effizienzsteigerung von Basketballwürfen durch Videoanalyse. Die Videoanalyse liefert dabei Messwerte und Parameter zu einzelnen Würfen (z. B. Abwurfpunkt, Korbposition, Geschwindigkeit, Winkel sowie Flugbahndaten). Damit diese Daten langfristig gespeichert, ausgewertet und für das Frontend nutzbar gemacht werden können, wird ein eigenständiges Backend entwickelt.
+Das Backend bildet die technische Grundlage für die Speicherung, Verarbeitung und Bereitstellung der im Projekt erhobenen Daten. Im Rahmen dieser Diplomarbeit wurde ein System zur Effizienzsteigerung von Basketballwürfen durch Videoanalyse entwickelt. Die Videoanalyse liefert dabei Messwerte und Parameter zu einzelnen Würfen, beispielsweise den Abwurfpunkt, die Korbposition, die Geschwindigkeit, den Abwurfwinkel sowie Daten zur Flugbahn des Balls. Damit diese Informationen langfristig gespeichert, ausgewertet und für das Frontend nutzbar gemacht werden können, wurde ein eigenständiges Backend entwickelt.
 
-Die zentrale Aufgabe des Backends besteht darin, die Daten aus den Analyseprozessen strukturiert zu persistieren und über definierte Schnittstellen bereitzustellen. Zusätzlich übernimmt das Backend die Berechnung statistischer Kennzahlen, die Trainingsfortschritte messbar machen. Dadurch entsteht eine objektive Grundlage, um Würfe nicht nur einzeln zu betrachten, sondern auch über längere Zeiträume zu vergleichen und Entwicklungen sichtbar zu machen.
+Die zentrale Aufgabe des Backends besteht darin, die aus den Analyseprozessen entstehenden Daten strukturiert zu persistieren und über definierte Schnittstellen bereitzustellen. Zusätzlich übernimmt das Backend die Berechnung statistischer Kennzahlen, die Trainingsfortschritte messbar machen. Dadurch entsteht eine objektive Grundlage, um Würfe nicht nur einzeln zu betrachten, sondern auch über längere Zeiträume hinweg zu vergleichen und Entwicklungen sichtbar zu machen.
 
 ## Backend
 
 ![Backend](img/Backend_hell.png)
 
-Unter dem Backend versteht man den serverseitigen Teil einer Softwareanwendung. Es ist jener Bereich, der für Nutzerinnen und Nutzer meist nicht direkt sichtbar ist, jedoch die zentrale technische Grundlage eines Systems bildet. Während das Frontend die grafische Oberfläche und Interaktionen bereitstellt, übernimmt das Backend die Verarbeitung von Daten und die Ausführung der eigentlichen Anwendungslogik.
+Unter dem Backend versteht man den serverseitigen Teil einer Softwareanwendung. Es ist jener Bereich, der für Benutzerinnen und Benutzer meist nicht direkt sichtbar ist, jedoch die zentrale technische Grundlage eines Systems bildet. Während das Frontend die grafische Oberfläche und Interaktionen bereitstellt, übernimmt das Backend die Verarbeitung von Daten und die Ausführung der eigentlichen Anwendungslogik.
 
-Im Allgemeinen erfüllt ein Backend folgende Kernaufgaben:
+Zu den grundlegenden Aufgaben eines Backends zählen insbesondere die Verarbeitung von Anfragen, die Umsetzung fachlicher Logik, die Speicherung und Verwaltung von Daten sowie die Bereitstellung von Informationen über definierte Schnittstellen. Zusätzlich übernimmt ein Backend häufig technische Aufgaben wie Fehlerbehandlung, Logging oder Zugriffskontrolle.
 
-- **Anfragen verarbeiten:** 
-Das Backend nimmt Anfragen von Clients (z. B. einer Webanwendung) entgegen, prüft diese und verarbeitet sie nach definierten Regeln.
-
-- **Geschäftslogik umsetzen:** Fachliche Abläufe und Regeln (z. B. Zuordnung von Daten zu einer Trainingseinheit) werden zentral im Backend implementiert.
-
-- **Daten speichern und verwalten:** Das Backend stellt die Verbindung zur Datenbank her und sorgt dafür, dass Daten strukturiert, konsistent und dauerhaft gespeichert werden.
-
-- **Daten bereitstellen:** Über definierte Schnittstellen (typischerweise eine API) gibt das Backend Daten in strukturierter Form (z. B. JSON) an das Frontend zurück.
-
-- **Sicherheit und Qualität im Betrieb:** Je nach System gehören auch Authentifizierung/Autorisierung, Fehlerbehandlung, Logging und Monitoring zu den Aufgaben des Backends.
-
-Im Kontext dieser Diplomarbeit ist das Backend besonders wichtig, da es die Analyseergebnisse aus der Videoverarbeitung entgegennimmt, in einer relationalen Datenbank speichert, statistisch auswertet und die daraus entstehenden Kennzahlen über eine REST-Schnittstelle dem Frontend zur Visualisierung zur Verfügung stellt. Dadurch fungiert das Backend als zentrale Logik- und Datenebene des gesamten Systems.[@MainagenturBackend]
+Im Kontext dieser Diplomarbeit ist das Backend von zentraler Bedeutung, da es die Analyseergebnisse aus der Videoverarbeitung entgegennimmt, in einer relationalen Datenbank speichert, statistisch auswertet und die daraus entstehenden Kennzahlen über eine REST-Schnittstelle dem Frontend zur Visualisierung zur Verfügung stellt. Es fungiert somit als zentrale Logik- und Datenebene des Gesamtsystems.[@MainagenturBackend]
 
 ![Übersicht wie das Backend mit den anderen Teilen der DA zusammenhängt](img/Zusammenhaenge_Projekt.png)
 
 ## Spring Boot
 
 ### Was ist Spring Boot
-Spring Boot ist ein Java-basiertes Framework zur Entwicklung von serverseitigen Anwendungen. Es baut auf dem Spring Framework auf und erweitert dieses um Funktionen, die den Projektstart und die Konfiguration deutlich vereinfachen. Ziel ist es, schnell lauffähige und produktionsnahe Anwendungen zu erstellen, ohne dass umfangreiche manuelle Konfiguration notwendig ist.
+Spring Boot ist ein Java-basiertes Framework zur Entwicklung serverseitiger Anwendungen. Es baut auf dem Spring Framework auf und erweitert dieses um Funktionen, die den Projektstart und die Konfiguration deutlich vereinfachen. Ziel ist es, schnell lauffähige und produktionsnahe Anwendungen zu erstellen, ohne dass umfangreiche manuelle Konfiguration erforderlich ist.
 
 ![Spring Boot nach dem Start der Application](img/SpringBoot.png)
 
-Ein zentrales Konzept ist dabei „Convention over Configuration“. Das bedeutet, dass Spring Boot für viele Standardfälle sinnvolle Voreinstellungen mitliefert. Zusätzlich enthält Spring Boot einen eingebetteten Webserver (z. B. Tomcat), wodurch Anwendungen direkt als eigenständiges Programm gestartet werden können, ohne einen externen Application-Server installieren zu müssen. Häufig verwendete Komponenten werden über sogenannte Starter-Abhängigkeiten (z. B. für Web, Datenbank oder Security) gebündelt eingebunden, was die Entwicklung weiter beschleunigt.[@SpringBootOverview]
+Ein zentrales Konzept ist dabei „Convention over Configuration“. Das bedeutet, dass Spring Boot für viele Standardfälle sinnvolle Voreinstellungen bereitstellt. Zusätzlich enthält Spring Boot einen eingebetteten Webserver, beispielsweise Tomcat, wodurch Anwendungen direkt als eigenständiges Programm gestartet werden können, ohne einen externen Application-Server installieren zu müssen. Häufig benötigte Komponenten werden über sogenannte Starter-Abhängigkeiten, etwa für Web, Datenbank oder Sicherheit, gebündelt eingebunden, was die Entwicklung weiter beschleunigt.[@SpringBootOverview]
 
-### Wann soll man Spring Boot verwenden
-Spring Boot eignet sich besonders dann, wenn eine Anwendung als Backend-System oder Webservice entwickelt werden soll und dabei eine klare Struktur, Wartbarkeit und schnelle Umsetzung wichtig sind. Typische Einsatzbereiche sind:
+### Warum wurde Spring Boot verwendet?
 
-  - REST-Backends für Web- oder Mobile-Anwendungen
+Spring Boot eignet sich besonders für die Entwicklung von Backend-Systemen und Webservices, bei denen eine klare Struktur, Wartbarkeit und schnelle Umsetzung wichtig sind. Im Rahmen dieser Diplomarbeit wurde Spring Boot gewählt, da das Framework die strukturierte Entwicklung einer REST-Schnittstelle, die Anbindung einer relationalen Datenbank und die Umsetzung einer Schichtenarchitektur unterstützt.
 
-  - Anwendungen, die Datenbanken nutzen und Daten persistieren (z. B. über JPA/Hibernate)
-
-  - Projekte, bei denen eine klare Schichtenarchitektur (Controller–Service–Repository) umgesetzt werden soll
-
-  - Systeme, die schnell startbar und einfach deploybar sein sollen (durch eingebetteten Server)
-
-  - Anwendungen, die später erweiterbar sein müssen, z. B. um zusätzliche Endpunkte, Logik oder Sicherheitsfunktionen
-
-In vielen Projekten ist Spring Boot eine gute Wahl, weil es die technische Basis bereitstellt, die Entwicklung beschleunigt und gleichzeitig professionelle Standards für größere Anwendungen unterstützt.[@SpringBootUseCases]
+Besonders relevant für das vorliegende Projekt waren dabei die einfache Integration von Spring Data JPA, die standardisierte Projektstruktur sowie die Möglichkeit, das Backend rasch lokal zu starten und zu testen. Dadurch konnte eine stabile technische Grundlage für die Verarbeitung und Bereitstellung der Analyseergebnisse geschaffen werden.[@SpringBootUseCases]
 
 ### Was ist eine REST-API
-Eine REST-API (Representational State Transfer Application Programming Interface) ist eine Programmierschnittstelle, die die Kommunikation zwischen unterschiedlichen Softwaresystemen über das HTTP-Protokoll ermöglicht. Dabei werden Daten und Funktionen in Form von Ressourcen bereitgestellt, auf die Clients gezielt zugreifen können.
+Eine REST-API (Representational State Transfer Application Programming Interface) ist eine Programmierschnittstelle, die die Kommunikation zwischen unterschiedlichen Softwaresystemen über das HTTP-Protokoll ermöglicht. Daten und Funktionen werden dabei in Form von Ressourcen bereitgestellt, auf die Clients gezielt zugreifen können.
 
-Die Datenübertragung erfolgt häufig im JSON-Format. Ein Client kann beispielsweise Spieler-, Trainings- oder Statistikdaten abrufen sowie neue Daten an das Backend senden. REST beschreibt dabei ein allgemeines Konzept zur Gestaltung von Webschnittstellen und ist nicht an ein bestimmtes Framework gebunden. Die konkrete Umsetzung kann beispielsweise mit Technologien wie Spring Boot erfolgen.[@RedHatRESTAPI]
+Die Datenübertragung erfolgt häufig im JSON-Format. Ein Client kann beispielsweise Spieler-, Trainings- oder Statistikdaten abrufen sowie neue Daten an das Backend senden. REST beschreibt dabei ein allgemeines Konzept zur Gestaltung von Webschnittstellen und ist nicht an ein bestimmtes Framework gebunden. Die konkrete Umsetzung kann beispielsweise mit Spring Boot erfolgen.[@RedHatRESTAPI]
 
 ### Wie ist die Funktionsweise von REST-API
-Die Funktionsweise einer REST-API basiert auf dem Prinzip, dass Daten als Ressourcen betrachtet werden, die über eindeutige URLs (Endpunkte) erreichbar sind. Jede Ressource wird über HTTP-Methoden angesprochen, wobei jede Methode eine bestimmte Bedeutung hat:
+Die Funktionsweise einer REST-API basiert auf dem Prinzip, dass Daten als Ressourcen betrachtet werden, die über eindeutige URLs erreichbar sind. Jede Ressource wird über HTTP-Methoden angesprochen, wobei jede Methode eine bestimmte Bedeutung hat:
 
   - GET: Daten abrufen (z. B. alle Spieler anzeigen)
 
@@ -80,7 +60,9 @@ Zusätzlich verwendet eine REST-API HTTP-Statuscodes, um das Ergebnis einer Anfr
 
   - 404 (Not Found): Ressource nicht gefunden
 
-Ein wesentliches Merkmal von REST ist außerdem Statelessness: Jede Anfrage enthält alle notwendigen Informationen, sodass der Server keinen Zustand zwischen zwei Anfragen speichern muss. Das macht Systeme oft besser skalierbar und einfacher wartbar.[@RedHatRESTPrinciples]
+Ein wesentliches Merkmal von REST ist außerdem die Statelessness. Das bedeutet, dass jede Anfrage alle notwendigen Informationen enthält und der Server keinen Zustand zwischen zwei Anfragen speichern muss. Dadurch lassen sich Systeme oft einfacher skalieren und warten.[@RedHatRESTPrinciples]
+
+Im vorliegenden Projekt stellt die REST-API die Verbindung zwischen Frontend und Backend her. Über sie können beispielsweise Spielerinnen und Spieler registriert, Trainingseinheiten verwaltet, Analysedaten importiert und statistische Kennzahlen abgerufen werden.
 
 ### Was versteht man unter CRUD?
 CRUD ist ein Grundkonzept der Datenverarbeitung und beschreibt die vier grundlegenden Operationen, die in fast jedem datenbasierten System vorkommen. CRUD steht für:
@@ -96,29 +78,11 @@ CRUD ist ein Grundkonzept der Datenverarbeitung und beschreibt die vier grundleg
 Diese vier Operationen bilden die Basis für die Verwaltung von Daten in Datenbanken und werden in REST-APIs meist direkt durch HTTP-Methoden abgebildet: Create -> POST, Read -> GET, Update -> PUT/PATCH, Delete -> DELETE.[@IBMCRUD]
 
 ## Spring Initializer
-Der Spring Initializr ist ein webbasiertes Tool, das die Erstellung eines neuen Spring-Boot-Projekts stark vereinfacht. Anstatt ein Projekt manuell aufzusetzen und alle benötigten Bibliotheken selbst zu konfigurieren, kann über den Spring Initializr in wenigen Schritten eine fertige Projektstruktur generiert werden.
+Der Spring Initializr ist ein webbasiertes Tool, das die Erstellung eines neuen Spring-Boot-Projekts deutlich vereinfacht. Anstatt ein Projekt manuell aufzusetzen und alle benötigten Bibliotheken selbst zu konfigurieren, kann über den Spring Initializr in wenigen Schritten eine fertige Projektstruktur generiert werden.
 
-Dabei wählt man unter anderem:
+Dabei werden unter anderem die Programmiersprache, das Build-Tool, die verwendete Spring-Boot-Version sowie die benötigten Abhängigkeiten ausgewählt. Auf Basis dieser Angaben erzeugt der Spring Initializr automatisch ein Projekt mit passender Ordnerstruktur, einer Startklasse, einer vorkonfigurierten Build-Datei und den notwendigen Grundeinstellungen für Spring Boot.
 
-  - Programmiersprache (meist Java)
-
-  - Build-Tool (Maven oder Gradle)
-
-  - Spring-Boot-Version
-
-  - sowie die benötigten Dependencies (z. B. Spring Web, Spring Data JPA, H2 Database)
-
-Auf Basis dieser Auswahl erstellt der Spring Initializr automatisch ein Projekt mit:
-
-  - einer passenden Ordnerstruktur,
-
-  - einer Startklasse (Main Application),
-
-  - einer vorkonfigurierten Build-Datei (pom.xml bei Maven),
-
-  - und den notwendigen Grundeinstellungen für Spring Boot.
-
-Der Vorteil besteht darin, dass die grundlegende Projektkonfiguration schnell, standardisiert und fehlerarm erfolgt. Dadurch kann direkt mit der eigentlichen Entwicklung begonnen werden, ohne Zeit in manuelles Setup zu investieren.[@SpringInitializrDocs]
+Der Vorteil besteht darin, dass die grundlegende Projektkonfiguration schnell, standardisiert und fehlerarm erfolgt. Dadurch kann direkt mit der eigentlichen Entwicklung begonnen werden, ohne Zeit in das manuelle Setup zu investieren.[@SpringInitializrDocs]
 
 ![Überblick Spring Initializer, zur Erstellung des Projekts](img/SpringInitializer.png)
 
@@ -129,12 +93,12 @@ Java ist eine objektorientierte Programmiersprache, die ursprünglich mit dem Zi
 
 Java wird häufig für größere, strukturierte Softwareprojekte eingesetzt, da die Sprache stark typisiert ist, viele Bibliotheken bietet und sich gut für wartbare und skalierbare Anwendungen eignet.[@OracleJavaOverview]
 
-### Was ist JavaScript
+### Was ist JavaScript?
 JavaScript ist eine Skriptsprache, die hauptsächlich für die Entwicklung von interaktiven Webanwendungen verwendet wird. Ursprünglich wurde JavaScript dafür entwickelt, Webseiten im Browser dynamisch zu machen, z. B. durch Formvalidierung, Animationen oder das Nachladen von Inhalten ohne Seitenreload.
 
 Heute wird JavaScript nicht nur im Browser, sondern auch serverseitig eingesetzt (z. B. mit Node.js). Dadurch kann JavaScript sowohl im Frontend als auch im Backend verwendet werden, je nach Technologie-Stack.[@MDNJavaScriptIntroduction]
 
-### Wofür wird Java verwendet
+### Wofür wird Java verwendet?
 Java wird in vielen Bereichen eingesetzt, besonders dort, wo Stabilität, Struktur und Performance wichtig sind. Typische Anwendungsbereiche sind:
 
   - Backend-Entwicklung (z. B. REST-APIs mit Spring Boot)
@@ -179,6 +143,7 @@ Postman ist ein Tool zur Entwicklung und zum Testen von REST-APIs. Es ermöglich
 ![Überblick Postman, zur Testung von REST-APIs](img/Postman.png)
 
 ## Datenbank
+
 ### Was ist eine Datenbank?
 Eine Datenbank ist ein System zur strukturierten Speicherung, Organisation und Verwaltung von Daten. Im Gegensatz zu einfachen Dateien werden Informationen in einer Datenbank nach klaren Regeln abgelegt, sodass sie gezielt durchsucht und verarbeitet werden können. Verwaltet wird eine Datenbank in der Regel durch ein Datenbankmanagementsystem (DBMS), das den Zugriff regelt und Funktionen für das Speichern, Abrufen und Bearbeiten von Daten bereitstellt. Dadurch können Daten nicht nur dauerhaft gespeichert, sondern auch konsistent und nachvollziehbar verwaltet werden.[@OracleDatabaseOverview]
 
@@ -194,7 +159,7 @@ Zur eindeutigen Identifikation eines Datensatzes wird in jeder Tabelle ein Prim�
 Aufgrund dieser Eigenschaften eignet sich das relationale Datenbankmodell besonders gut für das vorliegende Projekt: Die aus der Videoanalyse entstehenden Daten müssen langfristig gespeichert, eindeutig einer Trainingseinheit bzw. einem Spieler zugeordnet und anschließend für Kennzahlen wie Trefferquoten, Durchschnittswerte oder Abweichungen zwischen Soll- und Ist-Flugbahn ausgewertet werden. Relationale Datenbanken bieten dafür eine stabile und strukturierte Grundlage.[@OracleRelationalDatabase]
 
 ### H2 Datenbank
-Die H2-Datenbank ist ein leichtgewichtiges, relationales Datenbankmanagementsystem (DBMS), das in Java geschrieben wurde und besonders häufig für Entwicklung, Tests und Prototyping eingesetzt wird. Ein großer Vorteil von H2 ist, dass sie ohne aufwendige Installation verwendet werden kann und sich sehr einfach in Java- und Spring-Boot-Projekte integrieren lässt.
+Die H2-Datenbank ist ein leichtgewichtiges relationales Datenbankmanagementsystem, das in Java geschrieben wurde und besonders häufig für Entwicklung, Tests und Prototyping eingesetzt wird. Ein großer Vorteil von H2 ist, dass sie ohne aufwendige Installation verwendet und sehr einfach in Java- und Spring-Boot-Projekte integriert werden kann.
 
 H2 kann in zwei typischen Betriebsarten genutzt werden:
 
@@ -207,7 +172,7 @@ In Spring Boot wird H2 oft als Entwicklungsdatenbank verwendet, weil sie schnell
 ![H2 Datenbank Überblick](img/H2DatenBankUeberblick.png)
 
 ### MySQL
-MySQL ist ein weit verbreitetes relationales Datenbankmanagementsystem (RDBMS), das zur dauerhaften Speicherung und Verwaltung strukturierter Daten eingesetzt wird. Die Daten werden in Tabellen organisiert und können mithilfe von SQL (Structured Query Language) effizient abgefragt und bearbeitet werden. MySQL wird häufig in Web- und Backend-Anwendungen verwendet, weil es stabil, performant und für den produktiven Dauerbetrieb geeignet ist. Typische Einsatzbereiche sind Anwendungen mit Nutzer- und Trainingsdaten, Content-Systeme oder allgemeine Geschäftsanwendungen, bei denen Daten langfristig gespeichert und zuverlässig verwaltet werden müssen. In Spring-Boot-Projekten lässt sich MySQL über einen JDBC-Treiber anbinden und wird oft gemeinsam mit Spring Data JPA/Hibernate verwendet, um Datenbankzugriffe strukturiert über das Objektmodell umzusetzen.[@MySQLOverview]
+MySQL ist ein weit verbreitetes relationales Datenbankmanagementsystem, das für die dauerhafte Speicherung strukturierter Daten in produktiven Systemen eingesetzt wird. Die Daten werden in Tabellen organisiert und mithilfe von SQL effizient abgefragt und bearbeitet. MySQL wird häufig in Web- und Backend-Anwendungen verwendet, da es stabil, performant und für den Dauerbetrieb geeignet ist.[@MySQLOverview]
 
 #### Was ist der Unterschied zwischen H2 Datenbank und MySql
 Die H2-Datenbank und MySQL sind beide relationale Datenbanken, unterscheiden sich jedoch vor allem in ihrem Einsatzgebiet und ihrer Betriebsart:
@@ -290,10 +255,10 @@ Ein ER-Diagramm ist eine grafische Darstellung des Entity-Relationship-Modells u
 
 ## Java Persistand API (JPA)
 
-### Was ist JPA
-JPA (Java Persistence API) ist eine Java-Standard-Spezifikation für die objekt-relationalen Persistierung. Sie beschreibt, wie Java-Objekte (z. B. Player, TrainingSession) in einer relationalen Datenbank gespeichert, gelesen und verwaltet werden können. JPA legt dabei nur fest, wie diese Persistenz grundsätzlich funktionieren soll (z. B. über Annotationen wie ```@Entity```, ```@Id```, ```@OneToMany```), stellt aber selbst keine konkrete Implementierung bereit.
+### Was ist JPA?
+JPA, die Java Persistence API, ist eine Java-Standardspezifikation für die objekt-relationale Persistenz. Sie beschreibt, wie Java-Objekte in einer relationalen Datenbank gespeichert, gelesen und verwaltet werden können. JPA legt dabei fest, wie Persistenz grundsätzlich funktioniert, beispielsweise über Annotationen wie wie ```@Entity```, ```@Id```, ```@OneToMany```, stellt jedoch selbst keine konkrete Implementierung bereit.
 
-Durch JPA kann die Datenbankarbeit auf einer höheren Ebene erfolgen: Statt SQL direkt zu schreiben, werden Objekte gespeichert und abgefragt, wodurch der Code meist übersichtlicher und besser wartbar wird.[@OracleJPAOverview]
+Durch JPA kann die Arbeit mit der Datenbank auf einer höheren Abstraktionsebene erfolgen. Anstatt SQL direkt zu formulieren, werden Objekte gespeichert und abgefragt, wodurch der Code in vielen Fällen übersichtlicher und besser wartbar wird.[@OracleJPAOverview]
 
 ### Was sind Annotationen
 Annotationen sind spezielle Markierungen im Quellcode (in Java erkennbar am @-Symbol), mit denen zusätzliche Informationen über Klassen, Methoden oder Variablen angegeben werden. Sie verändern nicht direkt den Programmablauf, sondern dienen Frameworks und Tools als „Metadaten“, um bestimmtes Verhalten automatisch umzusetzen.
@@ -931,7 +896,7 @@ Im Package dto wurden Data Transfer Objects (DTOs) umgesetzt. DTOs sind einfache
 
   - dto/dashboard (Dashboard-Übersicht)
 
-### Implementireung des config-Package
+### Implementireung des config Package
 
 Im Package config werden Klassen gesammelt, die technische Einstellungen für das Backend zentral definieren. Das betrifft vor allem Themen wie CORS, Web-Konfiguration und ggf. spätere Erweiterungen (z. B. Security, Interceptors). Der Vorteil ist, dass diese Einstellungen nicht in einzelnen Controllern verteilt sind, sondern an einer Stelle gebündelt werden.[@SpringFrameworkCors] [SpringFrameworkWebMvcConfig]
 
