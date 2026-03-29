@@ -368,7 +368,7 @@ Weitere unterstützende Bibliotheken wurden für organisatorische oder technisch
 
 Für die praktische Auswertung werden zwei Objekte benötigt: Ball und Korb. Der Ball wird frameweise über OpenCV/YOLO lokalisiert und bei unsicheren Frames manuell korrigiert. Der Korb wird als räumlich stabiler Referenzbereich im Bild festgelegt, damit Distanz- und Höhenbezüge konsistent bleiben.
 
-Die erforderliche Genauigkeit ergibt sich direkt aus dem Modell: Schon kleine Lagefehler des Ballzentrums wirken sich auf abgeleitete Größen wie Abwurfwinkel $\alpha\$, Anfangsgeschwindigkeit $v_0\$ und die rekonstruierte Kurvenform aus. Deshalb werden Plausibilitätsprüfungen, zeitliche Konsistenzregeln und Glättung eingesetzt, bevor Parameter aus den Punktfolgen berechnet werden.
+Die erforderliche Genauigkeit ergibt sich direkt aus dem Modell: Schon kleine Lagefehler des Ballzentrums wirken sich auf abgeleitete Größen wie Abwurfwinkel $/alpha/$, Anfangsgeschwindigkeit $v_0$ und die rekonstruierte Kurvenform aus. Deshalb werden Plausibilitätsprüfungen, zeitliche Konsistenzregeln und Glättung eingesetzt, bevor Parameter aus den Punktfolgen berechnet werden.
 
 ### Einordnung der Echtzeitverarbeitung
 
