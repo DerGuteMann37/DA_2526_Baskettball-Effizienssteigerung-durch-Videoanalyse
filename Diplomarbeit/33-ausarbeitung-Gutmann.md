@@ -86,7 +86,7 @@ Der Vorteil besteht darin, dass die grundlegende Projektkonfiguration schnell, s
 
 ![Überblick Spring Initializer, zur Erstellung des Projekts](img/SpringInitializer.png)
 
-## Java / JavaScript
+## Programiersprache und Entwicklungstools
 
 ### Was ist Java?
 Java ist eine objektorientierte Programmiersprache, die ursprünglich mit dem Ziel entwickelt wurde, plattformunabhängige Anwendungen zu ermöglichen. Ein zentrales Prinzip von Java lautet „Write once, run anywhere“. Java-Programme werden dabei in Bytecode übersetzt und anschließend von der Java Virtual Machine (JVM) ausgeführt, wodurch dieselbe Anwendung auf unterschiedlichen Betriebssystemen laufen kann.
@@ -136,6 +136,23 @@ Obwohl die Namen ähnlich klingen, sind Java und JavaScript zwei unterschiedlich
   - **Struktur:** Java ist in der Regel strenger strukturiert (Klassen, Typen, Compile-Time Checks), während JavaScript mehr Freiheit bietet, aber dadurch auch fehleranfälliger sein kann, wenn kein klarer Stil eingehalten wird.
 
 Java ist eine klassische Sprache für strukturierte, größere Anwendungen (z. B. Backends), während JavaScript vor allem für Webentwicklung und Interaktivität im Browser eingesetzt wird.[@MDNJavaScriptVsJava]
+
+## IntelJ IDA
+IntelliJ IDEA ist eine integrierte Entwicklungsumgebung von JetBrains, die insbesondere für die Entwicklung mit Java eingesetzt wird. Sie bietet Funktionen wie Code-Vervollständigung, Fehlererkennung in Echtzeit, Refactoring-Werkzeuge sowie Debugging und unterstützt dadurch eine effiziente und strukturierte Softwareentwicklung.
+
+Im vorliegenden Projekt wurde IntelliJ IDEA hauptsächlich für die Entwicklung und Verwaltung des Spring-Boot-Backends eingesetzt. Dadurch konnten Abhängigkeiten über Maven eingebunden, Klassen strukturiert erstellt und die Anwendung lokal ausgeführt und getestet werden.[JetBrainsIntelliJIDEA]
+
+
+![Ansicht IntelJ](img/IntelJUeberblick.png)
+
+
+## Visual Studio Code
+Visual Studio Code ist ein leichter, plattformübergreifender Code-Editor von Microsoft, der sich durch seine hohe Erweiterbarkeit auszeichnet. Er unterstützt zahlreiche Programmiersprachen und bietet Funktionen wie Syntax-Highlighting, Debugging, integriertes Terminal sowie Git-Integration.
+
+Im Projekt wurde Visual Studio Code ergänzend eingesetzt, insbesondere für allgemeine Codearbeiten und projektübergreifende Anpassungen. Durch Erweiterungen lässt sich der Editor flexibel an unterschiedliche Anforderungen anpassen, wodurch er sich gut für moderne Softwareprojekte eignet.[@MicrosoftVSCodeOverview]
+
+![Überblick Visual Studio Code](img/VisualStudioCodeUeberblick.png)
+
 
 ## Postman
 Postman ist ein Tool zur Entwicklung und zum Testen von REST-APIs. Es ermöglicht, HTTP-Anfragen wie GET, POST, PUT/PATCH und DELETE direkt an ein Backend zu senden, ohne dass dafür bereits ein fertiges Frontend notwendig ist. Dabei können Request-Details wie Header, Parameter und ein JSON-Body einfach eingestellt werden. Postman zeigt anschließend die Antwort des Servers übersichtlich an, inklusive Statuscode und Rückgabedaten. Dadurch eignet sich das Tool besonders gut, um API-Endpunkte während der Backend-Entwicklung zu prüfen, Fehler zu analysieren und die Funktionalität der Schnittstelle schrittweise zu verifizieren.[@PostmanOverview]
@@ -255,33 +272,14 @@ Ein ER-Diagramm ist eine grafische Darstellung des Entity-Relationship-Modells u
 
 ## Java Persistand API (JPA)
 
-### Was ist JPA?
 JPA, die Java Persistence API, ist eine Java-Standardspezifikation für die objekt-relationale Persistenz. Sie beschreibt, wie Java-Objekte in einer relationalen Datenbank gespeichert, gelesen und verwaltet werden können. JPA legt dabei fest, wie Persistenz grundsätzlich funktioniert, beispielsweise über Annotationen wie wie ```@Entity```, ```@Id```, ```@OneToMany```, stellt jedoch selbst keine konkrete Implementierung bereit.
 
 Durch JPA kann die Arbeit mit der Datenbank auf einer höheren Abstraktionsebene erfolgen. Anstatt SQL direkt zu formulieren, werden Objekte gespeichert und abgefragt, wodurch der Code in vielen Fällen übersichtlicher und besser wartbar wird.[@OracleJPAOverview]
 
-### Was sind Annotationen
-Annotationen sind spezielle Markierungen im Quellcode (in Java erkennbar am @-Symbol), mit denen zusätzliche Informationen über Klassen, Methoden oder Variablen angegeben werden. Sie verändern nicht direkt den Programmablauf, sondern dienen Frameworks und Tools als „Metadaten“, um bestimmtes Verhalten automatisch umzusetzen.
+### Annotationen
+Annotationen sind spezielle Markierungen im Quellcode, die zusätzliche Informationen über Klassen, Methoden oder Variablen enthalten. In Java sind sie am @-Symbol erkennbar. Sie verändern nicht direkt den Programmablauf, sondern dienen Frameworks und Tools als Metadaten, um bestimmtes Verhalten automatisch umzusetzen.
 
-Im Backend mit Spring Boot und JPA werden Annotationen z. B. verwendet, um eine Klasse als Datenbank-Entität zu kennzeichnen (```@Entity```), Primärschlüssel festzulegen (```@Id```) oder REST-Endpunkte zu definieren (```@RestController```, ```@GetMapping```). Dadurch wird Konfiguration in den Code verlagert, was die Struktur klarer macht und die Entwicklung vereinfacht.[@OracleJavaAnnotations]
-
-
-## IntelJ IDA
-IntelliJ IDEA ist eine integrierte Entwicklungsumgebung (IDE) von JetBrains, die vor allem für die Entwicklung mit Java (und weiteren Sprachen) verwendet wird. Sie bietet eine zentrale Arbeitsumgebung, in der Quellcode geschrieben, strukturiert, getestet und ausgeführt werden kann. Durch Funktionen wie Code-Vervollständigung, Fehlererkennung in Echtzeit, Refactoring-Werkzeuge und Debugging unterstützt IntelliJ IDEA eine effiziente und saubere Softwareentwicklung.
-
-Im Backend-Kontext wird IntelliJ IDEA typischerweise genutzt, um Spring-Boot-Projekte zu erstellen und zu verwalten, Abhängigkeiten (z. B. über Maven) einzubinden, REST-Controller und Datenbankklassen zu entwickeln sowie die Anwendung lokal zu starten und zu testen. Dadurch erleichtert die IDE sowohl die Umsetzung als auch die Wartung des Backends erheblich.[JetBrainsIntelliJIDEA]
-
-
-![Ansicht IntelJ](img/IntelJUeberblick.png)
-
-
-## Visual Studio Code
-Visual Studio Code (VS Code) ist ein leichter, plattformübergreifender Code-Editor von Microsoft, der sich durch hohe Erweiterbarkeit auszeichnet. Er unterstützt viele Programmiersprachen wie JavaScript, TypeScript, HTML/CSS, Python und auch Java über Erweiterungen. VS Code bietet Funktionen wie Syntax-Highlighting, Code-Vervollständigung, integriertes Terminal, Debugging sowie eine starke Git-Integration, wodurch die Entwicklung übersichtlich und effizient wird.
-
-VS Code wird häufig für die Frontend-Entwicklung eingesetzt, z. B. zum Erstellen von Weboberflächen mit JavaScript-Frameworks, und eignet sich durch Extensions auch für Backend-Aufgaben. Besonders praktisch ist die flexible Anpassbarkeit: Durch Plugins können zusätzliche Tools, Linter, Formatter oder Framework-Unterstützung eingebunden werden, sodass sich VS Code gut für moderne Webprojekte und die Arbeit im Team eignet.[@MicrosoftVSCodeOverview]
-
-![Überblick Visual Studio Code](img/VisualStudioCodeUeberblick.png)
-
+Im Backend dieser Diplomarbeit werden Annotationen beispielsweise verwendet, um eine Klasse als Datenbank-Entität zu kennzeichnen ```@Entity```, Primärschlüssel zu definieren ```@Id``` oder REST-Endpunkte zu definieren ```@RestController```, ```@GetMapping```. Dadurch wird Konfiguration direkt in den Code verlagert, was die Struktur klarer und die Entwicklung effizienter macht.[@OracleJavaAnnotations]
 
 ## Praktische Arbeit
 
@@ -289,11 +287,11 @@ VS Code wird häufig für die Frontend-Entwicklung eingesetzt, z. B. zum Erstell
 
 Bevor mit der eigentlichen Implementierung des Backends begonnen wurde, fand eine gemeinsame Planungs- und Analysephase mit allen Teammitgliedern statt. Ziel dieser Phase war es, die Schnittstellen zwischen den einzelnen Projektteilen frühzeitig zu definieren und ein gemeinsames Verständnis über benötigte Daten, Formate und Funktionalitäten zu schaffen.
 
-Im Rahmen dieser Abstimmung wurden insbesondere die Ergebnisse der Videoanalyse betrachtet. Dabei wurde festgelegt, welche Parameter bei der Analyse einzelner Würfe entstehen und in welcher Form diese Daten dem Backend bereitgestellt werden. Zu den relevanten Parametern zählen unter anderem Informationen zum Abwurfpunkt, zur Korbposition, zum Abwurfwinkel, zur Anfangsgeschwindigkeit des Balls sowie zusätzliche Werte zur Beschreibung der Flugbahn. Da diese Daten die Grundlage für alle späteren Auswertungen darstellen, war eine eindeutige Definition bereits zu Beginn wesentlich.
+Im Rahmen dieser Abstimmung wurden insbesondere die Ergebnisse der Videoanalyse betrachtet. Dabei wurde festgelegt, welche Parameter bei der Analyse einzelner Würfe entstehen und in welcher Form diese Daten dem Backend bereitgestellt werden. Zu den relevanten Parametern zählen unter anderem Informationen zum Abwurfpunkt, zur Korbposition, zum Abwurfwinkel, zur Anfangsgeschwindigkeit des Balls sowie zusätzliche Werte zur Beschreibung der Soll- und Ist-Flugbahn. Da diese Daten die Grundlage für alle späteren Auswertungen darstellen, war eine eindeutige Definition bereits zu Beginn wesentlich.
 
-Parallel dazu wurden die Anforderungen des Frontends analysiert. Das Frontend benötigt strukturierte und konsistente Daten, um Spieler*innen, Trainingseinheiten sowie statistische Auswertungen übersichtlich darstellen zu können. In gemeinsamen Besprechungen wurde daher festgelegt, welche Informationen vom Backend bereitgestellt werden müssen, beispielsweise Spielerstatistiken, Session-Zusammenfassungen und zeitliche Leistungsentwicklungen. Diese Abstimmung stellte sicher, dass das Backend nicht isoliert entwickelt wird, sondern technisch und fachlich auf die Anforderungen der Benutzeroberfläche abgestimmt ist.
+Parallel dazu wurden die Anforderungen des Frontends analysiert. Das Frontend benötigt strukturierte und konsistente Daten, um Spielerinnen und Spieler, Trainingseinheiten sowie statistische Auswertungen übersichtlich darstellen zu können. In gemeinsamen Besprechungen wurde daher festgelegt, welche Informationen vom Backend bereitgestellt werden müssen, beispielsweise Spielerstatistiken, Session-Zusammenfassungen und zeitliche Leistungsentwicklungen. Diese Abstimmung stellte sicher, dass das Backend nicht isoliert entwickelt wurde, sondern technisch und fachlich auf die Anforderungen der Benutzeroberfläche abgestimmt war.
 
-Auf Basis der Analyse wurden die zentralen Aufgaben des Backends konkretisiert. Der Fokus lag dabei auf dem Entwurf einer geeigneten Datenbankstruktur, der Modellierung der benötigten Datenobjekte sowie der Bereitstellung von Schnittstellen zur Kommunikation mit dem Frontend. Durch dieses strukturierte Vorgehen konnte eine belastbare Grundlage geschaffen werden, auf der die weitere Backend-Entwicklung systematisch aufbauen konnte.
+Auf Basis dieser Analyse wurden die zentralen Aufgaben des Backends konkretisiert. Der Fokus lag dabei auf dem Entwurf einer geeigneten Datenbankstruktur, der Modellierung der benötigten Datenobjekte sowie der Bereitstellung von Schnittstellen zur Kommunikation mit dem Frontend. Durch dieses strukturierte Vorgehen konnte eine belastbare Grundlage geschaffen werden, auf der die weitere Backend-Entwicklung systematisch aufbauen konnte.
 
 ### Ergebnis der Planungsphase
 
@@ -301,70 +299,55 @@ Als Ergebnis der gemeinsamen Planungsphase konnten die grundlegenden Anforderung
 
 Ein zentrales Ergebnis war die Festlegung der Daten, die aus der Videoanalyse an das Backend übergeben werden. Für jeden analysierten Basketballwurf werden strukturierte Datensätze erzeugt, die sowohl geometrische als auch zeitliche Informationen enthalten. Dazu zählen unter anderem der Abwurfpunkt des Balls, die Position des Korbes, der Abwurfwinkel, die Anfangsgeschwindigkeit sowie zusätzliche Parameter zur Beschreibung der berechneten Soll-Flugbahn und der erkannten Ist-Flugbahn. Diese Daten werden automatisiert in Form von JSON-Dateien erzeugt und dienen als Eingabe für den Importprozess im Backend.
 
-Ein weiterer wesentlicher Punkt war die Definition der internen Datenhaltung. Es wurde festgelegt, dass die Daten in einer relationalen Datenbank gespeichert werden, um eine klare Strukturierung, konsistente Verknüpfungen sowie langfristige Persistenz zu gewährleisten. Dabei wurden zentrale Entitäten identifiziert, darunter Spieler*innen, Trainingseinheiten, einzelne Würfe sowie zugehörige Analyse- und Flugdaten. Diese Entitäten stehen in definierten Beziehungen zueinander und bilden die Grundlage für das spätere Entity-Relationship-Modell.
+Ein weiterer wesentlicher Punkt war die Definition der internen Datenhaltung. Es wurde festgelegt, dass die Daten in einer relationalen Datenbank gespeichert werden, um eine klare Strukturierung, konsistente Verknüpfungen sowie langfristige Persistenz zu gewährleisten. Dabei wurden zentrale Entitäten identifiziert, darunter Spielerinnen und Spieler, Trainingseinheiten, einzelne Würfe sowie zugehörige Analyse- und Flugdaten. Diese Entitäten stehen in definierten Beziehungen zueinander und bilden die Grundlage für das spätere Entity-Relationship-Modell.
 
 Zusätzlich wurden die Anforderungen des Frontends konkretisiert. Das Frontend benötigt nicht nur Rohdaten einzelner Würfe, sondern insbesondere aggregierte Informationen in Form statistischer Auswertungen. Daher wurde beschlossen, dass die Berechnung dieser Statistiken vollständig im Backend erfolgt. Das Backend stellt dem Frontend somit aufbereitete Ergebnisse zur Verfügung, beispielsweise Trefferquoten, Durchschnittswerte und zeitliche Leistungsentwicklungen. Dadurch wird die Komplexität im Frontend reduziert und eine konsistente Berechnungslogik sichergestellt.
 
-Abschließend wurde festgelegt, dass die Kommunikation zwischen Frontend und Backend über eine REST-Schnittstelle erfolgt. Die Datenübertragung findet im JSON-Format statt, wodurch eine plattformunabhängige und erweiterbare Kommunikation ermöglicht wird. Diese Entscheidungen bilden die Grundlage für die nachfolgenden technischen Umsetzungen im Backend und stellen sicher, dass die einzelnen Projektteile nahtlos ineinandergreifen.
+Abschließend wurde festgelegt, dass die Kommunikation zwischen Frontend und Backend über eine REST-Schnittstelle erfolgt. Die Datenübertragung findet im JSON-Format statt, wodurch eine plattformunabhängige und erweiterbare Kommunikation ermöglicht wird. Diese Entscheidungen bildeten die Grundlage für die nachfolgenden technischen Umsetzungen im Backend und stellten sicher, dass die einzelnen Projektteile nahtlos ineinandergreifen.
 
 ## Technische Umsetzung
 Nach Abschluss der Planungsphase wurde das Backend technisch umgesetzt. Ziel war es, eine stabile Basis zu schaffen, auf der Daten aus der Videoanalyse importiert, dauerhaft gespeichert und über eine REST-Schnittstelle für das Frontend bereitgestellt werden können. Für die Implementierung wurde ein Java-basierter Technologie-Stack gewählt, da dieser insbesondere in Kombination mit Spring Boot eine strukturierte Entwicklung von Webservices ermöglicht.
 
 ### Projektanlage und Entwicklungsumgebung 
 
-Die Erstellung des Projekts erfolgte über den Spring Initializr, wodurch eine standardisierte Grundstruktur für ein Spring-Boot-Projekt erzeugt werden konnte.
- Als Build-Tool wurde Maven verwendet, um Abhängigkeiten einheitlich zu verwalten und den Build-Prozess nachvollziehbar zu gestalten. 
+Die Erstellung des Projekts erfolgte über den Spring Initializr, wodurch eine standardisierte Grundstruktur für ein Spring-Boot-Projekt erzeugt werden konnte. Als Build-Tool wurde Maven verwendet, um Abhängigkeiten einheitlich zu verwalten und den Build-Prozess nachvollziehbar zu gestalten.[@SpringBootMavenSetup]
  
  ![Erstellung des Spring Projekt mit Hilfe von Spring Initializer](img/ErstellungdesSpringProjekts.png)
 
-Erklärung der einzelnen Komponenten
+Im Rahmen der Projektanlage wurden insbesondere folgende Einstellungen festgelegt:
 
   - Project: Maven
-  Du hast Maven als Build- und Dependency-Management-Tool gewählt. Dadurch werden Bibliotheken (Dependencies) über die pom.xml verwaltet und das Projekt kann standardisiert gebaut/gestartet werden.
-
   - Language: Java
-  Die Programmiersprache des Backends ist Java.
+  - Spring Boot Version: 3.5.11
 
-  -  Spring Boot Version (z. B. 3.5.11)
-  Hier legst du fest, welche Spring-Boot-Version verwendet wird. Im Hinweis oben sieht man, dass eine ursprünglich gewünschte Version nicht verfügbar war und daher automatisch eine verfügbare Version ausgewählt wurde.
-
-  - Project Metadata
-
-  Diese Angaben bestimmen Identität und Struktur des Projekts:
-  - Group (z. B. at.htlle): „Namensraum“/Organisation, wird später Teil des     Package-Namens.
-  - Artifact (z. B. backend): Name des erzeugten Artefakts (Projekt-/Jar-Name).
-  - Name: Anzeigename des Projekts.
-  - Description: Kurze Beschreibung (wird z. B. in der pom.xml geführt).
-  -  Package name (z. B. at.htlle.backend): Basis-Package, unter dem deine    Java-Klassen liegen (wichtig für saubere Struktur).
-
+  Project Metadata
+  - Group: at.htlle
+  - Artifact: backend
+  - Name: DA_2526_Baskettball-Effizienssteigerung-durch-Videoanalyse
+  - Description: Diplomarbeit
+  - Package name: at.htlle.backend
   - Packaging: Jar
-  Das Projekt wird als JAR gebaut, also als eigenständig ausführbare Anwendung (typisch für Spring Boot).
-
   - Configuration: Properties
-  Konfiguration wird primär in application.properties vorgenommen (alternativ wäre YAML möglich).
-
   - Java Version: 21
-  Das Projekt nutzt Java 21 als Zielversion.
-
   - Dependencies: H2 Database
-  Für das Projekt H2-Datenbank als Abhängigkeit ausgewählt. Dadurch kann das Backend in der Entwicklungsphase eine integrierte, leichtgewichtige relationale Datenbank nutzen (inkl. optionaler H2-Console), ohne einen externen Datenbankserver installieren zu müssen.[@SpringBootMavenSetup]
 
-Nachdem alle gewünschten Angaben im Spring Initializr korrekt eingetragen und die benötigten Dependencies ausgewählt wurden, kann das Projekt über „Generate“ erstellt werden. Dabei wird ein fertiges Spring-Boot-Startprojekt als ZIP-Datei heruntergeladen, das bereits die grundlegende Ordnerstruktur, eine Startklasse sowie die Build-Konfiguration (bei Maven die pom.xml) enthält. Dieses Projekt wird anschließend entpackt und in der Entwicklungsumgebung (z. B. IntelliJ IDEA) importiert, sodass direkt mit der Implementierung des Backends begonnen werden kann.
+Nachdem alle gewünschten Angaben im Spring Initializr korrekt eingetragen und die benötigten Abhängigkeiten ausgewählt worden waren, konnte das Projekt über „Generate“ erstellt werden. Dabei wurde ein fertiges Spring-Boot-Startprojekt als ZIP-Datei heruntergeladen, das bereits die grundlegende Ordnerstruktur, eine Startklasse sowie die Build-Konfiguration enthält. Dieses Projekt wurde anschließend entpackt und in die Entwicklungsumgebung importiert, sodass direkt mit der Implementierung begonnen werden konnte.
 
 ![Projekt nach dem Öffnen in IntelJ](img/AnfangProjekt.png)
 
-## Erstellung eines ER-Diagrammsa
+## Erstellung eines ER-Diagramms
 
 Bevor die Datenbank technisch angebunden und im Backend umgesetzt wurde, wurde das Datenmodell zunächst mithilfe eines ER-Diagramms in Draw.io grafisch modelliert. Dadurch konnten Entitäten, Attribute und Beziehungen frühzeitig strukturiert dargestellt und vor der Implementierung fachlich überprüft werden.
 
 Im ER-Diagramm wurden die zentralen Entitäten Player, TrainingSession, Shot, FlightData und Video definiert. Zusätzlich wurden die zugehörigen Attribute, wie Identifikationsnummern, Zeitstempel sowie analyserelevante Parameter wie Winkel, Geschwindigkeiten und Positionswerte, festgelegt.
+
 Die Kardinalitäten wurden dabei wie folgt modelliert: Ein Player kann mehrere TrainingSessions besitzen, jede TrainingSession ist jedoch genau einem Player zugeordnet (1:n). Eine TrainingSession besteht aus mehreren Shots, wobei jeder Shot genau zu einer TrainingSession gehört (1:n). Im aktuellen Modell ist einer TrainingSession genau ein Video zugeordnet, und jedes Video gehört genau zu einer TrainingSession (1:1). Für jeden erkannten Wurf wird ein Datensatz in FlightData gespeichert, der die berechneten Flugparameter enthält.
 
 Die eigentliche Videodatei wird dabei nicht direkt in der relationalen Datenbank gespeichert. In der Entität Video werden lediglich Metadaten wie die videoID, die zugehörige training_sessionID sowie der Dateipfad abgelegt. Diese Lösung ist sinnvoll, da Videodateien große Datenmengen umfassen und eine direkte Speicherung in der Datenbank die Performance und Wartbarkeit negativ beeinflussen würde.
 
 Der Ablauf ist so gestaltet, dass das Frontend das Video über eine REST-Schnittstelle an das Backend übermittelt. Dort wird die Datei gespeichert beziehungsweise für die Analyse bereitgestellt. Anschließend verarbeitet die Analysekomponente das Video, erkennt die Würfe und berechnet die zugehörigen Flugparameter. Die daraus entstehenden Ergebnisse werden danach in den Tabellen Shot und FlightData gespeichert. Das ER-Diagramm bildete somit die fachliche Grundlage für die spätere Umsetzung mit JPA/Hibernate und trug zu einer konsistenten und nachvollziehbaren Implementierung des Datenbankschemas bei.
 
-![ER-Diagramm](img/ER-DIAGRAMM_hell.png)
+![ER-Diagramm des Backend-Datenmodells](img/ER-DIAGRAMM_hell.png)
 
 ## Datenbankanbindung
 Nach der Erstellung des ER-Diagramms wurde im nächsten Schritt die Datenbankanbindung im Backend umgesetzt. Ziel war es, eine funktionierende Persistenzschicht bereitzustellen, damit die aus der Videoanalyse importierten Daten dauerhaft gespeichert und für Abfragen sowie statistische Auswertungen verwendet werden können. Für die Entwicklungsphase wurde eine H2-Datenbank eingesetzt, da sie leichtgewichtig ist und ohne zusätzliche Installation direkt mit Spring Boot betrieben werden kann.
@@ -375,7 +358,7 @@ Um die korrekte Datenbankanbindung frühzeitig zu überprüfen, wurde zunächst 
 
 ```\Source\backend\src\main\resources```
 
-eine Datenbankdatei mit dem Namen da_basketball.mv.db erstellt. Diese Vorgehensweise diente dazu, die Verbindung zu einer persistenten, dateibasierten H2-Datenbank zu testen (im Gegensatz zum reinen In-Memory-Betrieb).
+eine Datenbankdatei mit dem Namen da_basketball.mv.db erstellt. Diese Vorgehensweise diente dazu, die Verbindung zu einer persistenten, dateibasierten H2-Datenbank zu testen.
 
 Anschließend wurde über die H2-Console eine Verbindung mit dem H2-Treiber (org.h2.Driver) und der entsprechenden JDBC-URL hergestellt. Über die Funktionen „Verbindung testen“ und „Verbinden“ konnte überprüft werden, ob das Backend bzw. die Console korrekt auf die Datenbankdatei zugreifen kann. Damit war sichergestellt, dass die Datenbankkonfiguration grundsätzlich funktioniert und Daten persistent in einer lokalen Datei gespeichert werden können.
 
@@ -383,10 +366,11 @@ Anschließend wurde über die H2-Console eine Verbindung mit dem H2-Treiber (org
 
 ### Datenbankverbindung im Projekt (Springboot + H2)
 
-Nachdem die Funktion der H2-Dateidatenbank über die Console erfolgreich getestet wurde, wurde im nächsten Schritt die Datenbankverbindung direkt im Spring-Boot-Projekt eingerichtet. Ziel war es, dass das Backend beim Start automatisch eine Verbindung zur H2-Datenbank herstellt und alle Persistenzoperationen (Speichern, Lesen, Auswerten) über diese Verbindung durchführen kann.
+Nachdem die Funktion der H2-Dateidatenbank über die Konsole erfolgreich getestet worden war, wurde im nächsten Schritt die Datenbankverbindung direkt im Spring-Boot-Projekt eingerichtet. Ziel war es, dass das Backend beim Start automatisch eine Verbindung zur H2-Datenbank herstellt und alle Persistenzoperationen über diese Verbindung durchführen kann.
 
 #### Schritt 1 : Einbindung der benötigten Bibiotheken (Dependencies) über Maven
-Im ersten Schritt wurde das Spring-Boot-Projekt um die notwendigen Bibliotheken zur Datenpersistenz erweitert. In einem Maven-Projekt werden diese Abhängigkeiten zentral in der Datei pom.xml definiert, wodurch Maven die benötigten Libraries automatisiert verwaltet und in den Build-Prozess integriert. Für den Zugriff auf relationale Datenbanken wurde spring-boot-starter-data-jpa eingebunden, welches die Persistenz über JPA ermöglicht und standardmäßig Hibernate als ORM-Implementierung verwendet. Als Entwicklungsdatenbank wurde die H2-Datenbank über die Dependency h2 integriert, wodurch lokale Tests ohne zusätzlichen Datenbankserver möglich sind. Zusätzlich wurde spring-boot-starter-web verwendet, um das Backend als Webservice mit REST-Endpunkten zu betreiben. Zur Reduktion von Boilerplate-Code kam Lombok zum Einsatz, wodurch insbesondere Daten- und Entity-Klassen übersichtlicher umgesetzt werden konnten.[@SpringDataJPAReference] [@SpringDataJPAProject] [@ProjectLombokData]
+Im ersten Schritt wurde das Spring-Boot-Projekt um die notwendigen Bibliotheken zur Datenpersistenz erweitert. In einem Maven-Projekt werden diese Abhängigkeiten zentral in der Datei pom.xml definiert, wodurch Maven die benötigten Libraries automatisiert verwaltet und in den Build-Prozess integriert.
+Für den Zugriff auf relationale Datenbanken wurde spring-boot-starter-data-jpa eingebunden, welches die Persistenz über JPA ermöglicht und standardmäßig Hibernate als ORM-Implementierung verwendet. Als Entwicklungsdatenbank wurde H2 integriert, wodurch lokale Tests ohne zusätzlichen Datenbankserver möglich sind. Zusätzlich wurde spring-boot-starter-web verwendet, um das Backend als Webservice mit REST-Endpunkten betreiben zu können. Zur Reduktion von Boilerplate-Code kam Lombok zum Einsatz, wodurch insbesondere Daten- und Entity-Klassen übersichtlicher umgesetzt werden konnten.[@SpringDataJPAReference] [@SpringDataJPAProject] [@ProjectLombokData]
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Überblick pom.xml" .xml}
 <dependencies>
