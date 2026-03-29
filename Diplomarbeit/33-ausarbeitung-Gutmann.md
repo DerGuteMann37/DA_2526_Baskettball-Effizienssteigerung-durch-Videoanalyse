@@ -3,17 +3,14 @@
 
 ## Theorie
 
-### Einführung in den Backend-Teil
-
 Das Backend bildet die technische Grundlage für die Speicherung, Verarbeitung und Bereitstellung der im Projekt erhobenen Daten. Im Rahmen dieser Diplomarbeit entsteht ein System zur Effizienzsteigerung von Basketballwürfen durch Videoanalyse. Die Videoanalyse liefert dabei Messwerte und Parameter zu einzelnen Würfen (z. B. Abwurfpunkt, Korbposition, Geschwindigkeit, Winkel sowie Flugbahndaten). Damit diese Daten langfristig gespeichert, ausgewertet und für das Frontend nutzbar gemacht werden können, wird ein eigenständiges Backend entwickelt.
 
 Die zentrale Aufgabe des Backends besteht darin, die Daten aus den Analyseprozessen strukturiert zu persistieren und über definierte Schnittstellen bereitzustellen. Zusätzlich übernimmt das Backend die Berechnung statistischer Kennzahlen, die Trainingsfortschritte messbar machen. Dadurch entsteht eine objektive Grundlage, um Würfe nicht nur einzeln zu betrachten, sondern auch über längere Zeiträume zu vergleichen und Entwicklungen sichtbar zu machen.
 
-![Backend](img/Backend_hell.png)
-
 ## Backend
 
-### Was ist überhaupt das Backend
+![Backend](img/Backend_hell.png)
+
 Unter dem Backend versteht man den serverseitigen Teil einer Softwareanwendung. Es ist jener Bereich, der für Nutzerinnen und Nutzer meist nicht direkt sichtbar ist, jedoch die zentrale technische Grundlage eines Systems bildet. Während das Frontend die grafische Oberfläche und Interaktionen bereitstellt, übernimmt das Backend die Verarbeitung von Daten und die Ausführung der eigentlichen Anwendungslogik.
 
 Im Allgemeinen erfüllt ein Backend folgende Kernaufgaben:
@@ -31,7 +28,7 @@ Das Backend nimmt Anfragen von Clients (z. B. einer Webanwendung) entgegen, prü
 
 Im Kontext dieser Diplomarbeit ist das Backend besonders wichtig, da es die Analyseergebnisse aus der Videoverarbeitung entgegennimmt, in einer relationalen Datenbank speichert, statistisch auswertet und die daraus entstehenden Kennzahlen über eine REST-Schnittstelle dem Frontend zur Visualisierung zur Verfügung stellt. Dadurch fungiert das Backend als zentrale Logik- und Datenebene des gesamten Systems.[@MainagenturBackend]
 
-![Backend kommuniziert mit jedem](img/Zusammenhaenge_Projekt.png)
+![Übersicht wie das Backend mit den anderen Teilen der DA zusammenhängt](img/Zusammenhaenge_Projekt.png)
 
 ## Spring Boot
 
@@ -58,9 +55,9 @@ Spring Boot eignet sich besonders dann, wenn eine Anwendung als Backend-System o
 In vielen Projekten ist Spring Boot eine gute Wahl, weil es die technische Basis bereitstellt, die Entwicklung beschleunigt und gleichzeitig professionelle Standards für größere Anwendungen unterstützt.[@SpringBootUseCases]
 
 ### Was ist eine REST-API
-Eine REST-API (Representational State Transfer Application Programming Interface) ist eine Programmierschnittstelle, über die Systeme über das HTTP-Protokoll miteinander kommunizieren. Eine REST-API stellt Funktionen und Daten so bereit, dass Clients (z. B. ein Frontend) auf definierte Ressourcen zugreifen können.
+Eine REST-API (Representational State Transfer Application Programming Interface) ist eine Programmierschnittstelle, die die Kommunikation zwischen unterschiedlichen Softwaresystemen über das HTTP-Protokoll ermöglicht. Dabei werden Daten und Funktionen in Form von Ressourcen bereitgestellt, auf die Clients gezielt zugreifen können.
 
-Die Datenübertragung erfolgt meist im JSON-Format. Ein Client kann beispielsweise Spieler-, Trainings- oder Statistikdaten anfordern oder neue Daten an das Backend senden. Dadurch dient eine REST-API als verbindendes Element zwischen Frontend und Backend.[@RedHatRESTAPI]
+Die Datenübertragung erfolgt häufig im JSON-Format. Ein Client kann beispielsweise Spieler-, Trainings- oder Statistikdaten abrufen sowie neue Daten an das Backend senden. REST beschreibt dabei ein allgemeines Konzept zur Gestaltung von Webschnittstellen und ist nicht an ein bestimmtes Framework gebunden. Die konkrete Umsetzung kann beispielsweise mit Technologien wie Spring Boot erfolgen.[@RedHatRESTAPI]
 
 ### Wie ist die Funktionsweise von REST-API
 Die Funktionsweise einer REST-API basiert auf dem Prinzip, dass Daten als Ressourcen betrachtet werden, die über eindeutige URLs (Endpunkte) erreichbar sind. Jede Ressource wird über HTTP-Methoden angesprochen, wobei jede Methode eine bestimmte Bedeutung hat:
