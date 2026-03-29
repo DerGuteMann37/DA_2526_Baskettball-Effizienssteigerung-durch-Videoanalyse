@@ -603,7 +603,7 @@ Die berechnete Sollflugbahn hängt unmittelbar von den gewählten Modellparamete
 
 Der Abwurfwinkel beeinflusst vor allem die Krümmung und Gipfelhöhe der Flugkurve – ein Zusammenhang, der in Kapitel 4.6 eingeführt wurde. Im Implementierungskontext ist entscheidend, dass die Treffbedingung nur für physikalisch zulässige Parameterkombinationen erfüllt bleibt; die rechnerische Kopplung ist im Projekt in der Berechnung der erforderlichen Anfangsgeschwindigkeit $v_0$ und der zugehörigen Bahnkurve $y(x)$ umgesetzt.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Berechnung von v_0 und y(x) aus Modellparametern" .python}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Berechnung von v0 und y(x) aus Modellparametern" .python}
 def solve_v0_for_target(x_k: float, h0: float, h_k: float, alpha_deg: float, g: float = 9.81) -> float:
     alpha = math.radians(alpha_deg)
     denom = 2.0 * (math.cos(alpha) ** 2) * (h0 + x_k * math.tan(alpha) - h_k)
