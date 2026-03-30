@@ -1,3 +1,4 @@
+
 # Teilaufgabe Wolfgruber Bastian
 \textauthor{Wolfgruber Bastian} 
 

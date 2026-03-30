@@ -1,3 +1,4 @@
+
 # Teilaufgabe Bacher Fabian
 \textauthor{Bacher Fabian} 
 
