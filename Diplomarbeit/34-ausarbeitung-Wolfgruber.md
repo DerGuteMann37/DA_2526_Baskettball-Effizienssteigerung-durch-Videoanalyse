@@ -825,7 +825,7 @@ zum Verlust des Trackings führen. [@yilmaz_object_2006]
 
 ![Fehlverfolgung eines Körperteils des Schützen anstelle des Basketballs](img/qualitatsverlust.png){width=100%}
 
-Wie in der abgebildet zu erkennen ist, kann der Trackingalgorithmus
+Wie in der Abbildung zu erkennen ist, kann der Trackingalgorithmus
 ein Körperteil des Spielers fälschlicherweise
 als Zielobjekt identifizieren.
 
@@ -1106,7 +1106,7 @@ des Korbs, in die Analyse der Ist-Flugbahn einfließt.
 Zur Erkennung eines Korberfolgs wird ein
 Zähler initialisiert, der die Anzahl der
 Frames unterhalb des Korbrings erfasst
-(siehe Zeilen 1–2 in Listing 37).
+(siehe Zeilen 1–2).
 
 Anschließend wird für jede erkannte
 Ballposition überprüft, ob sich der Ball
@@ -1174,7 +1174,7 @@ erstellt, bei der Ist-Flugbahn und Soll-Flugbahn gleichzeitig angezeigt werden.
 Dabei wird die berechnete ideale Flugbahn gemeinsam mit der realen Bewegung
 des Basketballs über das Videobild gelegt.
 
-In der Abbildung 59 sieht man die Ist-Flugbahn dargestellt in weiß, und die Soll-Flugbahn dargestellt in Gelb.
+In der Abbildung sieht man die Ist-Flugbahn dargestellt in weiß, und die Soll-Flugbahn dargestellt in Gelb.
 
 Durch diese kombinierte Darstellung können Unterschiede zwischen dem
 tatsächlich ausgeführten Wurf und dem theoretisch optimalen Verlauf direkt
@@ -1201,8 +1201,7 @@ cv2.imwrite("wurf_combined_overlay.png", overlay)
 
 Zur Darstellung der Flugbahnen wird
 zunächst eine Kopie des aktuellen Frames
-erstellt (siehe Zeile 1 in
-Listing 38).
+erstellt (siehe Zeile 1).
 
 Anschließend werden die Punkte der
 Ist-Flugbahn sowie der Soll-Flugbahn

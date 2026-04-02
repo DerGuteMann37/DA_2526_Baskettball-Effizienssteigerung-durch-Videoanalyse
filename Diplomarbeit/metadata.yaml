@@ -51,25 +51,25 @@ da-betreuer:
 - paraffe: hg
   name: Ing. DI(FH) Günther Hutter, Msc.
 
-da-kurzfassung-de: Im Rahmen dieser Diplomarbeit wird ein System entwickelt, das Basketballwürfe 
- mithilfe von Videoanalyse automatisch auswertet und Spieler*innen dabei unterstützt, ihre Wurftechnik
- messbar zu verbessern. Ziel des Projekts ist es, eine kostengünstige und praxistaugliche Lösung zu schaffen, die insbesondere im Schul- und Amateurbereich eingesetzt werden kann. 
- Das System analysiert Videoaufnahmen von Basketballwürfen und erkennt dabei wichtige Parameter wie Abwurfpunkt, Flugbahn, Geschwindigkeit und Winkel des Balles. 
- Anschließend wird die reale Flugbahn (Ist-Flugbahn) mit einer berechneten optimalen Flugbahn (Soll-Flugbahn) verglichen. 
- Auf Basis dieser Daten können Abweichungen erkannt und Verbesserungspotenziale identifiziert werden.
- Die gewonnenen Daten werden in einer Datenbank gespeichert und durch ein Backend-System verarbeitet und statistisch ausgewertet. 
- Über eine REST-Schnittstelle werden die Ergebnisse an ein Frontend übermittelt, in dem Spieler*innen ihre Trainingseinheiten verwalten, Würfe analysieren und statistische Auswertungen einsehen können.
- Durch die Kombination von Videoanalyse, Datenverarbeitung und visueller Darstellung der Ergebnisse soll das System Trainerinnen und Spielerinnen objektives Feedback liefern und so langfristig zur Verbesserung der Wurftechnik beitragen.
+da-kurzfassung-de: Ziel dieser Diplomarbeit war die Entwicklung eines softwaregestützten Systems zur Analyse und Verbesserung von Basketballwürfen mithilfe von Videoanalyse. Im Mittelpunkt steht die objektive Auswertung der Wurftechnik, um Spieler*innen durch messbare Daten und visuelles Feedback bei der Optimierung ihrer Leistung zu unterstützen.
+  Das entwickelte Gesamtsystem kombiniert mehrere technische Teilbereiche. 
+  Zunächst werden aus Videodaten wesentliche Parameter des Wurfes, wie Abwurfpunkt, Abwurfwinkel und Flugbahn des Balls, ermittelt.
+  Anschließend wird die tatsächliche Ist-Flugbahn mit einer berechneten idealen Soll-Flugbahn verglichen, sodass Abweichungen sichtbar und nachvollziehbar dargestellt werden können. 
+  Da sich die automatische Ballerkennung unter realen Bedingungen als nicht ausreichend zuverlässig erwies, wurde zur Sicherstellung genauer Ergebnisse eine manuelle Initialisierung eingesetzt.
+  Für die Verarbeitung und Speicherung der erfassten Daten wurde ein Backend auf Basis von Spring Boot entwickelt. 
+  Dieses verwaltet Spieler-, Trainings- und Wurfdaten in einer Datenbank, berechnet statistische Kennzahlen und stellt die Ergebnisse über eine REST-Schnittstelle bereit. 
+  Ergänzend dazu wurde ein browserbasiertes Frontend umgesetzt, das Funktionen wie Login, Dashboard, Video-Upload sowie Analyse- und Statistikansichten bietet.
+  Insgesamt entstand ein funktionsfähiger Prototyp, der zeigt, dass eine kostengünstige und praxisnahe Wurfanalyse im Schul- und Amateurbereich möglich ist. Die Arbeit schafft damit eine solide Grundlage für zukünftige Erweiterungen, insbesondere im Bereich der automatischen Objekterkennung und der weiteren Systemintegration.
 
-da-kurzfassung-en: As part of this diploma thesis, a system is developed that automatically analyzes basketball shots using video analysis and helps players improve their shooting technique in a measurable way. 
-  The goal of the project is to create a cost-effective and practical solution that can be used especially in schools and amateur sports.
-  The system analyzes video recordings of basketball shots and detects important parameters such as the release point, ball trajectory, velocity, and shooting angle. 
-  The actual trajectory of the ball (actual trajectory) is then compared with a calculated optimal trajectory (ideal trajectory). 
-  Based on this comparison, deviations can be identified and areas for improvement can be determined.
-  The collected data is stored in a database and processed by a backend system where statistical evaluations are performed. 
-  Through a REST interface, the results are provided to a frontend application in which players can manage training sessions, analyze their shots, and view statistical evaluations.
-  By combining video analysis, data processing, and visual presentation of results, the system aims to provide objective feedback for players and coaches and thereby support the long-term improvement of shooting performance.
-
+da-kurzfassung-en: The aim of this diploma thesis was the development of a software-supported system for the analysis and improvement of basketball shots using video analysis. The main focus lies on the objective evaluation of shooting technique in order to support players with measurable data and visual feedback in optimizing their performance.
+ The developed overall system combines several technical components. 
+ First, essential shot parameters such as release point, release angle, and ball trajectory are determined from video data. The actual trajectory is then compared with a calculated ideal target trajectory, making deviations visible and comprehensible. 
+ Since automatic ball detection did not prove sufficiently reliable under real-world conditions, manual initialization was used to ensure accurate results.
+ For processing and storing the collected data, a backend based on Spring Boot was developed. 
+ This backend manages player, training, and shot data in a database, calculates statistical key figures, and provides the results via a REST interface. 
+ In addition, a browser-based frontend was implemented, offering features such as login, dashboard, video upload, as well as analysis and statistics views.
+ Overall, a functional prototype was created, demonstrating that a cost-effective and practical shooting analysis system is feasible for school and amateur sports. 
+ The thesis therefore provides a solid foundation for future extensions, particularly in the areas of automatic object detection and further system integration.
 
 da-kiquellen:
 

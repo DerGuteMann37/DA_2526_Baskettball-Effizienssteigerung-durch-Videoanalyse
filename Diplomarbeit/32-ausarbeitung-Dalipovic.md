@@ -1,5 +1,5 @@
 
-# Teilaufgabe Dalipovic Nino
+# Teilaufgabe Dalipovic Nino - Frontend
 \textauthor{Nino Dalipovic}
 
 
@@ -584,12 +584,6 @@ Technische Prinzipien umfassen:
 Webanwendungen, die personenbezogene Daten verarbeiten, müssen diese Prinzipien frühzeitig in Architekturentscheidungen integrieren, um rechtliche und ethische Anforderungen zu erfüllen.
 
 
-
-
-
-
-
-
 ## Praktische Arbeit
 
 Im Praxisteil wird die konkrete Implementierung der clientseitigen Anwendung beschrieben. Das Frontend wurde als browserbasierte Single Page Application (SPA) umgesetzt und bildet die zentrale Interaktionsschicht zwischen Benutzer und Backend. Im Kontext der Gesamtarchitektur stellt dieses Frontend die Präsentationsschicht dar, die über REST-Schnittstellen mit dem Backend kommuniziert. In Bezug auf die definierten Projektziele übernimmt das Frontend primär die Bewertung und Anzeige für den Spieler, die persistente Speicherung von Spielerdaten sowie die Verarbeitung eines fertigen Videos als Eingabe.
@@ -893,7 +887,7 @@ Die Daten werden dynamisch aus dem im Frontend gespeicherten Benutzerzustand gel
 
 Nach erfolgreicher Authentifizierung wird der Benutzer in die Hauptansicht der Anwendung weitergeleitet. Diese Ansicht bildet das zentrale Dashboard und dient als Ausgangspunkt für die Interaktion mit dem System. Die folgende Abbildung gibt einen Überblick über das Dashboard nach erfolgreicher Anmeldung.
 
-![Dashboard der Anwendung](img/dashboard.jpeg){ width=120% }
+![Dashboard der Anwendung](img/dashboard.jpeg){ width=95% }
 
 In der Abbildung ist das Dashboard nach erfolgreicher Anmeldung dargestellt. Im oberen linken Bereich befindet sich die Profilanzeige mit dem Namen des Benutzers und einem Avatar-Symbol. Direkt darunter sind im Kopfbereich zwei farbig hinterlegte Schaltflächen erkennbar — „Live Performance" (links, blau) und „New Analyst Score" (rechts, orange) — über die der Zugriff auf zusätzliche Analysefunktionen erfolgt. Im zentralen Bildschirmbereich ist der Abschnitt „New Training Session" mit einem Video-Symbol und dem „Start Analysis"-Button sichtbar, über den eine neue Trainingsanalyse gestartet werden kann. Am unteren Rand des Dashboards befindet sich der Bereich „Recent Throws", der für die Auflistung vergangener Würfe vorgesehen ist. Die Navigationsleiste am unteren Bildschirmrand enthält Symbole für die verschiedenen Anwendungsbereiche.
 
@@ -911,7 +905,7 @@ Der Benutzer kann über eine entsprechende Schaltfläche den Analyseprozess init
 
 Nach Abschluss einer Analyse werden zusätzliche Informationen im Dashboard angezeigt, wie die folgende Abbildung zeigt.
 
-![Dashboard nach Analyse](img/dashboardNachAnalyse.jpeg){ width=120% }
+![Dashboard nach Analyse](img/dashboardNachAnalyse.jpeg){ width=95% }
 
 In der Abbildung ist das Dashboard nach Abschluss einer Analyse dargestellt. Im oberen linken Bereich sind nun die KPI-Karten mit konkreten Analysewerten sichtbar — darunter ein Winkelwert von „50.3°" sowie eine Gesamtbewertung von „72 / 100". Diese Werte erscheinen in den zuvor leeren Karten oberhalb des zentralen Bereichs. Im mittleren Bildschirmbereich ist weiterhin der „New Training Session"-Abschnitt mit dem „Start Analysis"-Button erkennbar. Unterhalb davon zeigt der Bereich „Recent Throws" nun eine Videovorschau des analysierten Wurfs als Thumbnail sowie eine textuelle Bewertung des Wurfs (z. B. „Leichte Abweichung vom perfekten Wurf"). Durch diese Darstellung erhält der Benutzer eine schnelle Übersicht über die Ergebnisse der zuletzt durchgeführten Analyse.
 
@@ -921,7 +915,7 @@ In der Abbildung ist das Dashboard nach Abschluss einer Analyse dargestellt. Im 
 
 Neben der normalen Dashboard-Anzeige kann zusätzlich ein spezielles Fenster zur Darstellung von Leistungsinformationen geöffnet werden. Dieses Fenster wird als sogenanntes Overlay dargestellt und erscheint über der bestehenden Benutzeroberfläche. Die folgende Abbildung zeigt dieses Live-Performance-Fenster mit den dargestellten Analysekennzahlen.
 
-![Live Performance Fenster](img/livePerformanceFenster2.jpeg){ width=120% }
+![Live Performance Fenster](img/livePerformanceFenster2.jpeg){ width=95% }
 
 In der Abbildung ist das Live-Performance-Fenster als Overlay über dem Dashboard dargestellt. Im oberen Bereich des Overlays ist die Überschrift „Live Performance" erkennbar. Darunter befinden sich zwei farbig hinterlegte Schaltflächen — „Analyzed Shots" (links, blau) und „New Analyst Score" (rechts, orange). Im mittleren Bereich des Overlays sind die Analysekennzahlen angeordnet: Links wird die Effizienz des Wurfs als Prozentwert dargestellt, daneben die Konsistenz der Flugbahn, der Winkelwert der Bewegung sowie eine qualitative Gesamtbewertung des Wurfs. Das Dashboard bleibt im Hintergrund sichtbar, wodurch der Benutzer die aktuelle Ansicht nicht verlassen muss.
 
@@ -1133,7 +1127,7 @@ Durch diese visuelle Darstellung kann der Benutzer Unterschiede zwischen idealer
 
 Neben der tatsächlichen Implementierung enthält die Anwendung auch eine Beispielansicht, die zeigt, wie eine vollständige Analyseoberfläche aussehen kann. Diese Darstellung dient als Konzept und verdeutlicht mögliche Erweiterungen der Benutzeroberfläche. Die folgende Abbildung zeigt diese Konzeptansicht, in der Videovorschau, Diagramme und numerische Analysewerte kombiniert dargestellt werden.
 
-![Analyseansicht der Anwendung](img/analyseWieEsAusschauenSollte.jpeg){ width=120% }
+![Analyseansicht der Anwendung](img/analyseWieEsAusschauenSollte.jpeg){ width=95% }
 
 In der Abbildung ist die Konzeptansicht einer vollständigen Analyseoberfläche dargestellt. Im linken Bereich des Bildschirms befindet sich eine Videovorschau des analysierten Wurfs, die das aufgenommene Trainingsvideo zeigt. Rechts daneben sind Diagramme zur grafischen Darstellung der Flugbahn erkennbar, in denen Soll- und Ist-Kurven übereinandergelegt werden. Im unteren Bereich der Ansicht werden numerische Analysewerte wie Winkel, Geschwindigkeit und Bewertung als Kennzahlen angezeigt. Zusätzlich sind visuelle Hinweise zur Qualität des Wurfs integriert, die dem Benutzer eine sofortige Einschätzung ermöglichen. Diese Konzeptdarstellung verdeutlicht, wie verschiedene Informationsquellen innerhalb einer einzigen Oberfläche zusammengeführt werden können.
 
