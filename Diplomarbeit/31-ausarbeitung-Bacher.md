@@ -98,7 +98,7 @@ Für die horizontale Bewegung gilt (unter der Annahme, dass der Luftwiderstand v
 
 $x(t) = v_0 \cdot \cos(\alpha) \cdot t$
 
-Dabei bezeichnet $x(t)$ die horizontale Entfernung vom Abwurfpunkt, $v_0$ die Anfangsgeschwindigkeit, $alpha$ den Abwurfwinkel und $t$ die vergangene Zeit seit dem Abwurf. [@OpenStaxProjectileEquations]
+Dabei bezeichnet $x(t)$ die horizontale Entfernung vom Abwurfpunkt, $v_0$ die Anfangsgeschwindigkeit, $\alpha$ den Abwurfwinkel und $t$ die vergangene Zeit seit dem Abwurf. [@OpenStaxProjectileEquations]
 
 ##### Vertikale Bewegung
 
@@ -167,7 +167,7 @@ In realen Situationen, beispielsweise bei sportlichen Würfen, ist die Abwurfhö
 
 #### Einfluss der Zielentfernung
 
-Die Entfernung zwischen Abwurfpunkt und Ziel bestimmt, welche Kombination aus Abwurfwinkel $alpha$ und Anfangsgeschwindigkeit $v_0$ erforderlich ist, um das Ziel zu erreichen. Für jede Distanz existieren dabei unterschiedliche mögliche Kombinationen dieser beiden Parameter.
+Die Entfernung zwischen Abwurfpunkt und Ziel bestimmt, welche Kombination aus Abwurfwinkel $\alpha$ und Anfangsgeschwindigkeit $v_0$ erforderlich ist, um das Ziel zu erreichen. Für jede Distanz existieren dabei unterschiedliche mögliche Kombinationen dieser beiden Parameter.
 
 Ein nahe gelegenes Ziel kann sowohl mit einem flachen als auch mit einem steileren Wurf erreicht werden. Bei größeren Distanzen ist eine geeignete Kombination aus Abwurfwinkel und Anfangsgeschwindigkeit entscheidend.
 
@@ -374,7 +374,7 @@ Weitere unterstützende Bibliotheken wurden für organisatorische oder technisch
 
 Für die praktische Auswertung werden zwei Objekte benötigt: Ball und Korb. Der Ball wird frameweise über OpenCV/YOLO lokalisiert und bei unsicheren Frames manuell korrigiert. Der Korb wird als räumlich stabiler Referenzbereich im Bild festgelegt, damit Distanz- und Höhenbezüge konsistent bleiben.
 
-Die erforderliche Genauigkeit ergibt sich direkt aus dem Modell: Schon kleine Lagefehler des Ballzentrums wirken sich auf abgeleitete Größen wie Abwurfwinkel $alpha$, Anfangsgeschwindigkeit $v_0$ und die rekonstruierte Kurvenform aus. Deshalb werden Plausibilitätsprüfungen, zeitliche Konsistenzregeln und Glättung eingesetzt, bevor Parameter aus den Punktfolgen berechnet werden.
+Die erforderliche Genauigkeit ergibt sich direkt aus dem Modell: Schon kleine Lagefehler des Ballzentrums wirken sich auf abgeleitete Größen wie Abwurfwinkel $\alpha$, Anfangsgeschwindigkeit $v_0$ und die rekonstruierte Kurvenform aus. Deshalb werden Plausibilitätsprüfungen, zeitliche Konsistenzregeln und Glättung eingesetzt, bevor Parameter aus den Punktfolgen berechnet werden.
 
 ### Einordnung der Echtzeitverarbeitung
 
