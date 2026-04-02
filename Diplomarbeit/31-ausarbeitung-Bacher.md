@@ -1,9 +1,7 @@
 
-# Teilaufgabe Bacher Fabian
+# Teilaufgabe Bacher Fabian – Soll-Flugbahn
 \textauthor{Bacher Fabian} 
 
-
-## Aufgabenstellung Soll-Flugbahn
 Im Alltag sowie in vielen Sportarten spielt das Werfen eines Körpers eine zentrale Rolle. Ob beim Werfen eines Balls, beim Korbwurf im Basketball oder beim gezielten Treffen eines Ziels – häufig gelingt ein Wurf nicht zufällig, sondern folgt bestimmten Gesetzmäßigkeiten. Für den Beobachter erscheint die Flugbahn zunächst schwer vorhersehbar, tatsächlich wird sie jedoch durch physikalische Zusammenhänge bestimmt.
 
 In diesem Teil wird untersucht, wie sich ein geworfener Körper nach dem Abwurf bewegt und welche Faktoren seine Flugbahn beeinflussen. Dabei wird betrachtet, welche Rolle unter anderem Abwurfwinkel, Geschwindigkeit und Abwurfhöhe spielen und wie sich Veränderungen dieser Größen auf das Treffen eines Zielpunktes auswirken.
@@ -15,7 +13,9 @@ Aufbauend auf diesen Grundlagen wird anschließend versucht, eine optimale Flugb
 
 Dieses Kapitel behandelt die theoretischen Grundlagen der Arbeit. Im Fokus stehen die Bewegung geworfener Körper, die Flugkurve, der schiefe Wurf und die für die Sollflugbahn relevanten Einflussgrößen.
 
-## Wurfbewegungen in Alltag und Sport
+### Wurfbewegungen in Alltag und Sport
+
+Abbildung 1 zeigt einen Basketballspieler bei einem Korbwurf während eines Spiels. Sichtbar sind dabei die typische Wurfhaltung, der Ball kurz nach dem Abwurf sowie der erhöhte Zielpunkt in Form des Basketballkorbs. Die Abbildung veranschaulicht damit eine reale Wurfsituation, die im weiteren Verlauf physikalisch analysiert wird.
 
 ![Wurf eines Basketballspielers](img/wmbi-schusss.jpg)
 
@@ -28,15 +28,13 @@ Im Rahmen dieser Arbeit wird daher der Korbwurf im Basketball betrachtet. Diese 
 Unabhängig von der jeweiligen Situation lässt sich beobachten, dass ein geworfener Körper nicht geradlinig fliegt, sondern stets eine gekrümmte Bahn beschreibt. Die Flugbahn hängt von den Abwurfbedingungen (insbesondere Anfangsgeschwindigkeit, Abwurfwinkel und Abwurfhöhe) sowie von äußeren Einflüssen wie Gravitation und Luftwiderstand ab. Bereits kleine Änderungen dieser Größen können dazu führen, dass ein Ziel verfehlt wird. [@LernhelferWurf]
 
 
-## Bewegung geworfener Körper
-
-### Was versteht man unter der Bewegung eines geworfenen Körpers?
+### Bewegung geworfener Körper
 
 Unter der Bewegung eines geworfenen Körpers versteht man den Bewegungsablauf eines Gegenstandes ab dem Zeitpunkt, an dem er die Hand des Werfers verlässt. Beim Abwurf erhält der Körper eine Anfangsgeschwindigkeit. Nach dem Loslassen wirkt keine vom Werfer erzeugte Kraft mehr auf ihn; die weitere Bewegung wird durch äußere Kräfte bestimmt. Maßgeblich sind dabei die Erdanziehungskraft und in geringerem Ausmaß der Luftwiderstand.
 
 Da nach dem Abwurf keine Korrektur mehr möglich ist, wird der weitere Bewegungsverlauf bereits im Moment des Loslassens festgelegt. Dabei bestimmen insbesondere Anfangsgeschwindigkeit, Abwurfwinkel und Abwurfhöhe die spätere Flugbahn des Körpers. [@LeifiPhysikWurfbewegung]
 
-### Kräfte, die auf einen geworfenen Körper wirken
+#### Kraftwirkung
 
 Auf einen geworfenen Körper wirken während seiner Flugphase hauptsächlich zwei Kräfte: die Erdanziehungskraft (Gravitation) und der Luftwiderstand.
 
@@ -44,18 +42,17 @@ Die Erdanziehungskraft ist in der Regel die dominierende Kraft. Sie wirkt ständ
 
 Zusätzlich wirkt der Luftwiderstand. Dieser entsteht durch die Bewegung des Körpers durch die Luft und wirkt der Bewegungsrichtung entgegen. Im Vergleich zur Gravitation ist sein Einfluss bei üblichen Wurfgeschwindigkeiten jedoch deutlich geringer. Aus diesem Grund wird der Luftwiderstand in physikalischen Betrachtungen oft vernachlässigt. [@HyperPhysicsProjectile]
 
-## Flugkurve (Trajektorie)
+### Flugkurve (Trajektorie)
 
-### Was versteht man unter einer Flugkurve?
 
 Die Flugkurve, auch als Trajektorie bezeichnet, beschreibt den räumlichen Bewegungsverlauf eines Körpers während seines Fluges. Sie stellt die Bahn dar, die ein geworfener Körper vom Zeitpunkt des Abwurfs bis zum Auftreffen auf dem Boden oder am Ziel zurücklegt. [@OpenStaxProjectileMotion]
 
-### Warum ist die Flugkurve gekrümmt?
+#### Krümmung der Flugkurve
 
 Die gekrümmte Form der Flugbahn entsteht durch die Überlagerung zweier Bewegungen. In horizontaler Richtung bleibt die Geschwindigkeit näherungsweise konstant, in vertikaler Richtung wirkt die Erdanziehungskraft und verändert die vertikale Geschwindigkeit fortlaufend. Durch diese Überlagerung entsteht die gekrümmte Flugbahn. [@OpenStaxProjectileMotion]
 
 
-### Höchster Punkt der Flugbahn
+#### Höchster Punkt der Flugbahn
 
 Während des Fluges steigt der geworfene Körper zunächst an, bis er einen höchsten Punkt erreicht. In diesem Punkt ist die vertikale Geschwindigkeit des Körpers für einen kurzen Moment gleich null. Anschließend beginnt der Körper wieder zu fallen.
 
@@ -64,7 +61,7 @@ Der höchste Punkt entsteht dadurch, dass die anfängliche Aufwärtsbewegung dur
 Dieser Punkt besitzt eine besondere Bedeutung, da er die maximale Flughöhe des Körpers darstellt und maßgeblich von der Anfangsgeschwindigkeit sowie dem Abwurfwinkel abhängt. [@OpenStaxProjectileMotion]
 
 
-### Einfluss des Abwurfs auf die Flugbahn
+#### Startwerte der Flugbahn
 
 Die genaue Form der Flugkurve wird bereits im Moment des Abwurfs festgelegt. Entscheidend ist dabei, mit welcher Geschwindigkeit, in welcher Richtung und aus welcher Höhe der Körper geworfen wird.
 
@@ -73,10 +70,7 @@ Ein flacher Wurf führt zu einer niedrigen und langen Flugbahn, während ein ste
 Somit hängt das Treffen eines Ziels direkt von den Anfangsbedingungen des Wurfes ab. Bereits kleine Änderungen dieser Parameter können dazu führen, dass ein Ziel verfehlt wird. [@OpenStaxProjectileMotion]
 
 
-## Der schiefe Wurf als physikalisches Modell
-
-
-### Begriffserklärung
+### Physikalisches Modell des schiefen Wurfs
 
 Die zuvor beschriebene Flugkurve eines geworfenen Körpers lässt sich mathematisch mit dem sogenannten schiefen Wurf beschreiben. Darunter versteht man die Bewegung eines Körpers, der mit einer Anfangsgeschwindigkeit unter einem bestimmten Winkel zur Horizontalen in die Luft geworfen wird.
 
@@ -85,7 +79,9 @@ Der Körper besitzt dabei sowohl eine horizontale als auch eine vertikale Bewegu
 Der schiefe Wurf stellt somit ein mathematisches Modell dar, mit dem sich reale Wurfbewegungen näherungsweise berechnen lassen. [@OpenStaxProjectileEquations]
 
 
-### Zerlegung der Bewegung in zwei Richtungen
+#### Mathematische Modellierung
+
+##### Anfangsgeschwindigkeit
 
 Die Anfangsgeschwindigkeit wird in eine horizontale und eine vertikale Komponente zerlegt:
 
@@ -95,16 +91,16 @@ $v_{0y} = v_0 \cdot \sin(\alpha)$
 
 Diese beiden Komponenten beschreiben die Bewegung in horizontaler bzw. vertikaler Richtung getrennt voneinander. [@OpenStaxProjectileEquations]
 
-### Horizontale Bewegung
+##### Horizontale Bewegung
 Da in horizontaler Richtung keine beschleunigende Kraft wirkt, bleibt die horizontale Geschwindigkeitskomponente konstant. Es handelt sich somit um eine gleichförmige Bewegung. Der in horizontaler Richtung zurückgelegte Weg ergibt sich aus dem Produkt von horizontaler Geschwindigkeit und Zeit.
 
 Für die horizontale Bewegung gilt (unter der Annahme, dass der Luftwiderstand vernachlässigt wird):
 
 $x(t) = v_0 \cdot \cos(\alpha) \cdot t$
 
-Dabei bezeichnet $x(t)$ die horizontale Entfernung vom Abwurfpunkt, $v_0$ die Anfangsgeschwindigkeit, $\alpha$ den Abwurfwinkel und $t$ die vergangene Zeit seit dem Abwurf. [@OpenStaxProjectileEquations]
+Dabei bezeichnet $x(t)$ die horizontale Entfernung vom Abwurfpunkt, $v_0$ die Anfangsgeschwindigkeit, $alpha$ den Abwurfwinkel und $t$ die vergangene Zeit seit dem Abwurf. [@OpenStaxProjectileEquations]
 
-### Vertikale Bewegung
+##### Vertikale Bewegung
 
 In vertikaler Richtung wirkt die Erdanziehungskraft. Dadurch wird der Körper gleichmäßig nach unten beschleunigt. Neben der Anfangsgeschwindigkeit muss daher auch die Erdbeschleunigung $g$ berücksichtigt werden.
 
@@ -114,7 +110,7 @@ $y(t) = h_0 + v_0 \cdot \sin(\alpha) \cdot t - \frac{1}{2} \cdot g \cdot t^2$
 
 Hierbei beschreibt $y(t)$ die Höhe des Körpers über dem Boden, $h_0$ die Abwurfhöhe und $g$ die Erdbeschleunigung ($g \approx 9{,}81\,\mathrm{m/s^2}$). [@OpenStaxProjectileEquations]
 
-### Mathematische Berechnung
+##### Mathematische Berechnung
 
 Für die mathematische Berechnung des schiefen Wurfs werden die Anfangsbedingungen $v_0$, $\alpha$ und $h_0$ verwendet. Die Anfangsgeschwindigkeit wird dabei in eine horizontale und eine vertikale Komponente zerlegt:
 
@@ -123,7 +119,7 @@ $v_{0x} = v_0 \cdot \cos(\alpha)$ und $v_{0y} = v_0 \cdot \sin(\alpha)$.
 Damit lässt sich die Bewegung in beiden Richtungen getrennt beschreiben und anschließend zur gesamten Flugbahn zusammenführen. [@OpenStaxProjectileEquations]
 
 
-### Bahnkurve des schiefen Wurfs
+###### Zeitliche Darstellung
 
 Um die tatsächliche Form der Flugbahn zu bestimmen, muss die Zeit (t) aus den Gleichungen eliminiert werden. Ziel ist es, die Höhe (y) direkt in Abhängigkeit von der horizontalen Entfernung (x) zu beschreiben. In der folgenden Herleitung wird der Luftwiderstand vernachlässigt.
 
@@ -137,9 +133,11 @@ $y(x) = h_0 + x \cdot \tan(\alpha) - \frac{g \cdot x^2}{2 \cdot v_0^2 \cdot \cos
 
 Diese Gleichung hat die Form einer quadratischen Funktion in $x$ und beschreibt damit eine Parabel. [@OpenStaxProjectileEquations]
 
-## Einflussgrößen auf die Flugbahn
+### Einflussgrößen auf die Flugbahn
 
-### Einfluss des Abwurfwinkels
+In diesem Abschnitt wird betrachtet, wie sich die zentralen Einflussgrößen – insbesondere Abwurfwinkel, Anfangsgeschwindigkeit, Abwurfhöhe und Zielentfernung – auf die Form der Flugbahn, ihre maximale Höhe und die Reichweite des Wurfes auswirken.
+
+#### Einfluss des Abwurfwinkels
 
 Bei einem sehr kleinen Abwurfwinkel verläuft die Flugbahn relativ flach. Der Körper steigt nur geringfügig an und erreicht schnell wieder den Boden. Die maximale Höhe ist gering, jedoch kann die horizontale Reichweite bei ausreichender Geschwindigkeit dennoch groß sein.
 
@@ -149,7 +147,7 @@ Erhöht man den Winkel weiter in Richtung 90°, nimmt die horizontale Reichweite
 
 Für jede Wurfbedingung gibt es daher einen optimalen Winkel, der je nach Zielsetzung – maximale Reichweite oder maximale Treffgenauigkeit – unterschiedlich ausfällt. [@DellaSchiava2016]
 
-### Einfluss der Anfangsgeschwindigkeit
+#### Einfluss der Anfangsgeschwindigkeit
 
 Die Anfangsgeschwindigkeit $v_0$ bestimmt, mit welcher Geschwindigkeit der Körper den Abwurfpunkt verlässt. Sie beeinflusst sowohl die maximale Flughöhe als auch die Reichweite des Wurfes.
 
@@ -159,7 +157,7 @@ Ist die Anfangsgeschwindigkeit zu gering, erreicht der Körper das Ziel möglich
 
 Die Anfangsgeschwindigkeit ist daher eine entscheidende Größe für die Bestimmung einer Sollflugbahn. [@DellaSchiava2016]
 
-### Einfluss der Abwurfhöhe
+#### Einfluss der Abwurfhöhe
 
 Die Abwurfhöhe $h_0$ beschreibt die vertikale Position des Körpers im Moment des Abwurfs. Sie beeinflusst die Flugdauer und damit indirekt die Reichweite des Wurfes.
 
@@ -167,30 +165,30 @@ Wird ein Körper aus einer größeren Höhe geworfen, bleibt er länger in der L
 
 In realen Situationen, beispielsweise bei sportlichen Würfen, ist die Abwurfhöhe von der Körpergröße und der Wurfhaltung abhängig. Sie stellt somit einen individuellen Einflussfaktor dar, der bei der Bestimmung einer optimalen Flugbahn berücksichtigt werden muss. [@DellaSchiava2016]
 
-### Einfluss der Zielentfernung
+#### Einfluss der Zielentfernung
 
-Die Entfernung zwischen Abwurfpunkt und Ziel bestimmt, welche Kombination aus Abwurfwinkel $\alpha$ und Anfangsgeschwindigkeit $v_0$ erforderlich ist, um das Ziel zu erreichen. Für jede Distanz existieren dabei unterschiedliche mögliche Kombinationen dieser beiden Parameter.
+Die Entfernung zwischen Abwurfpunkt und Ziel bestimmt, welche Kombination aus Abwurfwinkel $alpha$ und Anfangsgeschwindigkeit $v_0$ erforderlich ist, um das Ziel zu erreichen. Für jede Distanz existieren dabei unterschiedliche mögliche Kombinationen dieser beiden Parameter.
 
 Ein nahe gelegenes Ziel kann sowohl mit einem flachen als auch mit einem steileren Wurf erreicht werden. Bei größeren Distanzen ist eine geeignete Kombination aus Abwurfwinkel und Anfangsgeschwindigkeit entscheidend.
 
 Somit hängt die Sollflugbahn stets von der jeweiligen Zielentfernung ab. Eine universell gültige Flugbahn existiert nicht, sondern sie muss immer an die konkreten Bedingungen angepasst werden. [@DellaSchiava2016]
 
 
-## Bestimmung der Sollflugbahn
+### Bestimmung der Sollflugbahn
 
 Aufbauend auf den theoretischen Grundlagen wird in diesem Kapitel die Sollflugbahn für den Basketballwurf mathematisch bestimmt. Dabei werden die zuvor hergeleiteten Gleichungen des schiefen Wurfs verwendet, um jene Abwurfparameter zu ermitteln, die ein zuverlässiges Treffen des Zielpunktes ermöglichen.
 
-### Definition der Sollflugbahn
+#### Definition der Sollflugbahn
 
 Unter einer Sollflugbahn wird jene Flugkurve verstanden, die unter gegebenen Randbedingungen eine optimale Zielerreichung ermöglicht. Dabei bezeichnet der Begriff „optimal“ diejenige Kombination aus Abwurfwinkel, Anfangsgeschwindigkeit und Abwurfhöhe, bei der ein vorgegebener Zielpunkt mit möglichst hoher Sicherheit getroffen werden kann.
 
-Ziel dieses Kapitels ist es, auf Grundlage der zuvor hergeleiteten Bahnkurve jene Abwurfparameter zu bestimmen, die das Treffen eines definierten Zielpunktes ermöglichen. [@OpenStaxProjectileEquations]
+Ziel dieses Kapitels ist es, auf Grundlage der zuvor hergeleiteten Bahnkurve jene Abwurfparameter zu bestimmen, die das Treffen eines definierten Zielpunktes ermöglichen. Abbildung 2 veranschaulicht dazu unterschiedliche Wurfbögen eines Basketballwurfs. Sichtbar wird, dass sich verschiedene Flugkurven trotz identischem Zielpunkt in ihrer Höhe und Steilheit unterscheiden. Die Darstellung ist an dieser Stelle wichtig, weil sie den Begriff der Sollflugbahn anschaulich macht und zeigt, warum die Wahl eines geeigneten Wurfbogens für die Trefferwahrscheinlichkeit entscheidend ist. [@OpenStaxProjectileEquations]
 
 ![Sollflugbahn](img/Sollflugbahn_foto.png)
 
-Abbildung: Einfluss des Wurfbogens auf die Trefferwahrscheinlichkeit beim Basketballwurf. Quelle: [@noah-shooting-arc]
+Abbildung: Unterschiedliche Wurfbögen beim Basketballwurf und ihr Einfluss auf die Trefferwahrscheinlichkeit. Quelle: [@noah-shooting-arc]
 
-### Mathematische Bedingung für das Treffen eines Zielpunktes
+#### Mathematische Bedingung für das Treffen eines Zielpunktes
 
 Die Flugbahn eines geworfenen Körpers wird durch die Bahnkurvengleichung des schiefen Wurfs beschrieben (siehe Kapitel 4.5.6):
 
@@ -242,21 +240,21 @@ Ist diese Bedingung nicht erfüllt, reicht der gewählte Winkel nicht aus, um di
 
 
 
-### Optimaler Einfallswinkel beim Basketballwurf
+#### Optimaler Einfallswinkel beim Basketballwurf
 
 
-Der Einfallswinkel, mit dem der Ball den Korb trifft, hat entscheidenden Einfluss auf die Wahrscheinlichkeit eines erfolgreichen Treffers. Je steiler der Einfallswinkel, desto größer ist die effektiv nutzbare Öffnung des Korbs aus der Perspektive des Balls. Dieser Zusammenhang ist in Abbildung 3 dargestellt.
+Der Einfallswinkel, mit dem der Ball den Korb trifft, hat entscheidenden Einfluss auf die Wahrscheinlichkeit eines erfolgreichen Treffers. Abbildung 3 zeigt dazu mehrere beispielhafte Einfallswinkel von 90°, 60°, 30° und 20° sowie darunter die jeweils sichtbare Öffnung des Rings aus Sicht des anfliegenden Balls. Die Darstellung macht anschaulich, dass ein steilerer Einfallswinkel zu einer größeren wirksamen Trefferfläche führt, während ein flacher Wurf die nutzbare Öffnung verkleinert.
 
 ![optimaler Einfallswinkel](img/einfallswinkel.jpeg)
 
-Abbildung: Zusammenhang zwischen Einfallswinkel des Basketballs und der effektiven Trefferfläche des Rings. Quelle: [@researchgate-entry-angle]
+Abbildung: Vergleich verschiedener Einfallswinkel des Basketballs und der dadurch veränderten effektiven Trefferfläche des Rings. Quelle: [@researchgate-entry-angle]
 
-Bei einem senkrechten Einfall von 90° erscheint der Korb als voller Kreis mit maximaler Trefferfläche. Mit abnehmendem Einfallswinkel wird diese Fläche elliptisch und kleiner. Aus den geometrischen Verhältnissen von Ball- und Ringdurchmesser ergibt sich ein minimaler Einfallswinkel von etwa 32°, unterhalb dessen der Ball den Ring zwangsläufig berührt.
+Bei einem senkrechten Einfall von 90° erscheint der Korb als nahezu voller Kreis mit maximaler Trefferfläche. Bei 60° ist die Öffnung weiterhin relativ groß, während sie bei 30° und besonders bei 20° deutlich schmaler und elliptischer wirkt. Dadurch sinkt die Toleranz gegenüber kleinen Abweichungen, sodass der Ball den Ring leichter vorne oder hinten berührt und der Wurf eher scheitert. Aus den geometrischen Verhältnissen von Ball- und Ringdurchmesser ergibt sich ein minimaler Einfallswinkel von etwa 32°, unterhalb dessen der Ball den Ring zwangsläufig berührt.
 
-Beim Basketballwurf sollte daher ein möglichst steiler Einfallswinkel angestrebt werden, um die Toleranz gegenüber kleinen Abweichungen beim Abwurf zu maximieren. [@researchgate-entry-angle]
+Die Abbildung ist an dieser Stelle wichtig, weil sie den Zusammenhang zwischen Wurfbogen, effektiver Korböffnung und Trefferwahrscheinlichkeit direkt sichtbar macht. Beim Basketballwurf sollte daher ein möglichst steiler Einfallswinkel angestrebt werden, um die Toleranz gegenüber kleinen Abweichungen beim Abwurf zu maximieren. [@researchgate-entry-angle]
 
 
-### Geometrische Bedingungen beim Basketballwurf
+#### Geometrische Bedingungen beim Basketballwurf
 
 Die zuvor beschriebenen physikalischen Zusammenhänge gelten allgemein für den schiefen Wurf. Beim Basketballwurf müssen jedoch zusätzlich die geometrischen Eigenschaften von Ball und Korb berücksichtigt werden, da diese präziser bestimmen, unter welchen Bedingungen ein Wurf erfolgreich sein kann.
 
@@ -281,13 +279,20 @@ Die konkrete Implementierung und der praktische Entwicklungsablauf werden im ans
 
 Python ist eine interpretierte, objektorientierte Programmiersprache, die sich durch eine klare und gut lesbare Syntax auszeichnet. Aufgrund ihrer Einfachheit sowie ihrer großen Anzahl an verfügbaren Bibliotheken wird sie häufig im wissenschaftlichen Bereich, in der Datenanalyse sowie in technischen Anwendungen eingesetzt. Besonders im mathematischen und ingenieurtechnischen Umfeld bietet Python zahlreiche Werkzeuge zur numerischen Berechnung, grafischen Darstellung und automatisierten Auswertung von Daten. [@PythonDocs]
 
-#### Warum wurde Python gewählt?
+#### Begründung der Wahl von Python
 
 Für die Umsetzung der mathematischen Modelle wurde Python gewählt, da die Programmiersprache eine effiziente Durchführung umfangreicher Berechnungen ermöglicht. Insbesondere bei der wiederholten Berechnung von Flugbahnen mit variierenden Parametern bietet Python den Vorteil einer schnellen und reproduzierbaren Ausführung. Darüber hinaus erlaubt Python eine übersichtliche Strukturierung der Berechnungsschritte, wodurch die Nachvollziehbarkeit der mathematischen Herleitungen gewährleistet bleibt. [@PythonDocs]
 
-![Beispiel eines Python-Programmcodes](img/Python.png)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Beispiel eines Python-Listings zur Berechnung einer Flugbahn" .python}
+import numpy as np
 
-Die Abbildung zeigt einen typischen Python-Codeausschnitt mit klarer Struktur, gut lesbarer Syntax und nachvollziehbarer Verarbeitung von Daten. Solche Merkmale sind charakteristisch für Python und unterstützen eine präzise sowie systematische Umsetzung mathematischer und analytischer Aufgaben.
+alpha = np.deg2rad(52.0)
+v0 = 7.20
+x = np.linspace(0, 5.20, 100)
+y = 1.95 + x * np.tan(alpha) - (9.81 * x**2) / (2 * v0**2 * np.cos(alpha)**2)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Der kurze Python-Codeausschnitt veranschaulicht die Berechnung einer Flugbahn und macht die direkte Umsetzung mathematischer Zusammenhänge in Python sichtbar. Gerade für wiederholte Berechnungen und nachvollziehbare Auswertungen ist diese strukturierte Darstellung im Projekt besonders vorteilhaft.
 
 #### Vorteile von Python im Projektkontext
 Im Projektkontext bietet Python folgende Vorteile:
@@ -310,7 +315,7 @@ Obwohl es sich nicht um eine vollständige integrierte Entwicklungsumgebung (IDE
 
 ![Visual Studio Code](img/vs-code.png)
 
-Die Abbildung zeigt die typische Arbeitsoberfläche von Visual Studio Code mit Editorbereich, Dateistruktur und integrierten Werkzeugen. Damit wird nachvollziehbar, warum sich die Umgebung für die strukturierte Bearbeitung von Quellcode und Dokumentation eignet.
+Abbildung 4 zeigt die typische Arbeitsoberfläche von Visual Studio Code mit Editorbereich, Dateistruktur und integrierten Werkzeugen. Sichtbar sind insbesondere der zentrale Codebereich, die seitliche Projektstruktur und zusätzliche Funktionen zur Navigation und Bearbeitung. Dadurch wird nachvollziehbar, warum sich die Umgebung für die strukturierte Bearbeitung von Quellcode und Dokumentation eignet.
 
 
 #### Eignung von Visual Studio Code für das Projekt
@@ -369,13 +374,14 @@ Weitere unterstützende Bibliotheken wurden für organisatorische oder technisch
 
 Für die praktische Auswertung werden zwei Objekte benötigt: Ball und Korb. Der Ball wird frameweise über OpenCV/YOLO lokalisiert und bei unsicheren Frames manuell korrigiert. Der Korb wird als räumlich stabiler Referenzbereich im Bild festgelegt, damit Distanz- und Höhenbezüge konsistent bleiben.
 
-Die erforderliche Genauigkeit ergibt sich direkt aus dem Modell: Schon kleine Lagefehler des Ballzentrums wirken sich auf abgeleitete Größen wie Abwurfwinkel $/alpha/$, Anfangsgeschwindigkeit $v_0$ und die rekonstruierte Kurvenform aus. Deshalb werden Plausibilitätsprüfungen, zeitliche Konsistenzregeln und Glättung eingesetzt, bevor Parameter aus den Punktfolgen berechnet werden.
+Die erforderliche Genauigkeit ergibt sich direkt aus dem Modell: Schon kleine Lagefehler des Ballzentrums wirken sich auf abgeleitete Größen wie Abwurfwinkel $alpha$, Anfangsgeschwindigkeit $v_0$ und die rekonstruierte Kurvenform aus. Deshalb werden Plausibilitätsprüfungen, zeitliche Konsistenzregeln und Glättung eingesetzt, bevor Parameter aus den Punktfolgen berechnet werden.
 
 ### Einordnung der Echtzeitverarbeitung
 
 Das primäre Ziel dieser Arbeit ist eine nachvollziehbare und reproduzierbare Analyse, nicht eine vollständig in Echtzeit laufende Spielfeldanwendung. Die aktuelle Pipeline arbeitet daher überwiegend in der Nachverarbeitung nach der Aufnahme.
 
 Eine Echtzeitverarbeitung ist grundsätzlich möglich, erfordert jedoch stabile Hardwareleistung, niedrige Latenz in der Objekterkennung und robuste Online-Validierung der Positionsdaten. Im Projekt wird diese Perspektive als Ausbaurichtung betrachtet; der hier dokumentierte Schwerpunkt liegt auf der methodisch sauberen Offline-Auswertung.
+
 
 
 
