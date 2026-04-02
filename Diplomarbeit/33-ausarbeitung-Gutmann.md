@@ -9,7 +9,7 @@ Das Backend bildet die technische Grundlage für die Speicherung, Verarbeitung u
 
 Die zentrale Aufgabe des Backends besteht darin, die aus den Analyseprozessen entstehenden Daten strukturiert zu persistieren und über definierte Schnittstellen bereitzustellen. Zusätzlich übernimmt das Backend die Berechnung statistischer Kennzahlen, die Trainingsfortschritte messbar machen. Dadurch entsteht eine objektive Grundlage, um Würfe nicht nur einzeln zu betrachten, sondern auch über längere Zeiträume hinweg zu vergleichen und Entwicklungen sichtbar zu machen.
 
-## Backend
+### Backend
 
 ![Backend](img/Backend_hell.png)
 
@@ -21,9 +21,8 @@ Im Kontext dieser Diplomarbeit ist das Backend von zentraler Bedeutung, da es di
 
 ![Übersicht wie das Backend mit den anderen Teilen der DA zusammenhängt](img/Zusammenhaenge_Projekt.png)
 
-## Spring Boot
+### Spring Boot
 
-### Was ist Spring Boot
 Spring Boot ist ein Java-basiertes Framework zur Entwicklung serverseitiger Anwendungen. Es baut auf dem Spring Framework auf und erweitert dieses um Funktionen, die den Projektstart und die Konfiguration deutlich vereinfachen. Ziel ist es, schnell lauffähige und produktionsnahe Anwendungen zu erstellen, ohne dass umfangreiche manuelle Konfiguration erforderlich ist.
 
 ![Spring Boot nach dem Start der Application](img/SpringBoot.png)
@@ -36,12 +35,12 @@ Spring Boot eignet sich besonders für die Entwicklung von Backend-Systemen und 
 
 Besonders relevant für das vorliegende Projekt waren dabei die einfache Integration von Spring Data JPA, die standardisierte Projektstruktur sowie die Möglichkeit, das Backend rasch lokal zu starten und zu testen. Dadurch konnte eine stabile technische Grundlage für die Verarbeitung und Bereitstellung der Analyseergebnisse geschaffen werden.[@SpringBootUseCases]
 
-### Was ist eine REST-API
+### REST-API
 Eine REST-API (Representational State Transfer Application Programming Interface) ist eine Programmierschnittstelle, die die Kommunikation zwischen unterschiedlichen Softwaresystemen über das HTTP-Protokoll ermöglicht. Daten und Funktionen werden dabei in Form von Ressourcen bereitgestellt, auf die Clients gezielt zugreifen können.
 
 Die Datenübertragung erfolgt häufig im JSON-Format. Ein Client kann beispielsweise Spieler-, Trainings- oder Statistikdaten abrufen sowie neue Daten an das Backend senden. REST beschreibt dabei ein allgemeines Konzept zur Gestaltung von Webschnittstellen und ist nicht an ein bestimmtes Framework gebunden. Die konkrete Umsetzung kann beispielsweise mit Spring Boot erfolgen.[@RedHatRESTAPI]
 
-### Wie ist die Funktionsweise von REST-API
+#### Funktionsweise von REST-API
 Die Funktionsweise einer REST-API basiert auf dem Prinzip, dass Daten als Ressourcen betrachtet werden, die über eindeutige URLs erreichbar sind. Jede Ressource wird über HTTP-Methoden angesprochen, wobei jede Methode eine bestimmte Bedeutung hat:
 
   - GET: Daten abrufen (z. B. alle Spieler anzeigen)
@@ -66,7 +65,7 @@ Ein wesentliches Merkmal von REST ist außerdem die Statelessness. Das bedeutet,
 
 Im vorliegenden Projekt stellt die REST-API die Verbindung zwischen Frontend und Backend her. Über sie können beispielsweise Spielerinnen und Spieler registriert, Trainingseinheiten verwaltet, Analysedaten importiert und statistische Kennzahlen abgerufen werden.
 
-### Was versteht man unter CRUD?
+### CRUD?
 CRUD ist ein Grundkonzept der Datenverarbeitung und beschreibt die vier grundlegenden Operationen, die in fast jedem datenbasierten System vorkommen. CRUD steht für:
 
   - Create: Daten erstellen (z. B. neuen Spieler anlegen)
@@ -79,7 +78,7 @@ CRUD ist ein Grundkonzept der Datenverarbeitung und beschreibt die vier grundleg
 
 Diese vier Operationen bilden die Basis für die Verwaltung von Daten in Datenbanken und werden in REST-APIs meist direkt durch HTTP-Methoden abgebildet: Create -> POST, Read -> GET, Update -> PUT/PATCH, Delete -> DELETE.[@IBMCRUD]
 
-## Spring Initializer
+### Spring Initializer
 Der Spring Initializr ist ein webbasiertes Tool, das die Erstellung eines neuen Spring-Boot-Projekts deutlich vereinfacht. Anstatt ein Projekt manuell aufzusetzen und alle benötigten Bibliotheken selbst zu konfigurieren, kann über den Spring Initializr in wenigen Schritten eine fertige Projektstruktur generiert werden.
 
 Dabei werden unter anderem die Programmiersprache, das Build-Tool, die verwendete Spring-Boot-Version sowie die benötigten Abhängigkeiten ausgewählt. Auf Basis dieser Angaben erzeugt der Spring Initializr automatisch ein Projekt mit passender Ordnerstruktur, einer Startklasse, einer vorkonfigurierten Build-Datei und den notwendigen Grundeinstellungen für Spring Boot.
@@ -88,19 +87,17 @@ Der Vorteil besteht darin, dass die grundlegende Projektkonfiguration schnell, s
 
 ![Überblick Spring Initializer, zur Erstellung des Projekts](img/SpringInitializer.png)
 
-## Programiersprache und Entwicklungstools
-
-### Was ist Java?
+### Java vs. JavaScript
 Java ist eine objektorientierte Programmiersprache, die ursprünglich mit dem Ziel entwickelt wurde, plattformunabhängige Anwendungen zu ermöglichen. Ein zentrales Prinzip von Java lautet „Write once, run anywhere“. Java-Programme werden dabei in Bytecode übersetzt und anschließend von der Java Virtual Machine (JVM) ausgeführt, wodurch dieselbe Anwendung auf unterschiedlichen Betriebssystemen laufen kann.
 
 Java wird häufig für größere, strukturierte Softwareprojekte eingesetzt, da die Sprache stark typisiert ist, viele Bibliotheken bietet und sich gut für wartbare und skalierbare Anwendungen eignet.[@OracleJavaOverview]
 
-### Was ist JavaScript?
+#### Was ist JavaScript?
 JavaScript ist eine Skriptsprache, die hauptsächlich für die Entwicklung von interaktiven Webanwendungen verwendet wird. Ursprünglich wurde JavaScript dafür entwickelt, Webseiten im Browser dynamisch zu machen, z. B. durch Formvalidierung, Animationen oder das Nachladen von Inhalten ohne Seitenreload.
 
 Heute wird JavaScript nicht nur im Browser, sondern auch serverseitig eingesetzt (z. B. mit Node.js). Dadurch kann JavaScript sowohl im Frontend als auch im Backend verwendet werden, je nach Technologie-Stack.[@MDNJavaScriptIntroduction]
 
-### Wofür wird Java verwendet?
+#### Einsatz von Java
 Java wird in vielen Bereichen eingesetzt, besonders dort, wo Stabilität, Struktur und Performance wichtig sind. Typische Anwendungsbereiche sind:
 
   - Backend-Entwicklung (z. B. REST-APIs mit Spring Boot)
@@ -113,7 +110,7 @@ Java wird in vielen Bereichen eingesetzt, besonders dort, wo Stabilität, Strukt
 
 In diesem Projekt ist Java vor allem relevant, weil damit das Backend umgesetzt wird und Spring Boot als Java-Framework darauf aufbaut.[@OracleJavaApplications]
 
-### Wofür wird JavaScript verwendet
+#### Einsatz von JavaScript
 JavaScript wird vor allem für Webentwicklung genutzt, insbesondere für alles, was im Browser interaktiv sein soll. Typische Einsatzbereiche sind:
 
   - Frontend-Entwicklung (Benutzeroberflächen, dynamische Inhalte)
@@ -126,7 +123,7 @@ JavaScript wird vor allem für Webentwicklung genutzt, insbesondere für alles, 
 
 In vielen Projekten wird JavaScript eingesetzt, um das Frontend zu bauen, das dann über eine API mit dem Backend kommuniziert.[@MDNJavaScriptOverview]
 
-### Unterschied zwischen Java und JavaScript
+#### Unterschiede zwischen Java und JavaScript
 Obwohl die Namen ähnlich klingen, sind Java und JavaScript zwei unterschiedliche Programmiersprachen mit unterschiedlichen Zielen und Eigenschaften:
 
   - **Syntax und Konzept:** Java ist objektorientiert und stark typisiert, während JavaScript dynamisch typisiert ist und flexibler verwendet werden kann.
@@ -139,7 +136,7 @@ Obwohl die Namen ähnlich klingen, sind Java und JavaScript zwei unterschiedlich
 
 Java ist eine klassische Sprache für strukturierte, größere Anwendungen (z. B. Backends), während JavaScript vor allem für Webentwicklung und Interaktivität im Browser eingesetzt wird.[@MDNJavaScriptVsJava]
 
-## IntelJ IDA
+### IntelJ IDA
 IntelliJ IDEA ist eine integrierte Entwicklungsumgebung von JetBrains, die insbesondere für die Entwicklung mit Java eingesetzt wird. Sie bietet Funktionen wie Code-Vervollständigung, Fehlererkennung in Echtzeit, Refactoring-Werkzeuge sowie Debugging und unterstützt dadurch eine effiziente und strukturierte Softwareentwicklung.
 
 Im vorliegenden Projekt wurde IntelliJ IDEA hauptsächlich für die Entwicklung und Verwaltung des Spring-Boot-Backends eingesetzt. Dadurch konnten Abhängigkeiten über Maven eingebunden, Klassen strukturiert erstellt und die Anwendung lokal ausgeführt und getestet werden.[JetBrainsIntelliJIDEA]
@@ -148,7 +145,7 @@ Im vorliegenden Projekt wurde IntelliJ IDEA hauptsächlich für die Entwicklung 
 ![Ansicht IntelJ](img/IntelJUeberblick.png)
 
 
-## Visual Studio Code
+### Visual Studio Code
 Visual Studio Code ist ein leichter, plattformübergreifender Code-Editor von Microsoft, der sich durch seine hohe Erweiterbarkeit auszeichnet. Er unterstützt zahlreiche Programmiersprachen und bietet Funktionen wie Syntax-Highlighting, Debugging, integriertes Terminal sowie Git-Integration.
 
 Im Projekt wurde Visual Studio Code ergänzend eingesetzt, insbesondere für allgemeine Codearbeiten und projektübergreifende Anpassungen. Durch Erweiterungen lässt sich der Editor flexibel an unterschiedliche Anforderungen anpassen, wodurch er sich gut für moderne Softwareprojekte eignet.[@MicrosoftVSCodeOverview]
@@ -156,20 +153,19 @@ Im Projekt wurde Visual Studio Code ergänzend eingesetzt, insbesondere für all
 ![Überblick Visual Studio Code](img/VisualStudioCodeUeberblick.png)
 
 
-## Postman
+### Postman
 Postman ist ein Tool zur Entwicklung und zum Testen von REST-APIs. Es ermöglicht, HTTP-Anfragen wie GET, POST, PUT/PATCH und DELETE direkt an ein Backend zu senden, ohne dass dafür bereits ein fertiges Frontend notwendig ist. Dabei können Request-Details wie Header, Parameter und ein JSON-Body einfach eingestellt werden. Postman zeigt anschließend die Antwort des Servers übersichtlich an, inklusive Statuscode und Rückgabedaten. Dadurch eignet sich das Tool besonders gut, um API-Endpunkte während der Backend-Entwicklung zu prüfen, Fehler zu analysieren und die Funktionalität der Schnittstelle schrittweise zu verifizieren.[@PostmanOverview]
 
 ![Überblick Postman, zur Testung von REST-APIs](img/Postman.png)
 
-## Datenbank
+### Datenbank
 
-### Was ist eine Datenbank?
 Eine Datenbank ist ein System zur strukturierten Speicherung, Organisation und Verwaltung von Daten. Im Gegensatz zu einfachen Dateien werden Informationen in einer Datenbank nach klaren Regeln abgelegt, sodass sie gezielt durchsucht und verarbeitet werden können. Verwaltet wird eine Datenbank in der Regel durch ein Datenbankmanagementsystem (DBMS), das den Zugriff regelt und Funktionen für das Speichern, Abrufen und Bearbeiten von Daten bereitstellt. Dadurch können Daten nicht nur dauerhaft gespeichert, sondern auch konsistent und nachvollziehbar verwaltet werden.[@OracleDatabaseOverview]
 
-### Wofür werden Datenbanken verwendet?
+### Einsatz von Datenbanken
 Datenbanken werden verwendet, um Daten dauerhaft, sicher und effizient verfügbar zu machen. Sie ermöglichen es, Informationen schnell abzufragen, zu filtern, zu sortieren und zu ändern, auch wenn sehr große Datenmengen vorhanden sind. Zudem helfen Datenbanken dabei, Daten logisch zu strukturieren und Beziehungen zwischen verschiedenen Objekten abzubilden (z. B. ein Spieler mit mehreren Trainingseinheiten oder Würfen). In Backend-Systemen sind Datenbanken besonders wichtig, weil sie die Grundlage dafür bilden, dass Anwendungsdaten wie Benutzer, Trainingsdaten oder Analyseergebnisse gespeichert und später für Auswertungen oder zur Anzeige im Frontend wieder abgerufen werden können.[@IBMDatabaseDefinition]
 
-### Was sind Relationale Datenbanken
+### Relationale Datenbanken
 
 Relationale Datenbanken speichern Informationen in tabellarischer Form. Die Daten sind in Tabellen (Relationen) organisiert, die aus Datensätzen (Zeilen/Tupeln) und Attributen (Spalten) bestehen. Ein Datensatz beschreibt dabei ein konkretes Objekt, beispielsweise einen Spieler oder einen einzelnen Basketballwurf, während die Attribute die jeweiligen Eigenschaften dieses Objekts (z. B. Name, Zeitpunkt, Winkel oder Treffer) definieren.
 
@@ -193,7 +189,7 @@ In Spring Boot wird H2 oft als Entwicklungsdatenbank verwendet, weil sie schnell
 ### MySQL
 MySQL ist ein weit verbreitetes relationales Datenbankmanagementsystem, das für die dauerhafte Speicherung strukturierter Daten in produktiven Systemen eingesetzt wird. Die Daten werden in Tabellen organisiert und mithilfe von SQL effizient abgefragt und bearbeitet. MySQL wird häufig in Web- und Backend-Anwendungen verwendet, da es stabil, performant und für den Dauerbetrieb geeignet ist.[@MySQLOverview]
 
-#### Was ist der Unterschied zwischen H2 Datenbank und MySql
+#### Unterschied zwischen H2 Datenbank und MySql
 Die H2-Datenbank und MySQL sind beide relationale Datenbanken, unterscheiden sich jedoch vor allem in ihrem Einsatzgebiet und ihrer Betriebsart:
 
 - **Einsatzbereich:** H2 wird meist für Entwicklung und Tests genutzt, während MySQL typischerweise in produktiven Systemen eingesetzt wird.
@@ -205,7 +201,7 @@ Die H2-Datenbank und MySQL sind beide relationale Datenbanken, unterscheiden sic
 - **Skalierbarkeit und Leistung:** MySQL ist für größere Datenmengen, mehrere Benutzer und dauerhafte Nutzung optimiert. H2 ist eher für kleinere lokale Umgebungen gedacht.[@BaeldungH2vsMySQL]
 
 
-## Entity-Relationship-Modell
+### Entity-Relationship-Modell
 
 Relationale Datenbanken speichern Informationen in tabellarischer Form. Die Daten sind in Tabellen (Relationen) organisiert, die aus Datensätzen (Zeilen/Tupeln) und Attributen (Spalten) bestehen. Ein Datensatz beschreibt dabei ein konkretes Objekt, beispielsweise einen Spieler oder einen einzelnen Basketballwurf, während die Attribute die jeweiligen Eigenschaften dieses Objekts (z. B. Name, Zeitpunkt, Winkel oder Treffer) definieren.
 
@@ -213,7 +209,7 @@ Zur eindeutigen Identifikation eines Datensatzes wird in jeder Tabelle ein Prim�
 
 Durch diese Verknüpfungen lassen sich Daten logisch miteinander verbinden, ohne Informationen mehrfach abzulegen. Mehrfach gespeicherte Informationen bezeichnet man als Redundanzen (z. B. wenn der Name eines Spielers in vielen Wurf-Datensätzen wiederholt gespeichert wird). Redundanzen erhöhen das Risiko von Fehlern, da Änderungen dann an mehreren Stellen durchgeführt werden müssten. Die Vermeidung solcher Redundanzen verbessert die Datenkonsistenz, also die Eigenschaft, dass Daten innerhalb der Datenbank widerspruchsfrei und korrekt bleiben (z. B. ein Spielername ist überall gleich und nicht in unterschiedlichen Varianten gespeichert). Zusätzlich erleichtert diese Struktur die Durchführung von Abfragen und statistischen Auswertungen, da Zusammenhänge zwischen Objekten (z. B. Spieler und Trainingseinheit und Würfe) klar modelliert und gezielt ausgewertet werden können.[@IBMRelationalDatabase]
 
-### Zentrale Begriffe des ER-Modells
+#### Zentrale Begriffe des ER-Modells
 
 - **Entität**  
   Eine Entität beschreibt ein eindeutig identifizierbares Objekt aus dem Anwendungsbereich. Im Projekt sind dies beispielsweise Spieler*innen, Trainingseinheiten oder einzelne Würfe. Entitäten werden später als Tabellen in der Datenbank umgesetzt.
@@ -224,12 +220,12 @@ Durch diese Verknüpfungen lassen sich Daten logisch miteinander verbinden, ohne
 - **Beziehung**  
   Beziehungen stellen die Verknüpfungen zwischen Entitäten dar. Sie definieren, wie Objekte zueinander in Beziehung stehen, etwa dass eine Spielerin mehrere Trainingseinheiten absolvieren kann oder dass eine Trainingseinheit aus mehreren Würfen besteht.[@LucidchartERModel]
 
-### Unterschied zwischen Beziehungen und Kardinalitäten
+#### Unterschied zwischen Beziehungen und Kardinalitäten
 
 - **Beziehungen** beschreiben, dass zwei Entitäten miteinander verknüpft sind (z. B. Spieler hat Trainingseinheiten).
 - **Kardinalitäten** beschreiben, wie viele Objekte an dieser Beziehung beteiligt sein können (z. B. 1:n = ein Spieler kann viele Trainingseinheiten haben).[@LucidchartERRelationships]
 
-### Was sind Kardinalitäten
+#### Was sind Kardinalitäten
 Neben Entitäten, Attributen und Beziehungen sind Kardinalitäten ein zentrales Element des ER-Modells. Sie beschreiben, wie viele Objekte einer Entität mit Objekten einer anderen Entität in Beziehung stehen können. Kardinalitäten helfen dabei, die Struktur einer Datenbank korrekt zu planen und später sauber in Tabellen und Fremdschlüssel-Beziehungen umzusetzen.
 
 - **1:1-Beziehung (One-to-One)**
@@ -250,11 +246,11 @@ Neben Entitäten, Attributen und Beziehungen sind Kardinalitäten ein zentrales 
   Beispiel: Studierende können mehrere Kurse besuchen und jeder Kurs hat mehrere Studierende.
   In relationalen Datenbanken wird eine n:m-Beziehung üblicherweise über eine Zwischentabelle (Join-Tabelle) umgesetzt, die die Primärschlüssel beider Entitäten als Fremdschlüssel enthält.[@LucidchartCardinality]
 
-## ER Diagramme
+### ER Diagramme
 
 Ein ER-Diagramm ist eine grafische Darstellung des Entity-Relationship-Modells und wird verwendet, um die Struktur einer Datenbank übersichtlich zu planen. Es zeigt, welche Entitäten im System vorkommen, welche Attribute diese besitzen und wie die Entitäten miteinander in Beziehung stehen. Dadurch eignet sich ein ER-Diagramm besonders gut, um komplexe Datenmodelle verständlich zu visualisieren, bevor diese in einer relationalen Datenbank umgesetzt werden.
 
-### Notationsformen von ER-Diagrammen
+#### Notationsformen von ER-Diagrammen
 
 - **Chen-Notation**
 
@@ -272,20 +268,18 @@ Ein ER-Diagramm ist eine grafische Darstellung des Entity-Relationship-Modells u
 
   Zwar kein klassisches ER-Notation-System, aber häufig in objektorientierten Projekten genutzt. Klassen entsprechen dabei oft Entitäten, Attribute werden innerhalb der Klasse dargestellt, und Beziehungen werden als Assoziationen mit Multiplizitäten (z. B. 1..*, 0..1) angegeben. UML ist besonders praktisch, wenn Datenmodell und Code-Design eng zusammenhängen.[@LucidchartERDiagramNotation]
 
-## Java Persistand API (JPA)
+### Java Persistand API (JPA)
 
 JPA, die Java Persistence API, ist eine Java-Standardspezifikation für die objekt-relationale Persistenz. Sie beschreibt, wie Java-Objekte in einer relationalen Datenbank gespeichert, gelesen und verwaltet werden können. JPA legt dabei fest, wie Persistenz grundsätzlich funktioniert, beispielsweise über Annotationen wie wie ```@Entity```, ```@Id```, ```@OneToMany```, stellt jedoch selbst keine konkrete Implementierung bereit.
 
 Durch JPA kann die Arbeit mit der Datenbank auf einer höheren Abstraktionsebene erfolgen. Anstatt SQL direkt zu formulieren, werden Objekte gespeichert und abgefragt, wodurch der Code in vielen Fällen übersichtlicher und besser wartbar wird.[@OracleJPAOverview]
 
-### Annotationen
+#### Annotationen
 Annotationen sind spezielle Markierungen im Quellcode, die zusätzliche Informationen über Klassen, Methoden oder Variablen enthalten. In Java sind sie am @-Symbol erkennbar. Sie verändern nicht direkt den Programmablauf, sondern dienen Frameworks und Tools als Metadaten, um bestimmtes Verhalten automatisch umzusetzen.
 
 Im Backend dieser Diplomarbeit werden Annotationen beispielsweise verwendet, um eine Klasse als Datenbank-Entität zu kennzeichnen ```@Entity```, Primärschlüssel zu definieren ```@Id``` oder REST-Endpunkte zu definieren ```@RestController```, ```@GetMapping```. Dadurch wird Konfiguration direkt in den Code verlagert, was die Struktur klarer und die Entwicklung effizienter macht.[@OracleJavaAnnotations]
 
 ## Praktische Arbeit
-
-### Vorbereitung
 
 Bevor mit der eigentlichen Implementierung des Backends begonnen wurde, fand eine gemeinsame Planungs- und Analysephase mit allen Teammitgliedern statt. Ziel dieser Phase war es, die Schnittstellen zwischen den einzelnen Projektteilen frühzeitig zu definieren und ein gemeinsames Verständnis über benötigte Daten, Formate und Funktionalitäten zu schaffen.
 
@@ -295,7 +289,7 @@ Parallel dazu wurden die Anforderungen des Frontends analysiert. Das Frontend be
 
 Auf Basis dieser Analyse wurden die zentralen Aufgaben des Backends konkretisiert. Der Fokus lag dabei auf dem Entwurf einer geeigneten Datenbankstruktur, der Modellierung der benötigten Datenobjekte sowie der Bereitstellung von Schnittstellen zur Kommunikation mit dem Frontend. Durch dieses strukturierte Vorgehen konnte eine belastbare Grundlage geschaffen werden, auf der die weitere Backend-Entwicklung systematisch aufbauen konnte.
 
-### Ergebnis der Planungsphase
+### Planungsphase
 
 Als Ergebnis der gemeinsamen Planungsphase konnten die grundlegenden Anforderungen an das Backend eindeutig festgelegt werden. Ziel war es, einen klaren und nachvollziehbaren Datenfluss zwischen Videoanalyse, Backend und Frontend zu definieren und spätere Schnittstellenänderungen möglichst zu vermeiden.
 
@@ -307,7 +301,7 @@ Zusätzlich wurden die Anforderungen des Frontends konkretisiert. Das Frontend b
 
 Abschließend wurde festgelegt, dass die Kommunikation zwischen Frontend und Backend über eine REST-Schnittstelle erfolgt. Die Datenübertragung findet im JSON-Format statt, wodurch eine plattformunabhängige und erweiterbare Kommunikation ermöglicht wird. Diese Entscheidungen bildeten die Grundlage für die nachfolgenden technischen Umsetzungen im Backend und stellten sicher, dass die einzelnen Projektteile nahtlos ineinandergreifen.
 
-## Technische Umsetzung
+### Technische Umsetzung
 Nach Abschluss der Planungsphase wurde das Backend technisch umgesetzt. Ziel war es, eine stabile Basis zu schaffen, auf der Daten aus der Videoanalyse importiert, dauerhaft gespeichert und über eine REST-Schnittstelle für das Frontend bereitgestellt werden können. Für die Implementierung wurde ein Java-basierter Technologie-Stack gewählt, da dieser insbesondere in Kombination mit Spring Boot eine strukturierte Entwicklung von Webservices ermöglicht.
 
 ### Projektanlage und Entwicklungsumgebung 
@@ -337,11 +331,11 @@ Nachdem alle gewünschten Angaben im Spring Initializr korrekt eingetragen und d
 
 ![Projekt nach dem Öffnen in IntelJ](img/AnfangProjekt.png)
 
-## Erstellung eines ER-Diagramms
+### Erstellung eines ER-Diagramms
 
 Bevor die Datenbank technisch angebunden und im Backend umgesetzt wurde, wurde das Datenmodell zunächst mithilfe eines ER-Diagramms in Draw.io grafisch modelliert. Dadurch konnten Entitäten, Attribute und Beziehungen frühzeitig strukturiert dargestellt und vor der Implementierung fachlich überprüft werden.
 
-Im ER-Diagramm wurden die zentralen Entitäten Player, TrainingSession, Shot, FlightData und Video definiert. Zusätzlich wurden die zugehörigen Attribute, wie Identifikationsnummern, Zeitstempel sowie analyserelevante Parameter wie Winkel, Geschwindigkeiten und Positionswerte, festgelegt.
+Im ER-Diagramm siehe Abbildung 44 wurden die zentralen Entitäten Player, TrainingSession, Shot, FlightData und Video definiert. Zusätzlich wurden die zugehörigen Attribute, wie Identifikationsnummern, Zeitstempel sowie analyserelevante Parameter wie Winkel, Geschwindigkeiten und Positionswerte, festgelegt.
 
 Die Kardinalitäten wurden dabei wie folgt modelliert: Ein Player kann mehrere TrainingSessions besitzen, jede TrainingSession ist jedoch genau einem Player zugeordnet (1:n). Eine TrainingSession besteht aus mehreren Shots, wobei jeder Shot genau zu einer TrainingSession gehört (1:n). Im aktuellen Modell ist einer TrainingSession genau ein Video zugeordnet, und jedes Video gehört genau zu einer TrainingSession (1:1). Für jeden erkannten Wurf wird ein Datensatz in FlightData gespeichert, der die berechneten Flugparameter enthält.
 
@@ -351,10 +345,10 @@ Der Ablauf ist so gestaltet, dass das Frontend das Video über eine REST-Schnitt
 
 ![ER-Diagramm des Backend-Datenmodells](img/ER-DIAGRAMM_hell.png)
 
-## Datenbankanbindung
+### Datenbankanbindung
 Nach der Erstellung des ER-Diagramms wurde im nächsten Schritt die Datenbankanbindung im Backend umgesetzt. Ziel war es, eine funktionierende Persistenzschicht bereitzustellen, damit die aus der Videoanalyse importierten Daten dauerhaft gespeichert und für Abfragen sowie statistische Auswertungen verwendet werden können. Für die Entwicklungsphase wurde eine H2-Datenbank eingesetzt, da sie leichtgewichtig ist und ohne zusätzliche Installation direkt mit Spring Boot betrieben werden kann.
 
-### Test der Datenbankverbindung mit einer lokalen H2-Datenbank
+#### Test der Datenbankverbindung mit einer lokalen H2-Datenbank
 
 Um die korrekte Datenbankanbindung frühzeitig zu überprüfen, wurde zunächst eine H2-Dateidatenbank manuell angelegt. Dafür wurde im Ordner
 
@@ -680,7 +674,7 @@ Im Projekt sind im Service-Package unter anderem folgende Klassen vorhanden:
 
     Die Methode loginPlayer(...) implementiert eine einfache Login-Logik, indem ein Player über die E-Mail gesucht und das gespeicherte Passwort mit dem eingegebenen Passwort verglichen wird. Ergänzend stellt getUserById(...) eine Zugriffsfunktion bereit, um Spielerinnen und Spieler anhand der ID abzurufen.[@SpringFrameworkService] [@LombokRequiredArgsConstructor]
 
-Das folgende Listing zeigt die Implementierung des PlayerService. Es verdeutlicht, dass Validierung, Normalisierung und Persistenz nicht im Controller, sondern in der Service-Schicht gebündelt werden.
+Das Listing Nr. 31 zeigt die Implementierung des PlayerService. Es verdeutlicht, dass Validierung, Normalisierung und Persistenz nicht im Controller, sondern in der Service-Schicht gebündelt werden.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="PlayerService" .java}
 package at.htlle.backend.service;
@@ -774,7 +768,7 @@ In deinem Projekt gibt es unter anderem:
    - GET /api/users/{playerId}
     Liefert einen Benutzer anhand der ID. Wird kein Datensatz gefunden, antwortet der Controller mit 404 Not Found.
 
-Das folgende Listing zeigt die Implementierung des PlayerController. Es verdeutlicht, dass die Controller-Schicht auf die HTTP-Kommunikation fokussiert bleibt, während die eigentliche Verarbeitung im PlayerService erfolgt.
+Das Listing Nr. 32 zeigt die Implementierung des PlayerController. Es verdeutlicht, dass die Controller-Schicht auf die HTTP-Kommunikation fokussiert bleibt, während die eigentliche Verarbeitung im PlayerService erfolgt.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="PlayerController" .java}
 package at.htlle.backend.controller;
@@ -879,9 +873,9 @@ Im Projekt sind die DTOs nach Funktionsbereichen gegliedert, beispielsweise in d
 
   - dto/dashboard (Dashboard-Übersicht)
 
-### Implementireung des config Package
+### Implementierung des config-Package
 
-Im Package config werden Klassen gesammelt, die technische Einstellungen für das Backend zentral definieren. Das betrifft vor allem Themen wie CORS, Web-Konfiguration und spätere Erweiterungen, etwa im Bereich Security oder Interceptors. Der Vorteil besteht darin, dass diese Einstellungen nicht auf einzelne Controller verteilt werden, sondern zentral an einer Stelle gebündelt sind.[@SpringFrameworkCors] [SpringFrameworkWebMvcConfig]
+Im Package config werden Klassen gesammelt, die technische Einstellungen für das Backend zentral definieren. Das sind vor allem Themen wie CORS, Web-Konfiguration und spätere Erweiterungen, etwa im Bereich Security oder Interceptors notwendig. Der Vorteil besteht darin, dass diese Einstellungen nicht auf einzelne Controller verteilt werden, sondern zentral an einer Stelle gebündelt sind.[@SpringFrameworkCors] [SpringFrameworkWebMvcConfig]
 
 Im Projekt wurden hierfür unter anderem die Klassen CorsConfig.java und WebConfig.java angelegt.
 
