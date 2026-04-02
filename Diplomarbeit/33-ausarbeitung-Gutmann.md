@@ -43,23 +43,23 @@ Die Datenübertragung erfolgt häufig im JSON-Format. Ein Client kann beispielsw
 #### Funktionsweise von REST-API
 Die Funktionsweise einer REST-API basiert auf dem Prinzip, dass Daten als Ressourcen betrachtet werden, die über eindeutige URLs erreichbar sind. Jede Ressource wird über HTTP-Methoden angesprochen, wobei jede Methode eine bestimmte Bedeutung hat:
 
-  - GET: Daten abrufen (z. B. alle Spieler anzeigen)
+    - GET: Daten abrufen (z. B. alle Spieler anzeigen)
 
-  - POST: neue Daten anlegen (z. B. neuen Spieler erstellen)
+    - POST: neue Daten anlegen (z. B. neuen Spieler erstellen)
 
-  - PUT / PATCH: bestehende Daten ändern (z. B. Trainingseinheit aktualisieren)
+    - PUT / PATCH: bestehende Daten ändern (z. B. Trainingseinheit aktualisieren)
 
-  - DELETE: Daten löschen (z. B. Spieler entfernen)
+    - DELETE: Daten löschen (z. B. Spieler entfernen)
 
 Zusätzlich verwendet eine REST-API HTTP-Statuscodes, um das Ergebnis einer Anfrage zu beschreiben. Beispiele sind:
 
-  - 200 (OK): Anfrage erfolgreich
+    - 200 (OK): Anfrage erfolgreich
 
-  - 201 (Created): Ressource erfolgreich erstellt
+    - 201 (Created): Ressource erfolgreich erstellt
 
-  - 400 (Bad Request): ungültige Anfrage
+    - 400 (Bad Request): ungültige Anfrage
 
-  - 404 (Not Found): Ressource nicht gefunden
+    - 404 (Not Found): Ressource nicht gefunden
 
 Ein wesentliches Merkmal von REST ist außerdem die Statelessness. Das bedeutet, dass jede Anfrage alle notwendigen Informationen enthält und der Server keinen Zustand zwischen zwei Anfragen speichern muss. Dadurch lassen sich Systeme oft einfacher skalieren und warten.[@RedHatRESTPrinciples]
 
@@ -68,13 +68,13 @@ Im vorliegenden Projekt stellt die REST-API die Verbindung zwischen Frontend und
 ### CRUD?
 CRUD ist ein Grundkonzept der Datenverarbeitung und beschreibt die vier grundlegenden Operationen, die in fast jedem datenbasierten System vorkommen. CRUD steht für:
 
-  - Create: Daten erstellen (z. B. neuen Spieler anlegen)
+    - Create: Daten erstellen (z. B. neuen Spieler anlegen)
 
-  - Read: Daten lesen/abrufen (z. B. Spielerinformationen anzeigen)
+    - Read: Daten lesen/abrufen (z. B. Spielerinformationen anzeigen)
 
-  - Update: Daten verändern (z. B. Trainingssession bearbeiten)
+    - Update: Daten verändern (z. B. Trainingssession bearbeiten)
 
-  - Delete: Daten löschen (z. B. Wurfdatensatz entfernen)
+    - Delete: Daten löschen (z. B. Wurfdatensatz entfernen)
 
 Diese vier Operationen bilden die Basis für die Verwaltung von Daten in Datenbanken und werden in REST-APIs meist direkt durch HTTP-Methoden abgebildet: Create -> POST, Read -> GET, Update -> PUT/PATCH, Delete -> DELETE.[@IBMCRUD]
 

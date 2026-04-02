@@ -1,5 +1,5 @@
 
-# Teilaufgabe Wolfgruber Bastian
+# Teilaufgabe Wolfgruber Bastian - Ist-Flugbahn
 \textauthor{Wolfgruber Bastian}
 
 ## Theorie
@@ -77,14 +77,14 @@ Videobild beschreiben.
 Werden diese Punkte miteinander verbunden, ergibt sich eine Parabel, die
 den tatsächlichen Flugweg des Basketballs repräsentiert. [@cao_automatic_2021]
 
-## Videoanalyse-Pipeline
+### Videoanalyse-Pipeline
 
 In der Videoanalyse werden komplexe Auswertungen häufig als
 datengetriebene Pipeline modelliert. Eine solche Pipeline beschreibt
 eine Abfolge klar definierter Verarbeitungsschritte, bei denen Rohdaten
 schrittweise in strukturierte Analyseergebnisse überführt werden. [@szeliski_computer_2022]
 
-### Aufbau einer Analysepipeline
+#### Aufbau einer Analysepipeline
 
 Ausgangspunkt einer Videoanalyse-Pipeline sind Rohvideos, welche visuelle
 Informationen in Form von Bildsequenzen enthalten.
@@ -100,7 +100,7 @@ verarbeitet. Typische Verarbeitungsschritte sind beispielsweise:
 Jeder dieser Schritte erfüllt eine klar definierte Aufgabe innerhalb der
 Analysepipeline. [@szeliski_computer_2022]
 
-### Vorteile einer modularen Architektur
+#### Vorteile einer modularen Architektur
 
 Ein zentrales Gestaltungsprinzip moderner Videoanalyse-Pipelines ist die
 saubere Trennung von Verantwortlichkeiten.
@@ -122,7 +122,7 @@ Verarbeitungsschritte konsistent nachvollziehen und Ergebnisse
 zuverlässig vergleichen. [@szeliski_computer_2022]
 
 
-## Objekt-Tracking in Videosequenzen
+### Objekt-Tracking in Videosequenzen
 
 Objekt-Tracking bezeichnet in der Videoanalyse die kontinuierliche
 Verfolgung eines bestimmten Objekts über mehrere aufeinanderfolgende
@@ -131,9 +131,9 @@ Frames hinweg.
 Ziel ist es, die Position des Objekts in jedem Einzelbild zu bestimmen
 und daraus dessen Bewegungsverlauf abzuleiten. [@opencv_library_2015]
 
-### Tracking-Verfahren
+#### Tracking-Verfahren
 
-#### CSRT-Tracker
+##### CSRT-Tracker
 
 Der CSRT-Tracker (Discriminative Correlation Filter with Channel and Spatial Reliability)
 gehört zu den robusteren Tracking-Verfahren in OpenCV. Er nutzt
@@ -150,7 +150,7 @@ Der Nachteil besteht darin, dass der Algorithmus im Vergleich zu
 einfacheren Trackern mehr Rechenleistung benötigt und daher
 langsamer arbeiten kann. [@lukezic_discriminative_2018]
 
-#### MOSSE-Tracker
+##### MOSSE-Tracker
 
 Der MOSSE-Tracker (Minimum Output Sum of Squared Error) ist ein
 sehr schneller Tracking-Algorithmus, der ebenfalls auf
@@ -164,7 +164,7 @@ Allerdings ist MOSSE weniger robust gegenüber starken
 Veränderungen des Objektbildes oder komplexen Szenen, weshalb
 die Trackinggenauigkeit geringer sein kann. [@opencv_library_2015]
 
-### Funktionsweise von Tracking-Algorithmen
+#### Funktionsweise von Tracking-Algorithmen
 
 Tracking-Algorithmen analysieren die Bildinformationen jedes Frames
 und versuchen, das zuvor definierte Zielobjekt erneut zu identifizieren.
@@ -180,7 +180,7 @@ Durch den Vergleich dieser Merkmale zwischen aufeinanderfolgenden
 Frames kann der Algorithmus die Position des Objekts im Video
 verfolgen. [@opencv_library_2015]
 
-### Herausforderungen beim Objekt-Tracking
+#### Herausforderungen beim Objekt-Tracking
 
 In realen Videosequenzen treten, schon theoretisch, häufig Situationen auf, die das
 Tracking erschweren.
@@ -195,7 +195,7 @@ Dazu gehören unter anderem:
 Diese Faktoren können dazu führen, dass ein Tracker das Zielobjekt
 verliert oder ein falsches Objekt verfolgt. [@lukezic_discriminative_2018]
 
-### Fehlerquellen und Unsicherheiten beim Tracking
+#### Fehlerquellen und Unsicherheiten beim Tracking
 
 Beim Objekt-Tracking können verschiedene Fehlerquellen auftreten,
 welche die Genauigkeit der ermittelten Objektpositionen beeinflussen.
@@ -204,7 +204,7 @@ Diese Unsicherheiten ergeben sich sowohl aus den Eigenschaften
 des Videomaterials als auch aus den eingesetzten Tracking-Algorithmen. 
 [@lukezic_discriminative_2018]
 
-#### Einfluss der Videoqualität
+##### Einfluss der Videoqualität
 
 Die Qualität des Videomaterials hat einen erheblichen Einfluss auf
 die Zuverlässigkeit von Tracking-Algorithmen. Da das Tracking direkt
@@ -245,7 +245,7 @@ beeinträchtigen und dazu führen, dass der Algorithmus den Ball
 nicht korrekt erkennt, seine Position ungenau bestimmt oder
 das Zielobjekt vollständig verliert. [@lukezic_discriminative_2018]
 
-#### Verdeckungen und ähnliche Objekte
+##### Verdeckungen und ähnliche Objekte
 
 Beim Objekt-Tracking kann es zu Problemen kommen, wenn das Zielobjekt
 nicht vollständig sichtbar ist oder sich visuell ähnliche Objekte im
@@ -288,7 +288,7 @@ Solche Situationen stellen eine große Herausforderung für
 Tracking-Systeme dar und müssen bei der Entwicklung von
 Videoanalyseverfahren berücksichtigt werden. [@lukezic_discriminative_2018]
 
-#### Algorithmische Einschränkungen
+##### Algorithmische Einschränkungen
 
 Viele Tracking-Verfahren basieren auf bestimmten Annahmen über
 das Erscheinungsbild oder die Bewegung eines Objekts.
@@ -317,7 +317,7 @@ Diese algorithmischen Einschränkungen führen dazu, dass
 Tracking-Ergebnisse in realen Anwendungen immer mit einer
 gewissen Unsicherheit behaftet sind. [@opencv_library_2015]
 
-## Region of Interest (ROI)
+### Region of Interest (ROI)
 
 ![Manuelle Auswahl einer Region of Interest (ROI)](img/ROIWhat.png)
 
@@ -334,7 +334,7 @@ die Rechenkomplexität reduziert werden,
 da nur ein kleiner Teil des Bildes
 verarbeitet werden muss. [@szeliski_computer_2022]
 
-### Vorteile der Verwendung einer ROI
+#### Vorteile der Verwendung einer ROI
 
 Die Verwendung einer ROI bietet mehrere Vorteile.
 
@@ -346,7 +346,7 @@ werden, da sich der Algorithmus auf einen relevanten Bereich des
 Bildes konzentriert und störende Hintergrundinformationen ignoriert.
 [@szeliski_computer_2022]
 
-### Manuelle und automatische ROI-Auswahl
+#### Manuelle und automatische ROI-Auswahl
 
 Eine Region of Interest kann auf unterschiedliche Weise definiert werden.
 Grundsätzlich wird zwischen einer automatischen Auswahl durch Algorithmen
@@ -355,7 +355,7 @@ Welche Methode eingesetzt wird, hängt von der jeweiligen Anwendung,
 der Qualität des Videomaterials sowie den Anforderungen an Genauigkeit
 und Automatisierung ab.[@szeliski_computer_2022]
 
-#### Manuelle ROI-Auswahl
+##### Manuelle ROI-Auswahl
 
 Bei der manuellen ROI-Auswahl wird der relevante Bildbereich durch eine
 Benutzerinteraktion festgelegt. Dabei markiert die Benutzerin oder der
@@ -373,7 +373,7 @@ da der relevante Bildbereich bewusst und gezielt festgelegt wird.
 Der Nachteil besteht darin, dass ein manueller Eingriff erforderlich ist
 und der Prozess daher weniger automatisiert abläuft.[@szeliski_computer_2022]
 
-#### Automatische ROI-Auswahl
+##### Automatische ROI-Auswahl
 
 Bei der automatischen ROI-Auswahl wird der relevante Bildbereich durch
 einen Algorithmus bestimmt. Dabei analysiert das System das Bild
@@ -389,7 +389,7 @@ der Qualität des Videomaterials sowie von der Komplexität der Szene ab.
 In Situationen mit Verdeckungen, schnellen Bewegungen oder ähnlichen
 Objekten im Hintergrund kann es zu Fehlklassifikationen kommen.[@opencv_selectroi_2026]
 
-## Visualisierung von Bewegungsdaten
+### Visualisierung von Bewegungsdaten
 
 Die Visualisierung von Bewegungsdaten beschreibt die grafische
 Darstellung von Positions- oder Bewegungsinformationen, die aus
@@ -398,7 +398,7 @@ Mess- oder Analyseprozessen gewonnen wurden.
 Ziel ist es, komplexe Bewegungsabläufe anschaulich darzustellen und
 eine intuitive Interpretation der Daten zu ermöglichen. [@opencv_drawing_2026]
 
-### Darstellung von Bewegungsabläufen
+#### Darstellung von Bewegungsabläufen
 
 In der Videoanalyse erfolgt die Visualisierung häufig durch das
 Einzeichnen von Punkten, Linien oder Kurven direkt im Videobild.
@@ -409,7 +409,7 @@ verbunden, entsteht eine visuelle Repräsentation der Bewegung.
 Im Fall eines Basketballwurfs ergibt sich daraus eine Kurve, die
 den Flugweg des Balls beschreibt. [@opencv_drawing_2026]
 
-### Nutzen der Visualisierung
+#### Nutzen der Visualisierung
 
 Solche Visualisierungen ermöglichen es, Bewegungsverläufe zu
 vergleichen, Abweichungen zu erkennen und dynamische Prozesse
@@ -437,7 +437,7 @@ Diese visuelle Gegenüberstellung ermöglicht es, die Qualität eines
 Wurfes objektiver zu bewerten und liefert eine hilfreiche Grundlage
 für die Analyse und Verbesserung der Wurftechnik. [@opencv_drawing_2026]
 
-## Eingesetzte Softwarewerkzeuge und Bibliotheken
+### Eingesetzte Softwarewerkzeuge und Bibliotheken
 
 Für die Entwicklung und Vorbereitung der Videoanalyse wurden verschiedene
 Softwarewerkzeuge eingesetzt. Diese Werkzeuge unterstützen unterschiedliche
@@ -448,7 +448,7 @@ Die Auswahl der Programme erfolgte auf Basis ihrer Funktionalität,
 Verfügbarkeit sowie ihrer Eignung für wissenschaftliche und technische
 Entwicklungsprozesse.
 
-### Programmiersprache: Python
+#### Programmiersprache: Python
 
 Python ist eine weit verbreitete Programmiersprache, die besonders
 häufig in den Bereichen Datenanalyse, wissenschaftliche Berechnung
@@ -482,7 +482,7 @@ Entwicklung komplexer Anwendungen unterstützen. [@python_foundation_2026]
 - Abhängigkeit von externen Bibliotheken für viele spezialisierte Funktionen  
 - Für Echtzeitanwendungen teilweise zusätzliche Optimierung notwendig  
 
-#### OpenCV (`cv2`)
+##### OpenCV (`cv2`)
 
 OpenCV (Open Source Computer Vision Library) ist eine weit verbreitete
 Bibliothek für Bild- und Videoverarbeitung. Sie stellt eine Vielzahl
@@ -508,7 +508,7 @@ und bildet eine zentrale Grundlage für viele Computer-Vision-Systeme.
 - Trackingverfahren können empfindlich auf Verdeckungen oder schwierige Lichtverhältnisse reagieren [@opencv_library_2015]
 
 
-#### NumPy (`numpy`)
+##### NumPy (`numpy`)
 
 NumPy ist eine zentrale Bibliothek für numerische Berechnungen in Python.
 Sie stellt effiziente Datenstrukturen für große Mengen numerischer Daten
@@ -532,7 +532,7 @@ Datenmengen analysiert oder verarbeitet werden müssen.
 - Höherer Speicherbedarf bei sehr großen Datenmengen  
 [@harris_numpy_2020]
 
-#### JSON und Dateisystem (`json`, `os`)
+##### JSON und Dateisystem (`json`, `os`)
 
 Für die strukturierte Speicherung von Konfigurations- und
 Metadaten wird häufig das JSON-Format (JavaScript Object Notation)
@@ -562,7 +562,7 @@ in strukturierter Form zu speichern.
 - Für sehr große Datenmengen weniger effizient als binäre Speicherformate
 [@ecma_json_2017]
 
-### Entwicklungsumgebung: Visual Studio Code
+#### Entwicklungsumgebung: Visual Studio Code
 
 ![Entwicklungsumgebung Visual Studio Code während der Implementierung des Trackingprogramms](img/VSCodeProject.png){width=\textwidth}
 
@@ -588,7 +588,7 @@ Durch diese Eigenschaften eignet sich Visual Studio Code besonders gut
 für experimentelle Entwicklungsprozesse, wie sie in Projekten der
 Bild- und Videoverarbeitung häufig auftreten. [@microsoft_vscode_2026]
 
-### Videobearbeitung: DaVinci Resolve
+#### Videobearbeitung: DaVinci Resolve
 
 ![Videobearbeitung der Wurfvideos in DaVinci Resolve](img/davinciresolve.png){width=\textwidth}
 
@@ -670,7 +670,7 @@ Clips bilden die standardisierten Eingabedaten für die
 anschließende Videoanalyse sowie für das Tracking des
 Basketballs.
 
-## Darstelung der Ist-Flugbahn
+### Darstelung der Ist-Flugbahn
 
 Video laden -> Startframe wählen -> ROI definieren -> Tracker starten -> Position speichern -> Flugbahn visualisieren
 
@@ -730,7 +730,7 @@ Das resultierende Overlaybild mit der eingezeichneten Ist-Flugbahn
 sowie die exportierten Trackingdaten bilden die Grundlage für den
 anschließenden Vergleich mit der berechneten Soll-Flugbahn. [@bradski_opencv_2000]
 
-## Automatische Ballerkennung und ihre Grenzen
+### Automatische Ballerkennung und ihre Grenzen
 
 Zu Beginn der Entwicklung wurde versucht, den Basketball in jedem Frame des Videos
 automatisch zu erkennen. Ziel dieses Ansatzes war es, den gesamten Analyseprozess
@@ -746,7 +746,7 @@ nicht zuverlässig funktioniert.
 Die Ursachen hierfür liegen in mehreren technischen Herausforderungen, die bei
 realen Sportaufnahmen auftreten.
 
-### Bewegungsunschärfe des Basketballs
+#### Bewegungsunschärfe des Basketballs
 
 Während der Flugphase bewegt sich der Basketball mit hoher Geschwindigkeit durch
 das Bild. Abhängig von der Bildrate der Kamera und der Belichtungszeit entsteht
@@ -761,7 +761,7 @@ Dies führt dazu, dass der Ball in einzelnen Frames nicht erkannt wird oder
 fälschlicherweise andere Bildbereiche als Zielobjekt identifiziert werden.
 [@tai_motion_2011]
 
-### Ähnliche Farben und Bildstrukturen
+#### Ähnliche Farben und Bildstrukturen
 
 ![Fehlinterpretation durch ähnliche Farben](img/orangetrikot.png){width=\textwidth}
 
@@ -779,7 +779,7 @@ denen der Algorithmus einen falschen Bildbereich als Ball interpretiert.
 Solche Fehler führen zu inkonsistenten Positionsdaten und können die rekonstruierte
 Flugbahn stark verfälschen. [@yilmaz_object_2006]
 
-### Verdeckungen während der Abwurfphase
+#### Verdeckungen während der Abwurfphase
 
 Besonders problematisch ist die Phase unmittelbar vor dem Abwurf des Balls.
 In dieser Situation befindet sich der Basketball sehr nahe an der Hand des
@@ -792,7 +792,7 @@ Situationen das Zielobjekt häufig nicht eindeutig identifizieren.
 Gerade diese Phase ist jedoch für die Analyse der Flugbahn besonders wichtig,
 da hier der Übergang vom Abwurf zur Flugbewegung stattfindet. [@yilmaz_object_2006]
 
-### Unterschiedliche Ballgrößen im Bild
+#### Unterschiedliche Ballgrößen im Bild
 
 ![Zu kleine Region of Interest (ROI)](img/ROIzuklein.png){width=100%}
 
@@ -821,7 +821,7 @@ zur ursprünglichen ROI ändern. In ungünstigen Fällen
 kann dies zu ungenauen Positionsbestimmungen oder
 zum Verlust des Trackings führen. [@yilmaz_object_2006]
 
-### Verwechslung mit anderen Objekten im Bild
+#### Verwechslung mit anderen Objekten im Bild
 
 ![Fehlverfolgung eines Körperteils des Schützen anstelle des Basketballs](img/qualitatsverlust.png){width=100%}
 
@@ -856,7 +856,7 @@ Aus diesem Grund war eine rein automatische Objekterkennung für die vorliegende
 Videoaufnahmen nicht ausreichend zuverlässig und musste durch ein stabileres
 Trackingverfahren mit manueller Initialisierung ergänzt werden. [@yilmaz_object_2006]
 
-### Konsequenzen für die Flugbahnbestimmung
+#### Konsequenzen für die Flugbahnbestimmung
 
 Für die Rekonstruktion der Ist-Flugbahn ist eine kontinuierliche und konsistente
 Positionsfolge des Balls erforderlich. Einzelne Fehlklassifikationen oder
@@ -869,9 +869,9 @@ Stattdessen wurde ein Tracking-Verfahren eingesetzt, bei dem der Ball nach einer
 Initialisierung kontinuierlich über die Videosequenz hinweg verfolgt wird.
 [@opencv_drawing_2026]
 
-## Lösungsansatz: Manuelle Initialisierung der Region of Interest (ROI)
+### Lösungsansatz: Manuelle Initialisierung der Region of Interest (ROI)
 
-### Manuelle Auswahl der Region of Interest (ROI)
+#### Manuelle Auswahl der Region of Interest (ROI)
 
 ![Manuelle ROI-Auswahl](img/ROI.png){width=75%}
 
@@ -936,7 +936,7 @@ Automatisierungsanforderungen oder Echtzeitverarbeitung
 wären daher weiterführende Verfahren zur automatischen
 Objekterkennung notwendig.
 
-### Manuelle Auswahl des Korbrings (Rim)
+#### Manuelle Auswahl des Korbrings (Rim)
 
 ![Definition der Rim-Position durch zwei manuell gesetzte Referenzpunkte (P1 und P2)](img/rim_auswahl.png){width=\textwidth}
 
@@ -986,7 +986,7 @@ Durch die manuelle Auswahl des Korbrings wird sichergestellt, dass die
 Referenzposition unabhängig von Bildrauschen, Hintergrundstrukturen oder
 anderen visuellen Störeinflüssen eindeutig festgelegt ist.
 
-## Visualisierung der Flugbahnen
+### Visualisierung der Flugbahnen
 
 Die visuelle Darstellung der berechneten Flugbahnen
 stellt einen wichtigen Bestandteil der Videoanalyse dar.
@@ -1000,7 +1000,7 @@ des Wurfes, wie beispielsweise die Höhe der Flugbahn
 oder seitliche Abweichungen, visuell erkennen und
 analysieren. [@opencv_drawing_2026]
 
-### Visualisierung der Ist-Flugbahn
+#### Visualisierung der Ist-Flugbahn
 
 Zur Darstellung der Ist-Flugbahn werden die während des Trackings
 ermittelten Ballpositionen verwendet. Für jedes Videoframe wird die
@@ -1049,7 +1049,7 @@ cv2.imshow("Ist-Flugbahn", overlay)
 
 Es wird vereinfacht gezeigt, wie aus den während des Trackings ermittelten Ballpositionen eine Ist-Flugbahn erzeugt wird. Die einzelnen Positionspunkte werden in zeitlicher Reihenfolge miteinander verbunden (Zeile 5-15) und als Overlay auf dem Videoframe dargestellt (Zeile 19).
 
-#### Korberfolg
+##### Korberfolg
 
 ![Visualisierung der Ist-Flugbahn bei Korberfolg](img/korberfolg.png)
 
@@ -1139,7 +1139,7 @@ dass kurzfristige Positionsänderungen oder
 seitliche Bewegungen des Balls fälschlicherweise
 als Korberfolg interpretiert werden.
 
-#### Fehlwurf
+##### Fehlwurf
 
 ![Visualisierung der Ist-Flugbahn bei Fehlwurf](img/Flugbahn.png){width=%}
 
@@ -1165,7 +1165,7 @@ Diese zusätzlichen Trackingpunkte können hilfreich sein, um
 den Verlauf des Wurfes vollständig zu verstehen und mögliche
 Abweichungen vom Zielpunkt besser zu analysieren.
 
-### Gemeinsame Darstellung von Ist- und Soll-Flugbahn
+#### Gemeinsame Darstellung von Ist- und Soll-Flugbahn
 
 ![Visualisierung der Ist- & Soll-Flugbahn](img/Wurf_combined.png){width=100%}
 
@@ -1231,7 +1231,7 @@ Durch diese visuelle Gegenüberstellung lassen
 sich typische Fehler im Wurfverlauf erkennen
 und gezielt analysieren.
 
-### Export der Trackingdaten als CSV-Datei
+#### Export der Trackingdaten als CSV-Datei
 
 Neben der grafischen Darstellung der Flugbahn
 werden die während des Trackings ermittelten
@@ -1263,7 +1263,7 @@ der Trackingdaten ermöglicht, wodurch eine
 flexible Weiterverarbeitung und Visualisierung
 der Daten gewährleistet ist.
 
-## Technische Herausforderungen bei der Erstellung des Overlays
+### Technische Herausforderungen bei der Erstellung des Overlays
 
 Nach der erfolgreichen Ermittlung der Ist- und Soll-Flugbahn bestand der nächste
 Schritt darin, beide Flugbahnen gemeinsam über das ursprüngliche Videomaterial zu
@@ -1277,7 +1277,7 @@ Bei der Umsetzung dieser Overlay-Darstellung traten jedoch mehrere technische
 Probleme auf, die zunächst zu fehlerhaften oder qualitativ unzureichenden
 Ergebnissen führten.
 
-### Falsche Skalierung des Overlays
+#### Falsche Skalierung des Overlays
 
 Ein erstes Problem bestand in der falschen Skalierung der erzeugten Visualisierung.
 In einigen Fällen wurde die berechnete Flugbahn auf eine Bildgröße gerendert, die
@@ -1295,7 +1295,7 @@ Um eine korrekte Darstellung zu gewährleisten, musste sichergestellt werden,
 dass alle Verarbeitungsschritte im gleichen Koordinatensystem und mit identischer
 Bildauflösung arbeiten. [@opencv_docs_2026]
 
-### Qualitätsverluste im gerenderten Bild
+#### Qualitätsverluste im gerenderten Bild
 
 ![Qualitätsverlust nach dem Tracking](img/schlechte_quali.png){width=110%}
 
@@ -1328,7 +1328,7 @@ Zur Verbesserung der Darstellung wurden die Renderparameter angepasst und
 darauf geachtet, dass möglichst wenige verlustbehaftete Konvertierungsschritte
 durchgeführt werden. [@opencv_docs_2026]
 
-### Synchronisationsprobleme zwischen Flugbahn und Videoframe
+#### Synchronisationsprobleme zwischen Flugbahn und Videoframe
 
 ![Falscher Frame für das Tracking ausgewählt](img/Wurf_falscher_Frame.png){width=110%}
 
@@ -1359,7 +1359,7 @@ Flugbahn exakt auf dem zugehörigen Videoframe dargestellt wird.
 [@szeliski_computer_2022]
 
 
-### Ergebnis der Optimierungen
+#### Ergebnis der Optimierungen
 
 ![Overlay nach Anpassungen](img/wurf2_combined.png){width=110%}
 

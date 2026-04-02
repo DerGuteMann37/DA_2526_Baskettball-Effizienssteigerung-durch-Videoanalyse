@@ -1,5 +1,5 @@
 
-# Teilaufgabe Bacher Fabian – Soll-Flugbahn
+# Teilaufgabe Bacher Fabian - Soll-Flugbahn
 \textauthor{Bacher Fabian} 
 
 Im Alltag sowie in vielen Sportarten spielt das Werfen eines Körpers eine zentrale Rolle. Ob beim Werfen eines Balls, beim Korbwurf im Basketball oder beim gezielten Treffen eines Ziels – häufig gelingt ein Wurf nicht zufällig, sondern folgt bestimmten Gesetzmäßigkeiten. Für den Beobachter erscheint die Flugbahn zunächst schwer vorhersehbar, tatsächlich wird sie jedoch durch physikalische Zusammenhänge bestimmt.
