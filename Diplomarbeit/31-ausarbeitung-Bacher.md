@@ -389,19 +389,17 @@ Eine Echtzeitverarbeitung ist grundsätzlich möglich, erfordert jedoch stabile 
 
 ## Praktische Arbeit
 
-### Beginn der Entwicklung
-
 Zu Projektbeginn lag die zentrale Ausgangslage darin, dass für die Bewertung von Basketballwürfen zwar Videoaufnahmen vorhanden waren, jedoch noch kein verlässlicher technischer Ablauf zur quantitativen Auswertung existierte. Als übergeordnetes Ziel wurde definiert, aus realen Würfen zunächst verwertbare Bilddaten zu gewinnen und damit die Voraussetzungen für spätere Schritte wie automatische Erkennung, Trajektorienanalyse und Soll-Ist-Vergleich zu schaffen. In der Startphase stand daher zunächst nicht die vollständige Automatisierung im Vordergrund, sondern die schrittweise Vorbereitung der Datenerfassung und der späteren Auswertung. Inhaltlich orientierte sich die Auswertung dabei konsequent an den theoretisch hergeleiteten Zielgrößen $\alpha$, $v_0$, Releasepunkt und Zieltreffbedingung.
 
-Als erste Materialien wurden mehrere Beispielvideos mit unterschiedlichen Kamerapositionen, Perspektiven und Beleuchtungssituationen gesammelt. Dabei wurden insbesondere Auflösung, Bildrate, sichtbarer Korbbereich und die relative Größe des Balls im Bild dokumentiert, da diese Faktoren die spätere Erkennbarkeit maßgeblich beeinflussen. Auf Grundlage dieser Beobachtungen wurden frühe Anforderungen festgelegt: Der Ball muss in aufeinanderfolgenden Frames eindeutig lokalisierbar sein, der Korb muss im relevanten Bildausschnitt sichtbar bleiben, und die Verarbeitung muss reproduzierbar über mehrere Clips hinweg durchgeführt werden können. Ein exemplarischer Frame einer solchen Videoaufnahme mit markiertem Ball und Korbbereich ist in Abbildung 6 dargestellt.
+Als erste Materialien wurden mehrere Beispielvideos mit unterschiedlichen Kamerapositionen, Perspektiven und Beleuchtungssituationen gesammelt. Dabei wurden insbesondere Auflösung, Bildrate, sichtbarer Korbbereich und die relative Größe des Balls im Bild dokumentiert, da diese Faktoren die spätere Erkennbarkeit maßgeblich beeinflussen. Auf Grundlage dieser Beobachtungen wurden frühe Anforderungen festgelegt: Der Ball muss in aufeinanderfolgenden Frames eindeutig lokalisierbar sein, der Korb muss im relevanten Bildausschnitt sichtbar bleiben, und die Verarbeitung muss reproduzierbar über mehrere Clips hinweg durchgeführt werden können. Ein exemplarischer Frame einer solchen Videoaufnahme mit markiertem Ball und Korbbereich ist in Abbildung 5 dargestellt.
 
 ![Beispielhafter Video-Frame eines Basketballwurfs mit markiertem Ball und Korbbereich](img/p-1.png)
 
-Zu den ersten Prototypen gehörten das Extrahieren einzelner Frames aus Videosequenzen, die manuelle Markierung von Ballpositionen sowie einfache Visualisierungen der Punkte über der Zeit. Für diese initialen Versuche wurde Python als Entwicklungsumgebung gewählt, da die Sprache eine schnelle prototypische Umsetzung erlaubt, während OpenCV grundlegende Funktionen für Videoeinlesen, Framezugriff und Bilddarstellung bereitstellt. Ein Beispiel einer manuellen Ballmarkierung über mehrere Frames ist in Abbildung 7 dargestellt.
+Zu den ersten Prototypen gehörten das Extrahieren einzelner Frames aus Videosequenzen, die manuelle Markierung von Ballpositionen sowie einfache Visualisierungen der Punkte über der Zeit. Für diese initialen Versuche wurde Python als Entwicklungsumgebung gewählt, da die Sprache eine schnelle prototypische Umsetzung erlaubt, während OpenCV grundlegende Funktionen für Videoeinlesen, Framezugriff und Bilddarstellung bereitstellt. Ein Beispiel einer manuellen Ballmarkierung über mehrere Frames ist in Abbildung 6 dargestellt.
 
 ![Manuelle Markierung der Ballposition über mehrere Frames zur ersten Rekonstruktion der Flugbahn.](img/p-2.png)
 
-Die nummerierten Punkte in Abbildung 7 kennzeichnen die manuell erfassten Ballpositionen in aufeinanderfolgenden Frames. Dadurch wird die zeitliche Reihenfolge der Bewegung sichtbar und eine erste Rekonstruktion der Flugbahn ermöglicht.
+Die nummerierten Punkte in Abbildung 6 kennzeichnen die manuell erfassten Ballpositionen beginnend mit dem Abwurf beziehungsweise dem ersten relevanten Release-Frame. Dadurch wird die zeitliche Reihenfolge der Bewegung sichtbar und eine erste Rekonstruktion der Flugbahn ermöglicht.
 
 Bereits in dieser frühen Phase zeigten sich typische Herausforderungen wie Bewegungsunschärfe, geringe Ballgröße, ähnliche Hintergrundstrukturen und perspektivische Verzerrungen. Diese Faktoren erschweren eine zuverlässige automatische Erkennung des Balls und mussten daher bei der weiteren Entwicklung berücksichtigt werden. Als Ergebnis der Startphase entstand ein erster belastbarer Machbarkeitsnachweis (Proof of Concept) mit strukturierter Datenablage und klar definierten nächsten Arbeitsschritten in Richtung Kalibrierung der Bilddaten sowie robuster Objekterkennung.
 
@@ -409,9 +407,9 @@ Bereits in dieser frühen Phase zeigten sich typische Herausforderungen wie Bewe
 
 Aufbauend auf der in Kapitel 4.12.1 beschriebenen Startphase wurde im nächsten Entwicklungsschritt eine durchgängige Verarbeitungspipeline definiert, mit der aus Videoaufnahmen verwertbare Bewegungsdaten des Basketballs gewonnen werden können. Ziel dieser Pipeline ist es, den Weg von unstrukturierten Bilddaten bis zu einer quantitativ auswertbaren Trajektorie klar zu standardisieren. Dadurch wird sichergestellt, dass einzelne Würfe unter vergleichbaren Bedingungen verarbeitet und später systematisch gegenübergestellt werden können.
 
-Die technische Umsetzung basiert auf Python als zentraler Programmiersprache, da sich damit Bildverarbeitung, numerische Berechnung und Visualisierung in einer gemeinsamen Umgebung abbilden lassen. Für den Zugriff auf Videodaten und die frameweise Verarbeitung wird OpenCV verwendet. Numerische Operationen, etwa die Verarbeitung von Koordinatenreihen oder die Berechnung von Modellfunktionen, erfolgen mit NumPy. Für grafische Darstellungen und die visuelle Interpretation der Ergebnisse wird Matplotlib eingesetzt. Sofern eine automatische Objekterkennung integriert ist, kann zusätzlich ein YOLO-basiertes Modell zur Balllokalisierung genutzt werden; die Pipeline bleibt jedoch auch mit manueller oder halbautomatischer Punktzuweisung funktionsfähig.[@PythonDocs] [@OpenCVDocs] [@NumPyDocs] [@MatplotlibDocs] [@Redmon2016YOLO]
+Die technische Umsetzung basiert auf Python als zentraler Programmiersprache, da sich damit Bildverarbeitung, numerische Berechnung und Visualisierung in einer gemeinsamen Umgebung abbilden lassen. Für den Zugriff auf Videodaten und die frameweise Verarbeitung wird OpenCV verwendet. Numerische Operationen, etwa die Verarbeitung von Koordinatenreihen oder die Berechnung von Modellfunktionen, erfolgen mit NumPy. Für grafische Darstellungen und die visuelle Interpretation der Ergebnisse wird Matplotlib eingesetzt. Sofern eine automatische Objekterkennung integriert ist, kann zusätzlich ein YOLO-basiertes Modell zur Balllokalisierung genutzt werden; die Pipeline bleibt jedoch auch mit manueller oder halbautomatischer Punktzuweisung funktionsfähig. [@PythonDocs; @OpenCVDocs; @NumPyDocs; @MatplotlibDocs; @Redmon2016YOLO]
 
-Der Ablauf beginnt mit dem Einlesen eines Wurfvideos und der Ermittlung grundlegender Metadaten wie Bildrate, Auflösung und Frameanzahl. Anschließend wird die Sequenz in einzelne Frames überführt beziehungsweise frameweise verarbeitet. Für jeden relevanten Frame wird die Ballposition bestimmt. Diese Positionsermittlung kann je nach Datenqualität und Ausbaustufe der Pipeline auf unterschiedlichen Wegen erfolgen: durch manuelle Markierung, durch regelbasierte Bildverarbeitung oder durch modellbasierte Objekterkennung. Unabhängig von der Methode wird als Ergebnis pro Frame mindestens eine zweidimensionale Koordinate des Ballzentrums gespeichert, ergänzt um den zugehörigen Zeitindex (siehe Abbildung 8).
+Der Ablauf beginnt mit dem Einlesen eines Wurfvideos und der Ermittlung grundlegender Metadaten wie Bildrate, Auflösung und Frameanzahl. Anschließend wird die Sequenz in einzelne Frames überführt beziehungsweise frameweise verarbeitet. Für jeden relevanten Frame wird die Ballposition bestimmt. Diese Positionsermittlung kann je nach Datenqualität und Ausbaustufe der Pipeline auf unterschiedlichen Wegen erfolgen: durch manuelle Markierung, durch regelbasierte Bildverarbeitung oder durch modellbasierte Objekterkennung. Unabhängig von der Methode wird als Ergebnis pro Frame mindestens eine zweidimensionale Koordinate des Ballzentrums gespeichert, ergänzt um den zugehörigen Zeitindex, wie im folgenden Listing zum Einlesen der Videodatei und der Metadaten ersichtlich wird.
 
 Die so entstehende Punktfolge bildet die Grundlage für die Rekonstruktion der Ist-Trajektorie. Da reale Videodaten typischerweise Messrauschen, Ausreißer und einzelne Fehlmessungen enthalten, werden die Rohkoordinaten vor der weiteren Analyse validiert und geglättet. Dazu zählen beispielsweise die Prüfung auf zeitliche Konsistenz, das Entfernen unplausibler Sprünge sowie die Approximation durch eine kontinuierliche Kurve. In der Praxis ergibt sich dadurch eine robuste Näherung der Flugbahn, die den tatsächlichen Bewegungsverlauf besser repräsentiert als die ungefilterte Punktwolke. [@Bradski2008OpenCV]
 
@@ -423,17 +421,86 @@ Damit erfüllt die Pipeline zwei zentrale Anforderungen der Arbeit: Erstens wird
 
 Aufbauend auf der in Kapitel 4.12.2 dargestellten Pipeline wurde die praktische Umsetzung als modular strukturierter Programmablauf in Python realisiert. Ziel dieser Implementierungsphase ist die reproduzierbare Gewinnung von Bewegungsdaten aus Videoaufnahmen von Basketballwürfen. Der Schwerpunkt liegt dabei auf der technischen Verarbeitung der Bilddaten, der Lokalisierung des Balls über mehrere Frames sowie der Rekonstruktion einer konsistenten Flugbahn. Die physikalische Sollflugbahn dient in diesem Zusammenhang als theoretische Grundlage des Modells, steht jedoch nicht als direkte Vergleichsauswertung im Zentrum dieses Arbeitsschritts.
 
-Die Verarbeitung beginnt mit dem Einlesen der Videodatei über OpenCV. Bereits zu diesem Zeitpunkt werden zentrale Metadaten wie Auflösung, Bildrate und Anzahl der Frames ausgelesen, da diese für die zeitliche Einordnung der Bewegung erforderlich sind. Anschließend wird ein relevanter Startbereich im Video festgelegt, um die Berechnung auf den tatsächlichen Wurfabschnitt zu begrenzen. Diese Eingrenzung reduziert die Rechenlast und verbessert die Stabilität der nachfolgenden Schritte, da nur Frames mit inhaltlicher Relevanz verarbeitet werden. Im folgenden Codeausschnitt ist das Einlesen der Videodatei sowie das Auslesen zentraler Metadaten (Bildrate und Frameanzahl) dargestellt. [@OpenCVDocs]
+Die Verarbeitung beginnt mit dem Einlesen der Videodatei über OpenCV. Bereits zu diesem Zeitpunkt werden zentrale Metadaten wie Auflösung, Bildrate und Anzahl der Frames ausgelesen, da diese für die zeitliche Einordnung der Bewegung erforderlich sind. Anschließend wird ein relevanter Startbereich im Video festgelegt, um die Berechnung auf den tatsächlichen Wurfabschnitt zu begrenzen. Diese Eingrenzung reduziert die Rechenlast und verbessert die Stabilität der nachfolgenden Schritte, da nur Frames mit inhaltlicher Relevanz verarbeitet werden. Im folgenden Listing ist das Einlesen der Videodatei sowie das Auslesen zentraler Metadaten dargestellt. [@OpenCVDocs]
 
-![Video einlesen und Metadaten](img/code1.png)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Video einlesen und Metadaten" .python .numberLines startFrom="119"}
+with open(calib_path, "r", encoding="utf-8") as f:
+    calib = json.load(f)
+scale = float(calib["scale_m_per_px"])
+rim_cx, rim_cy = calib["rim_center_px"]
+rim_h = 3.05
 
-Die eigentliche Analyse erfolgt in einer Frame-Schleife. Für jedes Bild wird die Position des Basketballs bestimmt, je nach verfügbarer Konfiguration manuell initialisiert und danach verfolgt oder automatisch über geeignete Erkennungsverfahren lokalisiert. In der praktischen Umsetzung kommen dafür OpenCV-basierte Methoden sowie modellgestützte Verfahren zum Einsatz. Wird ein Tracking-Ansatz verwendet, liefert das Programm pro Frame eine Bounding Box; aus deren Mittelpunkt werden die Ballkoordinaten im Bildraum berechnet. Zusätzlich werden Plausibilitätsprüfungen angewendet, um fehlerhafte Sprünge oder Ausreißer zu erkennen und instabile Messpunkte zu reduzieren. Dadurch entsteht eine robuste und zeitlich geordnete Punktfolge der Ballzentren. Der Ablauf der frameweisen Verarbeitung und die Berechnung der Ballkoordinaten aus einer Bounding Box sind in Abbildung 9 exemplarisch dargestellt. [@IBMBoundingBox]
+# ---------- Video ----------
+cap = cv2.VideoCapture(video)
+if not cap.isOpened():
+    raise SystemExit(f"[ERROR] Kann Video nicht oeffnen: {video}")
 
-![Frame-Schleife & Ballkoordinaten](img/code2.png)
+fps = cap.get(cv2.CAP_PROP_FPS) or 30.0
 
-Die ermittelten Koordinaten werden während der Verarbeitung in geeigneten Datenstrukturen gesammelt und nach Abschluss des Durchlaufs persistent gespeichert. Für die weitere Nutzung werden die Daten als CSV-Datei mit Frame-Index und Pixelkoordinaten sowie als JSON-Zusammenfassung mit Metainformationen exportiert. Diese Trennung zwischen numerischen Rohdaten und Prozessmetadaten unterstützt die Nachvollziehbarkeit der Analyse und erleichtert die spätere Wiederverwendung in Auswertungsskripten. Ergänzend erzeugt das Programm Overlay-Bilder, in denen die rekonstruierten Positionspunkte direkt auf einem Videoframe dargestellt werden. Die Speicherung der ermittelten Ballpositionen in einem reproduzierbaren Datenformat (CSV/JSON) wird in einem weiteren Codeausschnitt dokumentiert.
+# ---------- Startframe & ROI ----------
+start_idx, start_frame, bbox = pick_start_frame_and_roi(cap, rim_cx, rim_cy)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-![CSV/JSON-Speicherung](img/code3.png)
+Die eigentliche Analyse erfolgt in einer Frame-Schleife. Für jedes Bild wird die Position des Basketballs bestimmt, je nach verfügbarer Konfiguration manuell initialisiert und danach verfolgt oder automatisch über geeignete Erkennungsverfahren lokalisiert. In der praktischen Umsetzung kommen dafür OpenCV-basierte Methoden sowie modellgestützte Verfahren zum Einsatz. Wird ein Tracking-Ansatz verwendet, liefert das Programm pro Frame eine Bounding Box; aus deren Mittelpunkt werden die Ballkoordinaten im Bildraum berechnet. Zusätzlich werden Plausibilitätsprüfungen angewendet, um fehlerhafte Sprünge oder Ausreißer zu erkennen und instabile Messpunkte zu reduzieren. Dadurch entsteht eine robuste und zeitlich geordnete Punktfolge der Ballzentren. Das folgende Listing zeigt den Ablauf der frameweisen Verarbeitung und die Berechnung der Ballkoordinaten aus einer Bounding Box exemplarisch. [@IBMBoundingBox]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Frame-Schleife und Berechnung der Ballkoordinaten" .python .numberLines startFrom="155"}
+while True:
+    ok, frame = cap.read()
+    if not ok:
+        print("[INFO] Video zu Ende.")
+        break
+
+    ok_t, bb = tracker.update(frame)
+    if not ok_t:
+        print("[WARN] Tracker hat den Ball verloren.")
+        break
+
+    x, y, w, h = bb
+    cx, cy = x + w / 2, y + h / 2
+
+    dx = cx - last_pt[0]
+    dy = cy - last_pt[1]
+    dist = (dx*dx + dy*dy) ** 0.5
+    if dist > max_step_px:
+        print(f"[WARN] Unplausibler Sprung ({dist:.1f}px) -> Tracking gestoppt.")
+        break
+
+    positions_px.append((cx, cy))
+    last_pt = (cx, cy)
+    frames.append(frame.copy())
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Die ermittelten Koordinaten werden während der Verarbeitung in geeigneten Datenstrukturen gesammelt und nach Abschluss des Durchlaufs persistent gespeichert. Für die weitere Nutzung werden die Daten als CSV-Datei mit Frame-Index und Pixelkoordinaten sowie als JSON-Zusammenfassung mit Metainformationen exportiert. Diese Trennung zwischen numerischen Rohdaten und Prozessmetadaten unterstützt die Nachvollziehbarkeit der Analyse und erleichtert die spätere Wiederverwendung in Auswertungsskripten. Ergänzend erzeugt das Programm Overlay-Bilder, in denen die rekonstruierten Positionspunkte direkt auf einem Videoframe dargestellt werden. Das folgende Listing zeigt die Speicherung der ermittelten Ballpositionen in einem reproduzierbaren Datenformat (CSV/JSON).
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="CSV- und JSON-Speicherung der ermittelten Ballpositionen" .python .numberLines startFrom="225"}
+out_img = os.path.join(outdir, f"{clipname}_ist_overlay.png")
+out_csv = os.path.join(outdir, f"{clipname}_ist_points.csv")
+out_json = os.path.join(outdir, f"{clipname}_ist_summary.json")
+
+np.savetxt(
+    out_csv,
+    np.array(positions_px),
+    fmt="%.3f",
+    delimiter=",",
+    header="x_px,y_px",
+    comments=""
+)
+
+summary = {
+    "video": os.path.relpath(video, PROJECT_ROOT),
+    "fps": float(fps),
+    "scale_m_per_px": float(scale),
+    "rim_center_px": [float(rim_cx), float(rim_cy)],
+    "rim_height_m": float(rim_h),
+    "num_points": int(len(positions_px)),
+    "outputs": {
+        "overlay_image": os.path.relpath(out_img, PROJECT_ROOT),
+        "csv": os.path.relpath(out_csv, PROJECT_ROOT)
+    }
+}
+with open(out_json, "w", encoding="utf-8") as f:
+    json.dump(summary, f, indent=2)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Die Rekonstruktion der Flugbahn erfolgt auf Basis der sequenziellen Ballpositionen. Zunächst liegt eine diskrete Punktmenge vor, die den beobachteten Bewegungsverlauf beschreibt. Mit NumPy werden diese Daten für numerische Berechnungen aufbereitet, etwa für Glättung, Interpolation oder die Ableitung charakteristischer Bahnabschnitte. Auf diese Weise wird aus einzelnen Messpunkten eine zusammenhängende Trajektorie abgeleitet, die den Wurfverlauf im Bildraum konsistent repräsentiert. Für die visuelle Darstellung wird Matplotlib eingesetzt, um Kurvenverläufe, Punktreihen und zeitliche Abschnitte in einer wissenschaftlich klaren Form aufzubereiten.
 
@@ -460,9 +527,7 @@ alpha_deg = 52.0
 alpha = np.deg2rad(alpha_deg)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Dieses Listing definiert die zentralen Parameter der Sollflugbahn und bereitet den Abwurfwinkel für die weitere Berechnung in Radiant auf.
-
-**Herkunft im Projekt:** Dokumentationslisting in dieser Ausarbeitung zur Veranschaulichung der Parameterdefinition des Sollflugbahnmodells; im aktuellen Arbeitsstand liegt dafür keine separate Python-Datei im Repository vor.
+Die festgelegten Startwerte repräsentieren eine typische Wurfsituation und bilden die Ausgangsbasis für die anschließende Berechnung der Sollflugbahn.^[Das Codebeispiel dient in dieser Ausarbeitung der Veranschaulichung der Parameterdefinition des Sollflugbahnmodells; im aktuellen Arbeitsstand liegt dafür keine separate Python-Datei im Repository vor.]
 
 Die zeitabhängigen Bewegungsgleichungen lauten:
 
@@ -506,10 +571,7 @@ v_0 = np.sqrt(g * x_K**2 / nenner)
 print(f"Erforderliche Anfangsgeschwindigkeit: {v_0:.2f} m/s")
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-Dieses Listing zeigt die direkte programmtechnische Umsetzung der Treffbedingung und die Berechnung von $v_0$.
-
-**Herkunft im Projekt:** Dokumentationslisting in dieser Ausarbeitung zur Veranschaulichung der Berechnung von $v_0$ aus der Treffbedingung; im aktuellen Arbeitsstand liegt dafür keine separate Python-Datei im Repository vor.
+Das Beispiel zeigt, wie aus Zielpunkt, Abwurfhöhe und gewähltem Winkel die erforderliche Anfangsgeschwindigkeit berechnet wird.^[Das Codebeispiel dient in dieser Ausarbeitung der Veranschaulichung der Berechnung von $v_0$ aus der Treffbedingung; im aktuellen Arbeitsstand liegt dafür keine separate Python-Datei im Repository vor.]
 
 Eine physikalisch sinnvolle Lösung existiert nur, wenn der Nenner positiv ist:
 
@@ -527,9 +589,7 @@ x = np.linspace(0, x_K, 200)
 y = h_0 + x * np.tan(alpha) - (g * x**2) / (2 * v_0**2 * np.cos(alpha)**2)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Dieses Listing zeigt die diskrete Berechnung der Stützpunkte der Sollflugbahn auf Basis der zuvor bestimmten Modellparameter.
-
-**Herkunft im Projekt:** Dokumentationslisting in dieser Ausarbeitung zur Veranschaulichung der diskreten Berechnung der Sollflugbahn; im aktuellen Arbeitsstand liegt dafür keine separate Python-Datei im Repository vor.
+Aus den diskret berechneten Stützstellen entsteht die Punktfolge, die später als Sollflugbahn grafisch dargestellt werden kann.^[Das Codebeispiel dient in dieser Ausarbeitung der Veranschaulichung der diskreten Berechnung der Sollflugbahn; im aktuellen Arbeitsstand liegt dafür keine separate Python-Datei im Repository vor.]
 
 Optional kann die berechnete Kurve mit Matplotlib visualisiert werden:
 
@@ -542,26 +602,24 @@ plt.xlabel("x [m]"); plt.ylabel("y [m]")
 plt.grid(True, linestyle=":"); plt.legend(); plt.show()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Dieses Listing ergänzt die zuvor berechneten Stützpunkte um eine einfache grafische Darstellung mit Matplotlib und markiert zusätzlich Abwurf- und Zielpunkt.
-
-**Herkunft im Projekt:** Dokumentationslisting in dieser Ausarbeitung zur Veranschaulichung der einfachen Matplotlib-Visualisierung; im aktuellen Arbeitsstand liegt dafür keine separate Python-Datei im Repository vor.
+Die zusätzliche Markierung von Abwurf- und Zielpunkt erleichtert die visuelle Überprüfung der Treffbedingung und macht den Kurvenverlauf besser interpretierbar.^[Das Codebeispiel dient in dieser Ausarbeitung der Veranschaulichung der einfachen Matplotlib-Visualisierung; im aktuellen Arbeitsstand liegt dafür keine separate Python-Datei im Repository vor.]
 
 
 
-Die Auswirkungen variierender Modellparameter auf die Form der Sollflugbahn sind in folgender Abbildung dargestellt. Die Kurven erfüllen jeweils die Treffbedingung am Korbpunkt.
+Abbildung 7 zeigt eine Parameterstudie der Sollflugbahn für mehrere Abwurfwinkel $\alpha$. Für jede Kurve wurde die zugehörige Anfangsgeschwindigkeit $v_0$ so gewählt, dass der Ball trotz unterschiedlicher Wurfbögen denselben Zielpunkt am Korb erreicht. Dadurch wird sichtbar, dass mehrere Parameterkombinationen mathematisch zum gleichen Ziel führen können, sich jedoch deutlich in Scheitelhöhe, Steilheit und Flugverlauf unterscheiden.
 
 ![Parameterstudie der Sollflugbahn](img/abbildung_soll_3_parameterstudie.png)
 
-Dieses Vorgehen ist reproduzierbar, numerisch stabil und für die Simulation verschiedener Wurfsituationen geeignet, da einzelne Parameter gezielt variiert werden können.
+Mit zunehmendem Abwurfwinkel verläuft die Flugbahn höher und steiler; zugleich muss die Anfangsgeschwindigkeit angepasst werden, damit die Treffbedingung weiterhin erfüllt bleibt. Die Abbildung verdeutlicht damit den parameterabhängigen Lösungsraum der Sollflugbahn und zeigt, warum nicht nur ein einziger „richtiger“ Wurfbogen existiert.
 
 Das Modell des schiefen Wurfs ist für diese Anwendung geeignet, weil es die wesentlichen kinematischen Zusammenhänge mit begrenzter Komplexität abbildet. Dadurch entsteht eine nachvollziehbare und technisch umsetzbare Grundlage für die Berechnung der theoretischen Sollflugbahn im Rahmen der Diplomarbeit.
 
 
 
 
-### Grafische Visualisierung der berechneten Sollflugbahn
+### Visualisierung der berechneten Sollflugbahn
 
-Nach der mathematischen Bestimmung der Sollflugbahn folgt die grafische Darstellung als zentraler Schritt der Ergebnisaufbereitung. Die Berechnung liefert zunächst diskrete Stützpunkte $(x_i, y_i)$, weil die numerische Auswertung der Bahnfunktion auf endlich vielen, vorgegebenen $x$-Werten erfolgt. Erst durch die Visualisierung dieser Punktfolge wird der Verlauf der Flugkurve anschaulich und wissenschaftlich interpretierbar. Die Diagrammdarstellung dient damit der strukturierten Aufbereitung der Modellergebnisse.
+Nach der mathematischen Bestimmung der Sollflugbahn folgt ihre Darstellung als zentraler Schritt der Ergebnisaufbereitung. Die Berechnung liefert zunächst diskrete Stützpunkte $(x_i, y_i)$, weil die numerische Auswertung der Bahnfunktion auf endlich vielen, vorgegebenen $x$-Werten erfolgt. Erst durch die Visualisierung dieser Punktfolge wird der Verlauf der Flugkurve anschaulich und wissenschaftlich interpretierbar. Die Diagrammdarstellung dient damit der strukturierten Aufbereitung der Modellergebnisse.
 
 Eine kontinuierlich wirkende Flugkurve entsteht durch die feine Diskretisierung des Bereichs von der Abwurfposition bei $x=0$ bis zur Korbposition bei $x=x_K$. Für jeden Stützpunkt wird der entsprechende Höhenwert $y(x)$ berechnet. Werden die berechneten Stützpunkte $(x_i, y_i)$ in aufsteigender Reihenfolge verbunden, ergibt sich eine glatte Parabel, die die Sollflugbahn approximiert. Die Auflösung der Kurve hängt direkt von der Anzahl der gewählten Stützstellen ab. Das folgende Listing baut dabei direkt auf den zuvor berechneten Arrays `x` und `y` auf und konzentriert sich nur auf die eigentliche Diagrammausgabe.
 
@@ -577,9 +635,7 @@ plt.legend()
 plt.show()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Listing 5 zeigt die grundlegende grafische Ausgabe der Sollkurve auf Basis bereits berechneter Modellparameter $h_0$, $x_K$, $\alpha$, $v_0$ und $g$.
-
-**Herkunft im Projekt:** Dokumentationslisting in dieser Ausarbeitung zur Grunddarstellung der Sollflugbahn; im aktuellen Arbeitsstand liegt dafür keine separate Python-Datei im Repository vor.
+In Listing 9 wird die Sollkurve auf Basis der bereits berechneten Modellparameter $h_0$, $x_K$, $\alpha$, $v_0$ und $g$ grafisch ausgegeben.^[Das Codebeispiel dient in dieser Ausarbeitung der Veranschaulichung der Grunddarstellung der Sollflugbahn; im aktuellen Arbeitsstand liegt dafür keine separate Python-Datei im Repository vor.]
 
 Für die wissenschaftliche Lesbarkeit ist eine einheitliche Darstellung erforderlich: Achsen mit Einheiten, eine Legende zur Kurvenzuordnung und eine Skalierung, die den vollständigen Bahnverlauf vom Abwurf bis zum Zielpunkt zeigt.
 
@@ -591,12 +647,10 @@ plt.annotate("Abwurfpunkt", (0, h_0), xytext=(0.2, h_0 - 0.3))
 plt.annotate("Korbposition", (x_K, h_K), xytext=(x_K - 1.1, h_K + 0.2))
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Das Listing zeigt die zusätzlichen Befehle, mit denen die Grunddarstellung um Referenzpunkte und erläuternde Annotationen erweitert wird.
-
-**Herkunft im Projekt:** Dokumentationslisting in dieser Ausarbeitung zur erweiterten Visualisierung der Sollflugbahn; im aktuellen Arbeitsstand liegt dafür keine separate Python-Datei im Repository vor.
+In Listing 10 wird die Grunddarstellung um Referenzpunkte und erläuternde Annotationen erweitert.^[Das Codebeispiel dient in dieser Ausarbeitung der Veranschaulichung der erweiterten Visualisierung der Sollflugbahn; im aktuellen Arbeitsstand liegt dafür keine separate Python-Datei im Repository vor.]
 
 
-Die praktische Umsetzung der beschriebenen Visualisierung ist in Abbildung 12 als Overlay der berechneten Sollflugbahn auf einem Videoframe dargestellt.
+Die praktische Umsetzung der beschriebenen Visualisierung ist in Abbildung 8 als Overlay der berechneten Sollflugbahn auf einem Videoframe dargestellt.
 
 ![Overlay-Darstellung der berechneten Sollflugbahn mit markierter Abwurfposition](img/wurf1_soll_overlay.png)
 
@@ -604,13 +658,13 @@ Die grafische Darstellung bildet damit die Verbindung zwischen mathematischer Mo
 
 
 
-### Untersuchung des Einflusses der Modellparameter auf die Sollflugbahn
+### Einfluss der Modellparameter auf die Sollflugbahn
 
 Die berechnete Sollflugbahn hängt unmittelbar von den gewählten Modellparametern ab. Bereits kleine Änderungen einzelner Eingangsgrößen führen zu sichtbaren Veränderungen der Kurvenform. Für die technische Bewertung der Modellstabilität ist daher eine gezielte Parameteruntersuchung erforderlich. Im Mittelpunkt stehen dabei Abwurfwinkel, Anfangsgeschwindigkeit und horizontale Distanz zum Zielpunkt, da diese Größen den Verlauf der Parabel direkt bestimmen.
 
 Der Abwurfwinkel beeinflusst vor allem die Krümmung und Gipfelhöhe der Flugkurve – ein Zusammenhang, der in Kapitel 4.6 eingeführt wurde. Im Implementierungskontext ist entscheidend, dass die Treffbedingung nur für physikalisch zulässige Parameterkombinationen erfüllt bleibt; die rechnerische Kopplung ist im Projekt in der Berechnung der erforderlichen Anfangsgeschwindigkeit $v_0$ und der zugehörigen Bahnkurve $y(x)$ umgesetzt.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Berechnung von v0 und y(x) aus Modellparametern" .python}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Berechnung der Anfangsgeschwindigkeit und Bahnkurve aus Modellparametern" .python}
 def solve_v0_for_target(x_k: float, h0: float, h_k: float, alpha_deg: float, g: float = 9.81) -> float:
     alpha = math.radians(alpha_deg)
     denom = 2.0 * (math.cos(alpha) ** 2) * (h0 + x_k * math.tan(alpha) - h_k)
@@ -623,9 +677,7 @@ def y_of_x(x: np.ndarray, h0: float, alpha_deg: float, v0: float, g: float = 9.8
     return h0 + x * math.tan(alpha) - (g * x**2) / (2.0 * v0**2 * (math.cos(alpha) ** 2))
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Herkunft im Projekt:** Funktion `solve_v0_for_target` und Funktion `y_of_x` in create_sollflugbahn_figures.py (keine Klasse, Funktionsimplementierung auf Skriptebene).
-
-Das Listing bündelt die beiden zentralen Modellfunktionen zur Berechnung der Zielgeschwindigkeit und zur Auswertung der Bahnkurve in wiederverwendbarer Form.
+Die beiden Funktionen bilden den Kern der Modellrechnung: `solve_v0_for_target(...)` bestimmt aus Zielgeometrie und Winkel die erforderliche Anfangsgeschwindigkeit, während `y_of_x(...)` daraus die zugehörige Bahnkurve berechnet.^[Im Projekt stammen diese Schritte aus den Funktionen `solve_v0_for_target` und `y_of_x` in `create_sollflugbahn_figures.py`; beide sind auf Skriptebene ohne Klassenstruktur implementiert.]
 
 Die Anfangsgeschwindigkeit bestimmt die Reichweite der Flugkurve (vgl. Kapitel 4.6.2). Im Modell gilt: Eine größere horizontale Distanz zum Korb verschärft die Anforderungen an $v_0$ und den zulässigen Winkelbereich. Diese Abhängigkeit wird im Projekt durch eine systematische Suche über Winkelwerte mit physikalischer Gültigkeitsprüfung umgesetzt.
 
@@ -646,9 +698,7 @@ for theta_deg in np.linspace(theta_min_deg, theta_max_deg, 500):
     v0 = math.sqrt(v0_sq)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Herkunft im Projekt:** Funktion `compute_soll_parabel` in soll_only.py (keine Klasse, Funktionsimplementierung auf Skriptebene).
-
-Das Listing zeigt die systematische Suche über zulässige Winkelwerte und verdeutlicht, wie unphysikalische Parameterkombinationen im Programm ausgeschlossen werden.
+Der gezeigte Ausschnitt durchläuft einen vorgegebenen Winkelbereich schrittweise und verwirft alle Kombinationen, die physikalisch nicht sinnvoll sind. Auf diese Weise bleiben nur jene Parameterwerte erhalten, für die eine realisierbare Sollflugbahn berechnet werden kann.^[Im Projekt entspricht dieser Ausschnitt der Funktion `compute_soll_parabel` in `soll_only.py`; die Implementierung erfolgt dort ebenfalls auf Skriptebene ohne Klassenstruktur.]
 
 Dabei stehen die Variablen für folgende Größen: `theta_deg` ist der getestete Abwurfwinkel in Grad, `cos_t` der Kosinus des Winkels, `dx_abs` die horizontale Distanz zum Ziel und `dy` die Höhendifferenz zwischen Abwurf- und Zielpunkt. Der Ausdruck `denom` ist der Nenner der umgestellten Treffbedingung; mit `denom <= 0` werden nicht physikalisch realisierbare Kombinationen ausgeschlossen. `v0_sq` ist das Quadrat der benötigten Anfangsgeschwindigkeit, aus dem über die Wurzel `v0` berechnet wird.
 
@@ -665,25 +715,19 @@ for x_m in xs_m:
 return pts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Herkunft im Projekt:** Funktion `generate_soll_points` in soll_only.py (keine Klasse, Funktionsimplementierung auf Skriptebene).
+Die Rückgabe `pts` enthält die vollständige Punktfolge, aus der später die visualisierte Sollflugbahn im Pixelkoordinatensystem zusammengesetzt wird.^[Im Projekt basiert dieser Schritt auf der Funktion `generate_soll_points` in `soll_only.py`; auch diese ist direkt auf Skriptebene implementiert.]
 
-Das Listing beschreibt die diskrete Erzeugung der später visualisierten Sollflugbahn im Pixelkoordinatensystem des Videobildes.
-
-Konkret liefert `xs_m` die diskreten Stützstellen entlang der horizontalen Distanz bis zum Zielpunkt. Für jede Stützstelle werden zunächst Flugzeit `t` und Höhe `y_m` im metrischen Modell bestimmt; anschließend erfolgt die Umrechnung in Pixelkoordinaten (`px`, `py`) über den Skalierungsfaktor `scale_m_per_px`. Die Rückgabe `pts` enthält damit die vollständige Punktfolge, die in den Overlay-Abbildungen als Sollkurve gezeichnet wird.
+Konkret liefert `xs_m` die diskreten Stützstellen entlang der horizontalen Distanz bis zum Zielpunkt. Für jede Stützstelle werden zunächst Flugzeit `t` und Höhe `y_m` im metrischen Modell bestimmt; anschließend erfolgt die Umrechnung in Pixelkoordinaten (`px`, `py`) über den Skalierungsfaktor `scale_m_per_px`. Dadurch wird sichtbar, wie aus den physikalisch berechneten Werten die gezeichnete Sollkurve im Videobild entsteht.
 
 ### Sensitivitätsanalyse durch gezielte Releasepunkt-Variation
-Zur Untersuchung der Empfindlichkeit des Modells wurde eine Sensitivitätsanalyse durchgeführt. Dabei wurde für Wurf 5 neben der Referenzkonfiguration eine zweite, gezielt veränderte Konfiguration verwendet. Der Releasepunkt wurde künstlich um $\Delta x = +80\,\mathrm{px}$ und $\Delta y = -30\,\mathrm{px}$ verschoben. Diese Variation dient ausschließlich der Analyse der Parameterwirkung und stellt keinen gemessenen Realwurf dar. Abbildung 13 zeigt zunächst die Referenzdarstellung der berechneten Sollflugbahn als Ausgangsbasis der Untersuchung.
+Zur Untersuchung der Empfindlichkeit des Modells wurde eine Sensitivitätsanalyse durchgeführt. Dabei wurde für Wurf 5 neben der Referenzkonfiguration eine zweite, gezielt veränderte Konfiguration verwendet. Der Releasepunkt wurde künstlich um $\Delta x = +80\,\mathrm{px}$ und $\Delta y = -30\,\mathrm{px}$ verschoben. Diese Variation dient ausschließlich der Analyse der Parameterwirkung und stellt keinen gemessenen Realwurf dar. Abbildung 9 zeigt zunächst die Referenzdarstellung der berechneten Sollflugbahn als Ausgangsbasis der Untersuchung.
 
 ![Referenzdarstellung der berechneten Sollflugbahn](img/abbildung_soll_wurf5_referenz_overlay.png)
 
 
-Als Vergleichsbasis wurde zunächst die Sollflugbahn der Referenzkonfiguration visualisiert. Diese Kurve bildet den Ausgangspunkt für die anschließende gezielte Parameteränderung.
+Als Vergleichsbasis wurde zunächst die Sollflugbahn der Referenzkonfiguration visualisiert. Anschließend wurde diese mit der gezielt veränderten Releaseposition direkt gegenübergestellt.
 
-Abbildung 14 zeigt die Sollflugbahn nach der gezielten Verschiebung des Releasepunkts.
-
-![Sollflugbahn nach gezielter Verschiebung des Releasepunkts](img/abbildung_soll_wurf5_manipuliert_overlay.png)
-
-Die gezielte Verschiebung des Releasepunkts verändert die berechneten Abwurfparameter und damit die Form der Sollkurve; im Vergleich zur Referenz verläuft die manipulierte Kurve sichtbar anders. Dadurch wird die Sensitivität des Modells gegenüber Eingangsparametern konkret nachvollziehbar. Abbildung 15 zeigt den direkten Vergleich zwischen Referenzkonfiguration und manipulierter Releaseposition.
+Abbildung 10 zeigt diesen Vergleich zwischen Referenzkonfiguration und manipulierter Releaseposition; dabei steht eine Kurve für die ursprüngliche Referenz und die zweite für die gezielt veränderte Releaseposition.
 
 ![Direkter Vergleich der Sollflugbahnen (Referenz vs. manipulierte Releaseposition)](img/abbildung_soll_wurf5_referenz_vs_manipuliert.png)
 
@@ -707,14 +751,14 @@ Zusätzlich wirkte sich die Framerate einzelner Smartphone-Aufnahmen limitierend
 
 Auf Ebene der Sollflugbahn-Berechnung traten numerische Randfälle auf. Bestimmte Parameterkombinationen führen in der umgestellten Treffbedingung zu nicht-positiven Nennern oder anderweitig ungültigen Konstellationen. Ohne Schutzmechanismen würden daraus mathematisch formale, aber physikalisch nicht realisierbare Lösungen entstehen. Implementiert wurden daher explizite Gültigkeitsprüfungen, begrenzte Winkelintervalle und schrittweise Fallback-Strategien. Diese Maßnahmen erhöhten in den Testläufen mit variierenden Winkel- und Distanzwerten die Stabilität der Berechnung und stellten sicher, dass nur physikalisch plausible Sollkurven ausgegeben werden.
 
-Eine weitere zentrale Erkenntnis war die hohe Parameterempfindlichkeit des Modells. Schon kleine Änderungen in Release-Position, Winkel oder Distanz führten zu deutlich veränderten Sollflugbahnen, wie im Vergleich der Abbildungen 13 bis 15 sichtbar wird. Diese Sensitivität ist keine Fehlfunktion, sondern eine Eigenschaft des zugrunde liegenden Modells. Für die praktische Arbeit bedeutet das jedoch, dass Eingangsparameter mit großer Sorgfalt gewählt und dokumentiert werden müssen. Zur transparenten Darstellung wurde deshalb eine explizite Sensitivitätsanalyse durchgeführt, inklusive kontrollierter Parametervariationen und visueller Vergleichsdarstellungen.
+Eine weitere zentrale Erkenntnis war die hohe Parameterempfindlichkeit des Modells. Schon kleine Änderungen in Release-Position, Winkel oder Distanz führten zu deutlich veränderten Sollflugbahnen, wie im Vergleich der Abbildungen 11 bis 13 sichtbar wird. Diese Sensitivität ist keine Fehlfunktion, sondern eine Eigenschaft des zugrunde liegenden Modells. Für die praktische Arbeit bedeutet das jedoch, dass Eingangsparameter mit großer Sorgfalt gewählt und dokumentiert werden müssen. Zur transparenten Darstellung wurde deshalb eine explizite Sensitivitätsanalyse durchgeführt, inklusive kontrollierter Parametervariationen und visueller Vergleichsdarstellungen.
 
 Auch die Ergebnisdarstellung stellte eine technische Herausforderung dar. Für die Diplomarbeit mussten die Resultate reproduzierbar, verständlich und wissenschaftlich konsistent aufbereitet werden. Unterschiedliche Clipbedingungen und variierende Parameterausprägungen erschweren eine direkte Vergleichbarkeit. Gelöst wurde dies durch standardisierte Visualisierungsformate, einheitliche Beschriftungskonventionen sowie klare Trennung zwischen Referenzfällen und bewusst manipulierten Sensitivitätsszenarien. Dadurch blieb die Interpretation der Ergebnisse nachvollziehbar und methodisch sauber.
 
 Zusammenfassend hängt der praktische Nutzen des Modells von klaren Randbedingungen ab: ausreichender zeitlicher Vorlauf vor dem Release, geeignete Framerate, plausible Startparameter und robuste Gültigkeitsprüfungen. Sind diese Bedingungen erfüllt, liefert das System konsistente Sollkurven für die theoretische Analyse. Fehlen sie, steigt die Unsicherheit der Ergebnisse deutlich.
 
 
-### Grenzen und Annahmen des Modells
+### Grenzen und Vereinfachungen des Modells
 
 Das verwendete Sollflugbahnmodell ist eine idealisierte Näherung auf Basis des schiefen Wurfs. Der Ball wird als Punktmasse betrachtet, die unter konstanter Erdbeschleunigung bewegt wird. Diese Abstraktion ermöglicht eine reproduzierbare und numerisch stabile Berechnung, reduziert jedoch die Realitätsnähe.
 
@@ -725,7 +769,7 @@ Zusätzlich wird die Bewegung zweidimensional modelliert. Seitliche Abweichungen
 Damit ist das Modell für die theoretische Analyse von Parameterwirkungen gut geeignet, ersetzt aber keine vollständige realphysikalische Beschreibung eines realen Wurfs.
 
 
-### Zusammenfassung des praktischen Teils
+### Zusammenfassung der Teilaufgabe 
 
 Der praktische Teil beantwortet die eingangs formulierten Leitfragen in einer geschlossenen Kette von der Zieldefinition bis zum Ergebnis.
 
@@ -739,4 +783,12 @@ Wie wurden die Einflüsse geprüft und was waren die Erkenntnisse? Über Paramet
 
 Was wurde mit diesen Erkenntnissen gemacht und wie wurden sie umgesetzt? Die Erkenntnisse wurden in konkrete Validierungsregeln übertragen: physikalische Gültigkeitsprüfungen, Konsistenzkontrollen der Punktfolgen, strukturierte Vergleichsplots und klare Trennung zwischen Referenz- und Sensitivitätsszenarien.
 
-Wie hilft das und was ist das Ergebnis? Die Arbeit liefert ein methodisch nachvollziehbares System zur theoretischen Analyse von Wurfszenarien. Unter kontrollierten Randbedingungen entstehen reproduzierbare Sollkurven; gleichzeitig sind Grenzen und Annahmen des Modells transparent ausgewiesen.
+Wie hilft das und was ist das Ergebnis? Die Arbeit liefert ein methodisch nachvollziehbares System zur theoretischen Analyse von Wurfszenarien. Unter kontrollierten Randbedingungen entstehen reproduzierbare Sollkurven; gleichzeitig sind Grenzen und Vereinfachungen des Modells transparent ausgewiesen.
+
+#### Ausblick
+
+Die Ergebnisse dieser Arbeit zeigen, dass die entwickelte Methode grundsätzlich geeignet ist, Wurfbewegungen im Rollstuhlbasketball videobasiert zu analysieren und daraus eine Sollflugbahn abzuleiten. Für einen weiterführenden Einsatz bietet sich insbesondere die Verbesserung der Robustheit gegenüber unterschiedlichen Aufnahmebedingungen an. Dazu zählen variierende Kamerapositionen, Perspektiven, Bildqualitäten und Lichtverhältnisse, die in zukünftigen Arbeiten noch systematischer berücksichtigt werden sollten.
+
+Ein weiterer Entwicklungsschwerpunkt liegt in der weiteren Präzisierung der Release-Erkennung sowie der Vereinheitlichung der gesamten Verarbeitungskette. Ziel sollte es sein, die einzelnen Schritte – von der Detektion relevanter Bildinformationen bis zur Berechnung und Bewertung der Sollflugbahn – noch konsistenter und reproduzierbarer miteinander zu verknüpfen. Dadurch könnte die Aussagekraft der Analyse weiter erhöht und die Übertragbarkeit auf zusätzliche Wurfsituationen verbessert werden.
+
+Darüber hinaus bietet die Arbeit eine gute Grundlage für weiterführende Untersuchungen mit größeren und vielfältigeren Datensätzen. Auf dieser Basis könnten die bestehenden Modelle und Schwellenwerte weiter validiert und angepasst werden, um die Genauigkeit der Analyse langfristig zu steigern. Insgesamt stellt das entwickelte System damit einen vielversprechenden Ansatz dar, der in zukünftigen Arbeiten sowohl methodisch als auch hinsichtlich seiner Anwendbarkeit weiter ausgebaut werden kann.
