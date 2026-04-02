@@ -1018,7 +1018,7 @@ function renderHistory() {
     entry.className =
       'bg-navy-card/50 border border-white/5 rounded-2xl p-3';
     entry.innerHTML =
-      `<strong>Wurf ${i + 1}</strong> – ${h.feedback}<br>` +
+      `<strong>Wurf ${i + 1}</strong> - ${h.feedback}<br>` +
       `<small class="text-xs text-slate-400">${h.date}</small>`;
     historyList.appendChild(entry);
   });
