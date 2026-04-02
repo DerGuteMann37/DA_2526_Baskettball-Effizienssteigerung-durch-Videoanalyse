@@ -1,9 +1,9 @@
 
 # Teilaufgabe Wolfgruber Bastian
-\textauthor{Wolfgruber Bastian} 
-
+\textauthor{Wolfgruber Bastian}
 
 ## Theorie
+
 
 Diese Teilaufgabe beschäftigt sich mit der Analyse von Basketballwürfen
 auf Basis von Videoaufnahmen. Ziel der Arbeit ist es, den tatsächlichen
@@ -16,8 +16,6 @@ Durch diesen Vergleich können Abweichungen zwischen dem realen
 Wurfverlauf und einer idealen Flugbahn erkannt werden. Diese
 Informationen bilden die Grundlage für eine objektive Analyse der
 Wurfbahn.
-
-## Begriffserklärung: Ist-Flugbahn
 
 Die Ist-Flugbahn beschreibt die tatsächlich ausgeführte Flugkurve des Basketballs
 während eines realen Wurfes. Sie basiert auf der Analyse von Videomaterial und stellt
@@ -48,7 +46,7 @@ Auf Basis dieser Abweichungen können gezielt Verbesserungsmöglichkeiten für d
 abgeleitet werden, beispielsweise eine Anpassung des Abwurfwinkels
 oder der Wurfrichtung.
 
-## Tracking des Basketballs
+### Tracking des Basketballs
 
 Das Tracking des Basketballs dient in dieser Arbeit nicht nur der
 technischen Erfassung von Bewegungsdaten, sondern stellt die
@@ -65,7 +63,7 @@ werden gespeichert und anschließend zu einer durchgehenden
 Flugkurve verbunden, welche den realen Bewegungsverlauf des
 Basketballs beschreibt.
 
-### Funktionsprinzip des Balltrackings
+#### Funktionsprinzip des Balltrackings
 
 Beim Tracking wird der Basketball als Zielobjekt definiert, dessen Position
 in jedem einzelnen Frame des Videos bestimmt wird. Die Position des Balls
@@ -79,7 +77,7 @@ Videobild beschreiben.
 Werden diese Punkte miteinander verbunden, ergibt sich eine Parabel, die
 den tatsächlichen Flugweg des Basketballs repräsentiert. [@cao_automatic_2021]
 
-## Architektur der Videoanalyse-Pipeline
+## Videoanalyse-Pipeline
 
 In der Videoanalyse werden komplexe Auswertungen häufig als
 datengetriebene Pipeline modelliert. Eine solche Pipeline beschreibt
@@ -133,7 +131,7 @@ Frames hinweg.
 Ziel ist es, die Position des Objekts in jedem Einzelbild zu bestimmen
 und daraus dessen Bewegungsverlauf abzuleiten. [@opencv_library_2015]
 
-### Beispiele für Tracking-Verfahren
+### Tracking-Verfahren
 
 #### CSRT-Tracker
 
@@ -206,7 +204,7 @@ Diese Unsicherheiten ergeben sich sowohl aus den Eigenschaften
 des Videomaterials als auch aus den eingesetzten Tracking-Algorithmen. 
 [@lukezic_discriminative_2018]
 
-### Einfluss der Videoqualität
+#### Einfluss der Videoqualität
 
 Die Qualität des Videomaterials hat einen erheblichen Einfluss auf
 die Zuverlässigkeit von Tracking-Algorithmen. Da das Tracking direkt
@@ -247,7 +245,7 @@ beeinträchtigen und dazu führen, dass der Algorithmus den Ball
 nicht korrekt erkennt, seine Position ungenau bestimmt oder
 das Zielobjekt vollständig verliert. [@lukezic_discriminative_2018]
 
-### Verdeckungen und ähnliche Objekte
+#### Verdeckungen und ähnliche Objekte
 
 Beim Objekt-Tracking kann es zu Problemen kommen, wenn das Zielobjekt
 nicht vollständig sichtbar ist oder sich visuell ähnliche Objekte im
@@ -290,7 +288,7 @@ Solche Situationen stellen eine große Herausforderung für
 Tracking-Systeme dar und müssen bei der Entwicklung von
 Videoanalyseverfahren berücksichtigt werden. [@lukezic_discriminative_2018]
 
-### Algorithmische Einschränkungen
+#### Algorithmische Einschränkungen
 
 Viele Tracking-Verfahren basieren auf bestimmten Annahmen über
 das Erscheinungsbild oder die Bewegung eines Objekts.
@@ -321,14 +319,20 @@ gewissen Unsicherheit behaftet sind. [@opencv_library_2015]
 
 ## Region of Interest (ROI)
 
-![Darstellung einer Region of Interest (ROI)](img/ROIWhat.png){width=\textwidth}
+![Manuelle Auswahl einer Region of Interest (ROI)](img/ROIWhat.png)
 
-Eine Region of Interest (ROI) bezeichnet einen definierten Bildbereich
-innerhalb eines Frames, der für eine weitere Analyse ausgewählt wird.
+Eine Region of Interest (ROI) bezeichnet einen
+definierten Bildbereich innerhalb eines Frames,
+der für eine weitere Analyse ausgewählt wird.
 
-Durch die Einschränkung auf eine ROI kann die Rechenkomplexität
-reduziert werden, da nur ein kleiner Teil des Bildes verarbeitet
-werden muss. [@szeliski_computer_2022]
+Wie in der obrigen Abbildung dargestellt,
+wird die ROI um den Basketball definiert,
+um das Tracking eindeutig zu initialisieren.
+
+Durch die Einschränkung auf eine ROI kann
+die Rechenkomplexität reduziert werden,
+da nur ein kleiner Teil des Bildes
+verarbeitet werden muss. [@szeliski_computer_2022]
 
 ### Vorteile der Verwendung einer ROI
 
@@ -560,10 +564,11 @@ in strukturierter Form zu speichern.
 
 ### Entwicklungsumgebung: Visual Studio Code
 
-![Entwicklungsumgebung: Visual Studio Code](img/VSCodeProject.png){width=\textwidth}
+![Entwicklungsumgebung Visual Studio Code während der Implementierung des Trackingprogramms](img/VSCodeProject.png){width=\textwidth}
 
-Für die Implementierung der Analysealgorithmen wurde die
-Entwicklungsumgebung Visual Studio Code verwendet.
+Wie dargestellt, ist der Python-Code zur Verarbeitung der
+Videoframes und zur Berechnung der
+Ballposition innerhalb der Entwicklungsumgebung sichtbar.
 
 Visual Studio Code ist ein moderner, plattformunabhängiger
 Quellcode-Editor, der sich besonders für Softwareentwicklung mit
@@ -585,7 +590,11 @@ Bild- und Videoverarbeitung häufig auftreten. [@microsoft_vscode_2026]
 
 ### Videobearbeitung: DaVinci Resolve
 
-![Videobearbeitungs Programm: DaVinci Resolve](img/davinciresolve.png){width=\textwidth}
+![Videobearbeitung der Wurfvideos in DaVinci Resolve](img/davinciresolve.png){width=\textwidth}
+
+Wie dargestellt, ermöglicht die Software das Laden, Schneiden und
+Exportieren von Videodateien innerhalb einer
+grafischen Benutzeroberfläche.
 
 Zur Vorbereitung des Videomaterials wurde die Videoschnittsoftware
 DaVinci Resolve eingesetzt.
@@ -606,6 +615,9 @@ Videomaterial mit konstanter Qualität und stabilen Exportformaten
 zu rendern. Dadurch konnten einheitliche Videodateien erzeugt werden,
 die als standardisierte Eingabedaten für die anschließende
 Videoanalyse verwendet werden konnten. [@blackmagic_resolve_2026]
+
+
+
 
 
 
