@@ -592,8 +592,6 @@ Webanwendungen, die personenbezogene Daten verarbeiten, müssen diese Prinzipien
 
 ## Praktische Arbeit
 
-### Überblick über die Umsetzung
-
 Im Praxisteil wird die konkrete Implementierung der clientseitigen Anwendung beschrieben. Das Frontend wurde als browserbasierte Single Page Application (SPA) umgesetzt und bildet die zentrale Interaktionsschicht zwischen Benutzer und Backend. Im Kontext der Gesamtarchitektur stellt dieses Frontend die Präsentationsschicht dar, die über REST-Schnittstellen mit dem Backend kommuniziert. In Bezug auf die definierten Projektziele übernimmt das Frontend primär die Bewertung und Anzeige für den Spieler, die persistente Speicherung von Spielerdaten sowie die Verarbeitung eines fertigen Videos als Eingabe.
 
 **Ziel der Anwendung:** Das Frontend soll Trainierenden ermöglichen, Wurfvideos hochzuladen, eine Analyse zu starten und die Ergebnisse — insbesondere den Vergleich zwischen der idealen Soll-Flugbahn und der tatsächlich erfassten Ist-Flugbahn — übersichtlich dargestellt zu bekommen.
@@ -613,7 +611,7 @@ Die Kommunikation mit dem Backend (Kapitel 6) erfolgt über HTTP-basierte REST-S
 
 
 
-### Struktur der Frontend-Anwendung
+#### Struktur der Frontend-Anwendung
 
 Die Frontend-Anwendung befindet sich im Projektordner `Source/frontend`. Die Struktur folgt einer Trennung von Struktur (HTML), Darstellung (CSS/Tailwind) und Logik (JavaScript).
 
@@ -630,7 +628,7 @@ Diese Aufteilung sorgt dafür, dass UI, Logik und Netzwerkkommunikation klar get
 
 
 
-### Gestaltung der Benutzeroberfläche (Tailwind CSS)
+#### Gestaltung der Benutzeroberfläche (Tailwind CSS)
 
 Für das Design wird **Tailwind CSS** verwendet (Utility-First). Die Einbindung erfolgt direkt über ein CDN im HTML, wodurch kein zusätzlicher Build-Schritt nötig ist.
 
@@ -666,54 +664,38 @@ tailwind.config = {
 </script>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In der Konfiguration werden unter anderem folgende Aspekte festgelegt:
-
-- Farbschema der Anwendung
-- Unterstützung für Dark Mode
-- wiederverwendbare Design-Tokens für Oberflächenelemente
+In der Konfiguration werden unter anderem folgende Aspekte festgelegt: In den Zeilen 6–13 des Listings sind die projektspezifischen Farbdefinitionen erkennbar — darunter `primary` (#00f2ff) als Hauptakzentfarbe, `secondary` (#ff6b00) als Sekundärfarbe sowie verschiedene Hintergrundtöne für das Dark-Mode-Design (`navy-deep`, `navy-card`, `background-dark`). Zeile 3 aktiviert den Dark Mode über die Klasse `"class"`, sodass das dunkle Farbschema anwendungsweit gesteuert werden kann. Die Schriftart „Lexend" wird in Zeile 16 als Display-Font definiert, und die Zeilen 18–22 legen abgestufte Rahmenradien fest, die für ein einheitliches Erscheinungsbild der UI-Komponenten sorgen.
 
 Dadurch entsteht ein konsistentes Erscheinungsbild über alle UI-Komponenten hinweg.
 
 
 
-## Authentifizierung im Frontend
+### Authentifizierung im Frontend
 
-### Login-Oberfläche
+#### Login-Oberfläche
 
-Beim Start der Anwendung wird dem Benutzer zunächst die Login-Oberfläche angezeigt. Diese ermöglicht registrierten Benutzern den Zugriff auf das System.
+Beim Start der Anwendung wird dem Benutzer zunächst die Login-Oberfläche angezeigt. Diese ermöglicht registrierten Benutzern den Zugriff auf das System. Die folgende Abbildung zeigt den Login-Bildschirm mit den Eingabefeldern für Benutzername und Passwort sowie der Möglichkeit zur Registrierung.
 
-![Login Screen der Anwendung](img/homescreenLogin2.jpeg){ width=80% }
+![Login Screen der Anwendung](img/LoginScreenderAnwendungFinal.png){ width=95% }
 
-
-Die Login-Oberfläche enthält folgende Elemente:
-
-- Eingabefeld für Benutzername oder E-Mail
-- Passwortfeld
-- Button zum Starten des Login-Prozesses
-- Möglichkeit zum Wechsel zur Registrierungsseite
+In der Abbildung ist der Login-Bildschirm der Anwendung dargestellt. Im oberen Bereich befindet sich die Kopfzeile mit dem Projekttitel „Basketball – Effizienzsteigerung durch Videoanalyse" sowie ein Basketball-Symbol. Darunter ist der Slogan „Level Up. — Pro-grade video analysis for athletes and teams." erkennbar. Zentral im Bild ist das Anmeldeformular sichtbar, bestehend aus zwei orange umrandeten Eingabefeldern: Das Feld mit der Markierung **1.)** dient zur Eingabe des Benutzernamens oder der E-Mail-Adresse („Username or email"), das Feld mit der Markierung **2.)** zur Eingabe des Passworts („Password") — inklusive eines Sichtbarkeitsschalters rechts im Feld. Unterhalb der Felder befindet sich ein „Forgot Password?"-Link sowie ein orangefarbener „Sign In"-Button. Am unteren Rand des Formulars ist der Hinweis „Don't have an account? Join the Team" erkennbar, über den zur Registrierungsseite gewechselt werden kann. Der Hintergrund zeigt ein abgedunkeltes Bild eines Basketballkorbs, das dem Dark-Mode-Design der Anwendung entspricht.
 
 Die Eingaben werden im Browser verarbeitet und anschließend über eine HTTP-Anfrage an den Login-Endpunkt (`/api/users/login`) des Backends übermittelt. Dieser Endpunkt ist im Backend implementiert und in Kapitel 6 beschrieben.
 \newpage
 
-### Registrierungsoberfläche
+#### Registrierungsoberfläche
 
-Neben der Anmeldung bietet die Anwendung auch eine Möglichkeit zur Registrierung neuer Benutzer.
+Neben der Anmeldung bietet die Anwendung auch eine Möglichkeit zur Registrierung neuer Benutzer. Die folgende Abbildung zeigt die Registrierungsoberfläche mit den Eingabefeldern für Vorname, Nachname, E-Mail-Adresse und Passwort.
 
-![Registrierungsoberfläche](img/homescreenRegistrierung2.jpeg){ width=80% }
+![Registrierungsoberfläche](img/RegistrierungsoberflaecheFinal.png){ width=95% }
 
-
-Die Registrierungsmaske enthält mehrere Eingabefelder:
-
-- Vorname
-- Nachname
-- E-Mail-Adresse
-- Passwort
+Die Abbildung zeigt die Registrierungsoberfläche der Anwendung. Im oberen Bereich sind erneut der Projekttitel und das „Level Up."-Logo erkennbar. Zentral im Bild sind vier Eingabefelder untereinander angeordnet, jeweils mit einer nummerierten Markierung versehen: **1.)** „Vorname", **2.)** „Nachname", **3.)** „E-Mail" und **4.)** „Password" — wobei das Passwortfeld rechts einen Sichtbarkeitsschalter enthält. Darunter befindet sich ein orangefarbener „Register"-Button zum Absenden der Registrierung. Am unteren Rand des Formulars ist der Hinweis „Already have an account? Login" erkennbar, über den zur Login-Ansicht gewechselt werden kann. Der Hintergrund entspricht dem durchgängigen Dark-Mode-Design mit dem abgedunkelten Basketballkorb-Motiv.
 
 Nach Eingabe dieser Daten wird eine Anfrage an den Registrierungsendpunkt des Backends gesendet. Anschließend kann der Benutzer zur Login-Seite wechseln und sich mit den neu erstellten Zugangsdaten anmelden.
 
 
 
-### HTML-Struktur der Authentifizierungsformulare
+#### HTML-Struktur der Authentifizierungsformulare
 
 Die Struktur der Authentifizierungsoberfläche ist im HTML-Dokument der Anwendung definiert. Sowohl Login- als auch Registrierungsformular befinden sich innerhalb desselben Dokuments und werden dynamisch ein- bzw. ausgeblendet.
 
@@ -738,13 +720,11 @@ Der folgende HTML-Code zeigt die Struktur der Authentifizierungsformulare im Fro
 </div>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Die Formulare enthalten mehrere definierte Eingabeelemente sowie Buttons zur Ausführung der jeweiligen Aktionen. Über eindeutige Element-IDs können diese Elemente im JavaScript-Code angesprochen werden.
-
-Diese Struktur bildet die Grundlage für die spätere Interaktionslogik der Anwendung.
+Das Listing zeigt die HTML-Struktur des Login-Formulars, das in der Login-Oberfläche (vgl. vorherige Abbildung) dargestellt wird. In Zeile 1 wird der Container `loginForm` definiert, der alle Formularelemente umschließt. Die Zeilen 3–7 enthalten das erste Eingabefeld mit der ID `loginEmail`, das dem Eingabefeld für Benutzername oder E-Mail im oberen Bereich des Formulars entspricht. Die Zeilen 9–14 definieren das Passwortfeld mit der ID `loginPassword` und dem Attribut `type="password"`, wodurch die Eingabe verdeckt dargestellt wird. Über die CSS-Klassen `glass-panel`, `rounded-xl` und `h-14` erhalten beide Felder das einheitliche Erscheinungsbild mit abgerundeten Ecken und transparentem Hintergrund, das im Dark-Mode-Design der Anwendung sichtbar ist. Die Element-IDs ermöglichen es, die Eingabewerte im JavaScript-Code der Datei `app.js` auszulesen und für den Login-Prozess weiterzuverarbeiten.
 
 
 
-### Steuerung der sichtbaren Ansichten
+#### Steuerung der sichtbaren Ansichten
 
 Da die Anwendung als **Single Page Application (SPA)** umgesetzt wurde, erfolgt der Wechsel zwischen verschiedenen Ansichten ohne Seitenneuladung. Stattdessen werden einzelne Bereiche der Benutzeroberfläche dynamisch ein- oder ausgeblendet.
 
@@ -769,7 +749,7 @@ showAuth();
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Die Anwendung besitzt zwei zentrale Zustände der Benutzeroberfläche:
+Im Listing sind drei Funktionen definiert, die die Sichtbarkeit der beiden Hauptbereiche steuern. Die Funktion `showAuth()` (Zeilen 1–4) blendet den Authentifizierungsbereich (`#auth`) ein und verbirgt die Hauptanwendung (`#app`), indem die CSS-Klasse `hidden` gesetzt bzw. entfernt wird. Die Funktion `showApp()` (Zeilen 6–9) führt den umgekehrten Vorgang aus — sie wird nach erfolgreicher Anmeldung aufgerufen und zeigt das Dashboard an. Die Funktion `logoutHandler()` (Zeilen 11–14) entfernt zunächst den gespeicherten Benutzerzustand aus dem `localStorage` und ruft anschließend `showAuth()` auf, um zur Anmeldeansicht zurückzukehren. Die Anwendung besitzt damit zwei zentrale Zustände der Benutzeroberfläche:
 
 - **Authentifizierungsansicht** (Login und Registrierung)
 - **Hauptansicht der Anwendung** (Dashboard)
@@ -795,7 +775,7 @@ Die Steuerung der sichtbaren Bereiche wird dabei direkt in `index.html` definier
 
 
 
-### Verarbeitung des Login-Vorgangs
+#### Verarbeitung des Login-Vorgangs
 
 Der Login-Prozess wird vollständig im Frontend gestartet. Sobald der Benutzer den Login-Button betätigt, wird ein Event-Handler ausgeführt.
 
@@ -828,19 +808,13 @@ showApp();
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Der Ablauf des Login-Prozesses besteht aus mehreren Schritten:
-
-1. Auslesen der Eingabefelder  
-2. Überprüfung der Eingaben  
-3. Senden einer Anfrage an das Backend  
-4. Verarbeitung der Serverantwort  
-5. Aktualisierung der Benutzeroberfläche  
+Das Listing zeigt den vollständigen Ablauf des Login-Prozesses. In den Zeilen 3–4 werden zunächst die Werte der Eingabefelder `loginEmail` und `loginPassword` aus dem DOM ausgelesen. Anschließend wird in den Zeilen 6–15 eine asynchrone HTTP-POST-Anfrage an den Endpunkt `/api/login` gesendet, wobei E-Mail und Passwort als JSON-Objekt im Request-Body übermittelt werden. Die Zeile 17 wandelt die Serverantwort in ein JSON-Objekt um. Ist die Anmeldung erfolgreich (`data.success` in Zeile 19), wird das Benutzerobjekt über `saveUser()` gespeichert (Zeile 20) und die Hauptansicht über `showApp()` angezeigt (Zeile 21).
 
 Erfolgt eine erfolgreiche Authentifizierung, wird der Benutzerzustand gespeichert und anschließend die Hauptansicht der Anwendung geladen.
 
 
 
-### Speicherung des Benutzerzustands im Browser
+#### Speicherung des Benutzerzustands im Browser
 
 Nach erfolgreicher Authentifizierung wird der Zustand des aktuell angemeldeten Benutzers im Frontend gespeichert. Dadurch kann die Anwendung erkennen, welcher Benutzer aktiv ist und welche Daten für die Hauptansicht geladen werden müssen.
 
@@ -877,20 +851,21 @@ currentUser = JSON.parse(raw);
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Beim Login wird das Benutzerobjekt zunächst im Arbeitsspeicher der Anwendung gespeichert und anschließend im `localStorage` abgelegt. Beim Start der Anwendung kann dieser gespeicherte Zustand wieder geladen werden.
+Das Listing zeigt die Verwaltung des Benutzerzustands im Frontend. In den Zeilen 1–2 werden die globalen Variablen `history` (ein leeres Array für die Wurfhistorie) und `currentUser` (initial `null`) deklariert. Zeile 5 reserviert die Variable `chart` für die spätere Chart.js-Instanz, die erst beim Öffnen des Overlay-Fensters erzeugt wird. Die Zeilen 7–8 referenzieren die DOM-Elemente `userName` und `logoutBtn` über ihre IDs, und Zeile 10 registriert den `logoutHandler` als Click-Listener auf dem Logout-Button. Die Funktion `saveUser()` (Zeilen 12–14) serialisiert das übergebene Benutzerobjekt mit `JSON.stringify()` und speichert es unter dem Schlüssel `'currentUser'` im `localStorage`. Die Funktion `loadUser()` (Zeilen 16–26) liest den gespeicherten Wert aus dem `localStorage` aus (Zeile 18), prüft ob ein Eintrag vorhanden ist (Zeile 20) und deserialisiert ihn innerhalb eines `try-catch`-Blocks (Zeilen 21–23), um bei fehlerhaften Daten keine Ausnahme auszulösen.
 
 Durch diese Vorgehensweise bleibt der Benutzer auch nach einem erneuten Laden der Seite angemeldet, solange der gespeicherte Zustand im Browser vorhanden ist.
 
 
 
-### Abmelden des Benutzers
+#### Abmelden des Benutzers
 
 Neben der Anmeldung muss eine Anwendung auch die Möglichkeit bieten, eine bestehende Sitzung zu beenden. Diese Funktion wird durch den Logout-Mechanismus bereitgestellt.
 
 Beim Logout werden alle gespeicherten Sitzungsinformationen aus dem Browser entfernt. Die folgende Abbildung zeigt den Logout-Button im oberen Bereich des Dashboards.
 
-![Logout-Bereich im Dashboard](img/LogOut.jpeg){ width=80% }
+![Logout-Bereich im Dashboard](img/LogoutBereichimDashboardFinal.png){ width=95% }
 
+Die Abbildung zeigt einen zugeschnittenen Ausschnitt des Dashboards, der den für die Abmeldung relevanten Bereich hervorhebt. In der oberen rechten Ecke ist der „Logout"-Button als rot umrandete Schaltfläche erkennbar. Links daneben befindet sich ein Benachrichtigungssymbol (Glocke). Unterhalb der Kopfzeile ist rechts die Bezeichnung „LVL ?" sichtbar, und im mittleren Bereich befindet sich die KPI-Karte „SHOT QUALITY SCORE" mit einem Diagramm-Symbol rechts daneben. Der Ausschnitt zeigt bewusst nur den oberen Bereich des Dashboards, da für die Logout-Funktion ausschließlich die Position der Schaltfläche in der Kopfzeile relevant ist.
 
 Der Logout-Prozess umfasst mehrere Schritte:
 
@@ -902,45 +877,33 @@ Durch das Entfernen der gespeicherten Daten wird sichergestellt, dass kein vorhe
 
 
 
-### Anzeige des Benutzerprofils im Dashboard
+#### Anzeige des Benutzerprofils im Dashboard
 
 Nach erfolgreicher Anmeldung wird innerhalb der Hauptansicht der aktuell angemeldete Benutzer angezeigt. Diese Anzeige dient als visuelles Feedback und zeigt dem Benutzer, unter welchem Account die Anwendung aktuell verwendet wird. Die folgende Abbildung zeigt diese Profilanzeige im oberen Dashboard-Bereich.
 
-![Profilanzeige im Dashboard](img/ProfilAnzeige.jpeg){ width=80% }
+![Profilanzeige im Dashboard](img/ProfilanzeigeImDashboardFinal.png){ width=95% }
 
+Die Abbildung zeigt einen zugeschnittenen Ausschnitt des Dashboards, der den Profilbereich hervorhebt. Im oberen linken Bereich ist die rot umrandete Profilanzeige erkennbar: Links befindet sich ein rundes Avatar-Symbol mit einem grünen Online-Indikator, daneben steht der Begrüßungstext „Elevate your game," gefolgt vom fett gedruckten Namen des angemeldeten Benutzers — **Nino Dalipovic**. Unterhalb der Profilanzeige ist die Überschrift „LIVE PERFORMANCE" sichtbar, darunter eine KPI-Karte mit der Bezeichnung „RELEASE ANGLE" und dem Hinweis „Optimal: 45°–55°". Der Ausschnitt konzentriert sich bewusst auf den oberen linken Bereich, da für die Profilanzeige ausschließlich die Darstellung des Benutzernamens und des Avatars relevant ist.
 
-Die Profilanzeige befindet sich im oberen Bereich der Benutzeroberfläche und enthält typischerweise:
-
-- den Namen des angemeldeten Benutzers  
-- ein Profil- oder Avatar-Symbol   
-
-Die Daten werden dynamisch aus dem im Frontend gespeicherten Benutzerzustand geladen und anschließend im Dashboard dargestellt.
-
-Durch diese dynamische Einbindung kann das Dashboard automatisch personalisiert werden, ohne dass zusätzliche Serveranfragen notwendig sind.
+Die Daten werden dynamisch aus dem im Frontend gespeicherten Benutzerzustand geladen und anschließend im Dashboard dargestellt. Durch diese dynamische Einbindung kann das Dashboard automatisch personalisiert werden, ohne dass zusätzliche Serveranfragen notwendig sind.
 
 
 
-## Dashboard und Hauptansicht der Anwendung
+### Dashboard und Hauptansicht der Anwendung
 
-Nach erfolgreicher Authentifizierung wird der Benutzer in die Hauptansicht der Anwendung weitergeleitet. Diese Ansicht bildet das zentrale Dashboard und dient als Ausgangspunkt für die Interaktion mit dem System.
+Nach erfolgreicher Authentifizierung wird der Benutzer in die Hauptansicht der Anwendung weitergeleitet. Diese Ansicht bildet das zentrale Dashboard und dient als Ausgangspunkt für die Interaktion mit dem System. Die folgende Abbildung gibt einen Überblick über das Dashboard nach erfolgreicher Anmeldung.
 
-![Dashboard der Anwendung](img/dashboard.jpeg){ width=80% }
+![Dashboard der Anwendung](img/dashboard.jpeg){ width=120% }
 
+In der Abbildung ist das Dashboard nach erfolgreicher Anmeldung dargestellt. Im oberen linken Bereich befindet sich die Profilanzeige mit dem Namen des Benutzers und einem Avatar-Symbol. Direkt darunter sind im Kopfbereich zwei farbig hinterlegte Schaltflächen erkennbar — „Live Performance" (links, blau) und „New Analyst Score" (rechts, orange) — über die der Zugriff auf zusätzliche Analysefunktionen erfolgt. Im zentralen Bildschirmbereich ist der Abschnitt „New Training Session" mit einem Video-Symbol und dem „Start Analysis"-Button sichtbar, über den eine neue Trainingsanalyse gestartet werden kann. Am unteren Rand des Dashboards befindet sich der Bereich „Recent Throws", der für die Auflistung vergangener Würfe vorgesehen ist. Die Navigationsleiste am unteren Bildschirmrand enthält Symbole für die verschiedenen Anwendungsbereiche.
 
-Die folgende Abbildung gibt einen Überblick über das Dashboard nach erfolgreicher Anmeldung. Es fasst mehrere Funktionen zusammen und stellt aktuelle Trainingsinformationen sowie Analysefunktionen bereit. Es repräsentiert die Umsetzung von der Bewertung & Anzeige für den Spieler: Die Oberfläche ist strukturell vorbereitet, um Analyseergebnisse aus dem Backend darzustellen, jedoch werden die Kennzahlen im aktuellen Stand noch als Platzhalterwerte generiert, da die vollständige Anbindung an die Backend-Analysepipeline noch aussteht.
-
-Zu den wichtigsten Elementen des Dashboards gehören:
-
-- Benutzerbereich mit Profilanzeige  
-- Anzeige aktueller Analysewerte  
-- Möglichkeit zum Starten einer Trainingsanalyse  
-- Zugriff auf zusätzliche Visualisierungen  
+Das Dashboard fasst somit mehrere Funktionen zusammen und stellt aktuelle Trainingsinformationen sowie Analysefunktionen bereit. Es repräsentiert die Umsetzung von der Bewertung & Anzeige für den Spieler: Die Oberfläche ist strukturell vorbereitet, um Analyseergebnisse aus dem Backend darzustellen, jedoch werden die Kennzahlen im aktuellen Stand noch als Platzhalterwerte generiert, da die vollständige Anbindung an die Backend-Analysepipeline noch aussteht.
 
 Die Oberfläche ist bewusst übersichtlich gestaltet, damit wichtige Informationen schnell erkannt werden können.
 
 
 
-### Start einer Trainingsanalyse
+#### Start einer Trainingsanalyse
 
 Eine zentrale Funktion der Anwendung ist die Möglichkeit, eine Trainingsanalyse zu starten. Diese Funktion ist direkt über das Dashboard erreichbar.
 
@@ -948,41 +911,26 @@ Der Benutzer kann über eine entsprechende Schaltfläche den Analyseprozess init
 
 Nach Abschluss einer Analyse werden zusätzliche Informationen im Dashboard angezeigt, wie die folgende Abbildung zeigt.
 
-![Dashboard nach Analyse](img/dashboardNachAnalyse.jpeg){ width=80% }
+![Dashboard nach Analyse](img/dashboardNachAnalyse.jpeg){ width=120% }
 
-
-Nach einer Analyse können beispielsweise folgende Informationen dargestellt werden:
-
-- Bewertung des Wurfs  
-- Winkelwerte  
-- visuelle Hinweise zur Wurfqualität  
-
-Diese Informationen dienen dazu, dem Benutzer eine schnelle Einschätzung der analysierten Bewegung zu ermöglichen.
+In der Abbildung ist das Dashboard nach Abschluss einer Analyse dargestellt. Im oberen linken Bereich sind nun die KPI-Karten mit konkreten Analysewerten sichtbar — darunter ein Winkelwert von „50.3°" sowie eine Gesamtbewertung von „72 / 100". Diese Werte erscheinen in den zuvor leeren Karten oberhalb des zentralen Bereichs. Im mittleren Bildschirmbereich ist weiterhin der „New Training Session"-Abschnitt mit dem „Start Analysis"-Button erkennbar. Unterhalb davon zeigt der Bereich „Recent Throws" nun eine Videovorschau des analysierten Wurfs als Thumbnail sowie eine textuelle Bewertung des Wurfs (z. B. „Leichte Abweichung vom perfekten Wurf"). Durch diese Darstellung erhält der Benutzer eine schnelle Übersicht über die Ergebnisse der zuletzt durchgeführten Analyse.
 
 
 
-### Live Performance Fenster
+#### Live Performance Fenster
 
-Neben der normalen Dashboard-Anzeige kann zusätzlich ein spezielles Fenster zur Darstellung von Leistungsinformationen geöffnet werden. Dieses Fenster wird als sogenanntes Overlay dargestellt und erscheint über der bestehenden Benutzeroberfläche.
+Neben der normalen Dashboard-Anzeige kann zusätzlich ein spezielles Fenster zur Darstellung von Leistungsinformationen geöffnet werden. Dieses Fenster wird als sogenanntes Overlay dargestellt und erscheint über der bestehenden Benutzeroberfläche. Die folgende Abbildung zeigt dieses Live-Performance-Fenster mit den dargestellten Analysekennzahlen.
 
-![Live Performance Fenster](img/livePerformanceFenster2.jpeg){ width=80% }
+![Live Performance Fenster](img/livePerformanceFenster2.jpeg){ width=120% }
 
-
-Das Live-Performance-Fenster dient dazu, Analysewerte übersichtlich darzustellen, ohne dass der Benutzer die aktuelle Ansicht verlassen muss. Die ursprüngliche Oberfläche bleibt im Hintergrund sichtbar.
-
-Typischerweise werden in diesem Fenster mehrere Kennzahlen dargestellt, beispielsweise:
-
-- Effizienz des Wurfs  
-- Konsistenz der Flugbahn  
-- Winkelwerte der Bewegung  
-- qualitative Bewertung des Wurfs  
+In der Abbildung ist das Live-Performance-Fenster als Overlay über dem Dashboard dargestellt. Im oberen Bereich des Overlays ist die Überschrift „Live Performance" erkennbar. Darunter befinden sich zwei farbig hinterlegte Schaltflächen — „Analyzed Shots" (links, blau) und „New Analyst Score" (rechts, orange). Im mittleren Bereich des Overlays sind die Analysekennzahlen angeordnet: Links wird die Effizienz des Wurfs als Prozentwert dargestellt, daneben die Konsistenz der Flugbahn, der Winkelwert der Bewegung sowie eine qualitative Gesamtbewertung des Wurfs. Das Dashboard bleibt im Hintergrund sichtbar, wodurch der Benutzer die aktuelle Ansicht nicht verlassen muss.
 
 Durch diese kompakte Darstellung erhält der Benutzer eine schnelle Übersicht über die wichtigsten Analysewerte.
 
 
 
 
-### HTML-Struktur des Dashboards
+#### HTML-Struktur des Dashboards
 
 Die zentrale Benutzeroberfläche der Anwendung wird im Dokument `index.html` definiert. Neben dem Authentifizierungsbereich enthält dieses Dokument auch die Struktur des Dashboards, das nach erfolgreicher Anmeldung angezeigt wird.
 
@@ -1011,19 +959,13 @@ Logout
 </div>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Das Dashboard besteht aus mehreren strukturellen Bereichen. Diese sind innerhalb von HTML-Containern organisiert und bilden gemeinsam die Hauptoberfläche der Anwendung.
-
-Zu den wichtigsten Bereichen gehören:
-
-- **Headerbereich** mit Benutzerinformationen  
-- **Hauptbereich** zur Darstellung von Analyseinformationen  
-- **Analyse- und Interaktionsbereich** für Trainingsfunktionen  
+Das Listing zeigt die grundlegende HTML-Struktur des Dashboards. Der äußere Container `#dashboard` (Zeile 1) umschließt die gesamte Hauptansicht mit einem Innenabstand von `p-6`. Die Zeilen 3–13 definieren den Headerbereich als Flexbox-Layout (`flex justify-between items-center`), in dem links die Überschrift „Dashboard" (Zeile 5–7) und rechts der orangefarbene Logout-Button (Zeilen 9–12) positioniert sind — dieser Button ist in der Dashboard-Abbildung in der oberen rechten Ecke erkennbar. Zeile 16 definiert den `kpiContainer` als dreispaltiges Grid-Layout (`grid grid-cols-3 gap-6`), in dem die KPI-Karten mit den Analysewerten dargestellt werden. Der Container `recentShots` in Zeile 18 bildet den Bereich für die Liste der zuletzt analysierten Würfe, der im unteren Teil des Dashboards sichtbar ist.
 
 Durch diese klare Struktur können einzelne Komponenten der Benutzeroberfläche unabhängig voneinander aktualisiert werden.
 
 
 
-### KPI-Karten zur Darstellung von Analysewerten
+#### KPI-Karten zur Darstellung von Analysewerten
 
 Im oberen Bereich des Dashboards werden zentrale Analysewerte in sogenannten **KPI-Karten** dargestellt. KPI steht für *Key Performance Indicator* und bezeichnet wichtige Kennzahlen einer Analyse.
 
@@ -1050,55 +992,46 @@ Der folgende Code zeigt die Darstellung zentraler Analysewerte in Form von KPI-K
 </div>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Diese Karten zeigen wichtige Informationen auf einen Blick. Typische Werte sind beispielsweise:
-
-- Effizienz des Wurfs  
-- Konsistenz der Flugbahn  
-- Winkelwerte  
-- Gesamtbewertung des Wurfs  
+Das Listing zeigt drei nebeneinander angeordnete KPI-Karten, die im dreispaltigen Grid-Layout des `kpiContainer` dargestellt werden. Jede Karte verwendet die CSS-Klasse `glass-panel`, die einen halbtransparenten, leicht abgedunkelten Hintergrund mit abgerundeten Ecken (`rounded-xl`) erzeugt. Innerhalb jeder Karte befindet sich oben eine Bezeichnung in kleiner, grauer Schrift (`text-sm text-slate-400`) — beispielsweise „Trefferquote", „Analysierte Würfe" oder „Durchschnittswinkel" — und darunter der zugehörige Wert in großer, fetter Schrift mit der Akzentfarbe Cyan (`text-3xl font-bold text-primary`). In der Dashboard-Abbildung nach der Analyse sind diese Karten im oberen linken Bereich des Bildschirms als farblich abgesetzte Bereiche mit den konkreten Analysewerten erkennbar.
 
 Die visuelle Darstellung über Karten erleichtert es dem Benutzer, wichtige Analysewerte schnell zu erkennen.
 
 
 
-### Liste der letzten Würfe
+#### Liste der letzten Würfe
 
 Zusätzlich zu den KPI-Werten enthält das Dashboard eine Liste der zuletzt analysierten Würfe. Diese Liste ermöglicht es dem Benutzer, vergangene Analysen nachzuvollziehen.
 
-Der folgende HTML-Code zeigt eine Übersicht der zuletzt analysierten Würfe im Dashboard:
+Im HTML-Dokument wird dafür ein leerer Container bereitgestellt, der als Ziel für die dynamische Befüllung dient:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Liste der letzten Würfe" .html}
-<ul id="recentShots" class="space-y-3">
-
-<li class="glass-panel p-4 rounded-lg flex justify-between">
-<span>Wurf 1</span>
-<span class="text-primary">Treffer</span>
-</li>
-
-<li class="glass-panel p-4 rounded-lg flex justify-between">
-<span>Wurf 2</span>
-<span class="text-red-400">Fehlwurf</span>
-</li>
-
-<li class="glass-panel p-4 rounded-lg flex justify-between">
-<span>Wurf 3</span>
-<span class="text-primary">Treffer</span>
-</li>
-
-</ul>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="HTML-Container für die Wurfliste" .html}
+<div id="historyList" class="space-y-4"></div>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Jeder Eintrag in dieser Liste kann mehrere Informationen enthalten, beispielsweise:
+Dieses `<div>`-Element mit der ID `historyList` wird beim Laden der Seite zunächst leer dargestellt. Die tatsächlichen Einträge werden zur Laufzeit über die folgende JavaScript-Funktion dynamisch erzeugt und eingefügt:
 
-- Datum der Analyse  
-- Effizienzwerte  
-- Bewertung der Bewegung  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{caption="Dynamische Darstellung der Wurfhistorie" .javascript}
+function renderHistory() {
+  historyList.innerHTML = '';
+  history.forEach((h, i) => {
+    const entry = document.createElement('div');
+    entry.className =
+      'bg-navy-card/50 border border-white/5 rounded-2xl p-3';
+    entry.innerHTML =
+      `<strong>Wurf ${i + 1}</strong> – ${h.feedback}<br>` +
+      `<small class="text-xs text-slate-400">${h.date}</small>`;
+    historyList.appendChild(entry);
+  });
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In der Funktion `renderHistory()` wird zunächst der Inhalt des Containers geleert (`innerHTML = ''`), bevor in einer Schleife für jeden Eintrag im `history`-Array ein neues `<div>`-Element erzeugt wird. Jeder Eintrag erhält die CSS-Klasse `bg-navy-card/50` für den halbtransparenten Hintergrund sowie `border border-white/5` für einen dezenten Rahmen und `rounded-2xl` für abgerundete Ecken. Innerhalb jedes Eintrags wird der Wurfindex fett dargestellt (`<strong>Wurf ${i + 1}</strong>`), gefolgt vom Feedback-Text des jeweiligen Wurfs. Darunter wird in kleiner, grauer Schrift (`text-xs text-slate-400`) das Datum der Analyse angezeigt. Durch diese dynamische Erzeugung wird die Wurfliste bei jeder neuen Analyse automatisch aktualisiert, ohne dass die HTML-Struktur manuell angepasst werden muss.
 
 Durch diese Übersicht kann der Benutzer seinen Trainingsfortschritt über mehrere Würfe hinweg beobachten.
 
 
 
-## Videoauswahl und Vorschau im Frontend
+### Videoauswahl und Vorschau im Frontend
 
 Ein zentraler Bestandteil der Anwendung ist die Verarbeitung von Trainingsvideos. Damit eine Analyse durchgeführt werden kann, muss der Benutzer zunächst ein Video auswählen.
 
@@ -1107,7 +1040,7 @@ Das Frontend stellt dafür ein Datei-Eingabeelement bereit, über das eine Video
 Nach Auswahl eines Videos wird dieses zunächst lokal im Browser verarbeitet. Das Video wird nicht sofort an das Backend übertragen, sondern zuerst als Vorschau angezeigt.
 
 
-### Video-Upload im Dashboard
+#### Video-Upload im Dashboard
 
 Damit eine Analyse durchgeführt werden kann, muss zunächst ein Trainingsvideo ausgewählt werden. Diese Funktion wird über ein Datei-Eingabeelement im HTML-Dokument bereitgestellt.
 
@@ -1135,7 +1068,7 @@ Diese Funktion bildet den ersten Schritt im Analyseprozess der Anwendung.
 
 
 
-### Darstellung der Video-Vorschau
+#### Darstellung der Video-Vorschau
 
 Nachdem ein Video ausgewählt wurde, erzeugt das Frontend automatisch eine Vorschau. Diese Vorschau ermöglicht es dem Benutzer, das ausgewählte Trainingsvideo direkt innerhalb der Anwendung abzuspielen.
 
@@ -1160,18 +1093,19 @@ Dieser Mechanismus bietet mehrere Vorteile:
 Durch diese Vorgehensweise wird der Analyseprozess für den Benutzer transparenter und kontrollierbarer.
 
 
-## Visualisierung von Analysewerten
+### Visualisierung von Analysewerten
 
 Neben der Darstellung des Trainingsvideos spielt auch die grafische Darstellung von Analysewerten eine wichtige Rolle. Um Bewegungsdaten verständlich darzustellen, werden Diagramme verwendet.
 
 Für diese Visualisierung wird die JavaScript-Bibliothek **Chart.js** eingesetzt. Diese ermöglicht die Darstellung von Diagrammen direkt im Browser. Die folgende Abbildung zeigt die umgesetzte Diagrammansicht in der Anwendung.
 
-![Diagrammansicht der Analyse](img/charts.jpeg){ width=80% }
+![Diagrammansicht der Analyse](img/DiagrammansichtDerAnalyseFinal.png){ width=95% }
 
+In der Abbildung ist die Diagrammansicht der Analyse dargestellt. Im oberen linken Bereich ist der Benutzername erkennbar, darunter befinden sich Navigationsschaltflächen. Im zentralen Bereich des Bildschirms ist ein Liniendiagramm als Overlay-Fenster geöffnet, in dem zwei Kurven übereinandergelegt sind: Die Soll-Kurve (grün, „Soll" in der Legende) zeigt die berechnete ideale Flugbahn, während die Ist-Kurve (blau, „Ist" in der Legende) die tatsächlich gemessene Flugbahn des Wurfs repräsentiert. Die Legende am oberen Rand des Diagramms macht die beiden Datensätze farblich unterscheidbar. Die horizontale Achse („Distanz") stellt die Entfernung dar, die vertikale Achse die Höhenwerte. Im oberen rechten Bereich des Diagrammfensters befindet sich ein Schließen-Button („X"). Durch die Überlagerung beider Kurven werden Abweichungen zwischen idealem und tatsächlichem Wurfverlauf unmittelbar sichtbar.
 
-Das Diagramm basiert auf einem Liniendiagramm, das mehrere Datensätze darstellen kann. In der Anwendung werden beispielsweise zwei Kurven visualisiert:
+Das Diagramm basiert auf einem Liniendiagramm, das mehrere Datensätze darstellen kann. In der Anwendung werden die beiden folgenden Kurven visualisiert:
 
-- eine Referenzkurve (Soll-Wert)  
+- eine Referenzkurve (Soll-Wert)
 - eine gemessene Kurve (Ist-Wert)
 
 Diese Darstellung entspricht dem Konzept des Soll-Ist-Vergleichs. Im aktuellen Entwicklungsstand werden die Kurven noch mit Platzhaltern befüllt; sobald das Backend die extrahierte Flugbahn und die berechnete Soll-Kurve liefert, können diese Werte direkt in das Diagramm übernommen werden.  
@@ -1195,26 +1129,18 @@ Durch diese visuelle Darstellung kann der Benutzer Unterschiede zwischen idealer
 
 
 
-### Konzeptdarstellung der Analyseoberfläche
+#### Konzeptdarstellung der Analyseoberfläche
 
-Neben der tatsächlichen Implementierung enthält die Anwendung auch eine Beispielansicht, die zeigt, wie eine vollständige Analyseoberfläche aussehen kann. Diese Darstellung dient als Konzept und verdeutlicht mögliche Erweiterungen der Benutzeroberfläche.
+Neben der tatsächlichen Implementierung enthält die Anwendung auch eine Beispielansicht, die zeigt, wie eine vollständige Analyseoberfläche aussehen kann. Diese Darstellung dient als Konzept und verdeutlicht mögliche Erweiterungen der Benutzeroberfläche. Die folgende Abbildung zeigt diese Konzeptansicht, in der Videovorschau, Diagramme und numerische Analysewerte kombiniert dargestellt werden.
 
-![Analyseansicht der Anwendung](img/analyseWieEsAusschauenSollte.jpeg){ width=80% }
+![Analyseansicht der Anwendung](img/analyseWieEsAusschauenSollte.jpeg){ width=120% }
 
-
-In dieser Ansicht werden mehrere Analysekomponenten miteinander kombiniert. Dazu gehören:
-
-- eine Videovorschau des analysierten Wurfs  
-- grafische Diagramme zur Darstellung der Flugbahn  
-- numerische Analysewerte  
-- visuelle Hinweise zur Bewertung der Bewegung  
-
-Diese Darstellung zeigt, wie verschiedene Informationsquellen innerhalb einer Oberfläche zusammengeführt werden können.
+In der Abbildung ist die Konzeptansicht einer vollständigen Analyseoberfläche dargestellt. Im linken Bereich des Bildschirms befindet sich eine Videovorschau des analysierten Wurfs, die das aufgenommene Trainingsvideo zeigt. Rechts daneben sind Diagramme zur grafischen Darstellung der Flugbahn erkennbar, in denen Soll- und Ist-Kurven übereinandergelegt werden. Im unteren Bereich der Ansicht werden numerische Analysewerte wie Winkel, Geschwindigkeit und Bewertung als Kennzahlen angezeigt. Zusätzlich sind visuelle Hinweise zur Qualität des Wurfs integriert, die dem Benutzer eine sofortige Einschätzung ermöglichen. Diese Konzeptdarstellung verdeutlicht, wie verschiedene Informationsquellen innerhalb einer einzigen Oberfläche zusammengeführt werden können.
 
 
 
 
-### Generierung von Analysewerten im Prototyp
+#### Generierung von Analysewerten im Prototyp
 
 Im aktuellen Entwicklungsstand der Anwendung werden einige Analysewerte im Frontend als Demonstration generiert. Dies dient dazu, die Funktionsweise der Benutzeroberfläche zu testen, bevor eine vollständige Backend-Analyse integriert wird.
 
@@ -1251,7 +1177,7 @@ Auf Basis dieser Werte wird anschließend eine Bewertung erzeugt und im Dashboar
 
 
 
-### Audio-Feedback der Analyse
+#### Audio-Feedback der Analyse
 
 Neben der visuellen Darstellung von Analysewerten bietet die Anwendung auch eine Funktion zur Ausgabe von Audiofeedback. Dabei wird eine kurze Bewertung der Wurfqualität automatisch vom Browser vorgelesen.
 
@@ -1277,7 +1203,7 @@ Der Ablauf dieser Funktion ist wie folgt:
 Diese zusätzliche Rückmeldung verbessert die Benutzerinteraktion und ermöglicht eine direktere Bewertung der Trainingsleistung.
 
 
-## Kommunikation mit dem Backend
+### Kommunikation mit dem Backend
 
 Neben der Darstellung der Benutzeroberfläche spielt auch die Kommunikation mit dem Backend eine wichtige Rolle. Das Frontend sendet HTTP-Anfragen an definierte API-Endpunkte, um Benutzerdaten zu übermitteln oder Analyseinformationen abzurufen.
 
@@ -1308,7 +1234,7 @@ Diese Funktion kapselt die grundlegende Logik für API-Anfragen und kann von ver
 
 
 
-### Login- und Registrierungsanfragen
+#### Login- und Registrierungsanfragen
 
 Für Login und Registrierung existieren im Frontend eigene Funktionen, die die Kommunikation mit dem Backend übernehmen. Diese Funktionen senden die eingegebenen Benutzerdaten als JSON-Objekt an die entsprechenden Endpunkte.
 
@@ -1344,7 +1270,7 @@ Durch diese Trennung zwischen Benutzeroberfläche und API-Kommunikation bleibt d
 
 
 
-## Abschließende Bewertung der Frontend-Implementierung
+### Abschließende Bewertung der Frontend-Implementierung
 
 Die entwickelte Frontend-Anwendung stellt eine funktionsfähige Benutzeroberfläche für die Trainingsanalyseplattform dar. Sie ermöglicht dem Benutzer die grundlegende Interaktion mit dem System sowie die Darstellung verschiedener Analyse- und Trainingsinformationen.
 
@@ -1364,7 +1290,7 @@ Das Frontend ist somit **anbindungsbereit für eine vollständige Analyseintegra
 
 Damit bildet die Anwendung eine Grundlage für die weitere Entwicklung der Trainingsanalyseplattform, insbesondere für die spätere Integration einer automatisierten Videoanalyse.
 
-## Erweiterungsmöglichkeiten des Frontends
+### Erweiterungsmöglichkeiten des Frontends
 
 Die aktuelle Implementierung des Frontends stellt in erster Linie eine Benutzeroberfläche dar, die für eine spätere Erweiterung vorbereitet ist. Die grundlegenden Funktionen zur Benutzerinteraktion, Darstellung von Analysewerten und Auswahl von Trainingsvideos sind vorhanden, jedoch ist die vollständige Analysepipeline im aktuellen Entwicklungsstand noch nicht vollständig integriert.
 
@@ -1380,3 +1306,29 @@ Weitere mögliche Erweiterungen betreffen vor allem die funktionale Erweiterung 
 - Live Kamera Erweiterung
 
 Diese Erweiterungen würden es ermöglichen, das Frontend von einer vorbereiteten Benutzeroberfläche zu einer vollständig integrierten Analyseplattform weiterzuentwickeln.
+
+## Zusammenfassung
+
+Das vorliegende Kapitel beschreibt die Entwicklung des Frontends für die Basketball-Trainingsanalyseplattform. Ziel war es, eine benutzerfreundliche Oberfläche zu schaffen, über die Trainer und Spieler Trainingsvideos auswählen, Analyseergebnisse einsehen und Feedback erhalten können. Die Umsetzung erfolgte als Single Page Application mit HTML, CSS (Tailwind) und JavaScript, wobei die Kommunikation mit dem Backend über eine REST-API realisiert wurde. Die Authentifizierung wurde mittels JSON Web Tokens (JWT) umgesetzt.
+
+### Nicht umgesetzte Funktionen
+
+Im Rahmen dieser Diplomarbeit konnten nicht alle ursprünglich geplanten Funktionen vollständig umgesetzt werden. Die wesentlichen nicht realisierten Bereiche sind:
+
+- **Vollständige Integration der Backend-Analysepipeline:** Die Verbindung zwischen der automatisierten Videoanalyse im Backend (vgl. Kapitel 6) und der Darstellung im Frontend ist derzeit nur teilweise vorbereitet. Einige Analysewerte werden im aktuellen Entwicklungsstand als Demonstrationswerte generiert, da die Backend-Analyse zum Zeitpunkt der Frontend-Entwicklung noch nicht vollständig abgeschlossen war. Die Abhängigkeit zwischen Frontend und Backend machte eine parallele Fertigstellung innerhalb des vorgegebenen Zeitrahmens nicht möglich.
+
+- **Echtzeitverarbeitung von Videoanalysen:** Eine automatisierte Verarbeitung, bei der ein hochgeladenes Video unmittelbar analysiert und die Ergebnisse im Frontend dargestellt werden, konnte im Rahmen der Arbeit nicht umgesetzt werden. Dies hätte eine vollständig funktionsfähige Analysepipeline im Backend vorausgesetzt, die innerhalb des Projektzeitraums nicht realisierbar war.
+
+- **Live-Kamera-Streaming:** Die Möglichkeit, eine Live-Kamera direkt über die Webanwendung einzubinden und das Videomaterial in Echtzeit zu analysieren, wurde als Erweiterungsmöglichkeit identifiziert, konnte jedoch aufgrund des zeitlichen Rahmens und der dafür notwendigen technischen Infrastruktur nicht implementiert werden.
+
+Der Hauptgrund für die Einschränkungen liegt im zeitlichen Rahmen der Diplomarbeit sowie in der Abhängigkeit von der parallelen Entwicklung der Backend-Komponenten durch andere Teammitglieder. Das Frontend wurde daher bewusst so konzipiert, dass es für eine spätere vollständige Integration vorbereitet ist.
+
+### Ausblick: Echtzeitfähigkeit und Live-Streaming
+
+Ein besonders vielversprechender Erweiterungsbereich für die Trainingsanalyseplattform ist die Echtzeitfähigkeit. Derzeit werden Trainingsvideos zunächst aufgezeichnet, anschließend hochgeladen und erst dann analysiert. Eine Weiterentwicklung in Richtung Echtzeitanalyse würde es ermöglichen, Trainingseinheiten direkt während der Durchführung auszuwerten.
+
+Dafür wäre im Frontend die Integration eines Live-Video-Streams notwendig, beispielsweise über die WebRTC-Technologie, die eine direkte Übertragung von Kamerabildern im Browser ermöglicht. In Kombination mit einer leistungsfähigen Backend-Analyse könnten Trainer so unmittelbar während des Trainings Rückmeldungen zu Bewegungsabläufen und Spielsituationen erhalten.
+
+Darüber hinaus könnte eine solche Echtzeitlösung um zusätzliche Funktionen erweitert werden, beispielsweise die automatische Erkennung von Spielsituationen, die sofortige Darstellung von Statistiken während des Trainings oder die Möglichkeit, bestimmte Spielszenen in Echtzeit zu markieren und später gezielt auszuwerten.
+
+Die technische Grundlage für eine solche Erweiterung ist durch die modulare Architektur des Frontends bereits gegeben. Die bestehende REST-API-Anbindung könnte durch eine WebSocket-Verbindung ergänzt werden, um eine bidirektionale Echtzeitkommunikation zwischen Frontend und Backend zu ermöglichen.
